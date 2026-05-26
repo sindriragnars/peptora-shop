@@ -1,0 +1,36 @@
+import type { Reroute } from '@sveltejs/kit';
+
+/**
+ * Universal reroute hook (runs both server + client). When a request
+ * lands on `<slug>.peptora.app/<path>`, rewrite the routing path to
+ * `/<slug>/<path>` so SvelteKit's router matches the `[slug]/...`
+ * routes. The browser still shows the original URL.
+ *
+ * URL mutation in `hooks.server.ts` doesn't work for routing — only
+ * the `reroute` hook is consulted by the SvelteKit router. The admin
+ * gate in `hooks.server.ts` still detects subdomain admin requests
+ * by checking the un-rewritten pathname directly.
+ */
+
+const RESERVED_SUBDOMAINS = new Set([
+	'www',
+	'app',
+	'shop',
+	'peptora-push',
+	'peptora-cms-oauth',
+	'admin'
+]);
+
+export const reroute: Reroute = ({ url }) => {
+	if (!url.hostname.endsWith('.peptora.app')) return;
+	const sub = url.hostname.slice(0, -'.peptora.app'.length);
+	if (!sub || RESERVED_SUBDOMAINS.has(sub)) return;
+
+	const expectedPrefix = `/${sub}`;
+	if (url.pathname === expectedPrefix || url.pathname.startsWith(`${expectedPrefix}/`)) {
+		// Already prefixed (e.g. visitor typed demo.peptora.app/demo/...).
+		// Don't double up.
+		return;
+	}
+	return `${expectedPrefix}${url.pathname}`;
+};
