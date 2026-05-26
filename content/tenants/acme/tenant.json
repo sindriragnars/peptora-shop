@@ -1,0 +1,26 @@
+{
+	"name": "Acme Líf",
+	"tagline": "Náttúruleg líftæknivirkni — Akureyri",
+	"logo": null,
+	"theme": {
+		"brand": "#5b3a8a",
+		"accent": "#9277c1"
+	},
+	"contact": {
+		"email": "info@acmelif.is",
+		"phone": "+354 555 1111",
+		"address": "Kaupvangsstræti 12, 600 Akureyri",
+		"vskNumber": "VSK 888888"
+	},
+	"shipping": {
+		"flatRateISK": 1290,
+		"freeAboveISK": 12000,
+		"options": ["Pickup Akureyri", "Iceland Post", "Express delivery"]
+	},
+	"revolut": {
+		"apiKeyRef": "ACME_REVOLUT_API_KEY",
+		"webhookSecretRef": "ACME_REVOLUT_WEBHOOK_SECRET",
+		"merchantId": "acme-placeholder"
+	},
+	"active": true
+}
