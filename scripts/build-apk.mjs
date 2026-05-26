@@ -60,6 +60,15 @@ config = config.replace(/appName: '[^']+'/, `appName: '${tenant.name.replace(/'/
 config = config.replace(/url: 'https:\/\/[^']+'/, `url: '${serverUrl}'`);
 writeFileSync(configPath, config);
 
+console.log('[build-apk] generating tenant icon + splash...');
+execSync(`node scripts/generate-tenant-assets.mjs ${slug}`, { cwd: root, stdio: 'inherit' });
+
+console.log('[build-apk] slicing Android density variants via @capacitor/assets...');
+execSync('npx @capacitor/assets generate --android --assetPath capacitor-assets', {
+	cwd: root,
+	stdio: 'inherit'
+});
+
 console.log('[build-apk] capacitor sync...');
 execSync('npx cap sync android', { cwd: root, stdio: 'inherit' });
 

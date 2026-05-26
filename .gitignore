@@ -16,6 +16,7 @@ android/build/
 android/local.properties
 android/keystore.properties
 android/app/release/
+capacitor-assets/
 dist/
 *.apk
 *.aab

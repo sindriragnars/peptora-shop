@@ -1,5 +1,20 @@
 apply plugin: 'com.android.application'
 
+// Release signing: read keystore.properties from android/ root if it
+// exists (gitignored). When absent, release builds fall back to no
+// signingConfig and gradle will refuse to assemble release — debug
+// builds are unaffected. Format (one secret per line):
+//
+//   storeFile=../keystores/peptora-shop.jks
+//   storePassword=...
+//   keyAlias=peptora-shop
+//   keyPassword=...
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace = "app.peptora.shop.demo"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -16,10 +31,23 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        if (keystorePropertiesFile.exists()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
