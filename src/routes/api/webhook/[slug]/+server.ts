@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 import { getTenant } from '$lib/tenants';
 import {
 	findByRevolutOrderId,
+	getOrder,
 	updateOrder,
 	type OrderStatus
 } from '$lib/orders';
@@ -10,7 +11,10 @@ import {
 	sendOrderNotificationToAdmin
 } from '$lib/email';
 import { verifyWebhookSignature, getWebhookSecret } from '$lib/revolut';
+import { constructEvent as constructStripeEvent } from '$lib/stripe';
 import type { RequestHandler } from './$types';
+
+const PAYMENT_PROVIDER = process.env.PAYMENT_PROVIDER ?? 'revolut';
 
 /**
  * Revolut webhook receiver, scoped per tenant via URL slug.
@@ -44,73 +48,41 @@ export const POST: RequestHandler = async ({ params, request }) => {
 	// read once and not re-parse via SvelteKit's JSON helper.
 	const rawBody = await request.text();
 
-	let secret: string;
+	// Resolve (orderId, newStatus) from the provider-specific payload +
+	// signature verification. Returning null = ignore (idempotent
+	// redelivery, wrong event type, missing fields, etc.). Throwing =
+	// invalid signature / misconfigured tenant.
+	let resolved: { orderId: string; newStatus: OrderStatus } | null;
 	try {
-		secret = getWebhookSecret(tenant);
-	} catch {
-		// Mis-configured tenant. Return 401 so Revolut treats it as an
-		// auth failure (will retry, giving us a chance to add the env var).
-		return json({ error: 'webhook not configured' }, { status: 401 });
+		resolved =
+			PAYMENT_PROVIDER === 'stripe'
+				? await handleStripeWebhook(tenant, rawBody, request.headers.get('stripe-signature'))
+				: await handleRevolutWebhook(tenant, rawBody, request.headers);
+	} catch (e) {
+		console.warn('webhook rejected', { tenant: tenant.slug, error: String(e) });
+		return json({ error: 'invalid signature or config' }, { status: 401 });
 	}
 
-	const valid = await verifyWebhookSignature({
-		rawBody,
-		signatureHeader: request.headers.get('Revolut-Signature'),
-		timestampHeader: request.headers.get('Revolut-Request-Timestamp'),
-		webhookSecret: secret
-	});
-	if (!valid) {
-		return json({ error: 'invalid signature' }, { status: 401 });
-	}
+	if (!resolved) return json({ ok: true, ignored: true });
 
-	// Parse + dispatch.
-	let event: { event?: string; order_id?: string };
-	try {
-		event = JSON.parse(rawBody);
-	} catch {
-		return json({ error: 'invalid JSON' }, { status: 400 });
-	}
-
-	if (!event.event || !event.order_id) {
-		return json({ ok: true, ignored: 'missing fields' });
-	}
-	if (!RELEVANT_EVENTS.has(event.event)) {
-		return json({ ok: true, ignored: event.event });
-	}
-
-	const order = await findByRevolutOrderId(tenant.slug, event.order_id);
-	if (!order) {
-		// Either Revolut sent a webhook for a different platform's order
-		// (shouldn't happen — they're scoped per-key) or our Redis lost
-		// the record. Log loud + return 200 so we don't loop on retries.
+	const order = await getOrder(resolved.orderId);
+	if (!order || order.tenantSlug !== tenant.slug) {
 		console.warn('webhook for unknown order', {
 			tenant: tenant.slug,
-			revolutOrderId: event.order_id
+			orderId: resolved.orderId
 		});
 		return json({ ok: true, ignored: 'unknown order' });
 	}
-
-	const newStatus: OrderStatus | null =
-		event.event === 'ORDER_COMPLETED'
-			? 'paid'
-			: event.event === 'ORDER_AUTHORISED'
-				? 'paid'
-				: event.event === 'ORDER_FAILED'
-					? 'failed'
-					: event.event === 'ORDER_CANCELLED'
-						? 'cancelled'
-						: null;
-
-	if (!newStatus || newStatus === order.status) {
-		// Nothing changed — Revolut sometimes redelivers the same event.
+	if (order.status === resolved.newStatus) {
+		// Already at this status — redelivery or out-of-order event.
 		return json({ ok: true, idempotent: true });
 	}
 
-	const patch: Partial<typeof order> = { status: newStatus };
-	if (newStatus === 'paid') patch.paidAt = Date.now();
+	const patch: Partial<typeof order> = { status: resolved.newStatus };
+	if (resolved.newStatus === 'paid') patch.paidAt = Date.now();
 	const updated = await updateOrder(order.id, patch);
 
-	if (updated && newStatus === 'paid') {
+	if (updated && resolved.newStatus === 'paid') {
 		// Best-effort emails — failures inside email helpers log but
 		// don't throw, so this can't drop the 200 response.
 		await Promise.all([
@@ -121,3 +93,48 @@ export const POST: RequestHandler = async ({ params, request }) => {
 
 	return json({ ok: true });
 };
+
+async function handleRevolutWebhook(
+	tenant: ReturnType<typeof getTenant> & object,
+	rawBody: string,
+	headers: Headers
+): Promise<{ orderId: string; newStatus: OrderStatus } | null> {
+	const secret = getWebhookSecret(tenant);
+	const valid = await verifyWebhookSignature({
+		rawBody,
+		signatureHeader: headers.get('Revolut-Signature'),
+		timestampHeader: headers.get('Revolut-Request-Timestamp'),
+		webhookSecret: secret
+	});
+	if (!valid) throw new Error('invalid signature');
+
+	const event = JSON.parse(rawBody) as { event?: string; order_id?: string };
+	if (!event.event || !event.order_id) return null;
+	if (!RELEVANT_EVENTS.has(event.event)) return null;
+
+	const order = await findByRevolutOrderId(tenant.slug, event.order_id);
+	if (!order) return null;
+
+	const newStatus: OrderStatus | null =
+		event.event === 'ORDER_COMPLETED' || event.event === 'ORDER_AUTHORISED'
+			? 'paid'
+			: event.event === 'ORDER_FAILED'
+				? 'failed'
+				: event.event === 'ORDER_CANCELLED'
+					? 'cancelled'
+					: null;
+	return newStatus ? { orderId: order.id, newStatus } : null;
+}
+
+async function handleStripeWebhook(
+	tenant: ReturnType<typeof getTenant> & object,
+	rawBody: string,
+	signatureHeader: string | null
+): Promise<{ orderId: string; newStatus: OrderStatus } | null> {
+	const event = constructStripeEvent({ tenant, rawBody, signatureHeader });
+	if (event.type !== 'checkout.session.completed') return null;
+	const session = event.data.object as { client_reference_id?: string | null };
+	const orderId = session.client_reference_id;
+	if (!orderId) return null;
+	return { orderId, newStatus: 'paid' };
+}

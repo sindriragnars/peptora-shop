@@ -2,8 +2,11 @@ import { error, json } from '@sveltejs/kit';
 import { getTenant } from '$lib/tenants';
 import { getProduct } from '$lib/products.server';
 import { createOrder as createRevolutOrder } from '$lib/revolut';
+import { createCheckoutSession as createStripeSession } from '$lib/stripe';
 import { saveOrder, type Order, type OrderItem } from '$lib/orders';
 import type { RequestHandler } from './$types';
+
+const PAYMENT_PROVIDER = process.env.PAYMENT_PROVIDER ?? 'revolut';
 
 /**
  * Checkout endpoint. Client POSTs cart contents + customer details +
@@ -96,32 +99,48 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		createdAt: Date.now()
 	};
 
-	// Call Revolut to create the hosted-checkout order.
+	// Hand off to the payment provider for a hosted checkout URL.
 	const successUrl = `${url.origin}/${tenant.slug}/checkout/success?orderId=${orderId}`;
 	const cancelUrl = `${url.origin}/${tenant.slug}/checkout/cancelled?orderId=${orderId}`;
 
 	try {
-		const revolutOrder = await createRevolutOrder({
-			tenant,
-			amount: totalISK,
-			currency: 'ISK',
-			merchantOrderRef: orderId,
-			description: `${tenant.name} — ${items.length} ${items.length === 1 ? 'vara' : 'vörur'}`,
-			successUrl,
-			cancelUrl,
-			customer: {
-				email: order.customer.email,
-				name: order.customer.name,
-				phone: order.customer.phone
-			}
-		});
-		order.revolut = {
-			orderId: revolutOrder.id,
-			publicId: revolutOrder.public_id,
-			checkoutUrl: revolutOrder.checkout_url
-		};
+		if (PAYMENT_PROVIDER === 'stripe') {
+			const session = await createStripeSession({
+				tenant,
+				merchantOrderRef: orderId,
+				items,
+				shipping: { option: body.shippingOption, costISK },
+				customerEmail: order.customer.email,
+				successUrl,
+				cancelUrl
+			});
+			// Reuse the `revolut` field as the generic payment-provider
+			// reference during smoke testing. Renaming to `payment.*` is a
+			// follow-up once we settle on a provider for production.
+			order.revolut = { orderId: session.id, publicId: '', checkoutUrl: session.url };
+		} else {
+			const revolutOrder = await createRevolutOrder({
+				tenant,
+				amount: totalISK,
+				currency: 'ISK',
+				merchantOrderRef: orderId,
+				description: `${tenant.name} — ${items.length} ${items.length === 1 ? 'vara' : 'vörur'}`,
+				successUrl,
+				cancelUrl,
+				customer: {
+					email: order.customer.email,
+					name: order.customer.name,
+					phone: order.customer.phone
+				}
+			});
+			order.revolut = {
+				orderId: revolutOrder.id,
+				publicId: revolutOrder.public_id,
+				checkoutUrl: revolutOrder.checkout_url
+			};
+		}
 	} catch (e) {
-		console.error('Revolut createOrder failed', { orderId, error: String(e) });
+		console.error(`${PAYMENT_PROVIDER} createOrder failed`, { orderId, error: String(e) });
 		error(502, 'Payment provider unavailable. Try again in a moment.');
 	}
 
