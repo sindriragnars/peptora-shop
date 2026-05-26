@@ -26,6 +26,12 @@ export const reroute: Reroute = ({ url }) => {
 	const sub = url.hostname.slice(0, -'.peptora.app'.length);
 	if (!sub || RESERVED_SUBDOMAINS.has(sub)) return;
 
+	// API endpoints stay at /api/* regardless of subdomain. The webhook
+	// + checkout handlers read the tenant slug from URL params (or
+	// resolve via locals.tenant) and don't need a slug prefix on the
+	// path — prefixing would 404 because routes/[slug]/api/ doesn't exist.
+	if (url.pathname.startsWith('/api/')) return;
+
 	const expectedPrefix = `/${sub}`;
 	if (url.pathname === expectedPrefix || url.pathname.startsWith(`${expectedPrefix}/`)) {
 		// Already prefixed (e.g. visitor typed demo.peptora.app/demo/...).
