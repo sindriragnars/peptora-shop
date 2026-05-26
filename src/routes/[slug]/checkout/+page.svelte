@@ -54,8 +54,17 @@
 				})
 			});
 			if (!res.ok) {
+				// SvelteKit's error() returns JSON {"message":"..."}. Surface
+				// just the message so users don't see a raw JSON blob.
 				const errText = await res.text();
-				throw new Error(errText || `HTTP ${res.status}`);
+				let msg = errText;
+				try {
+					const parsed = JSON.parse(errText);
+					if (parsed?.message) msg = String(parsed.message);
+				} catch {
+					// non-JSON body — fall back to the raw text
+				}
+				throw new Error(msg || `HTTP ${res.status}`);
 			}
 			const data = (await res.json()) as { orderId: string; checkoutUrl: string };
 			// Redirect to Revolut hosted checkout. We deliberately leave
