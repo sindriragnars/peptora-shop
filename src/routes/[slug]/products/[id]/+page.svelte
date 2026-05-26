@@ -1,8 +1,27 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { formatPriceISK } from '$lib/products';
+	import { getCartStore } from '$lib/cart.svelte';
 	let { data } = $props();
 	const product = $derived(data.product);
 	const tenant = $derived(data.tenant);
+	const cart = $derived(getCartStore(tenant.slug));
+
+	let adding = $state(false);
+
+	async function addToCart() {
+		if (product.stock === 'out' || adding) return;
+		adding = true;
+		try {
+			await cart.add(product.id, 1);
+			// Take the user to the cart so they see the item land — common
+			// pattern for low-volume catalogs where finding the just-added
+			// item back in a full cart isn't obvious.
+			await goto(`/${tenant.slug}/cart`);
+		} finally {
+			adding = false;
+		}
+	}
 
 	const stockLabel: Record<string, string> = {
 		'in-stock': 'Á lager',
@@ -22,7 +41,7 @@
 	</nav>
 
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-		<!-- Image gallery -->
+		<!-- Image -->
 		<div class="border-outline aspect-square overflow-hidden rounded-2xl border bg-white">
 			{#if product.images[0]}
 				<img src={product.images[0]} alt="" class="h-full w-full object-cover" />
@@ -56,18 +75,18 @@
 
 			<button
 				type="button"
+				onclick={addToCart}
+				disabled={product.stock === 'out' || adding}
 				class="bg-brand hover:bg-brand-dark inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-medium text-white transition-colors disabled:opacity-50"
-				disabled={product.stock === 'out'}
 			>
 				{#if product.stock === 'out'}
 					Uppselt
+				{:else if adding}
+					Bæti í körfu…
 				{:else}
 					Bæta í körfu
 				{/if}
 			</button>
-			<p class="text-muted mt-2 text-center text-xs">
-				Karfan kemur í Phase 2 — hnappur er enn placeholder.
-			</p>
 
 			<!-- Spec table -->
 			<dl class="border-outline mt-8 grid grid-cols-2 gap-x-6 gap-y-2 border-t pt-6 text-sm">
@@ -85,7 +104,6 @@
 		</div>
 	</div>
 
-	<!-- Markdown body -->
 	{#if product.bodyHtml}
 		<article
 			class="prose prose-sm mt-12 max-w-prose [&>h1]:text-2xl [&>h1]:font-bold [&>h2]:mt-6 [&>h2]:text-lg [&>h2]:font-semibold [&>ul]:list-disc [&>ul]:pl-6 [&>p]:mt-3"

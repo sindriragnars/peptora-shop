@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { getCartStore } from '$lib/cart.svelte';
 	let { data, children } = $props();
 	const tenant = $derived(data.tenant);
+	const cart = $derived(getCartStore(tenant.slug));
+
 	// Per-tenant theme overrides via inline CSS variables on the root.
-	// This way every Tailwind class that resolves `var(--color-brand)`
-	// picks up the tenant's brand colour without any class rewriting.
+	// Tailwind classes that resolve `var(--color-brand)` pick up the
+	// tenant's brand colour without any class rewriting.
 	const themeStyle = $derived(
 		`--color-brand: ${tenant.theme.brand}; --color-accent: ${tenant.theme.accent};`
 	);
@@ -18,9 +21,21 @@
 	<header class="border-outline border-b">
 		<div class="mx-auto flex max-w-4xl items-baseline justify-between px-6 py-5">
 			<a href="/{tenant.slug}" class="text-xl font-semibold tracking-tight">{tenant.name}</a>
-			<nav class="text-muted flex gap-6 text-sm">
+			<nav class="text-muted flex items-center gap-6 text-sm">
 				<a href="/{tenant.slug}" class="hover:text-ink">Vörur</a>
-				<a href="/{tenant.slug}/cart" class="hover:text-ink">Karfa</a>
+				<a
+					href="/{tenant.slug}/cart"
+					class="hover:text-ink relative inline-flex items-center gap-1.5"
+				>
+					Karfa
+					{#if cart.count > 0}
+						<span
+							class="bg-brand inline-flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-xs font-medium text-white"
+						>
+							{cart.count}
+						</span>
+					{/if}
+				</a>
 			</nav>
 		</div>
 	</header>
