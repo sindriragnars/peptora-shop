@@ -1,0 +1,26 @@
+{
+	"name": "Demo Heilsa",
+	"tagline": "Hágæða peptíð fyrir Ísland — sample storefront",
+	"logo": null,
+	"theme": {
+		"brand": "#0e7c66",
+		"accent": "#14a085"
+	},
+	"contact": {
+		"email": "demo@peptora.app",
+		"phone": "+354 555 0000",
+		"address": "Suðurlandsbraut 4, 108 Reykjavík",
+		"vskNumber": "VSK 999999"
+	},
+	"shipping": {
+		"flatRateISK": 990,
+		"freeAboveISK": 15000,
+		"options": ["Pickup", "Iceland Post"]
+	},
+	"revolut": {
+		"apiKeyRef": "DEMO_REVOLUT_API_KEY",
+		"webhookSecretRef": "DEMO_REVOLUT_WEBHOOK_SECRET",
+		"merchantId": "demo-placeholder"
+	},
+	"active": true
+}
