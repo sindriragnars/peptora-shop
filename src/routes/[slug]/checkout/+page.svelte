@@ -21,8 +21,6 @@
 	);
 	const total = $derived(subtotal + shipping);
 
-	// Form fields — kept simple, validated client-side via HTML5 `required`.
-	// Phase 3 wires submit → /api/checkout → Revolut order create.
 	let name = $state('');
 	let email = $state('');
 	let phone = $state('');
@@ -31,13 +29,38 @@
 	let city = $state('');
 	let notes = $state('');
 
-	function onSubmit(e: SubmitEvent) {
+	let submitting = $state(false);
+	let submitError = $state('');
+
+	async function onSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		// Phase 3 wires this. For now, show alert so reviewers know the
-		// form data is captured but the payment step is still pending.
-		alert(
-			'Greiðsla kemur í Phase 3 (Revolut Merchant API). Karfan + form-gögnin eru tilbúin að fara í gegnum þá leið.'
-		);
+		if (submitting || cart.isEmpty) return;
+		submitting = true;
+		submitError = '';
+		try {
+			const res = await fetch('/api/checkout', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					tenantSlug: tenant.slug,
+					items: cart.items.map((it) => ({ productId: it.productId, qty: it.qty })),
+					customer: { name, email, phone, address, postalCode, city, notes },
+					shippingOption
+				})
+			});
+			if (!res.ok) {
+				const errText = await res.text();
+				throw new Error(errText || `HTTP ${res.status}`);
+			}
+			const data = (await res.json()) as { orderId: string; checkoutUrl: string };
+			// Redirect to Revolut hosted checkout. We deliberately leave
+			// the cart in place — it gets cleared on the success page
+			// once we know payment went through.
+			window.location.href = data.checkoutUrl;
+		} catch (err) {
+			submitError = err instanceof Error ? err.message : 'Greiðsla mistókst. Reyndu aftur.';
+			submitting = false;
+		}
 	}
 </script>
 
@@ -192,14 +215,20 @@
 							<dd class="font-mono">{formatPriceISK(total)}</dd>
 						</div>
 					</dl>
+
+					{#if submitError}
+						<p class="mt-4 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-700">{submitError}</p>
+					{/if}
+
 					<button
 						type="submit"
-						class="bg-brand hover:bg-brand-dark mt-5 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-medium text-white transition-colors"
+						disabled={submitting}
+						class="bg-brand hover:bg-brand-dark mt-5 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-medium text-white transition-colors disabled:opacity-50"
 					>
-						Greiða með Revolut
+						{submitting ? 'Tengist Revolut…' : 'Greiða með Revolut'}
 					</button>
 					<p class="text-muted mt-2 text-center text-xs">
-						Phase 3 wire-ar þennan hnapp við Revolut Merchant API.
+						Þú verður færð/-ur yfir á Revolut til að klára greiðsluna.
 					</p>
 				</div>
 			</aside>
