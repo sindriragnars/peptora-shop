@@ -1,26 +1,13 @@
-import { error } from '@sveltejs/kit';
-import { isAuthorizedAdmin, unauthorizedResponse } from '$lib/admin-auth';
 import type { LayoutServerLoad } from './$types';
 
 /**
- * Guard for every page under /[slug]/admin/. Runs Basic-Auth check
- * against the per-tenant password env var. Returns 401 with
- * WWW-Authenticate so the browser shows its native credentials prompt.
+ * The actual Basic-Auth gate runs in `src/hooks.server.ts` because it
+ * needs to return a raw 401 Response with `WWW-Authenticate` — SvelteKit
+ * load functions can't do that.
  *
- * `error(401, ...)` throws SvelteKit's HttpError which renders an
- * error page in this layout chain — but for Basic Auth we want to
- * return the WWW-Authenticate header instead, which is why we throw
- * a raw Response below.
+ * This layout just forwards parent data; admin pages access tenant via
+ * `parent()` below them. Kept as a marker file so the admin/* subtree
+ * is grouped under one layout and we have a hook point for any future
+ * shared admin chrome (nav, breadcrumbs, etc).
  */
-export const load: LayoutServerLoad = async ({ request, parent }) => {
-	const parentData = await parent();
-	const tenant = parentData.tenant;
-
-	if (!isAuthorizedAdmin({ request, tenant })) {
-		// Throwing a Response triggers SvelteKit to send it verbatim,
-		// including the WWW-Authenticate header that prompts the browser.
-		throw unauthorizedResponse(tenant);
-	}
-
-	return {};
-};
+export const load: LayoutServerLoad = async ({ parent }) => parent();
