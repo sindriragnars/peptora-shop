@@ -8,7 +8,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"build:apk": "node scripts/build-apk.mjs"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^5.10.0",
@@ -22,6 +23,9 @@
 		"vite": "^8.0.7"
 	},
 	"dependencies": {
+		"@capacitor/android": "^8.3.4",
+		"@capacitor/cli": "^8.3.4",
+		"@capacitor/core": "^8.3.4",
 		"@upstash/redis": "^1.38.0",
 		"dexie": "^4.4.2",
 		"gray-matter": "^4.0.3",

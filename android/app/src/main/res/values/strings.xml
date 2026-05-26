@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Demo Heilsa</string>
+    <string name="title_activity_main">Demo Heilsa</string>
+    <string name="package_name">app.peptora.shop.demo</string>
+    <string name="custom_url_scheme">app.peptora.shop.demo</string>
+</resources>
