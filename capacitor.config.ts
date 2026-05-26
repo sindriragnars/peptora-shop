@@ -18,9 +18,8 @@ const config: CapacitorConfig = {
 	webDir: 'capacitor-webdir',
 	server: {
 		// Production storefront URL. The build script rewrites this to
-		// the tenant's subdomain (or the path-based fallback while
-		// subdomains are not yet wired in Vercel).
-		url: 'https://peptora-shop.vercel.app/demo',
+		// the tenant's subdomain at build time.
+		url: 'https://demo.peptora.app',
 		// Only allow navigation within the tenant's own storefront +
 		// the Revolut hosted checkout. Anything else opens externally
 		// in the system browser via the InAppBrowser default.

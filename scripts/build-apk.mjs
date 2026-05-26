@@ -41,10 +41,11 @@ if (!existsSync(tenantPath)) {
 
 const tenant = JSON.parse(readFileSync(tenantPath, 'utf8'));
 
-// Build the production URL for this tenant. Once subdomains are wired
-// in Vercel, switch the template to `https://${slug}.peptora.app`. For
-// now use the path-based fallback so APKs work today.
-const serverUrl = `https://peptora-shop.vercel.app/${slug}`;
+// Build the production URL for this tenant. Subdomains are wired in
+// Vercel as of 2026-05-26 — each tenant gets `<slug>.peptora.app`
+// pointing at the peptora-shop project. The path-based form remains
+// supported by the tenant resolver for dev + preview.
+const serverUrl = `https://${slug}.peptora.app`;
 const appId = `app.peptora.shop.${slug.replace(/-/g, '')}`;
 
 console.log(`[build-apk] tenant=${slug}`);
