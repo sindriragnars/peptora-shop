@@ -1,0 +1,130 @@
+# Decap CMS configuration for peptora-shop.
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# Backend: GitHub via the same OAuth proxy peptora-web uses
+# (peptora-cms-oauth.vercel.app). The proxy is repo-agnostic — it just
+# relays the OAuth handshake with GitHub; the repo is configured here.
+
+backend:
+  name: github
+  repo: sindriragnars/peptora-shop
+  branch: main
+  base_url: https://peptora-cms-oauth.vercel.app
+  auth_endpoint: auth
+
+# Media folder is per-tenant for clean separation. The default below applies
+# to media uploaded outside a specific collection; each collection can
+# override via its own media_folder to scope uploads to that tenant's
+# images directory.
+media_folder: "static/tenants/demo/images"
+public_folder: "/tenants/demo/images"
+
+# Editorial workflow = save creates a PR rather than committing direct to
+# main. Matches peptora-web pattern. Safer for content edits + review.
+publish_mode: editorial_workflow
+
+site_url: https://peptora-shop.vercel.app
+display_url: https://peptora-shop.vercel.app
+logo_url: https://peptora-shop.vercel.app/tenants/demo/images/placeholder-bpc.svg
+
+# ─── Collections ──────────────────────────────────────────────────────────────
+#
+# Multi-tenant pattern: each tenant gets its own pair of collections:
+#   1. Tenant config (file collection — edits a single tenant.json)
+#   2. Products (folder collection — one markdown file per product)
+#
+# To onboard a new tenant: copy the two demo collections below, change
+# every "demo" reference to the new tenant slug, restart Vercel deploy.
+# Phase 6 will replace this with a CLI script.
+
+collections:
+  # ───────────── Demo Heilsa ─────────────
+  - name: demo_config
+    label: "Demo · Verslunarstillingar"
+    files:
+      - name: demo_tenant
+        label: "Demo · tenant.json"
+        file: "content/tenants/demo/tenant.json"
+        fields:
+          - { label: "Nafn verslunar", name: "name", widget: "string" }
+          - { label: "Slagorð", name: "tagline", widget: "string" }
+          - { label: "Logo (URL)", name: "logo", widget: "string", required: false }
+          - label: "Þema"
+            name: "theme"
+            widget: "object"
+            fields:
+              - { label: "Aðallitur (hex)", name: "brand", widget: "string", pattern: ['^#[0-9a-fA-F]{6}$', "Verður að vera 6-stafa hex"] }
+              - { label: "Áherslulitur (hex)", name: "accent", widget: "string", pattern: ['^#[0-9a-fA-F]{6}$', "Verður að vera 6-stafa hex"] }
+          - label: "Samband"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Netfang", name: "email", widget: "string" }
+              - { label: "Sími", name: "phone", widget: "string" }
+              - { label: "Heimilisfang", name: "address", widget: "string" }
+              - { label: "VSK númer", name: "vskNumber", widget: "string", required: false }
+          - label: "Sending"
+            name: "shipping"
+            widget: "object"
+            fields:
+              - { label: "Flatt sendingargjald (ISK)", name: "flatRateISK", widget: "number", value_type: "int" }
+              - { label: "Frítt yfir (ISK)", name: "freeAboveISK", widget: "number", value_type: "int" }
+              - label: "Sendingarmöguleikar"
+                name: "options"
+                widget: "list"
+                field: { label: "Möguleiki", name: "option", widget: "string" }
+          - label: "Revolut"
+            name: "revolut"
+            widget: "object"
+            hint: "Lykilbreytur eru í Vercel env vars — hér er bara nafn breytunnar."
+            fields:
+              - { label: "API key env-var name", name: "apiKeyRef", widget: "string" }
+              - { label: "Webhook secret env-var name", name: "webhookSecretRef", widget: "string" }
+              - { label: "Merchant ID", name: "merchantId", widget: "string", required: false }
+          - { label: "Virk verslun", name: "active", widget: "boolean", default: true, hint: "Slökktu til að fela storefrontinn án að eyða honum." }
+
+  - name: demo_products
+    label: "Demo · Vörur"
+    label_singular: "Vara"
+    folder: "content/tenants/demo/products"
+    media_folder: "../../../static/tenants/demo/images"
+    public_folder: "/tenants/demo/images"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{price_isk}} kr."
+    sortable_fields: [order, title, price_isk]
+    view_filters:
+      - { label: "Featured", field: featured, pattern: true }
+      - { label: "Uppselt", field: stock, pattern: out }
+    fields:
+      - { label: "Heiti vöru", name: "title", widget: "string" }
+      - { label: "Lýsing (stutt)", name: "description", widget: "string", hint: "1-2 línur. Sést í kortinu á forsíðu og í SEO meta." }
+      - { label: "Verð (ISK)", name: "price_isk", widget: "number", value_type: "int", min: 0 }
+      - label: "Birgðastaða"
+        name: "stock"
+        widget: "select"
+        default: "in-stock"
+        options:
+          - { label: "Á lager", value: "in-stock" }
+          - { label: "Fáir eftir", value: "low" }
+          - { label: "Uppselt", value: "out" }
+      - label: "Flokkur"
+        name: "category"
+        widget: "select"
+        default: "peptides"
+        options:
+          - { label: "Peptíð", value: "peptides" }
+          - { label: "Aukabúnaður", value: "supplies" }
+          - { label: "Almennt", value: "general" }
+      - label: "Myndir"
+        name: "images"
+        widget: "list"
+        required: false
+        field: { label: "Mynd", name: "image", widget: "image" }
+      - { label: "Þyngd (g)", name: "weight_grams", widget: "number", value_type: "int", required: false, hint: "Notað fyrir sendingarkostnaðarútreikning." }
+      - { label: "SKU", name: "sku", widget: "string", required: false }
+      - { label: "Sýna á forsíðu", name: "featured", widget: "boolean", default: false }
+      - { label: "Birtingarröð", name: "order", widget: "number", value_type: "int", default: 100, hint: "Lægri tala = framar í lista." }
+      - { label: "Ítarlýsing", name: "body", widget: "markdown", required: false, hint: "Notar Markdown — headings, listar, tenglar. Sést á vörusíðu undir grunnupplýsingum." }
