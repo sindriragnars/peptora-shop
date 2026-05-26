@@ -140,7 +140,15 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			};
 		}
 	} catch (e) {
-		console.error(`${PAYMENT_PROVIDER} createOrder failed`, { orderId, error: String(e) });
+		// Surface Stripe-style errors more fully so we can debug.
+		const err = e as { message?: string; type?: string; code?: string; raw?: unknown };
+		console.error(`${PAYMENT_PROVIDER} createOrder failed`, {
+			orderId,
+			message: err?.message,
+			type: err?.type,
+			code: err?.code,
+			raw: err?.raw
+		});
 		error(502, 'Payment provider unavailable. Try again in a moment.');
 	}
 
