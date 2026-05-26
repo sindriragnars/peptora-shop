@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { formatPriceISK, listProducts, type Product } from '$lib/products';
+	import { formatPriceISK, type Product } from '$lib/products';
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
-	const products = $derived(listProducts(tenant.slug));
+	const products = $derived(data.products);
 
 	// Group products by category for natural sectioning. Keeps the storefront
 	// scannable as the catalog grows past ~20 items. Order within each

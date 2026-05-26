@@ -1,13 +1,18 @@
 <script lang="ts">
-	import { formatPriceISK, getProduct } from '$lib/products';
+	import { formatPriceISK } from '$lib/products';
 	import { getCartStore } from '$lib/cart.svelte';
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
 	const cart = $derived(getCartStore(tenant.slug));
 
+	// Product catalog comes from the parent layout's server load so the
+	// markdown parser never reaches the client bundle.
 	const lines = $derived(
 		cart.items
-			.map((item) => ({ item, product: getProduct(tenant.slug, item.productId) }))
+			.map((item) => ({
+				item,
+				product: data.products.find((p) => p.id === item.productId) ?? null
+			}))
 			.filter((l): l is { item: typeof l.item; product: NonNullable<typeof l.product> } =>
 				l.product !== null
 			)

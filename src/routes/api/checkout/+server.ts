@@ -1,6 +1,6 @@
 import { error, json } from '@sveltejs/kit';
 import { getTenant } from '$lib/tenants';
-import { getProduct } from '$lib/products';
+import { getProduct } from '$lib/products.server';
 import { createOrder as createRevolutOrder } from '$lib/revolut';
 import { saveOrder, type Order, type OrderItem } from '$lib/orders';
 import type { RequestHandler } from './$types';
