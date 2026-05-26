@@ -13,7 +13,13 @@ import { Redis } from '@upstash/redis';
 
 const ONE_YEAR_SECONDS = 365 * 24 * 60 * 60;
 
-export type OrderStatus = 'pending' | 'paid' | 'failed' | 'expired' | 'cancelled';
+export type OrderStatus =
+	| 'pending'
+	| 'paid'
+	| 'fulfilled'
+	| 'failed'
+	| 'expired'
+	| 'cancelled';
 
 export interface OrderItem {
 	productId: string;
