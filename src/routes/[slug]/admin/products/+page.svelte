@@ -22,12 +22,7 @@
 	<meta name="robots" content="noindex,nofollow" />
 </svelte:head>
 
-<main class="mx-auto max-w-4xl px-6 py-8">
-	<nav class="mb-6 flex gap-4 text-sm">
-		<a href="{pathPrefix}/admin/orders" class="text-muted hover:text-ink">Pantanir</a>
-		<span class="font-medium">Vörur</span>
-	</nav>
-
+<main class="mx-auto max-w-6xl px-6 py-8">
 	<div class="mb-6 flex items-baseline justify-between">
 		<div>
 			<h1 class="text-2xl font-bold tracking-tight">Vörur</h1>

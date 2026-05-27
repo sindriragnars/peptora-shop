@@ -48,14 +48,9 @@
 	<meta name="robots" content="noindex,nofollow" />
 </svelte:head>
 
-<main class="mx-auto max-w-5xl px-6 py-8">
-	<nav class="mb-6 flex gap-4 text-sm">
-		<span class="font-medium">Pantanir</span>
-		<a href="{pathPrefix}/admin/products" class="text-muted hover:text-ink">Vörur</a>
-	</nav>
+<main class="mx-auto max-w-6xl px-6 py-8">
 	<div class="mb-6 flex items-baseline justify-between">
-		<h1 class="text-3xl font-bold tracking-tight">Pantanir</h1>
-		<p class="text-muted text-sm">{tenant.name} admin</p>
+		<h1 class="text-2xl font-bold tracking-tight">Pantanir</h1>
 	</div>
 
 	<!-- Status filter tabs -->
