@@ -1,9 +1,11 @@
 ---
 title: Semax 10 mg
+description: Styður einbeitingu, skapið og taugakerfið.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Styður einbeitingu, skapið og taugakerfið.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_33-pm-9-.png
 weight_grams: 50
 sku: JB-SEM-10
 featured: false
