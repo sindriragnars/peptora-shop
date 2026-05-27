@@ -29,10 +29,10 @@
 	// 6-tab bottom nav: shop landing + peptide library + stacks + doses + news + settings.
 	// /admin is intentionally hidden — tenants reach it via direct URL.
 	const tabs = $derived([
-		{ href: pathPrefix || '/', label: s.nav_shop, icon: 'shop', match: (p: string) => p === '/' },
 		{ href: `${pathPrefix}/peptides`, label: s.nav_peptides, icon: 'home', match: (p: string) => p === '/peptides' || p.startsWith('/peptides/') || p.startsWith('/categories/') },
 		{ href: `${pathPrefix}/stacks`, label: s.nav_stacks, icon: 'stacks', match: (p: string) => p.startsWith('/stacks') },
 		{ href: `${pathPrefix}/doses`, label: s.nav_doses, icon: 'doses', match: (p: string) => p.startsWith('/doses') },
+		{ href: pathPrefix || '/', label: s.nav_shop, icon: 'shop', match: (p: string) => p === '/' },
 		{ href: `${pathPrefix}/news`, label: s.nav_news, icon: 'news', match: (p: string) => p.startsWith('/news') },
 		{ href: `${pathPrefix}/settings`, label: s.nav_settings, icon: 'settings', match: (p: string) => p.startsWith('/settings') }
 	] as const);
