@@ -26,9 +26,11 @@ import type { Locale } from './peptides';
 interface UIStrings {
 	// Bottom nav
 	nav_home: string;
+	nav_peptides: string;
 	nav_stacks: string;
 	nav_news: string;
 	nav_doses: string;
+	nav_shop: string;
 	nav_settings: string;
 
 	// Home
@@ -319,9 +321,11 @@ interface UIStrings {
 
 const en: UIStrings = {
 	nav_home: 'Home',
+	nav_peptides: 'Peptides',
 	nav_stacks: 'Stacks',
 	nav_news: 'News',
 	nav_doses: 'Doses',
+	nav_shop: 'Shop',
 	nav_settings: 'Settings',
 
 	home_greeting: 'Good day',
@@ -615,9 +619,11 @@ const en: UIStrings = {
 
 const is: UIStrings = {
 	nav_home: 'Heim',
+	nav_peptides: 'Peptíð',
 	nav_stacks: 'Stacks',
 	nav_news: 'Fréttir',
 	nav_doses: 'Skammtar',
+	nav_shop: 'Verslun',
 	nav_settings: 'Stillingar',
 
 	home_greeting: 'Góðan dag',
