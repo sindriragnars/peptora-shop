@@ -1,9 +1,11 @@
 ---
 title: Retatrutide 20 mg
+description: Stuðlar að fitutapi og minnkar matarlyst.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Stuðlar að fitutapi og minnkar matarlyst.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_32-pm-6-.png
 weight_grams: 50
 sku: JB-RETA-20
 featured: true
