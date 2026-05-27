@@ -1,0 +1,725 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+	import { getAllPeptidesAlphabetical, getPeptide, searchPeptides } from '$lib/peptides';
+	import {
+		dayStreak,
+		deleteLog,
+		dosesThisMonth,
+		heatmap,
+		logDose,
+		mostTaken,
+		recentDoses,
+		type HeatmapCell
+	} from '$lib/tracking';
+	import {
+		addReminder,
+		allReminders,
+		deleteReminder,
+		describeDays,
+		updateReminder
+	} from '$lib/reminders';
+	import type { DoseLog, Reminder } from '$lib/tracking-db';
+	import { prefs } from '$lib/prefs.svelte';
+	import { strings } from '$lib/i18n';
+
+	const s = $derived(strings[prefs.lang]);
+	const allPeptides = $derived(getAllPeptidesAlphabetical(prefs.lang));
+
+	// Reminders is the default landing tab on /doses so the user
+	// sees what they have scheduled first; tracking is opt-in via
+	// ?tab=tracking. `browser` gate keeps the prerenderer happy.
+	const tab = $derived<'reminders' | 'tracking'>(
+		browser && page.url.searchParams.get('tab') === 'tracking' ? 'tracking' : 'reminders'
+	);
+
+	function switchTab(t: 'reminders' | 'tracking') {
+		const url = new URL(page.url);
+		if (t === 'reminders') url.searchParams.delete('tab');
+		else url.searchParams.set('tab', 'tracking');
+		goto(url, { replaceState: true, noScroll: true });
+	}
+
+	// ===== Tracking =====
+	let recent = $state<DoseLog[]>([]);
+	let cells = $state<HeatmapCell[]>([]);
+	let streak = $state(0);
+	let monthCount = $state(0);
+	let topPeptide = $state<string | null>(null);
+	let loaded = $state(false);
+
+	async function refreshTracking() {
+		const [r, h, s, m, t] = await Promise.all([
+			recentDoses(5),
+			heatmap(5),
+			dayStreak(),
+			dosesThisMonth(),
+			mostTaken(30)
+		]);
+		recent = r;
+		cells = h;
+		streak = s;
+		monthCount = m;
+		topPeptide = t;
+		loaded = true;
+	}
+
+	// ===== Reminders =====
+	let reminders = $state<Reminder[]>([]);
+
+	async function refreshReminders() {
+		reminders = await allReminders();
+	}
+
+	$effect(() => {
+		refreshTracking();
+		refreshReminders();
+	});
+
+	// Toast banner shown after "Start this stack" creates a batch of
+	// reminders. Source page passes ?created=<count>.
+	let createdToast = $state(0);
+
+	// Deep link: /doses?add=<peptide-id> from a peptide page's
+	// "Add reminder" button. Opens the sheet with that peptide
+	// pre-selected, then clears the query string so a refresh
+	// doesn't re-open the sheet.
+	//
+	// onMount (not $effect) so we don't get caught in a loop —
+	// $effect would re-run on the very goto() call below because
+	// it tracks page.url as a reactive dependency.
+	onMount(() => {
+		if (!browser) return;
+		const params = page.url.searchParams;
+		const addId = params.get('add');
+		const createdRaw = params.get('created');
+		const created = createdRaw ? parseInt(createdRaw, 10) : 0;
+		if (created > 0) createdToast = created;
+		if (addId) openReminderSheet(addId);
+		if (addId || created) {
+			const url = new URL(page.url);
+			url.searchParams.delete('add');
+			url.searchParams.delete('created');
+			goto(url, { replaceState: true, noScroll: true, keepFocus: true });
+		}
+	});
+
+	// ===== Shared peptide picker state (used in both sheets) =====
+	function freshPicker() {
+		return { query: '', selectedId: null as string | null };
+	}
+
+	// ===== Log-dose sheet =====
+	let logSheetOpen = $state(false);
+	let logPicker = $state(freshPicker());
+	let logDoseInput = $state('');
+
+	const logPickerResults = $derived(
+		logPicker.query.trim()
+			? searchPeptides(logPicker.query, prefs.lang)
+			: allPeptides.slice(0, 10)
+	);
+	const logSelected = $derived(
+		logPicker.selectedId ? getPeptide(logPicker.selectedId, prefs.lang) : undefined
+	);
+
+	function openLogSheet() {
+		logPicker = freshPicker();
+		logDoseInput = '';
+		logSheetOpen = true;
+	}
+
+	function pickForLog(id: string) {
+		logPicker = { ...logPicker, selectedId: id };
+		const p = getPeptide(id, prefs.lang);
+		if (p) logDoseInput = p.dosage.standard.amount;
+	}
+
+	async function saveDoseLog() {
+		if (!logPicker.selectedId || !logDoseInput.trim()) return;
+		await logDose({ peptideId: logPicker.selectedId, dose: logDoseInput.trim() });
+		logSheetOpen = false;
+		await refreshTracking();
+	}
+
+	async function onDeleteLog(id?: number) {
+		if (id === undefined) return;
+		if (!confirm(s.reminders_delete)) return;
+		await deleteLog(id);
+		await refreshTracking();
+	}
+
+	// ===== Reminder sheet =====
+	let reminderSheetOpen = $state(false);
+	let reminderPicker = $state(freshPicker());
+	let reminderDose = $state('');
+	let reminderTime = $state('09:00');
+	let reminderDays = $state<number[]>([1, 2, 3, 4, 5, 6, 0]); // default daily
+
+	const reminderPickerResults = $derived(
+		reminderPicker.query.trim()
+			? searchPeptides(reminderPicker.query, prefs.lang)
+			: allPeptides.slice(0, 10)
+	);
+	const reminderSelected = $derived(
+		reminderPicker.selectedId ? getPeptide(reminderPicker.selectedId, prefs.lang) : undefined
+	);
+
+	function openReminderSheet(peptideId?: string) {
+		reminderPicker = freshPicker();
+		reminderDose = '';
+		reminderTime = '09:00';
+		reminderDays = [1, 2, 3, 4, 5, 6, 0];
+		reminderSheetOpen = true;
+		// Deep-link from a peptide page: pre-select that peptide so the
+		// user lands directly on the dose/time/days form.
+		if (peptideId && getPeptide(peptideId, prefs.lang)) {
+			pickForReminder(peptideId);
+		}
+	}
+
+	function pickForReminder(id: string) {
+		reminderPicker = { ...reminderPicker, selectedId: id };
+		const p = getPeptide(id, prefs.lang);
+		if (p) reminderDose = p.dosage.standard.amount;
+	}
+
+	function toggleDay(d: number) {
+		reminderDays = reminderDays.includes(d)
+			? reminderDays.filter((x) => x !== d)
+			: [...reminderDays, d];
+	}
+
+	async function saveReminder() {
+		if (!reminderPicker.selectedId || !reminderDose.trim() || reminderDays.length === 0) return;
+		// IndexedDB's structured clone chokes on Svelte 5 $state proxies.
+		// Spread reminderDays into a plain array before persisting.
+		await addReminder({
+			peptideId: reminderPicker.selectedId,
+			dose: reminderDose.trim(),
+			time: reminderTime,
+			days: [...reminderDays],
+			enabled: true
+		});
+		reminderSheetOpen = false;
+		await refreshReminders();
+	}
+
+	async function toggleReminderEnabled(r: Reminder) {
+		if (r.id === undefined) return;
+		await updateReminder(r.id, { enabled: !r.enabled });
+		await refreshReminders();
+	}
+
+	async function onDeleteReminder(id?: number) {
+		if (id === undefined) return;
+		if (!confirm(s.reminders_delete)) return;
+		await deleteReminder(id);
+		await refreshReminders();
+	}
+
+	// ===== Helpers =====
+	function shortDate(ts: number): string {
+		const d = new Date(ts);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		const logDay = new Date(d);
+		logDay.setHours(0, 0, 0, 0);
+		const days = Math.floor((today.getTime() - logDay.getTime()) / (24 * 60 * 60 * 1000));
+		if (days === 0)
+			return s.log_dose_today + ', ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+		if (days === 1)
+			return s.log_dose_yesterday + ', ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+		return d.toLocaleDateString([], { month: 'short', day: 'numeric' });
+	}
+
+	// Sunday-first to match the existing UI order (S M T W T F S). Pulls
+	// translated short labels from the i18n catalog so the picker grid
+	// follows the user's chosen language.
+	const dayLetters = $derived([
+		s.day_short_sun,
+		s.day_short_mon,
+		s.day_short_tue,
+		s.day_short_wed,
+		s.day_short_thu,
+		s.day_short_fri,
+		s.day_short_sat
+	] as const);
+</script>
+
+<svelte:head>
+	<title>Doses · Peptora</title>
+</svelte:head>
+
+<section class="mx-auto max-w-md p-5">
+	<h1 class="mt-2 mb-5 text-3xl font-bold tracking-tight">{s.doses_title}</h1>
+
+	{#if createdToast > 0}
+		<!-- Confirmation toast after a Start-this-stack flow lands here. -->
+		<div
+			class="bg-brand/10 text-brand mb-4 flex items-center justify-between gap-3 rounded-2xl border border-brand/30 p-3 text-sm"
+		>
+			<span>
+				{s.doses_created_toast(createdToast)}
+			</span>
+			<button
+				type="button"
+				onclick={() => (createdToast = 0)}
+				aria-label={s.doses_dismiss}
+				class="-m-1 flex-shrink-0 p-1 opacity-70 hover:opacity-100"
+			>
+				<svg
+					class="h-4 w-4"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<line x1="18" y1="6" x2="6" y2="18" />
+					<line x1="6" y1="6" x2="18" y2="18" />
+				</svg>
+			</button>
+		</div>
+	{/if}
+
+	<!-- Tab toggle -->
+	<div
+		class="border-outline dark:border-outline-dark mb-6 flex rounded-full border p-1 text-sm"
+		role="tablist"
+	>
+		<button
+			type="button"
+			role="tab"
+			aria-selected={tab === 'reminders'}
+			onclick={() => switchTab('reminders')}
+			class="flex-1 rounded-full py-2 font-medium transition-colors"
+			class:bg-brand={tab === 'reminders'}
+			class:text-white={tab === 'reminders'}
+			class:text-muted={tab !== 'reminders'}
+		>
+			{s.doses_tab_reminders}
+		</button>
+		<button
+			type="button"
+			role="tab"
+			aria-selected={tab === 'tracking'}
+			onclick={() => switchTab('tracking')}
+			class="flex-1 rounded-full py-2 font-medium transition-colors"
+			class:bg-brand={tab === 'tracking'}
+			class:text-white={tab === 'tracking'}
+			class:text-muted={tab !== 'tracking'}
+		>
+			{s.doses_tab_tracking}
+		</button>
+	</div>
+
+	{#if tab === 'tracking'}
+		<!-- Stat cards -->
+		<div class="mb-6 grid grid-cols-3 gap-2">
+			<div class="border-outline dark:border-outline-dark rounded-2xl border p-3 text-center">
+				<div class="text-brand text-2xl font-bold">{streak}</div>
+				<div class="text-muted text-xs">{s.tracking_stat_streak}</div>
+			</div>
+			<div class="border-outline dark:border-outline-dark rounded-2xl border p-3 text-center">
+				<div class="text-brand text-2xl font-bold">{monthCount}</div>
+				<div class="text-muted text-xs">{s.tracking_stat_month}</div>
+			</div>
+			<div class="border-outline dark:border-outline-dark rounded-2xl border p-3 text-center">
+				<div class="text-brand truncate text-sm font-semibold">
+					{topPeptide ? (getPeptide(topPeptide, prefs.lang)?.name ?? topPeptide) : '—'}
+				</div>
+				<div class="text-muted text-xs">{s.tracking_stat_top}</div>
+			</div>
+		</div>
+
+		<!-- Heatmap -->
+		<section class="mb-6">
+			<h2 class="text-muted mb-3 text-xs font-medium uppercase tracking-wide">{s.tracking_heatmap_title}</h2>
+			<div class="border-outline dark:border-outline-dark rounded-2xl border p-4">
+				<div class="grid grid-cols-7 gap-1.5">
+					{#each cells as cell (cell.date)}
+						{@const intensity = Math.min(cell.count, 3)}
+						<div
+							class="aspect-square rounded-md"
+							style={intensity === 0
+								? 'background-color: rgb(14 124 102 / 0.08);'
+								: `background-color: rgb(14 124 102 / ${0.25 + intensity * 0.2});`}
+							title={`${cell.date}: ${cell.count} dose${cell.count === 1 ? '' : 's'}`}
+						></div>
+					{/each}
+				</div>
+				<div class="text-muted mt-3 flex items-center justify-end gap-1.5 text-xs">
+					<span>{s.tracking_heatmap_less}</span>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.08);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.35);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.55);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.75);"></div>
+					<span>{s.tracking_heatmap_more}</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Recent doses -->
+		<section class="pb-24">
+			<h2 class="text-muted mb-3 text-xs font-medium uppercase tracking-wide">{s.tracking_recent_title}</h2>
+			{#if loaded && recent.length === 0}
+				<div
+					class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-6 text-center text-sm"
+				>
+					<p>{s.tracking_empty}</p>
+				</div>
+			{:else}
+				<ul class="space-y-2">
+					{#each recent as log (log.id)}
+						{@const p = getPeptide(log.peptideId, prefs.lang)}
+						<li
+							class="border-outline dark:border-outline-dark flex items-center justify-between rounded-2xl border p-4"
+						>
+							<div class="min-w-0 flex-1">
+								<div class="font-semibold">{p?.name ?? log.peptideId}</div>
+								<div class="text-muted mt-0.5 text-xs">
+									{log.dose} · {shortDate(log.takenAt)}
+								</div>
+							</div>
+							<button
+								type="button"
+								onclick={() => onDeleteLog(log.id)}
+								class="text-muted hover:text-red-600"
+								aria-label={s.reminders_delete}
+							>
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="18" y1="6" x2="6" y2="18" />
+									<line x1="6" y1="6" x2="18" y2="18" />
+								</svg>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			{/if}
+		</section>
+	{:else}
+		<!-- Reminders sub-tab -->
+		<aside
+			class="text-muted mb-4 rounded-2xl bg-cream-dark/40 dark:bg-ink-soft/40 p-3 text-xs"
+		>
+			{s.reminders_pending_push}
+		</aside>
+
+		{#if reminders.length === 0}
+			<div
+				class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-8 pb-24 text-center"
+			>
+				<p>{s.reminders_empty}</p>
+			</div>
+		{:else}
+			<ul class="space-y-2 pb-24">
+				{#each reminders as r (r.id)}
+					{@const p = getPeptide(r.peptideId, prefs.lang)}
+					<li
+						class="border-outline dark:border-outline-dark rounded-2xl border p-4"
+						class:opacity-60={!r.enabled}
+					>
+						<div class="flex items-center justify-between gap-2">
+							<div class="min-w-0 flex-1">
+								<div class="font-semibold">{p?.name ?? r.peptideId}</div>
+								<div class="text-muted mt-0.5 text-xs">
+									{r.dose} · {r.time} · {describeDays(r.days)}
+								</div>
+							</div>
+							<div class="flex items-center gap-1">
+								<button
+									type="button"
+									onclick={() => toggleReminderEnabled(r)}
+									class="rounded-full px-3 py-1 text-xs font-medium transition-colors"
+									class:bg-brand={r.enabled}
+									class:text-white={r.enabled}
+									class:border={!r.enabled}
+									class:border-cream-dark={!r.enabled}
+									class:dark:border-ink-soft={!r.enabled}
+									aria-label={r.enabled ? s.reminders_toggle_off : s.reminders_toggle_on}
+								>
+									{r.enabled ? s.reminders_toggle_on : s.reminders_toggle_off}
+								</button>
+								<button
+									type="button"
+									onclick={() => onDeleteReminder(r.id)}
+									class="text-muted hover:text-red-600 p-1"
+									aria-label={s.reminders_delete}
+								>
+									<svg
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="3 6 5 6 21 6" />
+										<path
+											d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+					</li>
+				{/each}
+			</ul>
+		{/if}
+	{/if}
+</section>
+
+<!-- Floating + button — adapts to current sub-tab. -->
+<button
+	type="button"
+	onclick={tab === 'tracking' ? openLogSheet : openReminderSheet}
+	class="bg-brand hover:bg-brand-dark fixed bottom-24 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition-colors"
+	style="margin-bottom: env(safe-area-inset-bottom);"
+	aria-label={tab === 'tracking' ? s.tracking_log_dose : s.reminders_add}
+>
+	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2.5"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		<line x1="12" y1="5" x2="12" y2="19" />
+		<line x1="5" y1="12" x2="19" y2="12" />
+	</svg>
+</button>
+
+<!-- Log-dose sheet -->
+{#if logSheetOpen}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		aria-label={s.log_dose_title}
+		onclick={(e) => {
+			if (e.target === e.currentTarget) logSheetOpen = false;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') logSheetOpen = false;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom));"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">{s.log_dose_title}</h2>
+				<button
+					type="button"
+					onclick={() => (logSheetOpen = false)}
+					class="text-muted hover:text-ink dark:hover:text-cream"
+					aria-label={s.add_reminder_cancel}
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			{#if !logSelected}
+				<input
+					type="search"
+					bind:value={logPicker.query}
+					placeholder={s.home_search_placeholder}
+					class="border-outline dark:border-outline-dark focus:border-brand mb-3 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+				<ul class="max-h-72 space-y-1 overflow-y-auto">
+					{#each logPickerResults as p (p.id)}
+						<li>
+							<button
+								type="button"
+								onclick={() => pickForLog(p.id)}
+								class="hover:bg-cream-dark/60 dark:hover:bg-ink-soft/60 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors"
+							>
+								<span>
+									<span class="font-medium">{p.name}</span>
+									<span class="text-muted ml-2 text-xs">{p.tagline}</span>
+								</span>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			{:else}
+				<button
+					type="button"
+					onclick={() => (logPicker = freshPicker())}
+					class="text-muted mb-2 inline-flex items-center gap-1 text-xs hover:text-brand"
+				>
+					← {s.add_reminder_pick}
+				</button>
+				<div class="border-outline dark:border-outline-dark mb-3 rounded-2xl border p-3">
+					<div class="font-semibold">{logSelected.name}</div>
+					<div class="text-muted text-xs">{logSelected.tagline}</div>
+				</div>
+				<label class="mb-4 block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_amount}</span>
+					<input
+						type="text"
+						bind:value={logDoseInput}
+						placeholder={s.builder_dose_placeholder}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+					/>
+				</label>
+				<button
+					type="button"
+					onclick={saveDoseLog}
+					disabled={!logDoseInput.trim()}
+					class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
+				>
+					{s.log_dose_save}
+				</button>
+			{/if}
+		</div>
+	</div>
+{/if}
+
+<!-- Reminder sheet -->
+{#if reminderSheetOpen}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		aria-label={s.add_reminder_title}
+		onclick={(e) => {
+			if (e.target === e.currentTarget) reminderSheetOpen = false;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') reminderSheetOpen = false;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); max-height: 90vh; overflow-y: auto;"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">{s.add_reminder_title}</h2>
+				<button
+					type="button"
+					onclick={() => (reminderSheetOpen = false)}
+					class="text-muted hover:text-ink dark:hover:text-cream"
+					aria-label={s.add_reminder_cancel}
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			{#if !reminderSelected}
+				<input
+					type="search"
+					bind:value={reminderPicker.query}
+					placeholder={s.home_search_placeholder}
+					class="border-outline dark:border-outline-dark focus:border-brand mb-3 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+				<ul class="max-h-72 space-y-1 overflow-y-auto">
+					{#each reminderPickerResults as p (p.id)}
+						<li>
+							<button
+								type="button"
+								onclick={() => pickForReminder(p.id)}
+								class="hover:bg-cream-dark/60 dark:hover:bg-ink-soft/60 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors"
+							>
+								<span>
+									<span class="font-medium">{p.name}</span>
+									<span class="text-muted ml-2 text-xs">{p.tagline}</span>
+								</span>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			{:else}
+				<button
+					type="button"
+					onclick={() => (reminderPicker = freshPicker())}
+					class="text-muted mb-2 inline-flex items-center gap-1 text-xs hover:text-brand"
+				>
+					← {s.add_reminder_pick}
+				</button>
+				<div class="border-outline dark:border-outline-dark mb-3 rounded-2xl border p-3">
+					<div class="font-semibold">{reminderSelected.name}</div>
+					<div class="text-muted text-xs">{reminderSelected.tagline}</div>
+				</div>
+
+				<label class="mb-3 block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.add_reminder_dose}</span>
+					<input
+						type="text"
+						bind:value={reminderDose}
+						placeholder={s.builder_dose_placeholder}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+					/>
+				</label>
+
+				<label class="mb-3 block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.add_reminder_time}</span>
+					<input
+						type="time"
+						bind:value={reminderTime}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+					/>
+				</label>
+
+				<div class="mb-4">
+					<span class="text-muted mb-2 block text-xs font-medium uppercase tracking-wide">{s.add_reminder_days}</span>
+					<div class="flex justify-between gap-1">
+						{#each dayLetters as letter, i (i)}
+							{@const active = reminderDays.includes(i)}
+							<button
+								type="button"
+								onclick={() => toggleDay(i)}
+								class="h-10 w-10 rounded-full text-sm font-medium transition-colors"
+								class:bg-brand={active}
+								class:text-white={active}
+								class:border={!active}
+								class:border-cream-dark={!active}
+								class:dark:border-ink-soft={!active}
+								class:text-muted={!active}
+								aria-pressed={active}
+								aria-label={`Toggle ${['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][i]}`}
+							>
+								{letter}
+							</button>
+						{/each}
+					</div>
+				</div>
+
+				<button
+					type="button"
+					onclick={saveReminder}
+					disabled={!reminderDose.trim() || reminderDays.length === 0}
+					class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
+				>
+					{s.add_reminder_save}
+				</button>
+			{/if}
+		</div>
+	</div>
+{/if}
