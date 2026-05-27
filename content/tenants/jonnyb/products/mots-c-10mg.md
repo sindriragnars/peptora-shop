@@ -1,9 +1,11 @@
 ---
 title: MOTS-c 10 mg
+description: Styður orkuframleiðslu og eykur þol og frammistöðu.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Styður orkuframleiðslu og eykur þol og frammistöðu.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_33-pm-10-.png
 weight_grams: 50
 sku: JB-MOTSC-10
 featured: true
