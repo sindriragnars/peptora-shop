@@ -1,9 +1,11 @@
 ---
 title: CJC-1295 / Ipamorelin 5/5 mg
+description: Stuðlar að náttúrulegri vaxtarhormónaframleiðslu og vöðvauppbyggingu.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Stuðlar að náttúrulegri vaxtarhormónaframleiðslu og vöðvauppbyggingu.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_32-pm-5-.png
 weight_grams: 55
 sku: JB-CJCIPA-5
 featured: true
