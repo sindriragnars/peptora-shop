@@ -123,6 +123,7 @@ collections:
         name: "images"
         widget: "list"
         required: false
+        hint: "Kvaðratísk mynd, ~1200×1200 px, JPG eða PNG, undir 500 KB. Myndir krópast í 1:1 á forsíðu og vörusíðu."
         field: { label: "Mynd", name: "image", widget: "image" }
       - { label: "Þyngd (g)", name: "weight_grams", widget: "number", value_type: "int", required: false, hint: "Notað fyrir sendingarkostnaðarútreikning." }
       - { label: "SKU", name: "sku", widget: "string", required: false }
@@ -215,6 +216,7 @@ collections:
         name: "images"
         widget: "list"
         required: false
+        hint: "Kvaðratísk mynd, ~1200×1200 px, JPG eða PNG, undir 500 KB. Myndir krópast í 1:1 á forsíðu og vörusíðu."
         field: { label: "Mynd", name: "image", widget: "image" }
       - { label: "Þyngd (g)", name: "weight_grams", widget: "number", value_type: "int", required: false, hint: "Notað fyrir sendingarkostnaðarútreikning." }
       - { label: "SKU", name: "sku", widget: "string", required: false }
@@ -307,6 +309,7 @@ collections:
         name: "images"
         widget: "list"
         required: false
+        hint: "Kvaðratísk mynd, ~1200×1200 px, JPG eða PNG, undir 500 KB. Myndir krópast í 1:1 á forsíðu og vörusíðu."
         field: { label: "Mynd", name: "image", widget: "image" }
       - { label: "Þyngd (g)", name: "weight_grams", widget: "number", value_type: "int", required: false, hint: "Notað fyrir sendingarkostnaðarútreikning." }
       - { label: "SKU", name: "sku", widget: "string", required: false }
