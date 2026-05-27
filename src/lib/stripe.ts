@@ -25,10 +25,19 @@ function envName(tenant: TenantConfig, suffix: string): string {
 }
 
 function getApiKey(tenant: TenantConfig): string {
+	// Tenant-specific key wins. Falls back to platform-wide
+	// STRIPE_SECRET_KEY for shared-sandbox setups where every tenant
+	// uses the same Stripe account (typical when piloting a new client
+	// before they have their own Stripe Connect). Webhook secret stays
+	// per-tenant always — each endpoint has its own signing secret.
 	const name = envName(tenant, 'SECRET_KEY');
-	const key = process.env[name];
-	if (!key) throw new Error(`Missing Stripe secret key env var ${name} for tenant ${tenant.slug}`);
-	return key;
+	const tenantKey = process.env[name];
+	if (tenantKey) return tenantKey;
+	const platformKey = process.env.STRIPE_SECRET_KEY;
+	if (platformKey) return platformKey;
+	throw new Error(
+		`Missing Stripe secret key — set ${name} or platform-wide STRIPE_SECRET_KEY`
+	);
 }
 
 export function getWebhookSecret(tenant: TenantConfig): string {

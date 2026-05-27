@@ -1,0 +1,25 @@
+{
+	"name": "Jonny B",
+	"tagline": "",
+	"logo": null,
+	"theme": {
+		"brand": "#0e7c66",
+		"accent": "#14a085"
+	},
+	"contact": {
+		"email": "sindragn@gmail.com",
+		"phone": "",
+		"address": ""
+	},
+	"shipping": {
+		"flatRateISK": 990,
+		"freeAboveISK": 15000,
+		"options": ["Postbox - posturinn.is"]
+	},
+	"revolut": {
+		"apiKeyRef": "JONNYB_REVOLUT_API_KEY",
+		"webhookSecretRef": "JONNYB_REVOLUT_WEBHOOK_SECRET",
+		"merchantId": "jonnyb-placeholder"
+	},
+	"active": true
+}
