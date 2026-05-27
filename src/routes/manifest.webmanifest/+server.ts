@@ -36,16 +36,25 @@ export const GET: RequestHandler = async ({ locals, url }) => {
 			background_color: '#f5f1e8',
 			theme_color: themeBrand,
 			icons: [
+				// PNG sizes are mandatory for Chrome install-prompt
+				// eligibility — SVG is silently ignored there even though
+				// the spec accepts it.
 				{
-					src: `${scope}pwa-icon.svg`,
-					sizes: 'any',
-					type: 'image/svg+xml',
+					src: `${scope}pwa-icon-192.png`,
+					sizes: '192x192',
+					type: 'image/png',
 					purpose: 'any'
 				},
 				{
-					src: `${scope}pwa-icon.svg`,
-					sizes: 'any',
-					type: 'image/svg+xml',
+					src: `${scope}pwa-icon-512.png`,
+					sizes: '512x512',
+					type: 'image/png',
+					purpose: 'any'
+				},
+				{
+					src: `${scope}pwa-icon-512.png`,
+					sizes: '512x512',
+					type: 'image/png',
 					purpose: 'maskable'
 				}
 			]

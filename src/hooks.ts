@@ -36,7 +36,13 @@ export const reroute: Reroute = ({ url }) => {
 	// read locals.tenant (populated by hooks.server.ts from the subdomain
 	// host) to serve per-tenant content. Prefixing with /<slug>/ would
 	// 404 since there's no route at [slug]/manifest.webmanifest.
-	if (url.pathname === '/manifest.webmanifest' || url.pathname === '/pwa-icon.svg') return;
+	if (
+		url.pathname === '/manifest.webmanifest' ||
+		url.pathname === '/pwa-icon.svg' ||
+		/^\/pwa-icon-\d+\.png$/.test(url.pathname)
+	) {
+		return;
+	}
 
 	const expectedPrefix = `/${sub}`;
 	if (url.pathname === expectedPrefix || url.pathname.startsWith(`${expectedPrefix}/`)) {
