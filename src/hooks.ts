@@ -38,7 +38,6 @@ export const reroute: Reroute = ({ url }) => {
 	// 404 since there's no route at [slug]/manifest.webmanifest.
 	if (
 		url.pathname === '/manifest.webmanifest' ||
-		url.pathname === '/pwa-icon.svg' ||
 		/^\/pwa-icon-\d+\.png$/.test(url.pathname)
 	) {
 		return;

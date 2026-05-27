@@ -1,56 +1,44 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import sharp from 'sharp';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 /**
- * PNG-rendered tenant icon. Sister of /pwa-icon.svg — same coloured
- * square + initial, but rasterized so Chrome / Edge accept it for
- * "Install app" eligibility. Their install-prompt check rejects
- * `image/svg+xml` icons regardless of what the W3C spec says.
+ * PNG-rendered Peptora icon at the requested size.
  *
- * Size is parameterised so the manifest can request 192 + 512 (the
- * Chrome minimums) from the same code path. We clamp to a sane
- * range so a hostile request can't spawn a 16k-pixel render job.
+ * Source: static/pwa-source.png (1024×1024). Resized on demand via
+ * sharp so the manifest can request 192 + 512 (the Chrome minimums)
+ * from the same code path. Size is clamped to a known set so a hostile
+ * request can't spawn a 16k-pixel job.
+ *
+ * Deliberately tenant-agnostic: every tenant subdomain installs as
+ * "Peptora" with the Peptora icon — Sindri wants the install experience
+ * unified across the platform, even though the in-app content stays
+ * tenant-scoped (Jonny B's shop, Palli's shop, etc.).
  */
 
 const ALLOWED_SIZES = new Set([192, 256, 384, 512, 1024]);
 
-export const GET: RequestHandler = async ({ locals, params }) => {
+// Resolve once: static/pwa-source.png lives at <project-root>/static/.
+// import.meta.url won't help under adapter-vercel's serverless bundle,
+// so trust process.cwd() which Vercel sets to the project root.
+const SOURCE_PATH = path.join(process.cwd(), 'static', 'pwa-source.png');
+
+export const GET: RequestHandler = async ({ params }) => {
 	const size = Number(params.size);
 	if (!ALLOWED_SIZES.has(size)) {
 		error(404, { message: 'Unknown icon size' });
 	}
 
-	const tenant = locals.tenant;
-	const name = tenant?.name ?? 'Peptora';
-	const brand = tenant?.theme.brand ?? '#0e7c66';
-	const initial = name.trim().charAt(0).toUpperCase() || 'P';
-
-	// Render at a fixed viewBox so the letter scales proportionally
-	// regardless of the requested output size.
-	const fontSize = Math.round(size * 0.55);
-	const svg = Buffer.from(
-		`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
-  <rect width="${size}" height="${size}" fill="${brand}"/>
-  <text
-    x="50%"
-    y="50%"
-    text-anchor="middle"
-    dominant-baseline="central"
-    font-family="-apple-system, 'Segoe UI', Roboto, sans-serif"
-    font-weight="700"
-    font-size="${fontSize}"
-    fill="#f5f1e8"
-  >${initial}</text>
-</svg>`
-	);
-
-	const png = await sharp(svg).png().toBuffer();
+	const source = await readFile(SOURCE_PATH);
+	const png = await sharp(source).resize(size, size, { fit: 'cover' }).png().toBuffer();
 
 	return new Response(png, {
 		headers: {
 			'Content-Type': 'image/png',
-			'Cache-Control': 'public, max-age=86400'
+			// 1-day browser cache. PWA icons don't change often.
+			'Cache-Control': 'public, max-age=86400, immutable'
 		}
 	});
 };

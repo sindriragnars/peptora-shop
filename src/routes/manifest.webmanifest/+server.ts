@@ -16,8 +16,13 @@ import type { RequestHandler } from './$types';
  */
 export const GET: RequestHandler = async ({ locals, url }) => {
 	const tenant = locals.tenant;
-	const name = tenant?.name ?? 'Peptora';
-	const themeBrand = tenant?.theme.brand ?? '#0e7c66';
+
+	// Sindri wants the install experience unified: every tenant subdomain
+	// installs as "Peptora" with the Peptora icon, even though the content
+	// inside is tenant-specific. The icon doesn't take tenant brand colour
+	// either — the static Peptora PNG is used at every size.
+	const name = 'Peptora';
+	const themeBrand = '#0e7c66';
 
 	// `start_url` and `scope` are the tenant root. On a subdomain that's
 	// "/", on path-based access it's "/<slug>/". We can read scope from
