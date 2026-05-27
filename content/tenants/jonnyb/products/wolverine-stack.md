@@ -6,7 +6,7 @@ description: The Wolverine stack is a term used in performance, recovery, and
   protein fragment thymosin beta 4)
 price_isk: 30000
 stock: in-stock
-category: peptides
+category: stack
 images:
   - /tenants/jonnyb/images/chatgpt-image-may-27-2026-01_51_41-pm.png
 featured: false
