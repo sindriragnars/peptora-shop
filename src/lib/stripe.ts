@@ -96,6 +96,10 @@ export async function createCheckoutSession(input: CreateCheckoutInput): Promise
 
 	const session = await stripe.checkout.sessions.create({
 		mode: 'payment',
+		// Explicit card-only so Stripe doesn't reject the session when
+		// the sandbox account hasn't pre-activated ISK-compatible
+		// payment methods (auto-detection fails for ISK in some accounts).
+		payment_method_types: ['card'],
 		line_items: lineItems,
 		client_reference_id: input.merchantOrderRef,
 		customer_email: input.customerEmail,
