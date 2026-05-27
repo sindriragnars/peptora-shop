@@ -19,7 +19,14 @@
  * or commit only the demo state.
  */
 import { execSync } from 'node:child_process';
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import {
+	copyFileSync,
+	mkdirSync,
+	readFileSync,
+	writeFileSync,
+	existsSync,
+	readdirSync
+} from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const args = process.argv.slice(2);
@@ -46,10 +53,18 @@ const tenant = JSON.parse(readFileSync(tenantPath, 'utf8'));
 // pointing at the peptora-shop project. The path-based form remains
 // supported by the tenant resolver for dev + preview.
 const serverUrl = `https://${slug}.peptora.app`;
+
+// Tenant-specific appId so each APK installs side-by-side and Play
+// Store treats them as distinct apps for distinct developer accounts.
+// The user-visible name + icon, on the other hand, are always
+// "Peptora" — Sindri is marketing the Peptora brand and doesn't want
+// per-tenant fragmentation in the app drawer.
 const appId = `app.peptora.shop.${slug.replace(/-/g, '')}`;
+const appName = 'Peptora';
 
 console.log(`[build-apk] tenant=${slug}`);
 console.log(`[build-apk] appId=${appId}`);
+console.log(`[build-apk] appName=${appName} (always Peptora — brand unification)`);
 console.log(`[build-apk] serverUrl=${serverUrl}`);
 
 // Rewrite capacitor.config.ts in place. We use a regex on the known
@@ -57,12 +72,21 @@ console.log(`[build-apk] serverUrl=${serverUrl}`);
 const configPath = join(root, 'capacitor.config.ts');
 let config = readFileSync(configPath, 'utf8');
 config = config.replace(/appId: '[^']+'/, `appId: '${appId}'`);
-config = config.replace(/appName: '[^']+'/, `appName: '${tenant.name.replace(/'/g, "\\'")}'`);
+config = config.replace(/appName: '[^']+'/, `appName: '${appName}'`);
 config = config.replace(/url: 'https:\/\/[^']+'/, `url: '${serverUrl}'`);
 writeFileSync(configPath, config);
 
-console.log('[build-apk] generating tenant icon + splash...');
-execSync(`node scripts/generate-tenant-assets.mjs ${slug}`, { cwd: root, stdio: 'inherit' });
+// Copy the canonical Peptora source assets into capacitor-assets/,
+// replacing anything left behind from a previous tenant build. The
+// tenant-letter-square generator (scripts/generate-tenant-assets.mjs)
+// is intentionally NOT called — every APK ships with the Peptora icon.
+console.log('[build-apk] staging Peptora source assets...');
+const sourceDir = join(root, 'peptora-source');
+const targetDir = join(root, 'capacitor-assets');
+mkdirSync(targetDir, { recursive: true });
+for (const file of readdirSync(sourceDir)) {
+	copyFileSync(join(sourceDir, file), join(targetDir, file));
+}
 
 console.log('[build-apk] slicing Android density variants via @capacitor/assets...');
 execSync('npx @capacitor/assets generate --android --assetPath capacitor-assets', {
