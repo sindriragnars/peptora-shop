@@ -26,6 +26,11 @@
 			match: (p: string) => p.startsWith('/admin/products')
 		},
 		{
+			href: `${pathPrefix}/admin/news`,
+			label: 'Fréttir',
+			match: (p: string) => p.startsWith('/admin/news')
+		},
+		{
 			href: `${pathPrefix}/admin/orders`,
 			label: 'Pantanir',
 			match: (p: string) => p.startsWith('/admin/orders')

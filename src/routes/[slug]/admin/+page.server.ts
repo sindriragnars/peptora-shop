@@ -1,5 +1,6 @@
 import { listOrders, type Order } from '$lib/orders';
 import { listProducts } from '$lib/products.server';
+import { listArticles } from '$lib/news.server';
 import type { PageServerLoad } from './$types';
 
 /**
@@ -22,9 +23,10 @@ function isRevenueOrder(o: Order): boolean {
 }
 
 export const load: PageServerLoad = async ({ params }) => {
-	const [orders, products] = await Promise.all([
+	const [orders, products, articles] = await Promise.all([
 		listOrders(params.slug, 200),
-		Promise.resolve(listProducts(params.slug))
+		Promise.resolve(listProducts(params.slug)),
+		Promise.resolve(listArticles(params.slug))
 	]);
 
 	const now = Date.now();
@@ -70,11 +72,20 @@ export const load: PageServerLoad = async ({ params }) => {
 		.filter((p) => p.stock !== 'in-stock')
 		.map((p) => ({ id: p.id, title: p.title, stock: p.stock }));
 
+	// Latest 3 articles for the dashboard news widget.
+	const recentArticles = articles.slice(0, 3).map((a) => ({
+		id: a.id,
+		title: a.title,
+		date: a.date
+	}));
+
 	return {
 		counts,
 		revenue,
 		recentOrders,
 		lowStock,
-		productCount: products.length
+		productCount: products.length,
+		articleCount: articles.length,
+		recentArticles
 	};
 };

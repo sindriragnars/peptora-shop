@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { formatPriceISK } from '$lib/products';
 	import type { OrderStatus } from '$lib/orders';
+	import { formatArticleDate } from '$lib/news';
 
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
@@ -171,7 +172,7 @@
 			</div>
 
 			{#if data.lowStock.length > 0}
-				<div class="border-outline rounded-2xl border bg-white p-5">
+				<div class="border-outline mb-4 rounded-2xl border bg-white p-5">
 					<div class="text-muted mb-3 text-xs font-medium uppercase tracking-wide">
 						Lager-viðvörun
 					</div>
@@ -189,6 +190,38 @@
 					</ul>
 				</div>
 			{/if}
+
+			<h2 class="text-muted mb-3 text-xs font-medium uppercase tracking-wide">Fréttir</h2>
+			<div class="border-outline rounded-2xl border bg-white p-5">
+				<div class="text-3xl font-semibold">{data.articleCount}</div>
+				<div class="text-muted text-sm">birtar fréttir</div>
+				<div class="mt-4 flex gap-2">
+					<a
+						href="{pathPrefix}/admin/news"
+						class="border-outline hover:border-brand inline-flex flex-1 items-center justify-center rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
+					>
+						Sjá lista
+					</a>
+					<a
+						href="{pathPrefix}/admin/news/new"
+						class="bg-brand hover:bg-brand-dark inline-flex flex-1 items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium text-white transition-colors"
+					>
+						+ Ný frétt
+					</a>
+				</div>
+				{#if data.recentArticles.length > 0}
+					<ul class="mt-4 space-y-2 border-t pt-4">
+						{#each data.recentArticles as article (article.id)}
+							<li>
+								<a href="{pathPrefix}/admin/news/{article.id}" class="hover:text-brand block text-sm">
+									<div class="truncate">{article.title}</div>
+									<div class="text-muted text-xs">{article.date ? formatArticleDate(article.date) : '—'}</div>
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+			</div>
 		</section>
 	</div>
 </main>
