@@ -10,11 +10,17 @@
 <main class="mx-auto max-w-2xl px-6 py-16">
 	<p class="text-brand mb-2 text-xs font-medium uppercase tracking-wide">Platform</p>
 	<h1 class="mb-4 text-4xl font-bold tracking-tight">Peptora Shop</h1>
-	<p class="text-muted mb-12 text-lg">
-		Multi-tenant storefront platform. Each tenant runs at its own subdomain
-		<code class="font-mono">&lt;slug&gt;.peptora.app</code> with own products and own Revolut merchant
-		account.
+	<p class="text-muted mb-8 text-lg">
+		Multi-tenant storefront platform. Hver verslun fær <code class="font-mono">shop.peptora.app/&lt;slug&gt;</code>
+		(eða eigin subdomain) með eigin vörum og greiðsluuppsetningu.
 	</p>
+
+	<a
+		href="/sell"
+		class="bg-brand hover:bg-brand-dark mb-12 inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium text-white transition-colors"
+	>
+		Sækja um eigin verslun →
+	</a>
 
 	<section>
 		<h2 class="mb-4 text-xs font-medium uppercase tracking-wide text-muted">Active tenants</h2>

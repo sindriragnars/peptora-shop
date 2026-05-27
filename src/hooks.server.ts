@@ -1,5 +1,10 @@
 import { getTenant, resolveTenantSlug } from '$lib/tenants';
-import { isAuthorizedAdmin, unauthorizedResponse } from '$lib/admin-auth';
+import {
+	isAuthorizedAdmin,
+	isAuthorizedPlatformAdmin,
+	platformUnauthorizedResponse,
+	unauthorizedResponse
+} from '$lib/admin-auth';
 import type { Handle } from '@sveltejs/kit';
 
 /**
@@ -33,6 +38,17 @@ export const handle: Handle = async ({ event, resolve }) => {
 			!isAuthorizedAdmin({ request: event.request, tenant })
 		) {
 			return unauthorizedResponse(tenant);
+		}
+	}
+
+	// Platform admin (no tenant context). Fires for /admin/* on
+	// shop.peptora.app, peptora-shop.vercel.app, or any reserved-
+	// subdomain host. Lets the Peptora team review signup applications,
+	// manage platform settings later. Distinct password from any
+	// per-tenant admin so a tenant breach can't escalate.
+	if (!tenant && event.url.pathname.startsWith('/admin')) {
+		if (!isAuthorizedPlatformAdmin(event.request)) {
+			return platformUnauthorizedResponse();
 		}
 	}
 

@@ -77,6 +77,29 @@ export function unauthorizedResponse(tenant: TenantConfig): Response {
 	});
 }
 
+/**
+ * Platform-level admin (e.g. /admin/signups). Separate password from
+ * the per-tenant admin so a tenant breach can't escalate to platform
+ * controls. Single env var: PLATFORM_ADMIN_PASSWORD.
+ */
+export function isAuthorizedPlatformAdmin(request: Request): boolean {
+	const expected = process.env.PLATFORM_ADMIN_PASSWORD ?? null;
+	if (!expected) return false;
+	const provided = parseBasic(request.headers.get('Authorization'));
+	if (!provided) return false;
+	if (!timingSafeEqual(provided.user, 'admin')) return false;
+	return timingSafeEqual(provided.pass, expected);
+}
+
+export function platformUnauthorizedResponse(): Response {
+	return new Response('Authentication required', {
+		status: 401,
+		headers: {
+			'WWW-Authenticate': 'Basic realm="Peptora Shop platform admin", charset="UTF-8"'
+		}
+	});
+}
+
 function timingSafeEqual(a: string, b: string): boolean {
 	if (a.length !== b.length) return false;
 	let mismatch = 0;

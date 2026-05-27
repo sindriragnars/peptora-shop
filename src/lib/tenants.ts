@@ -73,6 +73,7 @@ const RESERVED_SUBDOMAINS = new Set([
 	'www',
 	'app',
 	'shop',
+	'sell',
 	'peptora-push',
 	'peptora-cms-oauth',
 	'admin'

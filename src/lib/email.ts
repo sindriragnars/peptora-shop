@@ -16,6 +16,7 @@
 import { Resend } from 'resend';
 import type { Order } from './orders';
 import type { TenantConfig } from './tenants';
+import type { SignupApplication } from './signups';
 
 let _resend: Resend | null = null;
 function resendClient(): Resend {
@@ -81,6 +82,56 @@ export async function sendOrderNotificationToAdmin(opts: {
 		});
 	} catch (e) {
 		console.warn('admin notification email failed', { orderId: order.id, error: String(e) });
+	}
+}
+
+// ─── Signup notifications (Phase 7) ────────────────────────────────────────
+
+/**
+ * Tell the platform admin (Sindri / Peptora team) that a new shop
+ * signup needs review. Best-effort. PLATFORM_ADMIN_EMAIL is required
+ * for this to fire — without it the signup still saves to Redis and
+ * shows up in /admin/signups, the admin just has to remember to check.
+ */
+export async function sendSignupNotificationToAdmin(opts: {
+	application: SignupApplication;
+}): Promise<void> {
+	const { application: app } = opts;
+	const to = process.env.PLATFORM_ADMIN_EMAIL;
+	if (!to) {
+		console.warn('signup notification skipped — PLATFORM_ADMIN_EMAIL not set');
+		return;
+	}
+	try {
+		await resendClient().emails.send({
+			from: `Peptora Shop <${platformSender()}>`,
+			to,
+			replyTo: app.email,
+			subject: `Ný umsókn um verslun: ${app.name} (${app.slug})`,
+			html: signupAdminHtml(app)
+		});
+	} catch (e) {
+		console.warn('signup admin notification failed', { signupId: app.id, error: String(e) });
+	}
+}
+
+/**
+ * Tell the applicant their shop is approved + give them the URL +
+ * onboarding next-steps. Sent on the Approve action in /admin/signups.
+ */
+export async function sendSignupApprovalEmail(opts: {
+	application: SignupApplication;
+}): Promise<void> {
+	const { application: app } = opts;
+	try {
+		await resendClient().emails.send({
+			from: `Peptora Shop <${platformSender()}>`,
+			to: app.email,
+			subject: `Verslun samþykkt: ${app.name}`,
+			html: signupApprovalHtml(app)
+		});
+	} catch (e) {
+		console.warn('signup approval email failed', { signupId: app.id, error: String(e) });
 	}
 }
 
@@ -151,6 +202,43 @@ function adminHtml({ order, tenant }: { order: Order; tenant: TenantConfig }): s
 		${escapeHtml(order.customer.postalCode)} ${escapeHtml(order.customer.city)}
 	</p>
 	${order.customer.notes ? `<h2 style="font-size:14px;text-transform:uppercase;color:#6b6b6b;margin:24px 0 8px;letter-spacing:.05em">Athugasemd</h2><p style="margin:0">${escapeHtml(order.customer.notes)}</p>` : ''}
+</div>
+</body></html>`;
+}
+
+function signupAdminHtml(app: SignupApplication): string {
+	return `<!doctype html>
+<html lang="is"><body style="font-family:Inter,system-ui,sans-serif;color:#0f1814;background:#f5f1e8;margin:0;padding:24px;">
+<div style="max-width:520px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;">
+	<h1 style="margin:0 0 8px;font-size:20px">Ný umsókn um verslun</h1>
+	<p style="margin:0 0 16px;color:#6b6b6b">${escapeHtml(app.name)} — slug <code style="font-family:ui-monospace,monospace;background:#ebe5d4;padding:2px 6px;border-radius:4px;">${escapeHtml(app.slug)}</code></p>
+	<table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.6;">
+		<tr><td style="padding:4px 0;color:#6b6b6b;width:30%">Eigandi</td><td>${escapeHtml(app.ownerName)}</td></tr>
+		<tr><td style="padding:4px 0;color:#6b6b6b">Netfang</td><td><a href="mailto:${escapeHtml(app.email)}">${escapeHtml(app.email)}</a></td></tr>
+		${app.phone ? `<tr><td style="padding:4px 0;color:#6b6b6b">Sími</td><td>${escapeHtml(app.phone)}</td></tr>` : ''}
+		${app.address ? `<tr><td style="padding:4px 0;color:#6b6b6b">Heimilisfang</td><td>${escapeHtml(app.address)}</td></tr>` : ''}
+		<tr><td style="padding:4px 0;color:#6b6b6b">Brand litur</td><td><span style="display:inline-block;width:14px;height:14px;background:${escapeHtml(app.brandColor)};border-radius:3px;vertical-align:middle;margin-right:6px;"></span><code style="font-family:ui-monospace,monospace;">${escapeHtml(app.brandColor)}</code></td></tr>
+		<tr><td style="padding:4px 0;color:#6b6b6b">Sending</td><td>${fmtISK(app.flatRateISK)} (frítt yfir ${fmtISK(app.freeShippingISK)})</td></tr>
+	</table>
+	<h2 style="font-size:14px;text-transform:uppercase;color:#6b6b6b;margin:24px 0 8px;letter-spacing:.05em">Lýsing</h2>
+	<p style="margin:0;white-space:pre-wrap;line-height:1.5;">${escapeHtml(app.description)}</p>
+	<p style="margin:24px 0 0;font-size:13px;color:#6b6b6b">Skoða + samþykkja á <a href="https://shop.peptora.app/admin/signups">shop.peptora.app/admin/signups</a></p>
+</div>
+</body></html>`;
+}
+
+function signupApprovalHtml(app: SignupApplication): string {
+	const url = `https://shop.peptora.app/${app.slug}`;
+	return `<!doctype html>
+<html lang="is"><body style="font-family:Inter,system-ui,sans-serif;color:#0f1814;background:#f5f1e8;margin:0;padding:24px;">
+<div style="max-width:520px;margin:0 auto;background:#fff;border-radius:16px;padding:32px;">
+	<h1 style="margin:0 0 16px;font-size:22px;color:${escapeHtml(app.brandColor)}">${escapeHtml(app.name)} er samþykkt</h1>
+	<p style="margin:0 0 12px;">Sæl/-l ${escapeHtml(app.ownerName)},</p>
+	<p style="margin:0 0 16px;">Verslunin þín á Peptora Shop er nú virk. Þú getur skoðað hana á:</p>
+	<p style="margin:0 0 24px;"><a href="${url}" style="display:inline-block;background:${escapeHtml(app.brandColor)};color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:600">${url}</a></p>
+	<h2 style="font-size:14px;text-transform:uppercase;color:#6b6b6b;margin:24px 0 8px;letter-spacing:.05em">Næstu skref</h2>
+	<p style="margin:0 0 8px;">Við sendum þér sér tölvupóst með innskráningarupplýsingum fyrir vöru-stjórnborðið næstu klukkutímana, ásamt admin-aðgangi til að sjá pantanir.</p>
+	<p style="margin:0 0 16px;color:#6b6b6b;font-size:13px;">Spurningar? Svaraðu þessum pósti — við svörum innan dags.</p>
 </div>
 </body></html>`;
 }
