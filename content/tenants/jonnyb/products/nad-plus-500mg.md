@@ -1,9 +1,11 @@
 ---
 title: NAD+ 500 mg
+description: Stuðlar að orkuframleiðslu, frumuheilsu og hægir á öldrun.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Stuðlar að orkuframleiðslu, frumuheilsu og hægir á öldrun.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_33-pm-8-.png
 weight_grams: 60
 sku: JB-NAD-500
 featured: true
