@@ -8,7 +8,7 @@ price_isk: 30000
 stock: in-stock
 category: peptides
 images:
-  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-01_35_45-pm.png
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-01_51_41-pm.png
 featured: false
 order: 10
 ---
