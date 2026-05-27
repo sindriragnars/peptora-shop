@@ -140,13 +140,11 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			};
 		}
 	} catch (e) {
-		const err = e as { message?: string };
-		// SMOKE TEST: surfacing the provider error message directly to the
-		// client so we can debug Stripe sandbox issues from curl. Revert
-		// to the generic message before any real-tenant onboarding.
-		const detail = err?.message ?? 'Payment provider unavailable';
-		console.error(`${PAYMENT_PROVIDER} createOrder failed orderId=${orderId} :: ${detail}`);
-		error(502, detail);
+		const err = e as { message?: string; type?: string; code?: string };
+		console.error(
+			`${PAYMENT_PROVIDER} createOrder failed orderId=${orderId} type=${err?.type} code=${err?.code} :: ${err?.message}`
+		);
+		error(502, 'Payment provider unavailable. Try again in a moment.');
 	}
 
 	await saveOrder(order);
