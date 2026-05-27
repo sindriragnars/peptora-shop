@@ -71,12 +71,15 @@
 		</div>
 	</header>
 
-	<!-- Main content. pb-24 reserves space for the fixed bottom nav. -->
-	<main class="flex-1 {showNav ? 'pb-24' : ''}">
+	<!-- Main content. Drop flex-1 so the footer sits right below content
+	     on short pages instead of being pushed to the bottom of a min-h
+	     viewport. Small pb gives the popular peptides carousel some
+	     breathing room before the footer rule. -->
+	<main class={showNav ? 'pb-6' : ''}>
 		{@render children()}
 	</main>
 
-	<footer class="border-outline border-t {showNav ? 'mb-20' : 'mt-20'}">
+	<footer class="border-outline border-t {showNav ? 'mb-20' : 'mt-12'}">
 		<div class="text-muted mx-auto max-w-4xl px-6 py-8 text-xs">
 			<p class="font-medium">{tenant.name}</p>
 			<p>{tenant.contact.address}</p>
