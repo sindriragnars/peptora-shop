@@ -1,9 +1,11 @@
 ---
 title: Melanotan II 10 mg
+description: Styður brúnku og bætir húðlit.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Styður brúnku og bætir húðlit.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_31-pm-3-.png
 weight_grams: 50
 sku: JB-MELII-10
 featured: false
