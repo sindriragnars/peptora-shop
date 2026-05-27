@@ -1,9 +1,11 @@
 ---
 title: GHK-Cu 100 mg
+description: Styður húðendurnýjun, kollagenframleiðslu og gróanda.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Styður húðendurnýjun, kollagenframleiðslu og gróanda.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_41_41-pm.png
 weight_grams: 50
 sku: JB-GHKCU-100
 featured: true
