@@ -32,8 +32,9 @@
 </script>
 
 <main class="mx-auto max-w-4xl px-6 py-12">
-	<h1 class="mb-3 text-4xl font-bold tracking-tight">{tenant.name}</h1>
-	<p class="text-muted mb-12 text-lg">{tenant.tagline}</p>
+	{#if tenant.tagline}
+		<p class="text-muted mb-10 text-lg">{tenant.tagline}</p>
+	{/if}
 
 	{#if products.length === 0}
 		<section class="border-outline rounded-2xl border p-12 text-center">
@@ -42,7 +43,7 @@
 	{:else}
 		{#each grouped as [category, items] (category)}
 			<section class="mb-12">
-				<h2 class="text-muted mb-4 text-xs font-medium uppercase tracking-wide">
+				<h2 class="mb-5 text-2xl font-bold tracking-tight">
 					{categoryLabel[category] ?? category}
 				</h2>
 				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
