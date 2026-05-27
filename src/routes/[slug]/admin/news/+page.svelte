@@ -60,9 +60,25 @@
 								{/if}
 							</td>
 							<td class="px-4 py-3 text-right">
-								<a href="{pathPrefix}/admin/news/{article.id}" class="text-muted hover:text-ink text-xs">
-									Breyta →
-								</a>
+								<div class="flex items-center justify-end gap-3 text-xs">
+									<a href="{pathPrefix}/admin/news/{article.id}" class="text-muted hover:text-ink">
+										Breyta →
+									</a>
+									<!-- Inline delete form posts to the per-article ?/delete
+									     action with the row's GitHub blob sha. -->
+									<form
+										method="POST"
+										action="{pathPrefix}/admin/news/{article.id}?/delete"
+										onsubmit={(e) => {
+											if (!confirm(`Eyða "${article.title}"? Þetta er ekki afturkræft.`)) {
+												e.preventDefault();
+											}
+										}}
+									>
+										<input type="hidden" name="sha" value={article.sha} />
+										<button type="submit" class="text-red-700 hover:underline">Eyða</button>
+									</form>
+								</div>
 							</td>
 						</tr>
 					{/each}

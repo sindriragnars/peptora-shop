@@ -14,6 +14,9 @@ interface ArticleListItem {
 	date: string;
 	excerpt: string;
 	featured: boolean;
+	/** GitHub blob sha — needed so a row-level delete form can post it
+	 *  without an extra round-trip to fetch the file. */
+	sha: string;
 }
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -31,7 +34,8 @@ export const load: PageServerLoad = async ({ params }) => {
 				title: String(data.title ?? id),
 				date: String(data.date ?? ''),
 				excerpt: String(data.excerpt ?? ''),
-				featured: Boolean(data.featured)
+				featured: Boolean(data.featured),
+				sha: file.sha
 			});
 		} catch (e) {
 			console.warn('failed to read article file', f.path, String(e));

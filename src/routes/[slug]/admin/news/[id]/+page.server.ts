@@ -147,7 +147,29 @@ export const actions: Actions = {
 	delete: async ({ params, request }) => {
 		const data = await request.formData();
 		const sha = String(data.get('sha') ?? '');
-		if (params.id === 'new' || !sha) return fail(400, { error: 'cannot delete' });
+		if (params.id === 'new') {
+			return fail(400, { errors: { _form: 'Cannot delete a new (unsaved) article.' } });
+		}
+		if (!sha) {
+			// Re-fetch the current sha so a stale form (page open for a while)
+			// or a missing hidden field doesn't silently no-op the delete.
+			const fresh = await getTextFile(
+				`content/tenants/${params.slug}/news/${params.id}.md`
+			);
+			if (!fresh) {
+				return fail(404, { errors: { _form: 'Frétt fannst ekki á GitHub.' } });
+			}
+			try {
+				await deleteGithubFile(
+					`content/tenants/${params.slug}/news/${params.id}.md`,
+					fresh.sha,
+					`Delete article ${params.id}`
+				);
+			} catch (e) {
+				return fail(502, { errors: { _form: `Eyðing mistókst: ${String(e)}` } });
+			}
+			throw redirect(303, `/${params.slug}/admin/news`);
+		}
 		try {
 			await deleteGithubFile(
 				`content/tenants/${params.slug}/news/${params.id}.md`,
@@ -155,7 +177,7 @@ export const actions: Actions = {
 				`Delete article ${params.id}`
 			);
 		} catch (e) {
-			return fail(502, { error: String(e) });
+			return fail(502, { errors: { _form: `Eyðing mistókst: ${String(e)}` } });
 		}
 		throw redirect(303, `/${params.slug}/admin/news`);
 	}
