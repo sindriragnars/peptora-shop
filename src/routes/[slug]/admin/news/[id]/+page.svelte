@@ -15,35 +15,24 @@
 	let featured = $state(baseline.featured);
 	let body = $state(baseline.body);
 
+	// Local preview data URL — shows the uploaded file immediately, before
+	// Vercel rebuilds with the new static asset (the committed /tenants/.../foo.png
+	// path 404s for ~30 s after upload). After the next save+redirect, the page
+	// reloads and `image` (the real static URL) takes over.
+	let imagePreviewLocal = $state('');
+
 	let saving = $state(false);
 	let deleting = $state(false);
 	let uploading = $state(false);
 	let uploadError = $state('');
 
-	async function uploadImage(e: Event) {
-		const input = e.target as HTMLInputElement;
-		const file = input.files?.[0];
-		if (!file) return;
-		uploading = true;
-		uploadError = '';
-		try {
-			const fd = new FormData();
-			fd.append('image', file);
-			const res = await fetch(`${pathPrefix}/admin/images`, { method: 'POST', body: fd });
-			if (!res.ok) throw new Error(await res.text());
-			const { url } = (await res.json()) as { url: string };
-			image = url;
-		} catch (e) {
-			uploadError = e instanceof Error ? e.message : 'Upload failed';
-		} finally {
-			uploading = false;
-			input.value = '';
-		}
-	}
+	// Track whether the user has manually edited the slug. While false in
+	// create mode, the slug stays in sync with the title (folded Icelandic).
+	// Flip true the moment they type into the slug field directly.
+	let slugTouched = $state(!data.isNew);
 
-	function autoSlug() {
-		if (!data.isNew || slug) return;
-		slug = title
+	function foldToSlug(s: string): string {
+		return s
 			.toLowerCase()
 			.replace(/[áàâ]/g, 'a')
 			.replace(/[éèê]/g, 'e')
@@ -58,6 +47,51 @@
 			.replace(/[^a-z0-9]+/g, '-')
 			.replace(/^-+|-+$/g, '')
 			.slice(0, 80);
+	}
+
+	// Reactively derive slug from title until the user types into the slug
+	// field. Pure-effect form so we don't fight the user's edits.
+	$effect(() => {
+		if (!slugTouched) {
+			slug = foldToSlug(title);
+		}
+	});
+
+	async function uploadImage(e: Event) {
+		const input = e.target as HTMLInputElement;
+		const file = input.files?.[0];
+		if (!file) return;
+		uploading = true;
+		uploadError = '';
+
+		// Read the file as a data URL up front so the preview shows
+		// instantly — independent of the GitHub commit + Vercel redeploy
+		// cycle that the public-path image relies on.
+		try {
+			imagePreviewLocal = await new Promise<string>((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onload = () => resolve(String(reader.result));
+				reader.onerror = () => reject(reader.error);
+				reader.readAsDataURL(file);
+			});
+		} catch {
+			// Preview is nice-to-have; failing it shouldn't block the upload.
+		}
+
+		try {
+			const fd = new FormData();
+			fd.append('image', file);
+			const res = await fetch(`${pathPrefix}/admin/images`, { method: 'POST', body: fd });
+			if (!res.ok) throw new Error(await res.text());
+			const { url } = (await res.json()) as { url: string };
+			image = url;
+		} catch (e) {
+			uploadError = e instanceof Error ? e.message : 'Upload failed';
+			imagePreviewLocal = '';
+		} finally {
+			uploading = false;
+			input.value = '';
+		}
 	}
 </script>
 
@@ -98,7 +132,6 @@
 				type="text"
 				name="title"
 				bind:value={title}
-				onblur={autoSlug}
 				required
 				class="border-outline focus:border-brand w-full rounded-lg border bg-white px-3 py-2.5 focus:outline-none"
 			/>
@@ -113,12 +146,17 @@
 					type="text"
 					name="id"
 					bind:value={slug}
+					oninput={() => (slugTouched = true)}
 					required
 					pattern="[a-z0-9][a-z0-9-]{'{0,79}'}"
-					readonly={!data.isNew && slug === data.form.id}
-					class="flex-1 px-2 py-2.5 font-mono text-sm focus:outline-none {!data.isNew && slug === data.form.id ? 'bg-gray-50' : ''}"
+					class="flex-1 px-2 py-2.5 font-mono text-sm focus:outline-none"
 				/>
 			</div>
+			<p class="text-muted mt-1 text-xs">
+				{data.isNew && !slugTouched
+					? 'Búinn til sjálfvirkt úr fyrirsögn — má breyta.'
+					: 'Lowercase, tölur, bandstrik.'}
+			</p>
 			{#if errors.id}<p class="mt-1 text-xs text-red-700">{errors.id}</p>{/if}
 		</label>
 
@@ -160,20 +198,28 @@
 		<!-- Cover image -->
 		<div class="block">
 			<span class="mb-1 block text-sm font-medium">Forsíðumynd (valfrjáls)</span>
-			{#if image}
+			{#if imagePreviewLocal || image}
 				<div class="border-outline relative mb-3 aspect-[16/9] overflow-hidden rounded-lg border bg-white">
-					<img src={image} alt="" class="h-full w-full object-cover" />
+					<img src={imagePreviewLocal || image} alt="" class="h-full w-full object-cover" />
 					<button
 						type="button"
-						onclick={() => (image = '')}
+						onclick={() => {
+							image = '';
+							imagePreviewLocal = '';
+						}}
 						class="absolute right-2 top-2 rounded-full bg-white/90 px-3 py-1 text-xs text-red-700 hover:bg-white"
 					>
 						× Fjarlægja
 					</button>
 				</div>
+				{#if imagePreviewLocal && image}
+					<p class="text-muted -mt-2 mb-3 text-xs">
+						Vistuð — birtist á /news eftir ~30 sek þegar vefurinn byggir upp aftur.
+					</p>
+				{/if}
 			{/if}
 			<label class="border-outline hover:border-brand inline-flex cursor-pointer items-center rounded-full border px-4 py-2 text-sm">
-				{uploading ? 'Hleður…' : image ? 'Skipta út mynd' : '+ Hlaða upp mynd'}
+				{uploading ? 'Hleður…' : image || imagePreviewLocal ? 'Skipta út mynd' : '+ Hlaða upp mynd'}
 				<input type="file" accept="image/*" onchange={uploadImage} class="sr-only" disabled={uploading} />
 			</label>
 			{#if uploadError}<p class="mt-1 text-xs text-red-700">{uploadError}</p>{/if}
