@@ -87,7 +87,7 @@ collections:
     label: "Demo · Vörur"
     label_singular: "Vara"
     folder: "content/tenants/demo/products"
-    media_folder: "../../../static/tenants/demo/images"
+    media_folder: "/static/tenants/demo/images"
     public_folder: "/tenants/demo/images"
     create: true
     slug: "{{slug}}"
@@ -179,7 +179,7 @@ collections:
     label: "Acme · Vörur"
     label_singular: "Vara"
     folder: "content/tenants/acme/products"
-    media_folder: "../../../static/tenants/acme/images"
+    media_folder: "/static/tenants/acme/images"
     public_folder: "/tenants/acme/images"
     create: true
     slug: "{{slug}}"
@@ -271,7 +271,7 @@ collections:
     label: "Jonny B · Vörur"
     label_singular: "Vara"
     folder: "content/tenants/jonnyb/products"
-    media_folder: "../../../static/tenants/jonnyb/images"
+    media_folder: "/static/tenants/jonnyb/images"
     public_folder: "/tenants/jonnyb/images"
     create: true
     slug: "{{slug}}"
