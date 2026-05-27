@@ -12,9 +12,9 @@
  * Server-only. Stripe SDK pulls in Node `crypto` + `https`, which is
  * fine under adapter-vercel's Node runtime.
  *
- * ISK note: Stripe treats ISK as a zero-decimal currency since 2021,
- * so `unit_amount` is the whole krona amount (same as our priceISK).
- * No multiplication by 100.
+ * ISK note: Stripe has a backward-compat quirk for ISK — the API still
+ * uses minor units, so unit_amount must be `priceISK * 100` and the
+ * total must be evenly divisible by 100. We multiply on the way out.
  */
 import Stripe from 'stripe';
 import type { TenantConfig } from './tenants';
@@ -75,11 +75,13 @@ export async function createCheckoutSession(input: CreateCheckoutInput): Promise
 	// Bundling shipping as a line item (instead of using Stripe's
 	// shipping_options) is the simplest path — the storefront has
 	// already computed the per-tenant flat rate.
+	// ISK in Stripe: priceISK * 100. See file header for backward-compat
+	// rationale.
 	const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = input.items.map((item) => ({
 		price_data: {
 			currency: 'isk',
 			product_data: { name: item.title },
-			unit_amount: item.priceISK
+			unit_amount: item.priceISK * 100
 		},
 		quantity: item.qty
 	}));
@@ -88,7 +90,7 @@ export async function createCheckoutSession(input: CreateCheckoutInput): Promise
 			price_data: {
 				currency: 'isk',
 				product_data: { name: `Sending (${input.shipping.option})` },
-				unit_amount: input.shipping.costISK
+				unit_amount: input.shipping.costISK * 100
 			},
 			quantity: 1
 		});
