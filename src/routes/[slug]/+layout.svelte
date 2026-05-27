@@ -112,7 +112,9 @@
 						>
 							<span
 								class="flex h-8 w-12 items-center justify-center rounded-full transition-colors"
-								style={active ? 'background-color: rgb(14 124 102 / 0.15);' : ''}
+								style={active
+								? 'background-color: color-mix(in srgb, var(--color-brand) 15%, transparent);'
+								: ''}
 							>
 								{#if tab.icon === 'shop'}
 									<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

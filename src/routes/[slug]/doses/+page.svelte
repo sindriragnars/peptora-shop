@@ -347,18 +347,18 @@
 						<div
 							class="aspect-square rounded-md"
 							style={intensity === 0
-								? 'background-color: rgb(14 124 102 / 0.08);'
-								: `background-color: rgb(14 124 102 / ${0.25 + intensity * 0.2});`}
+								? 'background-color: color-mix(in srgb, var(--color-brand) 8%, transparent);'
+								: `background-color: color-mix(in srgb, var(--color-brand) ${(0.25 + intensity * 0.2) * 100}%, transparent);`}
 							title={`${cell.date}: ${cell.count} dose${cell.count === 1 ? '' : 's'}`}
 						></div>
 					{/each}
 				</div>
 				<div class="text-muted mt-3 flex items-center justify-end gap-1.5 text-xs">
 					<span>{s.tracking_heatmap_less}</span>
-					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.08);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.35);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.55);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.75);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 8%, transparent);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 35%, transparent);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 55%, transparent);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 75%, transparent);"></div>
 					<span>{s.tracking_heatmap_more}</span>
 				</div>
 			</div>
