@@ -1,9 +1,11 @@
 ---
 title: Selank 10 mg
+description: Styður fókus, dregur úr streitu og getur haft jákvæð áhrif á skap.
 price_isk: 10000
 stock: in-stock
 category: peptides
-description: 'Styður fókus, dregur úr streitu og getur haft jákvæð áhrif á skap.'
+images:
+  - /tenants/jonnyb/images/chatgpt-image-may-27-2026-02_25_31-pm-2-.png
 weight_grams: 50
 sku: JB-SEL-10
 featured: false
