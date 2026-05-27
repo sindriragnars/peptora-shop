@@ -198,6 +198,9 @@
 		<!-- Cover image -->
 		<div class="block">
 			<span class="mb-1 block text-sm font-medium">Forsíðumynd (valfrjáls)</span>
+			<p class="text-muted mb-2 text-xs">
+				16:9 hlutfall — ideal 1600×900 px, JPG eða PNG, undir 500 KB. Krópast 16:9.
+			</p>
 			{#if imagePreviewLocal || image}
 				<div class="border-outline relative mb-3 aspect-[16/9] overflow-hidden rounded-lg border bg-white">
 					<img src={imagePreviewLocal || image} alt="" class="h-full w-full object-cover" />
