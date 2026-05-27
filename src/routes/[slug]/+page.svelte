@@ -19,6 +19,7 @@
 
 	const categoryLabel: Record<string, string> = {
 		peptides: 'Peptíð',
+		stack: 'Stack',
 		supplies: 'Aukabúnaður',
 		general: 'Almennt'
 	};

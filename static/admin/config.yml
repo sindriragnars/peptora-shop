@@ -116,6 +116,7 @@ collections:
         default: "peptides"
         options:
           - { label: "Peptíð", value: "peptides" }
+          - { label: "Stack", value: "stack" }
           - { label: "Aukabúnaður", value: "supplies" }
           - { label: "Almennt", value: "general" }
       - label: "Myndir"
@@ -207,6 +208,7 @@ collections:
         default: "peptides"
         options:
           - { label: "Peptíð", value: "peptides" }
+          - { label: "Stack", value: "stack" }
           - { label: "Aukabúnaður", value: "supplies" }
           - { label: "Almennt", value: "general" }
       - label: "Myndir"
@@ -298,6 +300,7 @@ collections:
         default: "general"
         options:
           - { label: "Peptíð", value: "peptides" }
+          - { label: "Stack", value: "stack" }
           - { label: "Aukabúnaður", value: "supplies" }
           - { label: "Almennt", value: "general" }
       - label: "Myndir"
