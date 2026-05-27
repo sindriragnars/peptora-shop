@@ -4,6 +4,7 @@
 	import { getCartStore } from '$lib/cart.svelte';
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const cart = $derived(getCartStore(tenant.slug));
 
 	const orderId = $derived(page.url.searchParams.get('orderId') ?? '');
@@ -51,7 +52,7 @@
 	{/if}
 
 	<a
-		href="/{tenant.slug}"
+		href={pathPrefix || '/'}
 		class="bg-brand hover:bg-brand-dark inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium text-white transition-colors"
 	>
 		Aftur í verslun

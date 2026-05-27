@@ -5,6 +5,7 @@
 
 	let { data, form } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const order = $derived(data.order);
 
 	const statusLabel: Record<OrderStatus, string> = {
@@ -45,7 +46,7 @@
 
 <main class="mx-auto max-w-4xl px-6 py-8">
 	<nav class="mb-6 text-sm">
-		<a href="/{tenant.slug}/admin/orders" class="text-muted hover:text-ink">← Allar pantanir</a>
+		<a href="{pathPrefix}/admin/orders" class="text-muted hover:text-ink">← Allar pantanir</a>
 	</nav>
 
 	<div class="mb-6 flex items-baseline justify-between">

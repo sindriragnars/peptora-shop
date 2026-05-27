@@ -12,10 +12,20 @@ import type { LayoutServerLoad } from './$types';
  * pages can look up product metadata (title, price, image) by id
  * without importing the markdown parser into the browser bundle.
  */
-export const load: LayoutServerLoad = async ({ params }) => {
+export const load: LayoutServerLoad = async ({ params, url }) => {
 	const tenant = getTenant(params.slug);
 	if (!tenant) {
 		error(404, { message: 'Storefront not found' });
 	}
-	return { tenant, products: listProducts(tenant.slug) };
+	// On the tenant's own subdomain (jonnyb.peptora.app), all routes
+	// already imply the slug — strip it from generated link hrefs so
+	// the URL bar reads `/products/foo` instead of `/jonnyb/products/foo`.
+	// On path-based access (shop.peptora.app/jonnyb/...) the slug must
+	// stay in links.
+	const onSubdomain = url.hostname === `${tenant.slug}.peptora.app`;
+	return {
+		tenant,
+		products: listProducts(tenant.slug),
+		pathPrefix: onSubdomain ? '' : `/${tenant.slug}`
+	};
 };

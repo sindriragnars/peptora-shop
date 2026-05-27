@@ -48,7 +48,7 @@
 				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{#each items as product (product.id)}
 						<a
-							href="/{tenant.slug}/products/{product.id}"
+							href="{data.pathPrefix}/products/{product.id}"
 							class="border-outline hover:border-brand group flex flex-col overflow-hidden rounded-2xl border bg-white transition-colors"
 						>
 							<div class="bg-cream-dark aspect-square">

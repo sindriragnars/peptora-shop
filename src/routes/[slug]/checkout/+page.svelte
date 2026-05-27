@@ -3,6 +3,7 @@
 	import { getCartStore } from '$lib/cart.svelte';
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const cart = $derived(getCartStore(tenant.slug));
 
 	// Product catalog comes from the parent layout's server load so the
@@ -91,7 +92,7 @@
 		<section class="border-outline rounded-2xl border p-12 text-center">
 			<p class="text-muted mb-4">Þú ert ekki með neinar vörur í körfu.</p>
 			<a
-				href="/{tenant.slug}"
+				href={pathPrefix || '/'}
 				class="border-outline hover:border-brand inline-flex rounded-full border px-5 py-2 text-sm transition-colors"
 			>
 				Sjá vörur

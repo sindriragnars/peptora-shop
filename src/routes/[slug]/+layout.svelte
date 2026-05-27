@@ -2,6 +2,7 @@
 	import { getCartStore } from '$lib/cart.svelte';
 	let { data, children } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const cart = $derived(getCartStore(tenant.slug));
 
 	// Per-tenant theme overrides via inline CSS variables on the root.
@@ -20,11 +21,11 @@
 <div style={themeStyle} class="min-h-screen">
 	<header class="border-outline border-b">
 		<div class="mx-auto flex max-w-4xl items-baseline justify-between px-6 py-5">
-			<a href="/{tenant.slug}" class="text-xl font-semibold tracking-tight">{tenant.name}</a>
+			<a href={pathPrefix || '/'} class="text-xl font-semibold tracking-tight">{tenant.name}</a>
 			<nav class="text-muted flex items-center gap-6 text-sm">
-				<a href="/{tenant.slug}" class="hover:text-ink">Vörur</a>
+				<a href={pathPrefix || '/'} class="hover:text-ink">Vörur</a>
 				<a
-					href="/{tenant.slug}/cart"
+					href="{pathPrefix}/cart"
 					class="hover:text-ink relative inline-flex items-center gap-1.5"
 				>
 					Karfa

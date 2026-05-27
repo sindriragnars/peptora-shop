@@ -3,6 +3,7 @@
 	import { getCartStore } from '$lib/cart.svelte';
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const cart = $derived(getCartStore(tenant.slug));
 
 	// Resolve each cart line to its current product. The product catalog
@@ -43,7 +44,7 @@
 		<section class="border-outline rounded-2xl border p-12 text-center">
 			<p class="text-muted mb-4">Karfan er tóm.</p>
 			<a
-				href="/{tenant.slug}"
+				href={pathPrefix || '/'}
 				class="border-outline hover:border-brand inline-flex rounded-full border px-5 py-2 text-sm transition-colors"
 			>
 				Sjá vörur
@@ -60,7 +61,7 @@
 					</div>
 
 					<div class="flex flex-1 flex-col">
-						<a href="/{tenant.slug}/products/{product.id}" class="font-semibold hover:underline">
+						<a href="{pathPrefix}/products/{product.id}" class="font-semibold hover:underline">
 							{product.title}
 						</a>
 						<p class="text-muted font-mono text-sm">{formatPriceISK(product.priceISK)} / stk</p>
@@ -128,7 +129,7 @@
 			</dl>
 
 			<a
-				href="/{tenant.slug}/checkout"
+				href="{pathPrefix}/checkout"
 				class="bg-brand hover:bg-brand-dark mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-medium text-white transition-colors"
 			>
 				Halda áfram að greiðslu

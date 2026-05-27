@@ -100,8 +100,12 @@ export const POST: RequestHandler = async ({ request, url }) => {
 	};
 
 	// Hand off to the payment provider for a hosted checkout URL.
-	const successUrl = `${url.origin}/${tenant.slug}/checkout/success?orderId=${orderId}`;
-	const cancelUrl = `${url.origin}/${tenant.slug}/checkout/cancelled?orderId=${orderId}`;
+	// On the tenant's own subdomain drop the slug from the path so the
+	// URL bar stays clean post-redirect. Path-based access keeps it.
+	const onSubdomain = url.hostname === `${tenant.slug}.peptora.app`;
+	const slugPrefix = onSubdomain ? '' : `/${tenant.slug}`;
+	const successUrl = `${url.origin}${slugPrefix}/checkout/success?orderId=${orderId}`;
+	const cancelUrl = `${url.origin}${slugPrefix}/checkout/cancelled?orderId=${orderId}`;
 
 	try {
 		if (PAYMENT_PROVIDER === 'stripe') {

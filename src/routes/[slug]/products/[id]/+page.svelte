@@ -5,6 +5,7 @@
 	let { data } = $props();
 	const product = $derived(data.product);
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 	const cart = $derived(getCartStore(tenant.slug));
 
 	let adding = $state(false);
@@ -17,7 +18,7 @@
 			// Take the user to the cart so they see the item land — common
 			// pattern for low-volume catalogs where finding the just-added
 			// item back in a full cart isn't obvious.
-			await goto(`/${tenant.slug}/cart`);
+			await goto(`${pathPrefix}/cart`);
 		} finally {
 			adding = false;
 		}
@@ -37,7 +38,7 @@
 
 <main class="mx-auto max-w-4xl px-6 py-8">
 	<nav class="mb-6 text-sm">
-		<a href="/{tenant.slug}" class="text-muted hover:text-ink">← Til baka í verslun</a>
+		<a href={pathPrefix || '/'} class="text-muted hover:text-ink">← Til baka í verslun</a>
 	</nav>
 
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">

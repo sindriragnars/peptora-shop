@@ -4,6 +4,7 @@
 
 	let { data } = $props();
 	const tenant = $derived(data.tenant);
+	const pathPrefix = $derived(data.pathPrefix);
 
 	const statusLabel: Record<OrderStatus, string> = {
 		pending: 'Bíður greiðslu',
@@ -90,7 +91,7 @@
 						<tr class="border-outline border-b last:border-0 hover:bg-cream-dark/30">
 							<td class="px-4 py-3">
 								<a
-									href="/{tenant.slug}/admin/orders/{order.id}"
+									href="{pathPrefix}/admin/orders/{order.id}"
 									class="font-mono text-xs hover:underline"
 								>
 									{order.id.slice(0, 8)}
