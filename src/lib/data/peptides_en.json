@@ -1,0 +1,4051 @@
+{
+  "version": "2026-05-26-42-peptides",
+  "lastUpdated": "2026-05-26",
+  "disclaimer": "This information is for educational purposes only. Many peptides are not FDA-approved and remain research compounds. Always consult a physician before starting use.",
+  "categories": [
+    {
+      "id": "healing",
+      "name": "Healing & Recovery",
+      "icon": "healing",
+      "color": "#10B981",
+      "description": "Tissue repair, anti-inflammation, recovery"
+    },
+    {
+      "id": "muscle",
+      "name": "Muscle Growth",
+      "icon": "fitness_center",
+      "color": "#EF4444",
+      "description": "Muscle building and strength"
+    },
+    {
+      "id": "fat_loss",
+      "name": "Fat Loss",
+      "icon": "local_fire_department",
+      "color": "#F97316",
+      "description": "Fat burning and weight loss"
+    },
+    {
+      "id": "anti_aging",
+      "name": "Anti-Aging",
+      "icon": "spa",
+      "color": "#8B5CF6",
+      "description": "Aging and skin renewal"
+    },
+    {
+      "id": "cognitive",
+      "name": "Cognitive",
+      "icon": "psychology",
+      "color": "#3B82F6",
+      "description": "Brain function, focus, memory"
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep",
+      "icon": "bedtime",
+      "color": "#6366F1",
+      "description": "Sleep and rest"
+    },
+    {
+      "id": "libido",
+      "name": "Sexual Health",
+      "icon": "favorite",
+      "color": "#EC4899",
+      "description": "Sexual health and libido"
+    },
+    {
+      "id": "longevity",
+      "name": "Longevity",
+      "icon": "auto_awesome",
+      "color": "#14B8A6",
+      "description": "Healthspan and lifespan"
+    }
+  ],
+  "peptides": [
+    {
+      "id": "bpc-157",
+      "name": "BPC-157",
+      "fullName": "Body Protection Compound-157",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Tissue healing and anti-inflammation",
+      "description": "A synthetic 15-amino-acid peptide derived from a naturally occurring protein in gastric juice. Known for remarkable regenerative effects on muscle, tendon, ligament and nerve tissue.",
+      "mechanism": "Promotes angiogenesis, increases collagen synthesis, accelerates tissue repair.",
+      "halfLife": "~4 hours (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Strong animal data, limited human research",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "250-500 mcg",
+          "frequency": "2x per day (morning + evening)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 weeks"
+        },
+        "advanced": {
+          "amount": "500-750 mcg",
+          "frequency": "2-3x per day (for acute injuries)",
+          "route": "SubQ or perilesional (near injury site)",
+          "duration": "6-12 weeks"
+        }
+      },
+      "timing": "Best on an empty stomach, away from food (at least 30 min before meals)",
+      "cycleInfo": "4-8 week cycles with 2-4 week breaks between",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Inject BAC water slowly down the vial wall. Swirl gently — never shake."
+      },
+      "storage": "Lyophilized: refrigerated, months. After reconstitution: 2-8°C, 28-30 days. Never freeze after reconstitution.",
+      "benefits": [
+        "Accelerates tendon repair",
+        "Heals joint injuries",
+        "Protects gastric mucosa",
+        "Reduces inflammation",
+        "Supports nerve repair"
+      ],
+      "sideEffects": [
+        "Generally very well tolerated",
+        "Rare: nausea, fatigue, headache",
+        "Mild injection-site irritation"
+      ],
+      "contraindications": [
+        "Pregnancy (no research)",
+        "Cancer — caution (consult physician)",
+        "Anticoagulant medications (interaction)"
+      ],
+      "genderNotes": {
+        "men": "Same dosing as general protocol. Popular for muscle injuries.",
+        "women": "Same dosing. Popular for joint pain after 40."
+      },
+      "research": [
+        {
+          "title": "BPC-157 systematic review: musculoskeletal healing",
+          "summary": "2025 systematic review in Orthopaedic Journal of Sports Medicine analyzing 36 studies (35 animal, 1 clinical). Consistent benefit in tendon and muscle repair.",
+          "year": 2025,
+          "journal": "Orthopaedic Journal of Sports Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157+systematic+review"
+        },
+        {
+          "title": "Chang et al: GHR upregulation in tendon fibroblasts",
+          "summary": "BPC-157 showed a 7-fold increase in growth hormone receptors in tendon fibroblasts.",
+          "year": 2014,
+          "journal": "Molecules",
+          "url": "https://www.mdpi.com/1420-3049/19/12/19066"
+        },
+        {
+          "title": "Sikiric P: Cytoprotective and tissue healing properties",
+          "summary": "Review of cytoprotective and tissue-healing properties.",
+          "year": 2018,
+          "journal": "World Journal of Gastroenterology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Sikiric+BPC-157"
+        }
+      ],
+      "stacksWellWith": [
+        "tb-500",
+        "ghk-cu",
+        "ipamorelin"
+      ],
+      "popularity": 95
+    },
+    {
+      "id": "tb-500",
+      "name": "TB-500",
+      "fullName": "Thymosin Beta-4 (fragment)",
+      "categories": [
+        "healing",
+        "muscle"
+      ],
+      "tagline": "Systemic tissue repair",
+      "description": "A synthetic fragment of Thymosin Beta-4. Promotes cell migration, angiogenesis and regeneration of muscle, skin and connective tissue.",
+      "mechanism": "Binds G-actin to promote cell motility and repair of damaged tissue.",
+      "halfLife": "~2-3 days",
+      "fdaApproved": false,
+      "researchStatus": "Strong preclinical, clinical trials ongoing",
+      "dosage": {
+        "beginner": {
+          "amount": "2 mg",
+          "frequency": "1-2x per week",
+          "route": "SubQ or IM",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "2-2.5 mg",
+          "frequency": "2x per week (loading 4-6 weeks), then 2 mg/week maintenance",
+          "route": "SubQ or IM",
+          "duration": "6-12 weeks"
+        },
+        "advanced": {
+          "amount": "5 mg loading",
+          "frequency": "2x per week for 4 weeks, then 2 mg/week",
+          "route": "SubQ or IM",
+          "duration": "12 weeks"
+        }
+      },
+      "timing": "Timing matters little due to the long half-life. Commonly taken in the evening.",
+      "cycleInfo": "4-8 weeks on, 2-4 weeks off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Low mg per dose, so 2.5 mL yields convenient unit measurements."
+      },
+      "storage": "Lyophilized: freezer or fridge. Reconstituted: 2-8°C, 4 weeks.",
+      "benefits": [
+        "Systemic tissue repair",
+        "Improves mobility",
+        "Helps with deep injuries",
+        "Vascular regeneration",
+        "Supports hair growth"
+      ],
+      "sideEffects": [
+        "Generally very well tolerated",
+        "Rare: fatigue at start",
+        "Headache (very rare)"
+      ],
+      "contraindications": [
+        "Pregnancy",
+        "Active cancer",
+        "Autoimmune disease (caution)"
+      ],
+      "genderNotes": {
+        "men": "Popular after sports injuries. Same dosing.",
+        "women": "Same dosing. Helps with hair growth and skin health."
+      },
+      "research": [
+        {
+          "title": "Thymosin Beta-4: A Multi-Functional Regenerative Peptide",
+          "summary": "Review of TB-4 regenerative effects on skin, heart and nerves.",
+          "year": 2012,
+          "journal": "Annals of NY Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22994218/"
+        },
+        {
+          "title": "Goldstein AL: Thymosin beta-4 clinical applications",
+          "summary": "Clinical use of TB-4 in wound healing and cardioprotection.",
+          "year": 2017,
+          "journal": "Expert Opinion on Biological Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta-4"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ghk-cu",
+        "ipamorelin"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "ipamorelin",
+      "name": "Ipamorelin",
+      "fullName": "Ipamorelin",
+      "categories": [
+        "muscle",
+        "anti_aging",
+        "fat_loss"
+      ],
+      "tagline": "Clean GH pulse without cortisol elevation",
+      "description": "A selective ghrelin receptor agonist that stimulates growth hormone release without raising cortisol or prolactin.",
+      "mechanism": "Binds GHS-R1a receptors in the pituitary and triggers a clean GH pulse.",
+      "halfLife": "~2 hours",
+      "fdaApproved": false,
+      "researchStatus": "Phase II trials completed, well tolerated",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "200-300 mcg",
+          "frequency": "1-2x per day (evening + morning)",
+          "route": "SubQ",
+          "duration": "12-16 weeks"
+        },
+        "advanced": {
+          "amount": "300 mcg",
+          "frequency": "3x per day (morning, pre-workout, evening)",
+          "route": "SubQ",
+          "duration": "12-16 weeks with breaks"
+        }
+      },
+      "timing": "On an empty stomach, 30-60 min before food or sleep. Important: no food for 30-60 min after.",
+      "cycleInfo": "12-16 weeks on, 4 weeks off to avoid receptor desensitization",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Often blended with CJC-1295 in the same syringe."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
+      "benefits": [
+        "Natural GH elevation",
+        "Improved sleep",
+        "Muscle building",
+        "Fat loss",
+        "Improved skin and hair quality",
+        "No cortisol elevation"
+      ],
+      "sideEffects": [
+        "Tingling in hands (transient)",
+        "Vivid dreams",
+        "Transient headache",
+        "Mild hunger"
+      ],
+      "contraindications": [
+        "Active cancer (hard contraindication)",
+        "Pregnancy and breastfeeding",
+        "Diabetes (monitor blood glucose)",
+        "Pituitary tumors"
+      ],
+      "genderNotes": {
+        "men": "Common dose 200-300 mcg. Indirectly supports testosterone optimization.",
+        "women": "Start at 100-150 mcg. Hormone sensitivity is higher. Excellent for aging and skin health."
+      },
+      "research": [
+        {
+          "title": "Raun H et al: Ipamorelin selective GH release without ACTH/cortisol",
+          "summary": "Key study showing ipamorelin stimulates GH without elevating cortisol or ACTH.",
+          "year": 1998,
+          "journal": "European Journal of Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"
+        },
+        {
+          "title": "Sinha DK et al: Clinical applications of GH secretagogues",
+          "summary": "Review of GH secretagogues in clinical use.",
+          "year": 2020,
+          "journal": "Translational Andrology and Urology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+clinical"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "bpc-157",
+        "tesamorelin"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": "cjc-1295",
+      "name": "CJC-1295 (no DAC)",
+      "fullName": "Modified GRF 1-29",
+      "categories": [
+        "muscle",
+        "anti_aging",
+        "fat_loss"
+      ],
+      "tagline": "GHRH analog — amplifies the natural GH pulse",
+      "description": "A synthetic GHRH (Growth Hormone Releasing Hormone) analog that activates pituitary GHRH receptors. Without DAC, the short half-life preserves natural pulsatility.",
+      "mechanism": "Binds GHRH receptors in pituitary somatotrophs, stimulating GH production and release.",
+      "halfLife": "30 min - 2 hours (no DAC), 6-8 days (with DAC)",
+      "fdaApproved": false,
+      "researchStatus": "Phase II trials, widespread off-label use",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "1-2x per day",
+          "route": "SubQ",
+          "duration": "12-16 weeks"
+        },
+        "advanced": {
+          "amount": "200-300 mcg",
+          "frequency": "2-3x per day (synced with meals)",
+          "route": "SubQ",
+          "duration": "16 weeks with a 4-week break"
+        }
+      },
+      "timing": "Best on an empty stomach, 30-60 min before food or sleep. Almost always paired with Ipamorelin.",
+      "cycleInfo": "12-16 weeks on, 4 weeks off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Can be combined with Ipamorelin in the same syringe (same concentration)."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
+      "benefits": [
+        "Raises GH and IGF-1",
+        "Muscle building",
+        "Fat loss (especially visceral)",
+        "Improved sleep",
+        "Slower aging",
+        "Improved energy and recovery"
+      ],
+      "sideEffects": [
+        "Facial flushing — transient",
+        "Tingling",
+        "Headache",
+        "Fluid retention (rare)"
+      ],
+      "contraindications": [
+        "Active cancer",
+        "Pregnancy",
+        "Pituitary disease",
+        "Insulin resistance (caution)"
+      ],
+      "genderNotes": {
+        "men": "Common stack: 200 mcg + 200 mcg Ipamorelin nightly.",
+        "women": "Start at 100 mcg + 100 mcg Ipamorelin. Sensitivity is higher."
+      },
+      "research": [
+        {
+          "title": "Teichman SL et al: CJC-1295 sustained GH release",
+          "summary": "Trial of CJC-1295 with and without DAC, showing sustained GH and IGF-1 elevation.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16352683/"
+        },
+        {
+          "title": "Ionescu M, Frohman LA: CJC-1295 in healthy adults",
+          "summary": "Clinical trial of CJC-1295 in healthy adults.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+Ionescu"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "bpc-157",
+        "tesamorelin"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": "semaglutide",
+      "name": "Semaglutide",
+      "fullName": "Semaglutide (Ozempic, Wegovy)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "GLP-1 agonist — weight loss and glycemic control",
+      "description": "A GLP-1 receptor agonist, FDA-approved for type 2 diabetes and obesity. One of the most effective weight-loss medications available.",
+      "mechanism": "Mimics GLP-1, increases insulin, suppresses glucagon, slows gastric emptying, reduces appetite.",
+      "halfLife": "~7 days",
+      "fdaApproved": true,
+      "researchStatus": "FDA approved (Wegovy 2021 for obesity)",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg",
+          "frequency": "1x per week for 4 weeks",
+          "route": "SubQ",
+          "duration": "Titration phase"
+        },
+        "standard": {
+          "amount": "0.5 mg → 1.0 mg → 1.7 mg",
+          "frequency": "1x per week, increasing every 4 weeks",
+          "route": "SubQ",
+          "duration": "16+ weeks"
+        },
+        "advanced": {
+          "amount": "2.4 mg (max dose)",
+          "frequency": "1x per week",
+          "route": "SubQ",
+          "duration": "Long-term (12+ months)"
+        }
+      },
+      "timing": "Same day each week. Timing relative to meals matters little.",
+      "cycleInfo": "Not cycled — long-term use. Taper gradually if discontinuing.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Store refrigerated after reconstitution, 30 days."
+      },
+      "storage": "Prescription product: refrigerated. Compounded: 2-8°C, 30-56 days after reconstitution.",
+      "benefits": [
+        "15-20% weight loss (STEP trials)",
+        "Improved glycemic control",
+        "Lowered HbA1c",
+        "Reduced cardiovascular risk (SELECT trial)",
+        "Reduces appetite and 'food noise'"
+      ],
+      "sideEffects": [
+        "Nausea (common initially)",
+        "Diarrhea / constipation",
+        "Reflux",
+        "Fatigue",
+        "Rare: gallstones, pancreatitis"
+      ],
+      "contraindications": [
+        "Medullary thyroid carcinoma (history)",
+        "MEN 2 syndrome",
+        "Pregnancy",
+        "History of pancreatitis"
+      ],
+      "genderNotes": {
+        "men": "Same dose, same efficacy.",
+        "women": "Same dose. Discontinue at least 2 months before pregnancy. May reduce oral contraceptive efficacy."
+      },
+      "research": [
+        {
+          "title": "STEP 1: Semaglutide 2.4 mg for obesity",
+          "summary": "Landmark RCT, 1961 participants. 14.9% weight loss at 68 weeks vs 2.4% placebo.",
+          "year": 2021,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183"
+        },
+        {
+          "title": "SELECT Trial: Cardiovascular outcomes",
+          "summary": "20% reduction in MACE (cardiovascular events) in obese patients without diabetes.",
+          "year": 2023,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2307563"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": "tirzepatide",
+      "name": "Tirzepatide",
+      "fullName": "Tirzepatide (Mounjaro, Zepbound)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Dual GLP-1/GIP agonist — stronger than Semaglutide",
+      "description": "A dual agonist that activates both GLP-1 and GIP receptors. FDA approved 2022. Shows 20-22% weight loss in clinical trials.",
+      "mechanism": "Activates both GLP-1 and GIP, producing synergistic effects on glycemic control, insulin sensitivity, and adipose-tissue regulation.",
+      "halfLife": "~5 days",
+      "fdaApproved": true,
+      "researchStatus": "FDA approved (Mounjaro 2022, Zepbound 2023)",
+      "dosage": {
+        "beginner": {
+          "amount": "2.5 mg",
+          "frequency": "1x per week for 4 weeks",
+          "route": "SubQ",
+          "duration": "Titration phase"
+        },
+        "standard": {
+          "amount": "5 mg → 7.5 mg → 10 mg",
+          "frequency": "1x per week, increasing every 4 weeks",
+          "route": "SubQ",
+          "duration": "16-20 weeks"
+        },
+        "advanced": {
+          "amount": "12.5 mg → 15 mg (max)",
+          "frequency": "1x per week",
+          "route": "SubQ",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Same day each week. Any time of day, with or without food.",
+      "cycleInfo": "Not cycled. Long-term use with taper if discontinuing.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Compounded version. Prescription pen is pre-filled."
+      },
+      "storage": "Refrigerated 2-8°C. Compounded: 30-56 days after reconstitution.",
+      "benefits": [
+        "20-22% weight loss (SURMOUNT trials)",
+        "Stronger effects than Semaglutide (head-to-head trial)",
+        "Improved glycemic control",
+        "Lowered blood pressure",
+        "Improved lipid profile"
+      ],
+      "sideEffects": [
+        "Nausea (common initially)",
+        "Diarrhea",
+        "Reflux",
+        "Constipation",
+        "Abdominal pain"
+      ],
+      "contraindications": [
+        "Medullary thyroid carcinoma",
+        "MEN 2 syndrome",
+        "Pregnancy",
+        "History of pancreatitis",
+        "Severe gastrointestinal disease"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Sometimes more pronounced weight loss than in women.",
+        "women": "Same dose. May reduce oral contraceptive efficacy (use backup contraception for the first 4 weeks after each dose increase)."
+      },
+      "research": [
+        {
+          "title": "SURMOUNT-1: Tirzepatide for obesity",
+          "summary": "2539 participants, 22.5% weight loss on 15 mg dose at 72 weeks.",
+          "year": 2022,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038"
+        },
+        {
+          "title": "SURMOUNT-5: Tirzepatide vs Semaglutide head-to-head",
+          "summary": "Tirzepatide produced 20.2% weight loss vs 13.7% for Semaglutide at 72 weeks.",
+          "year": 2025,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2416394"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": "tesamorelin",
+      "name": "Tesamorelin",
+      "fullName": "Tesamorelin (Egrifta)",
+      "categories": [
+        "fat_loss",
+        "anti_aging"
+      ],
+      "tagline": "GHRH analog targeting visceral fat",
+      "description": "FDA-approved GHRH analog, used in HIV lipodystrophy. Highly effective for visceral fat reduction.",
+      "mechanism": "GHRH analog with a longer half-life, stimulating the GH/IGF-1 axis.",
+      "halfLife": "~26-38 min, but effects sustained",
+      "fdaApproved": true,
+      "researchStatus": "FDA approved 2010 for HIV-associated lipodystrophy",
+      "dosage": {
+        "beginner": {
+          "amount": "1 mg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "12 weeks"
+        },
+        "standard": {
+          "amount": "2 mg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "16-26 weeks"
+        },
+        "advanced": {
+          "amount": "2 mg + 1 mg AM",
+          "frequency": "Split into two doses",
+          "route": "SubQ",
+          "duration": "26 weeks"
+        }
+      },
+      "timing": "On an empty stomach before sleep (30-60 min prior).",
+      "cycleInfo": "16-26 weeks on, 4-8 weeks off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Fragile — always store refrigerated after reconstitution."
+      },
+      "storage": "Lyophilized: refrigerated. Reconstituted: 2-8°C, 7 days.",
+      "benefits": [
+        "Significant visceral fat reduction",
+        "Improved lipid profile",
+        "Increased IGF-1",
+        "Muscle building",
+        "Improved energy"
+      ],
+      "sideEffects": [
+        "Facial flushing",
+        "Tingling",
+        "Fluid retention",
+        "Joint pain",
+        "Rare: elevated blood glucose"
+      ],
+      "contraindications": [
+        "Pituitary disease",
+        "Active cancer",
+        "Pregnancy",
+        "Diabetes (requires monitoring)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Best for middle-age belly fat.",
+        "women": "Same dose, 1-2 mg. Highly effective for post-menopausal belly fat."
+      },
+      "research": [
+        {
+          "title": "Falutz J et al: Tesamorelin reduces visceral fat in HIV",
+          "summary": "26-week study, 15% reduction in visceral fat vs placebo.",
+          "year": 2007,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18094375/"
+        },
+        {
+          "title": "Stanley TL et al: Tesamorelin and NAFLD",
+          "summary": "Tesamorelin reduces fatty liver independent of HIV status.",
+          "year": 2019,
+          "journal": "The Lancet HIV",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31402327/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "bpc-157"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "ghk-cu",
+      "name": "GHK-Cu",
+      "fullName": "Copper Tripeptide-1 (GHK-Cu)",
+      "categories": [
+        "anti_aging",
+        "healing"
+      ],
+      "tagline": "Anti-aging — skin, hair and regeneration",
+      "description": "A naturally occurring copper-bound tripeptide whose blood levels decline after age 60. Strong evidence for hair growth, wound healing and collagen production.",
+      "mechanism": "Binds copper, promoting collagen, elastin and hyaluronic acid production. Modulates expression of 4000+ genes.",
+      "halfLife": "~1 hour",
+      "fdaApproved": false,
+      "researchStatus": "Widely used in cosmetics, clinical trials on injectable forms",
+      "dosage": {
+        "beginner": {
+          "amount": "1 mg",
+          "frequency": "1x per day",
+          "route": "SubQ or topical",
+          "duration": "4-8 weeks"
+        },
+        "standard": {
+          "amount": "2 mg",
+          "frequency": "1x per day (SubQ) or 2x per day (topical)",
+          "route": "SubQ or topical 1-2%",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "3 mg",
+          "frequency": "1x per day",
+          "route": "SubQ + topical combined",
+          "duration": "12-16 weeks"
+        }
+      },
+      "timing": "Any time of day. Topical: best in the evening.",
+      "cycleInfo": "8-12 weeks on, 4 weeks off",
+      "reconstitution": {
+        "vialSize": "50 mg",
+        "bacWater": "5 mL",
+        "concentration": "10 mg/mL",
+        "note": "The solution is blue due to the copper — this is normal."
+      },
+      "storage": "Lyophilized: dark and cool. Reconstituted: 2-8°C, 4 weeks.",
+      "benefits": [
+        "Promotes hair growth",
+        "Reduces fine lines and wrinkles",
+        "Increases skin thickness",
+        "Wound healing",
+        "Antioxidant",
+        "Anti-inflammatory"
+      ],
+      "sideEffects": [
+        "Generally very well tolerated",
+        "Mild redness at injection site",
+        "Rare: copper allergy"
+      ],
+      "contraindications": [
+        "Copper allergy",
+        "Wilson's disease",
+        "Pregnancy (caution)"
+      ],
+      "genderNotes": {
+        "men": "Popular for hair growth (DHT-independent), skin health and post-workout recovery.",
+        "women": "Most popular for anti-aging skin care, hair growth and post-menopausal collagen loss."
+      },
+      "research": [
+        {
+          "title": "Pickart L, Margolina A: GHK-Cu: A Three-Decade Review",
+          "summary": "Review of 30 years of GHK-Cu research — gene expression, healing, anti-aging.",
+          "year": 2018,
+          "journal": "International Journal of Molecular Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29849021/"
+        },
+        {
+          "title": "Pickart L: GHK gene modulation",
+          "summary": "GHK alters expression of more than 4000 genes in human stem cells.",
+          "year": 2017,
+          "journal": "BioMed Research International",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29062812/"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500",
+        "ipamorelin"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "epitalon",
+      "name": "Epitalon",
+      "fullName": "Epithalon / Epithalamin",
+      "categories": [
+        "anti_aging",
+        "longevity",
+        "sleep"
+      ],
+      "tagline": "Telomerase activator — longevity peptide",
+      "description": "A Russian peptide that activates the telomerase enzyme and lengthens telomeres. The most-studied longevity peptide.",
+      "mechanism": "Increases telomerase activity, preserving telomere length. Also promotes melatonin production.",
+      "halfLife": "Short (~30 min), but biological effects are long-lasting",
+      "fdaApproved": false,
+      "researchStatus": "Russian clinical trials, very limited Western trials",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "1x per day",
+          "route": "SubQ",
+          "duration": "10-20 day cycle"
+        },
+        "standard": {
+          "amount": "10 mg",
+          "frequency": "1x per day",
+          "route": "SubQ",
+          "duration": "20 day cycle, 1-2x per year"
+        },
+        "advanced": {
+          "amount": "10 mg",
+          "frequency": "1x per day",
+          "route": "SubQ",
+          "duration": "20 day cycle, 2-3x per year"
+        }
+      },
+      "timing": "In the evening before sleep (improves melatonin).",
+      "cycleInfo": "20 day cycles, 2-3 times a year. Not daily year-round.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Use within 30 days after reconstitution."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 30 days.",
+      "benefits": [
+        "Telomerase activation",
+        "Improved sleep",
+        "Improved melatonin production",
+        "Antioxidant",
+        "Possible longevity effects (animal data)",
+        "Skin health"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "No significant side effects reported in trials"
+      ],
+      "contraindications": [
+        "Pregnancy",
+        "Active cancer (telomerase activation could theoretically stimulate it)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular after age 40.",
+        "women": "Same dose. Especially good after menopause for sleep and skin."
+      },
+      "research": [
+        {
+          "title": "Khavinson V: Peptides and aging",
+          "summary": "20+ years of research on epitalon and longevity in Russia.",
+          "year": 2002,
+          "journal": "Neuroendocrinology Letters",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/12374973/"
+        },
+        {
+          "title": "Khavinson V et al: Epitalon and telomere length",
+          "summary": "Epitalon increases telomerase activity and lengthens telomeres in vitro.",
+          "year": 2003,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=epitalon+telomerase"
+        }
+      ],
+      "stacksWellWith": [
+        "ghk-cu",
+        "ipamorelin",
+        "dsip"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "pt-141",
+      "name": "PT-141",
+      "fullName": "Bremelanotide (Vyleesi)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "Sexual desire for both women and men",
+      "description": "A melanocortin receptor agonist that acts on the brain to increase sexual desire — not the vascular system (unlike Viagra). FDA approved 2019.",
+      "mechanism": "Activates MC3R and MC4R receptors in the dopamine pathways of the brain that govern libido and arousal.",
+      "halfLife": "~2 hours",
+      "fdaApproved": true,
+      "researchStatus": "FDA approved for HSDD (women). Off-label for men.",
+      "dosage": {
+        "beginner": {
+          "amount": "500-750 mcg",
+          "frequency": "On-demand, 45 min before activity",
+          "route": "SubQ",
+          "duration": "On-demand"
+        },
+        "standard": {
+          "amount": "1.0-1.75 mg",
+          "frequency": "On-demand, max 8x per month",
+          "route": "SubQ",
+          "duration": "On-demand"
+        },
+        "advanced": {
+          "amount": "1.75 mg",
+          "frequency": "On-demand, max 8 doses/month",
+          "route": "SubQ",
+          "duration": "On-demand"
+        }
+      },
+      "timing": "45 min - 4 hours before sex. Not on an empty stomach (worst nausea).",
+      "cycleInfo": "On-demand. Not daily.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
+        "note": "Store refrigerated after reconstitution."
+      },
+      "storage": "Lyophilized: cool. Reconstituted: 2-8°C, 4 weeks.",
+      "benefits": [
+        "Increases sexual desire (both sexes)",
+        "Helps with ED when PDE5 inhibitors do not work",
+        "Acts on the brain, not the vasculature",
+        "No need for visual stimulation"
+      ],
+      "sideEffects": [
+        "Nausea (very common, 40%+)",
+        "Facial flushing",
+        "Transient blood pressure increase",
+        "Headache",
+        "Skin darkening with repeated use (rare)"
+      ],
+      "contraindications": [
+        "Hypertension (uncontrolled)",
+        "Cardiovascular disease",
+        "Pregnancy"
+      ],
+      "genderNotes": {
+        "men": "Off-label use. 1-1.75 mg common. Sometimes stacked with tadalafil.",
+        "women": "FDA approved for premenopausal HSDD. 1.75 mg standard. No post-menopausal indication yet."
+      },
+      "research": [
+        {
+          "title": "RECONNECT studies: Bremelanotide for HSDD",
+          "summary": "Phase 3 RCT, 1247 women. Significant increase in sexual desire vs placebo.",
+          "year": 2019,
+          "journal": "Obstetrics & Gynecology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31599840/"
+        },
+        {
+          "title": "Rosen RC et al: PT-141 safety and pharmacokinetics",
+          "summary": "Early study of PT-141 in men with ED.",
+          "year": 2004,
+          "journal": "International Journal of Impotence Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=rosen+PT-141"
+        }
+      ],
+      "stacksWellWith": [
+        "kisspeptin-10"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "melanotan-2",
+      "name": "Melanotan II",
+      "fullName": "Melanotan II (MT-II)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "Bronze tan + libido",
+      "description": "A cyclic melanocortin receptor agonist — developed as a tanning peptide. Also has libido effects.",
+      "mechanism": "Activates MC1R (melanin, tanning) and MC3R/MC4R (libido, appetite).",
+      "halfLife": "~1 hour",
+      "fdaApproved": false,
+      "researchStatus": "Not approved — research compound",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x per day (loading)",
+          "route": "SubQ",
+          "duration": "4-8 weeks loading"
+        },
+        "standard": {
+          "amount": "500 mcg",
+          "frequency": "1x per day (loading), then 2-3x/week maintenance",
+          "route": "SubQ",
+          "duration": "Loading 4-8 weeks, then maintenance"
+        },
+        "advanced": {
+          "amount": "1000 mcg",
+          "frequency": "1x per day loading, then 2-3x/week",
+          "route": "SubQ",
+          "duration": "Continuous with breaks"
+        }
+      },
+      "timing": "In the evening (usually). UV exposure (sun/tanning bed) is needed for 1-2 days after dosing to activate the tan.",
+      "cycleInfo": "Loading 4-8 weeks, then low-dose maintenance.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
+        "note": "10 units on an insulin syringe = 333 mcg."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 4-6 weeks.",
+      "benefits": [
+        "Dark and long-lasting tan",
+        "Sunburn protection (theoretical)",
+        "Increased libido",
+        "Reduced appetite (bonus)"
+      ],
+      "sideEffects": [
+        "Nausea (common at first)",
+        "Flushing",
+        "Darkening of freckles and moles",
+        "Spontaneous erections (men)",
+        "IMPORTANT: monitor any new or changed moles"
+      ],
+      "contraindications": [
+        "History of melanoma",
+        "Many moles on the skin",
+        "Familial dysplastic nevus syndrome",
+        "Pregnancy",
+        "Cardiovascular disease"
+      ],
+      "genderNotes": {
+        "men": "Sometimes causes unexpected erections initially. Lower doses are often sufficient.",
+        "women": "Popular for tanning. Caution with moles — see a dermatologist regularly."
+      },
+      "research": [
+        {
+          "title": "Dorr RT et al: Melanotan II safety study",
+          "summary": "Early clinical trial of MT-II in healthy volunteers.",
+          "year": 1996,
+          "journal": "Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=dorr+melanotan"
+        },
+        {
+          "title": "Hadley ME: Discovery of melanocortin sexual function",
+          "summary": "Review of the discovery that melanocortins regulate sexual function.",
+          "year": 2005,
+          "journal": "Peptides",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16005101/"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "selank",
+      "name": "Selank",
+      "fullName": "Selank (TP-7)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Anxiety relief without sedation",
+      "description": "A Russian nootropic peptide that reduces anxiety without sedation. Analog of tuftsin.",
+      "mechanism": "Modulates GABA and serotonin systems. Increases BDNF.",
+      "halfLife": "Short, but biological effects last 24+ hours",
+      "fdaApproved": false,
+      "researchStatus": "Approved in Russia as a medication, not in the USA/EU",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mcg",
+          "frequency": "1-2x per day (nasal)",
+          "route": "Intranasal",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "750-1500 mcg",
+          "frequency": "2-3x per day (nasal) or 1x SubQ",
+          "route": "Intranasal or SubQ",
+          "duration": "4-6 weeks"
+        },
+        "advanced": {
+          "amount": "2000-3000 mcg total daily",
+          "frequency": "Split into 2-3 doses",
+          "route": "Intranasal",
+          "duration": "6 weeks on, then 2 weeks off"
+        }
+      },
+      "timing": "Morning or early afternoon. Avoid after 3 PM (may disrupt sleep).",
+      "cycleInfo": "4-6 weeks on, 1-2 weeks off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL (for nasal)",
+        "concentration": "2500 mcg/mL",
+        "note": "Most often used as a nasal spray. Each puff = 250-500 mcg."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14-21 days.",
+      "benefits": [
+        "Anxiety relief without sedation",
+        "Improved focus",
+        "No addiction potential (unlike benzodiazepines)",
+        "Stress resilience",
+        "Improved mood",
+        "Anti-inflammatory effects"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "Rare: headache",
+        "Nasal irritation (with intranasal use)"
+      ],
+      "contraindications": [
+        "Pregnancy",
+        "History of psychosis (caution)",
+        "Other GABA-active medications (interaction)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular among 'high performers' with anxiety.",
+        "women": "Same dose. Popular for hormonal anxiety, especially PMS-related."
+      },
+      "research": [
+        {
+          "title": "Medvedev VE et al: Selank in generalized anxiety",
+          "summary": "Russian clinical trial showing significant reduction in anxiety vs placebo.",
+          "year": 2014,
+          "journal": "Zhurnal Nevrologii i Psikhiatrii",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24800022/"
+        },
+        {
+          "title": "Inozemtseva LS et al: Selank molecular mechanisms",
+          "summary": "Review of Selank's BDNF/GABA mechanisms.",
+          "year": 2008,
+          "journal": "Doklady Biological Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=selank+BDNF"
+        }
+      ],
+      "stacksWellWith": [
+        "semax",
+        "dsip"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "semax",
+      "name": "Semax",
+      "fullName": "Semax (ACTH 4-10 analog)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Focus and memory",
+      "description": "A Russian nootropic peptide, analog of ACTH(4-10). Increases BDNF and NGF.",
+      "mechanism": "Increases BDNF (Brain-Derived Neurotrophic Factor) and NGF. Modulates dopamine and serotonin.",
+      "halfLife": "Short (minutes), but effects last 24 hours",
+      "fdaApproved": false,
+      "researchStatus": "Approved in Russia for stroke and cognitive symptoms",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mcg",
+          "frequency": "1-2x per day (nasal)",
+          "route": "Intranasal",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "600-900 mcg",
+          "frequency": "2-3x per day (nasal)",
+          "route": "Intranasal",
+          "duration": "4-8 weeks"
+        },
+        "advanced": {
+          "amount": "1200-1800 mcg (0.1% solution)",
+          "frequency": "Split into 2-3 doses",
+          "route": "Intranasal or SubQ",
+          "duration": "6-8 weeks"
+        }
+      },
+      "timing": "Morning and afternoon. Not too late — can cause sleep problems.",
+      "cycleInfo": "4-8 weeks on, 2 weeks off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Most often used as a nasal spray."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14 days.",
+      "benefits": [
+        "Improved focus and concentration",
+        "Faster memory and processing",
+        "Neuroprotection",
+        "Improved mood",
+        "No crash after use",
+        "Supports nerve repair"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "Rare: overstimulation if dosed too late",
+        "Nasal irritation"
+      ],
+      "contraindications": [
+        "Pregnancy",
+        "Psychiatric disorders (caution)",
+        "Hypertension (mild interaction)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for cognitively demanding work.",
+        "women": "Same dose. Helps with brain fog in menopause and postpartum."
+      },
+      "research": [
+        {
+          "title": "Kaplan AY et al: Semax effects on attention",
+          "summary": "Russian study on Semax and attention.",
+          "year": 2011,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=semax+attention"
+        },
+        {
+          "title": "Levitskaya NG: Semax neuroprotection",
+          "summary": "Mechanistic study of Semax's neuroprotective effects.",
+          "year": 2008,
+          "journal": "Neuroscience Letters",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=semax+neuroprotection"
+        }
+      ],
+      "stacksWellWith": [
+        "selank",
+        "dsip",
+        "bpc-157"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "dsip",
+      "name": "DSIP",
+      "fullName": "Delta Sleep-Inducing Peptide",
+      "categories": [
+        "sleep"
+      ],
+      "tagline": "Deep sleep and delta waves",
+      "description": "A naturally occurring peptide that promotes delta-wave sleep. Induces deep, restorative sleep.",
+      "mechanism": "Promotes delta-wave activity on EEG. Modulates the circadian rhythm.",
+      "halfLife": "Short (~7 min) but biological effects are sustained",
+      "fdaApproved": false,
+      "researchStatus": "Limited Western trials, strong anecdotal evidence",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "As long as needed"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "4-8 week cycle"
+        },
+        "advanced": {
+          "amount": "200-500 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "SubQ",
+          "duration": "Cycled 4-6 weeks"
+        }
+      },
+      "timing": "30 min before sleep.",
+      "cycleInfo": "Can be used daily long-term but also cycled 4-6 weeks on, 1-2 weeks off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Low dose, so 2.5 mL is convenient."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 30 days.",
+      "benefits": [
+        "Deep sleep (slow-wave sleep)",
+        "Faster sleep onset",
+        "Improved morning energy",
+        "Stress reduction",
+        "Possibly helpful for alcohol withdrawal",
+        "No morning grogginess"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "Rare: vivid dreams"
+      ],
+      "contraindications": [
+        "Pregnancy",
+        "Other sleep medications (possible interaction)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for shift workers.",
+        "women": "Same dose. Highly effective for menopause-related sleep problems."
+      },
+      "research": [
+        {
+          "title": "Schneider-Helmert D: DSIP for sleep disorders",
+          "summary": "Clinical trial of DSIP for chronic insomnia.",
+          "year": 1987,
+          "journal": "European Neurology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=DSIP+sleep"
+        },
+        {
+          "title": "Graf MV, Kastin AJ: DSIP biological actions",
+          "summary": "Review of DSIP's biological actions.",
+          "year": 1986,
+          "journal": "Neuroscience & Biobehavioral Reviews",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=graf+DSIP"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "ipamorelin",
+        "selank"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "mots-c",
+      "name": "MOTS-c",
+      "fullName": "Mitochondrial-derived peptide MOTS-c",
+      "categories": [
+        "longevity",
+        "fat_loss",
+        "muscle"
+      ],
+      "tagline": "Mitochondrial peptide — metabolic switch",
+      "description": "A naturally occurring peptide encoded by mitochondrial DNA. Increases AMPK activity, improves glucose tolerance and metabolic flexibility.",
+      "mechanism": "Activates the AMPK pathway, promoting fat oxidation, glucose utilization, and mitochondrial health.",
+      "halfLife": "Short, but effects last 24+ hours",
+      "fdaApproved": false,
+      "researchStatus": "Strong preclinical, first clinical trials underway",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "3x per week",
+          "route": "SubQ",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "10 mg",
+          "frequency": "3x per week",
+          "route": "SubQ",
+          "duration": "6-8 weeks"
+        },
+        "advanced": {
+          "amount": "10-15 mg",
+          "frequency": "3-5x per week",
+          "route": "SubQ",
+          "duration": "8-12 weeks with a 4-week break"
+        }
+      },
+      "timing": "Pre-workout or in the morning on an empty stomach.",
+      "cycleInfo": "6-12 weeks on, 4 weeks off.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Relatively expensive — measure precisely."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14 days.",
+      "benefits": [
+        "Improved mitochondrial function",
+        "Increased insulin sensitivity",
+        "Fat loss",
+        "Improved energy",
+        "Slower aging (animal data)",
+        "Improved athletic performance"
+      ],
+      "sideEffects": [
+        "Generally very well tolerated",
+        "Rare: mild fatigue at first"
+      ],
+      "contraindications": [
+        "Pregnancy (no research)",
+        "Type 1 diabetes (caution — monitor blood glucose)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for performance.",
+        "women": "Same dose. Especially useful in menopause (metabolic slowdown)."
+      },
+      "research": [
+        {
+          "title": "Lee C et al: MOTS-c regulates insulin sensitivity",
+          "summary": "Landmark study that defined MOTS-c and its activity.",
+          "year": 2015,
+          "journal": "Cell Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25738459/"
+        },
+        {
+          "title": "Reynolds JC et al: MOTS-c improves muscle insulin sensitivity",
+          "summary": "MOTS-c improves muscle metabolic health and endurance performance in mice.",
+          "year": 2021,
+          "journal": "Nature Communications",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33623040/"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin",
+        "tesamorelin"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "retatrutide",
+      "name": "Retatrutide",
+      "fullName": "Retatrutide (LY3437943)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Triple GLP-1/GIP/glucagon agonist",
+      "description": "Eli Lilly's triple-agonist peptide that activates GLP-1, GIP and glucagon receptors simultaneously. Phase 3 trials show 24%+ weight loss after 48 weeks — the largest weight loss seen with any GLP-1-class drug to date.",
+      "mechanism": "Triple activation: GLP-1 (appetite suppression + insulin), GIP (insulin sensitivity), glucagon (energy expenditure and lipolysis).",
+      "halfLife": "~6 days (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 (TRIUMPH program 2024-2025), likely FDA approval in 2026",
+      "dosage": {
+        "beginner": {
+          "amount": "2 mg",
+          "frequency": "1x per week (4-week titration)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "standard": {
+          "amount": "4 mg → 8 mg",
+          "frequency": "1x per week (increase every 4 weeks)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "advanced": {
+          "amount": "12 mg (max)",
+          "frequency": "1x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Same weekday each week, independent of meals. Best in the morning or evening.",
+      "cycleInfo": "No structured break — long-term maintenance like semaglutide.",
+      "reconstitution": {
+        "vialSize": "8 mg",
+        "bacWater": "2 mL",
+        "concentration": "4 mg/mL",
+        "note": "Can be stored refrigerated after reconstitution for up to 4 weeks."
+      },
+      "storage": "Lyophilized: refrigerated 2-8°C. After reconstitution: 2-8°C, 28 days.",
+      "benefits": [
+        "Largest weight loss among GLP-1 class drugs",
+        "Improved glycemic control",
+        "Increased energy expenditure",
+        "Cardioprotective effects (preliminary)"
+      ],
+      "sideEffects": [
+        "Nausea and vomiting (common initially)",
+        "Diarrhea and constipation",
+        "Headache",
+        "Possible pancreatitis (rare)"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "History of pancreatitis",
+        "Medullary thyroid carcinoma (MEN2)",
+        "Severe gastroparesis"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol. Popular for metabolic syndrome.",
+        "women": "Same dose. Check fertility plans before starting."
+      },
+      "research": [
+        {
+          "title": "Jastreboff et al: Retatrutide phase 2 obesity trial",
+          "summary": "338 adults with obesity. 24% weight loss at 48 weeks on 12 mg weekly — more than semaglutide or tirzepatide.",
+          "year": 2023,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2301972"
+        },
+        {
+          "title": "TRIUMPH-1 phase 3 results (interim)",
+          "summary": "Eli Lilly Phase 3 program, 2024 interim data.",
+          "year": 2024,
+          "journal": "Eli Lilly press release",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=retatrutide+phase+3"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "tesamorelin"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": "thymosin-alpha-1",
+      "name": "Thymosin α-1",
+      "fullName": "Thymosin Alpha-1 (Zadaxin)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Immune modulator and T-cell support",
+      "description": "A 28-amino-acid peptide that regulates T-cell maturation. FDA approved in 35+ countries (as Zadaxin) for hepatitis B and as an adjuvant in cancer therapy. Key in immune response.",
+      "mechanism": "Boosts Th1 response, activates dendritic cells and NK cells, balances cytokine production.",
+      "halfLife": "~2 hours (SubQ)",
+      "fdaApproved": true,
+      "researchStatus": "Approved in many countries, not the United States",
+      "dosage": {
+        "beginner": {
+          "amount": "1.6 mg",
+          "frequency": "2x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-12 weeks"
+        },
+        "standard": {
+          "amount": "1.6 mg",
+          "frequency": "1x per day (5 days per week)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "6-8 weeks"
+        },
+        "advanced": {
+          "amount": "3.2 mg",
+          "frequency": "2x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        }
+      },
+      "timing": "Timing matters little — morning or evening is fine.",
+      "cycleInfo": "Standard course is 4-12 weeks with a break before any repeat course.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Very stable peptide. Tolerates freezing after reconstitution (unlike many others)."
+      },
+      "storage": "Lyophilized: refrigerated, 24+ months. After reconstitution: 2-8°C for 30 days or -20°C for 6 months.",
+      "benefits": [
+        "Strengthens the immune system (especially T cells)",
+        "Helps with chronic viral infections",
+        "Adjuvant in cancer therapy",
+        "Very safe for long-term use",
+        "Improves wound healing via immune mediation"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "Rare: injection-site irritation",
+        "Rare: mild fatigue in the first weeks"
+      ],
+      "contraindications": [
+        "Autoimmune disease (caution — may increase immune activity)",
+        "Organ transplantation (immunosuppression required)",
+        "Pregnancy (limited data)"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose. Well-studied in women with HBV."
+      },
+      "research": [
+        {
+          "title": "Camerini & Garaci: Historical review of Thymosin α1",
+          "summary": "Review of 40 years of use: immune support, cancer, infections.",
+          "year": 2015,
+          "journal": "Annals of the New York Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26031623/"
+        },
+        {
+          "title": "Liu et al: Thymosin alpha-1 in chronic HBV",
+          "summary": "Meta-analysis of 23 trials, effective for HBV clearance.",
+          "year": 2020,
+          "journal": "Hepatology International",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+alpha-1+hepatitis"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500",
+        "ll-37"
+      ],
+      "popularity": 82
+    },
+    {
+      "id": "sermorelin",
+      "name": "Sermorelin",
+      "fullName": "Sermorelin Acetate (GRF 1-29)",
+      "categories": [
+        "muscle",
+        "anti_aging"
+      ],
+      "tagline": "Classic GHRH analog — more natural GH pulse",
+      "description": "A 29-amino-acid GHRH analog, FDA approved since 1990 as Geref. The short half-life delivers a more natural GH pulse than CJC-1295. Popular in US anti-aging clinics.",
+      "mechanism": "Activates pituitary GHRH receptors, increasing endogenous GH production without overstimulation.",
+      "halfLife": "~10-20 minutes",
+      "fdaApproved": true,
+      "researchStatus": "FDA approved for pediatric GH deficiency, off-label for anti-aging",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "200-300 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12-24 weeks"
+        },
+        "advanced": {
+          "amount": "300-500 mcg",
+          "frequency": "1-2x per day (evening + morning)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "16-24 weeks"
+        }
+      },
+      "timing": "Best before sleep (at least 2 hours after food) — the natural GH pulse is strongest then.",
+      "cycleInfo": "3-6 month cycles with 4-8 week breaks in between.",
+      "reconstitution": {
+        "vialSize": "3 mg",
+        "bacWater": "1.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Very fragile — handle gently, refrigerate immediately after reconstitution."
+      },
+      "storage": "Lyophilized: refrigerated, 24+ months. Reconstituted: 2-8°C, 14 days (shorter than CJC-1295).",
+      "benefits": [
+        "More natural GH pulse than CJC-1295",
+        "Improved sleep depth",
+        "Increased muscle mass",
+        "Improved skin and hair",
+        "Milder side-effect profile"
+      ],
+      "sideEffects": [
+        "Injection-site irritation",
+        "Headache (fresh dose)",
+        "Mild sleep disturbance in the first days",
+        "Possible nausea"
+      ],
+      "contraindications": [
+        "Active cancer",
+        "Pregnancy and breastfeeding",
+        "Diabetic retinopathy (consult physician)",
+        "Pituitary tumor"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular after age 35.",
+        "women": "Same dose. Popular for skin and hair."
+      },
+      "research": [
+        {
+          "title": "Walker et al: Sermorelin in adult GH deficiency",
+          "summary": "Clinical trials demonstrating efficacy of sermorelin in GH deficiency.",
+          "year": 2006,
+          "journal": "Aging Male",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sermorelin+adult+growth+hormone"
+        },
+        {
+          "title": "Khorram et al: Sermorelin in older adults",
+          "summary": "16-week sermorelin treatment in 60-71 year olds: elevated GH and IGF-1.",
+          "year": 1997,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9239556/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "ghk-cu"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "cagrisema",
+      "name": "CagriSema",
+      "fullName": "Cagrilintide + Semaglutide combination",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Powerful semaglutide + cagrilintide combination",
+      "description": "Novo Nordisk's Phase 3 combination of cagrilintide (long-acting amylin analog) and semaglutide. Aimed at exceeding tirzepatide for weight loss.",
+      "mechanism": "Dual action: cagrilintide reduces appetite via amylin receptors, semaglutide activates GLP-1.",
+      "halfLife": "~1 week (both components)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 (REDEFINE program), expected approval 2025-2026",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg + 0.25 mg",
+          "frequency": "1x per week (4-week titration)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "standard": {
+          "amount": "1.0 mg + 1.0 mg",
+          "frequency": "1x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "advanced": {
+          "amount": "2.4 mg + 2.4 mg",
+          "frequency": "1x per week (max)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Same weekday each week. Best in the morning or evening.",
+      "cycleInfo": "Long-term maintenance, same pattern as semaglutide.",
+      "reconstitution": {
+        "vialSize": "5 mg + 5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL each",
+        "note": "The clinical form is a pre-mixed pen. Compounded forms are blended together."
+      },
+      "storage": "Lyophilized: refrigerated 2-8°C. After reconstitution: 2-8°C, 28 days.",
+      "benefits": [
+        "Potentially largest weight loss among GLP-1 drugs",
+        "Smoother appetite control (dual mechanism)",
+        "Improved glycemic control",
+        "Less nausea than pure semaglutide"
+      ],
+      "sideEffects": [
+        "Nausea and vomiting (common initially)",
+        "Diarrhea or constipation",
+        "Headache",
+        "Possible pancreatitis (rare)"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "History of pancreatitis",
+        "Medullary thyroid carcinoma (MEN2)",
+        "Severe gastroparesis"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose. Check fertility plans before starting."
+      },
+      "research": [
+        {
+          "title": "Frias et al: CagriSema phase 2 in T2D",
+          "summary": "Phase 2 in type 2 diabetes: 15.6% weight loss.",
+          "year": 2023,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrisema+phase+2"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "tesamorelin"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "ss-31",
+      "name": "SS-31",
+      "fullName": "SS-31 / Elamipretide (Bendavia)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Mitochondria-protective peptide",
+      "description": "A small peptide that binds the inner mitochondrial membrane and reduces cardiolipin oxidation. Phase 3 trials in primary mitochondrial myopathy and heart failure.",
+      "mechanism": "Binds cardiolipin in the inner mitochondrial membrane, protects the electron transport chain, reduces ROS.",
+      "halfLife": "~2-3 hours (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 (Stealth BioTherapeutics), orphan drug status for Barth syndrome",
+      "dosage": {
+        "beginner": {
+          "amount": "20 mg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 weeks"
+        },
+        "standard": {
+          "amount": "40 mg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "60 mg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12-16 weeks"
+        }
+      },
+      "timing": "Best in the morning — energy-related effects.",
+      "cycleInfo": "8-16 week cycles, with a 4-week break.",
+      "reconstitution": {
+        "vialSize": "100 mg",
+        "bacWater": "2 mL",
+        "concentration": "50 mg/mL",
+        "note": "Larger vials require larger bac volumes due to mg quantity."
+      },
+      "storage": "Lyophilized: refrigerated. Reconstituted: 2-8°C, 30 days.",
+      "benefits": [
+        "Protects mitochondria",
+        "Improved energy and endurance",
+        "Cardioprotective effects",
+        "Possibly anti-aging via mitochondrial biogenesis",
+        "Reduced muscle fatigue"
+      ],
+      "sideEffects": [
+        "Injection-site irritation",
+        "Rare: headache",
+        "Well tolerated in clinical trials"
+      ],
+      "contraindications": [
+        "Limited pregnancy data",
+        "Drug interactions not yet fully studied"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose."
+      },
+      "research": [
+        {
+          "title": "Karaa et al: SS-31 in mitochondrial myopathy",
+          "summary": "MMPOWER-3 trial in primary mitochondrial myopathy.",
+          "year": 2020,
+          "journal": "Neurology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+SS-31"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "epitalon"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "cerebrolysin",
+      "name": "Cerebrolysin",
+      "fullName": "Cerebrolysin (neuropeptide preparation)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Neuropeptide complex for brain function",
+      "description": "One of the most-studied nootropics — a mixture of low-molecular-weight peptides and amino acids derived from porcine brain. Widely used in Europe and Asia for Alzheimer's, stroke, and traumatic brain injury.",
+      "mechanism": "Neurotrophic, neuroprotective, and neurogenerative effects — mimics BDNF and NGF, increases synaptic plasticity.",
+      "halfLife": "Multiple (many peptides)",
+      "fdaApproved": false,
+      "researchStatus": "Approved in 40+ countries (Europe, Russia, China, South Korea), not USA",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mL",
+          "frequency": "1x per day",
+          "route": "Intramuscular (IM) or IV",
+          "duration": "10-20 days"
+        },
+        "standard": {
+          "amount": "10 mL",
+          "frequency": "1x per day",
+          "route": "Intramuscular (IM) or slow IV",
+          "duration": "20 days"
+        },
+        "advanced": {
+          "amount": "30 mL",
+          "frequency": "1x per day (IV infusion)",
+          "route": "IV infusion (clinical setting)",
+          "duration": "15-20 days"
+        }
+      },
+      "timing": "Best in the morning — alerting effects.",
+      "cycleInfo": "10-20 day cycles, 2-3 cycles per year with 1-2 month breaks.",
+      "reconstitution": {
+        "vialSize": "10 mL ampoule (pre-mixed)",
+        "bacWater": "none — comes as a solution",
+        "concentration": "215.2 mg/mL",
+        "note": "Cerebrolysin comes as a ready solution in sealed ampoules — no reconstitution."
+      },
+      "storage": "Room temperature, protected from light. Use immediately after opening.",
+      "benefits": [
+        "Improved memory and focus",
+        "Faster recovery after stroke",
+        "Slows Alzheimer progression",
+        "Improved neuroplasticity",
+        "Potentially longer neuronal lifespan"
+      ],
+      "sideEffects": [
+        "Mild warm sensation",
+        "Rare: injection-site irritation",
+        "Rare: allergic reaction",
+        "Generally very well tolerated"
+      ],
+      "contraindications": [
+        "Status epilepticus (caution — may lower seizure threshold)",
+        "Severe renal failure",
+        "Pregnancy (insufficient data)"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose."
+      },
+      "research": [
+        {
+          "title": "Heiss et al: Cerebrolysin in acute ischemic stroke",
+          "summary": "CASTA trial — 1070 patients. Improved FIM score at 90 days.",
+          "year": 2012,
+          "journal": "Stroke",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22282885/"
+        },
+        {
+          "title": "Alvarez et al: Cerebrolysin in Alzheimer disease",
+          "summary": "Review of trials in AD — improved ADAS-cog and CGI scores.",
+          "year": 2011,
+          "journal": "Journal of Alzheimer's Disease",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cerebrolysin+alzheimer"
+        }
+      ],
+      "stacksWellWith": [
+        "semax",
+        "selank"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "kpv",
+      "name": "KPV",
+      "fullName": "Lysine-Proline-Valine (α-MSH 11-13)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Anti-inflammatory tripeptide derived from α-MSH",
+      "description": "A three-amino-acid peptide derived from the C-terminus of α-MSH (melanocyte stimulating hormone). Strong anti-inflammatory effects without melanocortin receptor activation.",
+      "mechanism": "Inhibits the NF-κB pathway, reducing TNF-α, IL-1β and IL-6. Strong effects in gut-related inflammation.",
+      "halfLife": "Short (minutes SubQ, longer oral)",
+      "fdaApproved": false,
+      "researchStatus": "Strong preclinical, limited clinical data",
+      "dosage": {
+        "beginner": {
+          "amount": "200 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ) or oral",
+          "duration": "4-8 weeks"
+        },
+        "standard": {
+          "amount": "500 mcg",
+          "frequency": "1-2x per day",
+          "route": "Subcutaneous (SubQ) or oral",
+          "duration": "6-12 weeks"
+        },
+        "advanced": {
+          "amount": "1000 mcg",
+          "frequency": "2x per day",
+          "route": "Subcutaneous (SubQ) or oral",
+          "duration": "8-12 weeks"
+        }
+      },
+      "timing": "Timing matters little — morning or evening is fine.",
+      "cycleInfo": "4-12 week cycles with 2-4 week breaks.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Stable peptide. Can be taken orally with reduced absorption."
+      },
+      "storage": "Lyophilized: refrigerated, months. After reconstitution: 2-8°C, 28 days.",
+      "benefits": [
+        "Reduces systemic inflammation",
+        "Helps with IBD and leaky gut",
+        "Skin conditions (acne, psoriasis)",
+        "Anti-microbial",
+        "Well tolerated"
+      ],
+      "sideEffects": [
+        "Very well tolerated",
+        "Rare: injection-site irritation",
+        "No known serious side effects"
+      ],
+      "contraindications": [
+        "Pregnancy (limited data)",
+        "History of melanoma (caution — α-MSH derivative)"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose."
+      },
+      "research": [
+        {
+          "title": "Brzoska et al: KPV anti-inflammatory mechanism",
+          "summary": "Review of KPV's anti-inflammatory mechanisms.",
+          "year": 2008,
+          "journal": "Endocrine Reviews",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=KPV+anti-inflammatory"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "kisspeptin-10",
+      "name": "Kisspeptin-10",
+      "fullName": "Kisspeptin-10 (Metastin 45-54)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "GnRH stimulator — HPG axis activator",
+      "description": "A 10-amino-acid peptide that activates Kiss1R receptors in the hypothalamus, the strongest natural activator of GnRH. Studied for hypogonadism and low testosterone.",
+      "mechanism": "Binds Kiss1R receptors on GnRH neurons, triggering an LH and FSH pulse and then testosterone or estradiol release.",
+      "halfLife": "~4 minutes (very short!)",
+      "fdaApproved": false,
+      "researchStatus": "Clinical trials underway for HSDD and hypogonadism",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 weeks"
+        },
+        "standard": {
+          "amount": "100 mcg",
+          "frequency": "1-2x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "6-8 weeks"
+        },
+        "advanced": {
+          "amount": "200 mcg",
+          "frequency": "2x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        }
+      },
+      "timing": "Best in the morning when natural hormone pulses are activating.",
+      "cycleInfo": "4-12 week cycles, with at least a 4-week break (to avoid desensitization).",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "5 mL",
+        "concentration": "1 mg/mL",
+        "note": "A large bac volume yields convenient small doses. Very fragile — the peptide degrades quickly."
+      },
+      "storage": "Lyophilized: refrigerated. After reconstitution: 2-8°C, 7-14 days (shorter than most).",
+      "benefits": [
+        "Naturally raises LH and FSH",
+        "Improved libido (both sexes)",
+        "Raises testosterone (men)",
+        "Possible fertility boost",
+        "Gentler than HCG (no desensitization)"
+      ],
+      "sideEffects": [
+        "Headache",
+        "Flushing and warmth",
+        "Rare: nausea",
+        "Well tolerated at low doses"
+      ],
+      "contraindications": [
+        "Hormone-sensitive cancers",
+        "Pregnancy",
+        "Pituitary tumor",
+        "Use of tamoxifen or aromatase inhibitors"
+      ],
+      "genderNotes": {
+        "men": "Raises LH → testosterone. Popular as an HCG alternative.",
+        "women": "Studied for HSDD and fertility — depends on the cycle phase."
+      },
+      "research": [
+        {
+          "title": "Comninos et al: Kisspeptin in HSDD women",
+          "summary": "Clinical trial in women with low sexual desire — improved arousal and response.",
+          "year": 2020,
+          "journal": "JCI Insight",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=kisspeptin+HSDD"
+        },
+        {
+          "title": "George et al: Kisspeptin in male testosterone",
+          "summary": "In men — activates LH naturally, stronger than a GnRH analog.",
+          "year": 2011,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=kisspeptin+testosterone"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141"
+      ],
+      "popularity": 68
+    },
+    {
+      "id": "mk-677",
+      "name": "MK-677",
+      "fullName": "MK-677 (Ibutamoren / Nutrobal)",
+      "categories": [
+        "muscle",
+        "anti_aging"
+      ],
+      "tagline": "Oral GH secretagogue — no injections",
+      "description": "A non-peptide ghrelin receptor agonist in pill form. Raises GH and IGF-1 for 12-24 hours. Popular for those who want GH-related benefits without injections.",
+      "mechanism": "Activates ghrelin (GHS-R1a) receptors in the pituitary, triggering a GH pulse similar to hexarelin.",
+      "halfLife": "~24 hours (oral)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 2 trials at Merck, investigated for Alzheimer's (development halted 2007)",
+      "dosage": {
+        "beginner": {
+          "amount": "10 mg",
+          "frequency": "1x per day (before sleep)",
+          "route": "Oral",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "15-20 mg",
+          "frequency": "1x per day (before sleep)",
+          "route": "Oral",
+          "duration": "12-16 weeks"
+        },
+        "advanced": {
+          "amount": "25 mg",
+          "frequency": "1x per day or split in 2",
+          "route": "Oral",
+          "duration": "16-24 weeks"
+        }
+      },
+      "timing": "Best before sleep — the GH pulse aligns with the natural nocturnal pulse.",
+      "cycleInfo": "8-24 week cycles, with 4-8 week breaks (to avoid insulin resistance).",
+      "reconstitution": {
+        "vialSize": "Oral (no reconstitution)",
+        "bacWater": "Not applicable",
+        "concentration": "Not applicable",
+        "note": "MK-677 comes as capsules or a liquid suspension. The syringe visualizer does not apply."
+      },
+      "storage": "Room temperature, protected from light and moisture.",
+      "benefits": [
+        "Raises GH and IGF-1 for 24 hours",
+        "Improved sleep depth",
+        "Increased appetite and muscle mass",
+        "Improved skin and hair",
+        "No injections required"
+      ],
+      "sideEffects": [
+        "Strong appetite (may be a downside)",
+        "Water retention",
+        "Elevated blood glucose — insulin resistance risk",
+        "Lethargy and fatigue in the first weeks",
+        "Elevated prolactin"
+      ],
+      "contraindications": [
+        "Diabetes or pre-diabetes",
+        "Active cancer",
+        "Heart failure (water retention)",
+        "Pregnancy and breastfeeding"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for bulking.",
+        "women": "Lower dose (10-15 mg) is often enough. Watch for water retention."
+      },
+      "research": [
+        {
+          "title": "Nass et al: MK-677 in older adults",
+          "summary": "12-month MK-677 in older adults — sustained GH/IGF-1 elevation.",
+          "year": 2008,
+          "journal": "Annals of Internal Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19018019/"
+        }
+      ],
+      "stacksWellWith": [
+        "sermorelin",
+        "cjc-1295"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "hexarelin",
+      "name": "Hexarelin",
+      "fullName": "Hexarelin (Examorelin)",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Strongest GHRP — powerful GH pulse",
+      "description": "Stronger than GHRP-2 and GHRP-6. Faster onset and higher GH pulse, but also faster desensitization. Popular in short cycles for intense bulking.",
+      "mechanism": "Activates the ghrelin receptor (GHS-R1a) in the pituitary — a stronger pulse than other GHRPs. Also has cardioprotective effects.",
+      "halfLife": "~55 minutes",
+      "fdaApproved": false,
+      "researchStatus": "Clinical trials in cardiovascular disease and GH deficiency, but no orphan drug designation",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4 weeks (short cycles)"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "2x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 weeks"
+        },
+        "advanced": {
+          "amount": "200 mcg",
+          "frequency": "3x per day (morning, post-workout, evening)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 weeks (important: short cycles)"
+        }
+      },
+      "timing": "On an empty stomach, preferably 30 min before food or 90 min after.",
+      "cycleInfo": "IMPORTANT: 4-8 week cycles with 4-8 week breaks. Desensitization is rapid.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Same protocol as other GHRPs. Refrigerate immediately after reconstitution."
+      },
+      "storage": "Lyophilized: refrigerated. After reconstitution: 2-8°C, 28 days.",
+      "benefits": [
+        "Strongest GH pulse among GHRPs",
+        "Faster muscle growth",
+        "Cardioprotective effects",
+        "Increased appetite",
+        "Improved sleep"
+      ],
+      "sideEffects": [
+        "Rapid desensitization (after 4-8 weeks)",
+        "Elevated prolactin and cortisol",
+        "Hunger (intense)",
+        "Transient water retention",
+        "Lethargy after injection"
+      ],
+      "contraindications": [
+        "Diabetes",
+        "Heart failure (despite cardioprotection — use caution)",
+        "Pituitary tumor",
+        "Pregnancy"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for bulking cycles.",
+        "women": "Lower dose (50-100 mcg) is often enough due to prolactin elevation."
+      },
+      "research": [
+        {
+          "title": "Imbimbo et al: Hexarelin GH response in humans",
+          "summary": "Strong GH response in healthy subjects and GHD patients.",
+          "year": 1994,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hexarelin+growth+hormone"
+        },
+        {
+          "title": "Mao et al: Cardioprotective effects of hexarelin",
+          "summary": "Hexarelin shows cardioprotection independent of GH effects.",
+          "year": 2014,
+          "journal": "Cardiovascular Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hexarelin+cardiac"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "ll-37",
+      "name": "LL-37",
+      "fullName": "LL-37 (Cathelicidin antimicrobial peptide)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "The only human cathelicidin — antimicrobial + healing",
+      "description": "A 37-amino-acid peptide, the only human cathelicidin. Strong antimicrobial effects against bacteria, fungi, viruses and biofilms. Also immune-modulating and wound-healing.",
+      "mechanism": "Disrupts pathogen cell membranes, modulates immune response, increases angiogenesis and tissue repair.",
+      "halfLife": "~30 minutes (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 1-2 trials for wound healing and chronic infections",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ) or topical",
+          "duration": "2-4 weeks"
+        },
+        "standard": {
+          "amount": "200 mcg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 weeks"
+        },
+        "advanced": {
+          "amount": "500 mcg",
+          "frequency": "1-2x per day",
+          "route": "Subcutaneous (SubQ) or perilesional",
+          "duration": "6-8 weeks"
+        }
+      },
+      "timing": "Timing matters little. Short cycles for active infection, longer for chronic.",
+      "cycleInfo": "2-8 week cycles, with a 4-week break between.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Slightly fragile — refrigerate immediately after reconstitution."
+      },
+      "storage": "Lyophilized: freezer or refrigerator. After reconstitution: 2-8°C, 14 days.",
+      "benefits": [
+        "Strong antimicrobial (bacteria, fungi, viruses)",
+        "Breaks down biofilms",
+        "Accelerated wound healing",
+        "Immune modulation",
+        "Potentially anti-cancer (preliminary)"
+      ],
+      "sideEffects": [
+        "Injection-site irritation (common)",
+        "Redness and mild warmth",
+        "Rare: mild allergic reaction",
+        "Well tolerated at low doses"
+      ],
+      "contraindications": [
+        "Pregnancy (limited data)",
+        "Autoimmune disease (caution)",
+        "History of cytokine storm"
+      ],
+      "genderNotes": {
+        "men": "Same dose as general protocol.",
+        "women": "Same dose. Popular for chronic UTI and recurrent infections."
+      },
+      "research": [
+        {
+          "title": "Vandamme et al: LL-37 antimicrobial properties",
+          "summary": "Review of antimicrobial mechanisms of LL-37.",
+          "year": 2012,
+          "journal": "Cellular and Molecular Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LL-37+antimicrobial"
+        },
+        {
+          "title": "Mansour et al: LL-37 in wound healing",
+          "summary": "LL-37 in chronic wound healing — angiogenesis and epithelialization.",
+          "year": 2014,
+          "journal": "Wound Repair and Regeneration",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LL-37+wound+healing"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "thymosin-alpha-1"
+      ],
+      "popularity": 60
+    },
+    {
+      "id": "ghrp-2",
+      "name": "GHRP-2",
+      "fullName": "Growth Hormone Releasing Peptide-2 (Pralmorelin)",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Classic GH releaser — stronger pulse than Ipamorelin",
+      "description": "A synthetic ghrelin receptor agonist that triggers strong GH release. More potent GH pulse than Ipamorelin but with side effects: elevated cortisol, prolactin, and intense hunger.",
+      "mechanism": "Binds GHS-R1a receptors in the pituitary to trigger GH release; also stimulates ghrelin's appetite pathway.",
+      "halfLife": "~15-60 minutes (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Studied since the 1990s for GH deficiency, but never reached FDA approval. Widely used off-label.",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per day before sleep",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "2x per day (AM + PM, empty stomach)",
+          "route": "SubQ",
+          "duration": "12-16 weeks"
+        },
+        "advanced": {
+          "amount": "200-300 mcg",
+          "frequency": "3x per day (AM, post-workout, PM)",
+          "route": "SubQ",
+          "duration": "12-16 weeks with breaks"
+        }
+      },
+      "timing": "Empty stomach, 30-60 min before food. Avoid sugar/carbs 30 min before to prevent GH blunting.",
+      "cycleInfo": "12-16 weeks on, 4-6 weeks off to reset receptors and stop prolactin creep.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Frequently stacked with CJC-1295 in the same syringe."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
+      "benefits": [
+        "Strong GH and IGF-1 elevation",
+        "Improved sleep depth",
+        "Muscle building",
+        "Cheaper than Ipamorelin",
+        "Useful for breaking lean-muscle plateaus"
+      ],
+      "sideEffects": [
+        "Intense hunger surge (often within 30 min)",
+        "Elevated cortisol (transient stress)",
+        "Elevated prolactin (can affect libido long-term)",
+        "Water retention",
+        "Tingling in hands"
+      ],
+      "contraindications": [
+        "Active cancer (hard contraindication)",
+        "Pregnancy and breastfeeding",
+        "Diabetes (monitor blood glucose)",
+        "Pituitary tumors",
+        "Hyperprolactinemia history"
+      ],
+      "genderNotes": {
+        "men": "Common dose 200-300 mcg, 2-3x daily. Watch for gyno from prolactin if running long cycles.",
+        "women": "Start at 100 mcg. Higher hormone sensitivity — prolactin elevation more impactful."
+      },
+      "research": [
+        {
+          "title": "Bowers CY: Growth hormone-releasing peptide (GHRP)",
+          "summary": "Original characterization of GHRP family by the discoverer; reviews structure-activity and clinical potential.",
+          "year": 1998,
+          "journal": "Cellular and Molecular Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Bowers+GHRP"
+        },
+        {
+          "title": "Laferrère B et al: GHRP-2 increases food intake in healthy humans",
+          "summary": "GHRP-2 stimulates appetite ~2-3x in healthy adults, explaining the hunger side effect.",
+          "year": 2005,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laferrere+GHRP-2"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin",
+        "bpc-157"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "aod-9604",
+      "name": "AOD-9604",
+      "fullName": "Anti-Obesity Drug 9604 (HGH fragment 176-191)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "HGH fragment — fat loss without GH side effects",
+      "description": "A 16-amino-acid fragment of HGH that retains the fat-burning action of growth hormone without the muscle-growth or blood-sugar effects. Reached Phase 2b trials by Metabolic Pharmaceuticals.",
+      "mechanism": "Stimulates lipolysis (fat breakdown) and inhibits lipogenesis (fat storage) by activating β3-adrenergic receptors in adipocytes; does not affect IGF-1 or blood glucose.",
+      "halfLife": "~30 minutes (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 2b human trials completed (Metabolic Pharmaceuticals); did not advance to Phase 3. TGA-approved for compounding in Australia.",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x per day on empty stomach",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 weeks"
+        },
+        "standard": {
+          "amount": "300-500 mcg",
+          "frequency": "1x per day in the morning",
+          "route": "SubQ",
+          "duration": "12-16 weeks"
+        },
+        "advanced": {
+          "amount": "500-1000 mcg",
+          "frequency": "Split AM + PM (empty stomach)",
+          "route": "SubQ",
+          "duration": "12-16 weeks"
+        }
+      },
+      "timing": "Best on an empty stomach in the morning. Avoid food for 90 min after to maximize lipolysis.",
+      "cycleInfo": "Long cycles tolerated — 12-16 weeks on, 4 weeks off. Receptor desensitization is minimal.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Standard reconstitution. Often stacked with GH secretagogues for synergistic fat loss."
+      },
+      "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
+      "benefits": [
+        "Visceral and abdominal fat reduction",
+        "No effect on blood glucose or insulin",
+        "No effect on IGF-1 (safer for cancer history)",
+        "Joint-friendly (unlike full GH)",
+        "Well tolerated in clinical trials"
+      ],
+      "sideEffects": [
+        "Generally very mild",
+        "Occasional injection-site irritation",
+        "Mild fatigue first week",
+        "No reported serious side effects in trials"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding (limited data)",
+        "Eating disorder history (caution with intentional fat loss)"
+      ],
+      "genderNotes": {
+        "men": "Same dosing. Popular for stubborn belly fat after age 40.",
+        "women": "Same dosing. Particularly effective for post-menopausal abdominal fat."
+      },
+      "research": [
+        {
+          "title": "Ng FM et al: Lipolytic and antilipogenic actions of HGH fragment 177-191",
+          "summary": "Original characterization of the HGH 176-191 fragment's fat-burning mechanism.",
+          "year": 2000,
+          "journal": "Hormone and Metabolic Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604+lipolytic"
+        },
+        {
+          "title": "Heffernan M et al: AOD-9604 Phase 2 obesity trial",
+          "summary": "12-week Phase 2 trial in obesity; modest but consistent fat loss without GH side effects.",
+          "year": 2007,
+          "journal": "Diabetes, Obesity and Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604+obesity"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin",
+        "tesamorelin",
+        "bpc-157"
+      ],
+      "popularity": 73
+    },
+    {
+      "id": "humanin",
+      "name": "Humanin",
+      "fullName": "Humanin (HN, mitochondrial-derived peptide)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Mitochondrial peptide — neuroprotective + longevity",
+      "description": "A 24-amino-acid mitochondrial-derived peptide. Sister molecule to MOTS-c. Strong preclinical data for Alzheimer protection, ischemia recovery, and cellular longevity.",
+      "mechanism": "Binds the IGFBP-3 / FPR2L receptor complex; activates JAK/STAT3 survival signaling, inhibits Bax-mediated apoptosis, and reduces ER stress.",
+      "halfLife": "~30 minutes (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Strong preclinical (rodent, in vitro). First human pharmacokinetic trials underway in 2024-2025.",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "1x per day",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 weeks"
+        },
+        "standard": {
+          "amount": "5-10 mg",
+          "frequency": "1x per day",
+          "route": "SubQ",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "10-15 mg",
+          "frequency": "1x per day",
+          "route": "SubQ",
+          "duration": "12 weeks with a 4-week break"
+        }
+      },
+      "timing": "Morning preferred for cognitive effects; any time is fine.",
+      "cycleInfo": "8-12 week cycles, 4 weeks off.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Stable peptide. Standard reconstitution protocol."
+      },
+      "storage": "Lyophilized: refrigerated. Reconstituted: 2-8°C, 28 days.",
+      "benefits": [
+        "Neuroprotection (Alzheimer models)",
+        "Improved insulin sensitivity",
+        "Reduced cellular apoptosis",
+        "Cardioprotective effects",
+        "Mitochondrial biogenesis"
+      ],
+      "sideEffects": [
+        "Generally very well tolerated",
+        "Rare: mild fatigue at start",
+        "No serious side effects reported in animal studies"
+      ],
+      "contraindications": [
+        "Pregnancy (no research)",
+        "Active cancer (caution — survival signaling could theoretically protect tumor cells)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular for cognitive longevity stacks.",
+        "women": "Same dose. Endogenous humanin levels decline with menopause — supplementation may have outsized benefit."
+      },
+      "research": [
+        {
+          "title": "Hashimoto Y et al: Humanin protects against Alzheimer-related cell death",
+          "summary": "Landmark 2001 study discovering humanin via screening for Alzheimer-protective peptides.",
+          "year": 2001,
+          "journal": "Proceedings of the National Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Hashimoto+humanin+2001"
+        },
+        {
+          "title": "Yen K et al: Humanin levels decline with age and disease",
+          "summary": "Circulating humanin drops significantly with aging and accelerates in Alzheimer patients.",
+          "year": 2020,
+          "journal": "GeroScience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=humanin+aging+decline"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "epitalon",
+        "ss-31"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "klotho",
+      "name": "Klotho",
+      "fullName": "α-Klotho (soluble fragment)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Anti-aging protein — overexpression extends mouse lifespan ~30%",
+      "description": "Soluble α-klotho is a circulating fragment of the Klotho protein, named after the Greek fate who spins the thread of life. Mice engineered to overexpress klotho live 30% longer; klotho-deficient mice age prematurely.",
+      "mechanism": "Co-receptor for FGF23 (phosphate homeostasis); inhibits insulin/IGF-1 signaling (longevity pathway); enhances antioxidant FOXO transcription; modulates Wnt and TGF-β signaling.",
+      "halfLife": "Short circulating (~30 min) but effects sustained via gene expression changes.",
+      "fdaApproved": false,
+      "researchStatus": "Highly experimental as therapy. Strong genetic / preclinical data; no FDA-approved human peptide therapy yet. Compounding pharmacies offer research-grade.",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12 weeks (one cycle)"
+        },
+        "standard": {
+          "amount": "200-400 mcg",
+          "frequency": "1-2x per week",
+          "route": "SubQ",
+          "duration": "12-24 weeks"
+        },
+        "advanced": {
+          "amount": "500 mcg",
+          "frequency": "2x per week",
+          "route": "SubQ",
+          "duration": "24 weeks with a 4-8 week break"
+        }
+      },
+      "timing": "Any time; weekly cadence makes timing less important.",
+      "cycleInfo": "Long cycles tolerated. Conservative protocol: 12-24 weeks on, 8 weeks off.",
+      "reconstitution": {
+        "vialSize": "1 mg",
+        "bacWater": "1 mL",
+        "concentration": "1 mg/mL",
+        "note": "Expensive — measure precisely. Sensitive to heat; keep cold throughout."
+      },
+      "storage": "Lyophilized: -20°C freezer. Reconstituted: 2-8°C, 14 days.",
+      "benefits": [
+        "Possible lifespan extension (animal data)",
+        "Cognitive protection (Alzheimer models)",
+        "Cardiovascular protection",
+        "Kidney protection",
+        "Bone density maintenance",
+        "Insulin/IGF-1 axis modulation"
+      ],
+      "sideEffects": [
+        "Limited human data — side effects largely unknown",
+        "Theoretical: altered phosphate metabolism (FGF23 co-receptor effects)",
+        "Animal studies show good tolerability"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Chronic kidney disease (phosphate metabolism interaction)",
+        "Hyperphosphatemia",
+        "Active cancer (insufficient data on tumor signaling impact)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Popular in advanced longevity stacks.",
+        "women": "Same dose. Klotho levels drop with menopause — supplementation hypothesized to support bone + cognitive health."
+      },
+      "research": [
+        {
+          "title": "Kuro-o M et al: Mutation of the mouse klotho gene leads to a syndrome resembling ageing",
+          "summary": "Original 1997 discovery: klotho-deficient mice show accelerated aging.",
+          "year": 1997,
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Kuro-o+klotho+1997"
+        },
+        {
+          "title": "Kurosu H et al: Suppression of aging in mice by the hormone Klotho",
+          "summary": "Mice overexpressing klotho live 19-31% longer than wild-type.",
+          "year": 2005,
+          "journal": "Science",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Kurosu+klotho+aging+2005"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "mots-c",
+        "humanin",
+        "ss-31"
+      ],
+      "popularity": 58
+    },
+    {
+      "id": "cagrilintide",
+      "name": "Cagrilintide",
+      "fullName": "Cagrilintide (long-acting amylin analog)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Long-acting amylin analog — appetite control via different pathway than GLP-1",
+      "description": "Novo Nordisk's long-acting amylin analog. Slows gastric emptying and suppresses appetite via amylin receptors. Studied as monotherapy and as the cagri component of CagriSema.",
+      "mechanism": "Selective amylin receptor (AMY1-3) agonist; pancreatic amylin co-secreted with insulin. Slows gastric emptying, suppresses post-meal glucagon, reduces appetite via hindbrain area postrema.",
+      "halfLife": "~7 days (acyl-modified for once-weekly dosing)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 monotherapy trials (Novo Nordisk). Expected to file FDA submission 2025-2026 as alternative or addition to semaglutide.",
+      "dosage": {
+        "beginner": {
+          "amount": "0.3 mg",
+          "frequency": "1x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Titration phase 4 weeks"
+        },
+        "standard": {
+          "amount": "0.6 → 1.2 → 1.7 mg",
+          "frequency": "1x per week, increasing every 4 weeks",
+          "route": "SubQ",
+          "duration": "16-20 weeks"
+        },
+        "advanced": {
+          "amount": "2.4 mg (max)",
+          "frequency": "1x per week",
+          "route": "SubQ",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Same day each week. Independent of meals.",
+      "cycleInfo": "Long-term maintenance like GLP-1 drugs. Taper down if discontinuing to avoid rebound appetite.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Compounded version. Clinical product is pre-filled pen."
+      },
+      "storage": "Lyophilized: refrigerated 2-8°C. After reconstitution: 2-8°C, 28 days.",
+      "benefits": [
+        "10-12% weight loss as monotherapy in Phase 2",
+        "Different mechanism than GLP-1 (complementary or alternative)",
+        "Less nausea than semaglutide",
+        "Smooth appetite control without 'food noise' crashes",
+        "Pairs synergistically with semaglutide (see CagriSema)"
+      ],
+      "sideEffects": [
+        "Nausea (mild, less than GLP-1)",
+        "Decreased appetite (intended)",
+        "Injection-site reactions",
+        "Hypoglycemia (if combined with other diabetes meds)"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Severe gastroparesis",
+        "Personal history of pancreatitis",
+        "Type 1 diabetes (limited data)"
+      ],
+      "genderNotes": {
+        "men": "Same dose. Studied in mixed-sex Phase 2/3 cohorts.",
+        "women": "Same dose. Check fertility plans — limited human data."
+      },
+      "research": [
+        {
+          "title": "Lau DCW et al: Cagrilintide monotherapy in obesity",
+          "summary": "26-week Phase 2 trial: ~10% weight loss with cagrilintide alone at 2.4 mg weekly.",
+          "year": 2021,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrilintide+phase+2"
+        },
+        {
+          "title": "Enebo LB et al: Cagrilintide + Semaglutide (CagriSema)",
+          "summary": "20-week proof-of-concept showed 15.6% combined weight loss.",
+          "year": 2021,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrilintide+semaglutide"
+        }
+      ],
+      "stacksWellWith": [
+        "semaglutide",
+        "tesamorelin",
+        "mots-c"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "5-amino-1mq",
+      "name": "5-Amino-1MQ",
+      "fullName": "5-Amino-1-methylquinolinium",
+      "categories": [
+        "fat_loss",
+        "longevity"
+      ],
+      "tagline": "NNMT inhibitor for fat loss without appetite suppression",
+      "description": "5-Amino-1MQ is a synthetic small molecule (not a true peptide) that selectively inhibits nicotinamide N-methyltransferase (NNMT), an enzyme that depletes the methyl donors and NAD+ precursors used for cellular energy production. Blocking NNMT in adipocytes shifts fat cells from storage to fuel-burning mode and raises intracellular NAD+ and S-adenosyl-methionine. Unlike GLP-1 drugs, it produces fat-mass reduction in rodents without suppressing appetite or food intake. All current dosing comes from mouse studies scaled to human equivalents — no published Phase 1 human trial exists.",
+      "mechanism": "Selectively inhibits NNMT in adipose and liver tissue, preserving nicotinamide for NAD+ synthesis and raising SAM cofactor pools, which promotes fatty-acid oxidation and reduces adipocyte size.",
+      "halfLife": "~4-7 hours (rodent PK; human data unavailable)",
+      "fdaApproved": false,
+      "researchStatus": "Preclinical only — strong mouse data, no human trials",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mg",
+          "frequency": "1x per day (morning)",
+          "route": "Oral capsule",
+          "duration": "2 weeks (titration)"
+        },
+        "standard": {
+          "amount": "100 mg",
+          "frequency": "1x per day (morning)",
+          "route": "Oral capsule",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "150 mg or 50 mg 2x/day",
+          "frequency": "1-2x per day",
+          "route": "Oral capsule",
+          "duration": "8-12 weeks"
+        }
+      },
+      "timing": "Morning only. Afternoon or evening dosing commonly causes insomnia due to elevated NAD+ and mild stimulant-like effects.",
+      "cycleInfo": "8-12 week cycles followed by 4-6 weeks off to allow baseline NNMT activity to reset.",
+      "reconstitution": {
+        "vialSize": "N/A",
+        "bacWater": "N/A",
+        "concentration": "N/A",
+        "note": "Oral compound — no reconstitution needed."
+      },
+      "storage": "Capsules: room temperature, sealed, stable ~12 months. Avoid heat and moisture.",
+      "benefits": [
+        "Fat-mass reduction without appetite suppression",
+        "Raises intracellular NAD+ and SAM cofactor pools",
+        "Improves liver metabolic markers in obese mice",
+        "Preserves lean mass (no muscle loss in rodent studies)",
+        "Does not reduce food intake — useful when appetite suppression is undesirable"
+      ],
+      "sideEffects": [
+        "Mild warmth and slightly elevated resting heart rate (weeks 1-2)",
+        "Insomnia if dosed afternoon or evening",
+        "Mild digestive upset with oral capsules",
+        "Reduced exercise tolerance during early cardiovascular training",
+        "Theoretical liver enzyme changes (baseline and post-cycle ALT/AST recommended)"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Active cancer or recent cancer history (NNMT role in tumor biology unclear)",
+        "Liver disease",
+        "Children and teenagers",
+        "Known sleep disorders",
+        "Concurrent methotrexate, methylated B vitamins, or methyl-donor-sensitive psychiatric drugs"
+      ],
+      "genderNotes": {
+        "men": "Standard dosing applies. Popular in body recomposition stacks targeting visceral fat.",
+        "women": "Standard dosing applies. No estrogen interaction reported, but no human trials have included women specifically."
+      },
+      "research": [
+        {
+          "title": "Selective and membrane-permeable small molecule inhibitors of nicotinamide N-methyltransferase reverse high-fat diet-induced obesity in mice",
+          "summary": "First demonstration that 5-Amino-1MQ inhibits NNMT, raises NAD+ in adipocytes, and reduces white-adipose mass and body weight in diet-induced obese mice without changing food intake.",
+          "year": 2018,
+          "journal": "Biochemical Pharmacology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29787721/"
+        },
+        {
+          "title": "Nicotinamide N-methyltransferase knockdown protects against diet-induced obesity",
+          "summary": "Foundational proof-of-concept showing genetic knockdown of NNMT in adipose tissue protects mice from diet-induced obesity, validating NNMT as a metabolic target.",
+          "year": 2014,
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24717514/"
+        },
+        {
+          "title": "Reduced calorie diet combined with NNMT inhibition establishes a distinct microbiome in DIO mice",
+          "summary": "Combining 5-Amino-1MQ with a reduced-calorie diet produced synergistic reductions in fat and liver-fat mass beyond either intervention alone.",
+          "year": 2022,
+          "journal": "Scientific Reports",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35013352/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "mots-c",
+        "tesofensine",
+        "aod-9604"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "slu-pp-332",
+      "name": "SLU-PP-332",
+      "fullName": "Saint Louis University Pan-ERR Agonist 332",
+      "categories": [
+        "fat_loss",
+        "muscle",
+        "longevity"
+      ],
+      "tagline": "Exercise-mimetic ERR agonist for endurance and fat loss",
+      "description": "SLU-PP-332 is a synthetic small-molecule pan-agonist of the estrogen-related receptors (ERRα/β/γ), nuclear receptors that drive mitochondrial biogenesis and oxidative metabolism. By directly activating the same transcriptional program triggered by endurance exercise, it raises oxidative muscle fiber content and energy expenditure without mechanical loading. It is approximately 4-fold more potent at ERRα than ERRγ, favoring muscle and metabolic tissue effects. Despite striking rodent efficacy, no human trials exist as of 2026.",
+      "mechanism": "Pan-agonism of ERRα/β/γ nuclear receptors increases mitochondrial biogenesis, fatty-acid oxidation, and type IIa oxidative muscle-fiber formation — reproducing the transcriptional signature of aerobic exercise.",
+      "halfLife": "Not formally established in humans; measurable plasma and muscle levels at 6 hours in mice (supports BID preclinical dosing)",
+      "fdaApproved": false,
+      "researchStatus": "Preclinical only — no human pharmacokinetic or safety data",
+      "dosage": {
+        "beginner": {
+          "amount": "12.5-25 mg",
+          "frequency": "1x per day",
+          "route": "Oral",
+          "duration": "4 weeks"
+        },
+        "standard": {
+          "amount": "50 mg",
+          "frequency": "1x per day",
+          "route": "Oral",
+          "duration": "6-8 weeks"
+        },
+        "advanced": {
+          "amount": "50 mg 2x/day or 100 mg 1x/day",
+          "frequency": "1-2x per day",
+          "route": "Oral (community SubQ 250 mcg-1.5 mg also reported)",
+          "duration": "8-12 weeks"
+        }
+      },
+      "timing": "Morning dosing preferred to avoid sleep disruption from stimulatory effects. BID protocols split morning and early afternoon.",
+      "cycleInfo": "6-8 week cycles aligned with published chronic mouse studies; 4-week breaks recommended between cycles.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Inject BAC water slowly down vial wall; swirl gently. Protect reconstituted solution from light — deepening yellow color indicates oxidation, replace if observed."
+      },
+      "storage": "Lyophilized: months refrigerated, longer at -20°C. Reconstituted: 2-8°C light-protected, 2-4 weeks. Oral tablets: room temperature, dry, dark.",
+      "benefits": [
+        "25-30% fat-mass reduction in diet-induced obese mice (28 days)",
+        "Increased treadmill endurance and oxidative muscle fiber content",
+        "Improved glucose tolerance without altered food intake",
+        "Improved cardiac ejection fraction in heart-failure mouse models",
+        "Restored mitochondrial function in aging kidney models"
+      ],
+      "sideEffects": [
+        "Sleep disruption and stimulatory effects",
+        "Increased resting heart rate",
+        "Appetite changes (community reports)",
+        "Unknown chronic cardiovascular risk",
+        "Uncertain cancer-metabolism interactions (ERRα implicated in some tumor pathways)"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Age under 18",
+        "Active or recent cancer history",
+        "Cardiovascular disease, arrhythmia, uncontrolled hypertension",
+        "Significant liver or kidney impairment",
+        "WADA-tested competitive athletes (falls under S4.5 metabolic modulators)",
+        "Concurrent stimulants without clinical oversight"
+      ],
+      "genderNotes": {
+        "men": "Standard dosing applies. Popular in endurance and body-recomposition stacks.",
+        "women": "Standard dosing applies. ERR receptors are not estrogen receptors despite the name — no direct hormonal effect, but no female-specific human data exists."
+      },
+      "research": [
+        {
+          "title": "Synthetic ERRα/β/γ Agonist Induces an ERRα-Dependent Acute Aerobic Exercise Response and Enhances Exercise Capacity",
+          "summary": "First in-vivo characterization of SLU-PP-332. At 25 mg/kg IP daily, mice showed increased treadmill endurance and an acute aerobic exercise transcriptional signature in muscle.",
+          "year": 2023,
+          "journal": "ACS Chemical Biology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36947694/"
+        },
+        {
+          "title": "An ERR agonist as exercise mimetic: effects on body composition and glucose tolerance in obese mice",
+          "summary": "50 mg/kg BID over 28 days reduced fat mass by 25-30% and improved glucose tolerance in diet-induced obese mice without altering food intake.",
+          "year": 2024,
+          "journal": "Journal of Pharmacology and Experimental Therapeutics",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38777605/"
+        },
+        {
+          "title": "Pharmacological activation of ERR improves cardiac function and survival in heart failure",
+          "summary": "Six-week SLU-PP-332 administration improved ejection fraction and survival in a mouse model of heart failure with preserved ejection fraction.",
+          "year": 2024,
+          "journal": "Circulation",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38583093/"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "5-amino-1mq",
+        "aod-9604",
+        "tesamorelin"
+      ],
+      "popularity": 55
+    },
+    {
+      "id": "tesofensine",
+      "name": "Tesofensine",
+      "fullName": "Tesofensine (NS2330)",
+      "categories": [
+        "fat_loss",
+        "cognitive"
+      ],
+      "tagline": "Triple monoamine reuptake inhibitor for weight loss",
+      "description": "Tesofensine is a small-molecule (not a peptide) triple monoamine reuptake inhibitor that blocks reabsorption of dopamine, norepinephrine, and serotonin in the brain. Originally developed for Parkinson's and Alzheimer's disease, weight loss emerged as a striking side effect, redirecting development toward obesity. Phase 2 trials showed roughly twice the weight loss of approved drugs at the time, though cardiovascular and psychiatric signals at higher doses delayed FDA approval. It remains investigational in the US as of 2026, with conditional approval pathways advancing in Mexico.",
+      "mechanism": "Inhibits presynaptic reuptake of dopamine, norepinephrine, and serotonin, prolonging hypothalamic monoamine signaling — suppressing appetite and modestly raising resting energy expenditure.",
+      "halfLife": "~9 days (parent); ~16 days (M1/NS2360 active metabolite)",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 complete in Mexico; not FDA-approved; investigational in US/EU",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg",
+          "frequency": "1x per day (morning)",
+          "route": "Oral tablet",
+          "duration": "24 weeks"
+        },
+        "standard": {
+          "amount": "0.5 mg",
+          "frequency": "1x per day (morning)",
+          "route": "Oral tablet",
+          "duration": "24 weeks"
+        },
+        "advanced": {
+          "amount": "0.5 mg (1.0 mg discontinued in Phase 2 due to BP elevation)",
+          "frequency": "1x per day (morning)",
+          "route": "Oral tablet",
+          "duration": "24 weeks"
+        }
+      },
+      "timing": "Morning, with or without food. Evening dosing causes insomnia due to long half-life and dopaminergic activity.",
+      "cycleInfo": "Continuous 24-week treatment courses as studied in trials. Steady state reached at 4-6 weeks due to long half-life; abrupt discontinuation followed by a 4-6 week washout.",
+      "reconstitution": {
+        "vialSize": "N/A",
+        "bacWater": "N/A",
+        "concentration": "N/A",
+        "note": "Oral compound — no reconstitution needed."
+      },
+      "storage": "Room temperature (15-25°C / 59-77°F), sealed container, protected from light and moisture.",
+      "benefits": [
+        "~10% body weight loss at 0.5 mg over 24 weeks (Phase 2)",
+        "Roughly twice the weight loss of older approved anti-obesity drugs",
+        "Once-daily oral dosing — no injections required",
+        "Early appetite suppression within 1-2 weeks",
+        "Possible mood and motivation lift from dopaminergic activity"
+      ],
+      "sideEffects": [
+        "Dry mouth, nausea, constipation, abdominal pain",
+        "Insomnia and sleep disturbance",
+        "Heart rate increase of 5-10 bpm at 0.5 mg",
+        "Blood pressure elevation at 1.0 mg (dose discontinued)",
+        "Anxiety, irritability, mood changes",
+        "~20% withdrawal rate due to adverse events in trials"
+      ],
+      "contraindications": [
+        "Uncontrolled hypertension or significant cardiovascular disease",
+        "Anxiety disorders, bipolar disorder, or psychosis history",
+        "Current MAO inhibitor use (serotonin syndrome risk)",
+        "Concurrent SSRI, SNRI, or other serotonergic medications",
+        "Strong CYP3A4 inhibitors (certain antifungals, antibiotics)",
+        "Pregnancy, pregnancy planning, or breastfeeding",
+        "Children and adolescents"
+      ],
+      "genderNotes": {
+        "men": "Standard dosing applies. Monitor blood pressure carefully — men in trials showed slightly higher BP signal at 1.0 mg.",
+        "women": "Standard dosing applies. Strict pregnancy avoidance required due to long half-life (effects persist weeks after discontinuation)."
+      },
+      "research": [
+        {
+          "title": "Effect of tesofensine on bodyweight loss, body composition, and quality of life in obese patients: a randomised, double-blind, placebo-controlled trial",
+          "summary": "Phase 2 trial in 203 obese Danish adults over 24 weeks. Tesofensine 0.5 mg produced ~10% weight loss (placebo-subtracted), approximately double that of approved anti-obesity agents of the era.",
+          "year": 2008,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18950853/"
+        },
+        {
+          "title": "The effect of the triple monoamine reuptake inhibitor tesofensine on energy metabolism and appetite in overweight and moderately obese men",
+          "summary": "Mechanistic study confirming tesofensine reduces appetite and modestly raises 24-hour energy expenditure in overweight men, supporting the dual appetite/thermogenesis mechanism.",
+          "year": 2010,
+          "journal": "International Journal of Obesity",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20531350/"
+        },
+        {
+          "title": "Randomized controlled trial of Tesomet for weight loss in hypothalamic obesity",
+          "summary": "Combination of tesofensine + metoprolol (Tesomet) showed weight loss in hypothalamic obesity while metoprolol blunted the heart-rate signal — informing safer dosing approaches.",
+          "year": 2022,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35552711/"
+        }
+      ],
+      "stacksWellWith": [
+        "5-amino-1mq",
+        "semaglutide",
+        "aod-9604"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "survodutide",
+      "name": "Survodutide",
+      "fullName": "Survodutide (BI 456906)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Dual GLP-1 and glucagon receptor agonist for weight loss",
+      "description": "Survodutide is a dual agonist of the GLP-1 and glucagon receptors developed by Boehringer Ingelheim and Zealand Pharma. The GLP-1 component reduces appetite while the glucagon arm raises resting energy expenditure — a two-sided approach that combines reduced intake with increased burn. A fatty-acid tail enables once-weekly subcutaneous dosing. Phase 3 SYNCHRONIZE-1 (April 2026) reported 16.6% body-weight reduction over 76 weeks, and the compound holds FDA Fast Track designation for MASH (metabolic dysfunction-associated steatohepatitis). It is not yet FDA-approved as of May 2026.",
+      "mechanism": "Dual agonism of GLP-1 receptor (suppresses appetite, slows gastric emptying) and glucagon receptor (raises resting energy expenditure and hepatic fatty-acid oxidation), driving weight loss and liver fat reduction.",
+      "halfLife": "Optimized for once-weekly dosing via C18 fatty-acid albumin-binding tail",
+      "fdaApproved": false,
+      "researchStatus": "Phase 3 SYNCHRONIZE-1 positive topline (April 2026); FDA Fast Track for MASH",
+      "dosage": {
+        "beginner": {
+          "amount": "0.6 mg",
+          "frequency": "1x per week",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Weeks 1-4 (titration)"
+        },
+        "standard": {
+          "amount": "2.4-3.6 mg",
+          "frequency": "1x per week",
+          "route": "SubQ",
+          "duration": "Weeks 8-46 (steady dose)"
+        },
+        "advanced": {
+          "amount": "4.8 mg",
+          "frequency": "1x per week",
+          "route": "SubQ",
+          "duration": "Weeks 20-76 (top studied dose)"
+        }
+      },
+      "timing": "Same day each week, any time of day. Inject into abdomen, thigh, or upper arm; rotate sites to avoid lipodystrophy.",
+      "cycleInfo": "Continuous use as studied. Slow 20-week titration (0.6 → 2.4 → 3.6 → 4.8 mg) is essential to minimize gastrointestinal side effects.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Swab stopper with alcohol, draw BAC water slowly down inside wall, swirl gently (do not shake), inspect for clarity, label with date. At 5 mg/mL, 1 U on a U-100 insulin syringe = 0.05 mg."
+      },
+      "storage": "Lyophilized long-term: -20°C, dark and dry. Lyophilized short-term: 2-8°C. Reconstituted: 2-8°C, use within BAC water shelf window. Avoid repeated freeze/thaw cycles.",
+      "benefits": [
+        "Up to 16.6% body weight loss over 76 weeks (Phase 3)",
+        "85% of Phase 3 participants achieved ≥5% weight loss",
+        "Dual mechanism may raise resting energy expenditure beyond GLP-1-only agents",
+        "Promising MASH/liver fibrosis improvement (Phase 2)",
+        "Once-weekly injection schedule",
+        "Mostly fat-tissue loss with minimal lean-mass loss"
+      ],
+      "sideEffects": [
+        "Nausea (66% in MASH trial vs 23% placebo)",
+        "Diarrhea, vomiting — most severe during 20-week escalation",
+        "~20-25% trial discontinuation due to GI side effects",
+        "Rare: dehydration with acute kidney injury",
+        "Rare: angioedema reported in one Phase 2 participant",
+        "Heart rate increase (consistent with GLP-1 class)"
+      ],
+      "contraindications": [
+        "Personal or family history of medullary thyroid cancer or MEN 2",
+        "History of pancreatitis",
+        "Severe gastrointestinal disease or gastroparesis",
+        "Pregnancy or breastfeeding",
+        "Diabetes managed with insulin or sulfonylureas (hypoglycemia risk — requires close monitoring)",
+        "Children and adolescents",
+        "Known peptide allergies"
+      ],
+      "genderNotes": {
+        "men": "Standard dosing applies. Subgroup analyses showed similar efficacy across sexes.",
+        "women": "Standard dosing applies. Strict contraception advised — peptide effects on fetal development unknown. Loss-of-contraceptive-efficacy concern from delayed gastric emptying applies as with other GLP-1 agents."
+      },
+      "research": [
+        {
+          "title": "Glucagon and GLP-1 receptor dual agonist survodutide for obesity: a randomised, double-blind, placebo-controlled, dose-finding phase 2 trial",
+          "summary": "387 adults with BMI ≥27 across 12 countries received weekly survodutide (0.6-4.8 mg) or placebo for 46 weeks. Dose-dependent weight loss reaching 14.9% at the top dose, with most weight loss as fat tissue.",
+          "year": 2024,
+          "journal": "Lancet Diabetes & Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38330987/"
+        },
+        {
+          "title": "Survodutide for the treatment of metabolic dysfunction-associated steatohepatitis",
+          "summary": "Phase 2 trial in 295 adults with MASH and liver fibrosis. Survodutide produced significant histologic improvement in MASH and reductions in liver fat content vs placebo.",
+          "year": 2024,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38875111/"
+        },
+        {
+          "title": "Dose-response effects of the glucagon receptor/GLP-1 receptor dual agonist survodutide on HbA1c in type 2 diabetes: a phase 2 trial",
+          "summary": "Phase 2 trial in adults with type 2 diabetes showed HbA1c reductions of approximately 1.5% versus placebo at top doses, alongside dose-dependent weight loss.",
+          "year": 2023,
+          "journal": "Diabetologia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37782403/"
+        }
+      ],
+      "stacksWellWith": [
+        "cagrilintide",
+        "5-amino-1mq",
+        "tesamorelin"
+      ],
+      "popularity": 60
+    },
+    {
+      "id": "glutathione",
+      "name": "Glutathione",
+      "fullName": "L-Glutathione (GSH, reduced)",
+      "categories": [
+        "anti_aging",
+        "longevity"
+      ],
+      "tagline": "Master antioxidant for detoxification and skin health",
+      "description": "A tripeptide of cysteine, glutamine, and glycine that serves as the body's most abundant endogenous antioxidant. Produced in every cell, glutathione neutralizes reactive oxygen species, recycles vitamins C and E, and supports phase II liver detoxification. Available as oral capsules, liposomal preparations, sublingual lozenges, subcutaneous injection, and intravenous infusion. Best-studied human effect is modest, reversible skin lightening; injectable use carries notable safety concerns and is not FDA-approved.",
+      "mechanism": "Donates electrons via its cysteine thiol to neutralize free radicals, then is recycled by glutathione reductase. Inhibits the melanin-producing enzyme tyrosinase, shifting eumelanin synthesis toward lighter pheomelanin. Cofactor for glutathione peroxidase and glutathione-S-transferase detoxification pathways.",
+      "halfLife": "Plasma half-life under 10 minutes (IV); effects from regular dosing fade within weeks of stopping",
+      "fdaApproved": false,
+      "researchStatus": "Mixed human RCT data for skin lightening; injectable forms unapproved with FDA safety warnings",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mg",
+          "frequency": "Once daily",
+          "route": "Oral (capsule) or liposomal",
+          "duration": "4-8 weeks"
+        },
+        "standard": {
+          "amount": "500-1,000 mg",
+          "frequency": "Once daily oral, or 200-600 mg 2-3x/week SubQ",
+          "route": "Oral, liposomal, or subcutaneous",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "600-1,200 mg",
+          "frequency": "1-2x weekly",
+          "route": "Intravenous (clinic-administered)",
+          "duration": "4-12 weeks under supervision"
+        }
+      },
+      "timing": "Empty stomach is traditional but not proven necessary. Injectable doses morning or early afternoon. Stack with NAC and vitamin C to support endogenous regeneration.",
+      "cycleInfo": "Visible skin effects appear 2-4 weeks in, plateau over 4-12 weeks. All effects reverse within weeks of stopping. No strict cycling required for oral; injectable users typically run 8-12 week blocks with breaks.",
+      "reconstitution": {
+        "vialSize": "1,200 mg lyophilized",
+        "bacWater": "3.0 mL bacteriostatic water",
+        "concentration": "400 mg/mL",
+        "note": "Some products ship as ready-to-inject solution (no reconstitution needed). Inject water down vial wall and swirl gently — do not shake."
+      },
+      "storage": "Lyophilized vial: freezer at -20°C long-term. Reconstituted or pre-mixed solution: refrigerate at 2-8°C, protect from light. Discard if yellow or cloudy. Ready-to-inject solutions follow product label, typically 30 days refrigerated.",
+      "benefits": [
+        "Modest, reversible skin lightening in sun-exposed areas",
+        "Supports liver detoxification and phase II conjugation",
+        "Replenishes systemic antioxidant capacity",
+        "May improve NAFLD liver enzyme markers in small trials",
+        "Reduces oxidative stress biomarkers"
+      ],
+      "sideEffects": [
+        "Oral: bloating, loose stools, mild cramping",
+        "IV: flushing, dizziness, rare anaphylaxis",
+        "Injectable: risk of endotoxin contamination (FDA warning 2019)",
+        "Sulfur smell on breath or skin",
+        "Rare acute liver injury reported with IV use"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Asthma (inhaled forms may trigger bronchospasm)",
+        "G6PD deficiency, especially with high-dose IV vitamin C",
+        "Active sulfa allergy (caution)",
+        "Concurrent chemotherapy without oncology approval"
+      ],
+      "genderNotes": {
+        "men": "No sex-specific dosing differences documented.",
+        "women": "Avoid in pregnancy and breastfeeding due to insufficient safety data. Skin-lightening effect commonly the primary use case."
+      },
+      "research": [
+        {
+          "title": "Oral glutathione supplementation impacts skin pigmentation: a randomised double-blind placebo-controlled trial",
+          "summary": "Oral 500 mg/day for 4 weeks significantly reduced melanin indices in sun-exposed skin versus placebo.",
+          "year": 2017,
+          "journal": "Journal of Dermatological Treatment",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29445569/"
+        },
+        {
+          "title": "The clinical effect of glutathione on skin color and other related skin conditions: a systematic review",
+          "summary": "Review of RCTs finds inconsistent but trending evidence for skin brightening; oral forms safer than IV.",
+          "year": 2019,
+          "journal": "Journal of Cosmetic Dermatology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30895708/"
+        },
+        {
+          "title": "Systemic glutathione as a skin-whitening agent in adult individuals",
+          "summary": "Narrative review of dose-response and safety profile across oral, sublingual, and intravenous routes.",
+          "year": 2020,
+          "journal": "Dermatologic Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32373172/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "ghk-cu",
+        "epitalon"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "nad-plus",
+      "name": "NAD+",
+      "fullName": "Nicotinamide Adenine Dinucleotide",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Cellular energy coenzyme for longevity protocols",
+      "description": "A coenzyme present in every cell that shuttles electrons during ATP production, powers DNA repair via PARP enzymes, and activates the sirtuin family of longevity regulators. Tissue NAD+ levels decline progressively with age, motivating restoration protocols via direct injection or precursor supplementation (NR, NMN). Technically a small-molecule coenzyme rather than a peptide. Injectable NAD+ is not FDA-approved and is available only through compounding pharmacies.",
+      "mechanism": "Acts as an electron carrier in mitochondrial oxidative phosphorylation. Substrate for sirtuins (SIRT1-7) that regulate metabolism, inflammation, and DNA repair. Cofactor for PARP enzymes during DNA damage response. CD38 hydrolyzes NAD+ at increasing rates with age, contributing to decline.",
+      "halfLife": "Short plasma half-life (under 1 hour); biological effects extended through metabolite recycling",
+      "fdaApproved": false,
+      "researchStatus": "Limited human RCT data on injectable forms; stronger evidence for oral NR precursor in tissue NAD+ elevation",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mg",
+          "frequency": "1x weekly",
+          "route": "Subcutaneous (slow inject over 5-10 sec)",
+          "duration": "2-4 weeks titration"
+        },
+        "standard": {
+          "amount": "100 mg",
+          "frequency": "2-3x weekly",
+          "route": "Subcutaneous",
+          "duration": "8-12 weeks"
+        },
+        "advanced": {
+          "amount": "250-1,000 mg",
+          "frequency": "Weekly to bi-weekly",
+          "route": "Intravenous infusion over 2-4 hours",
+          "duration": "4-8 weeks intensive, then maintenance"
+        }
+      },
+      "timing": "Morning or early afternoon — energy-pathway activation can disrupt sleep if dosed late. Inject slowly to minimize site stinging. IV must be slow-drip; rapid infusion triggers chest tightness and flushing.",
+      "cycleInfo": "Standard SubQ cycles run 4-8 weeks. Common stack: 8-12 weeks SubQ followed by 4 weeks oral NMN or NR for layered support. IV protocols often front-load with weekly sessions for a month, then maintenance every 4-8 weeks.",
+      "reconstitution": {
+        "vialSize": "750 mg lyophilized",
+        "bacWater": "7.5 mL bacteriostatic water",
+        "concentration": "100 mg/mL",
+        "note": "Some compounding pharmacies ship as pre-mixed solution — no reconstitution needed in that case. Inject water down vial wall, swirl gently. Discard if yellow or cloudy."
+      },
+      "storage": "Lyophilized: room temperature short-term, refrigerated long-term. Reconstituted or pre-mixed solution: 2-8°C refrigerated, use within 14-30 days. Protect from light.",
+      "benefits": [
+        "Sustained energy and reduced fatigue (subjective)",
+        "Supports mitochondrial function and ATP synthesis",
+        "Activates sirtuin-mediated longevity pathways",
+        "Aids DNA damage repair via PARP cofactor role",
+        "Reported improvement in recovery and mental clarity"
+      ],
+      "sideEffects": [
+        "Injection-site stinging, burning, or redness (SubQ)",
+        "Flushing, warmth, chest tightness (IV, especially fast infusion)",
+        "Nausea and headache during titration",
+        "Transient anxiety or jitteriness",
+        "Mild GI discomfort"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Active malignancy (sirtuin and PARP activity uncertain in cancer biology)",
+        "Severe liver or kidney disease",
+        "Concurrent high-dose niacin",
+        "Glucose-lowering medications without monitoring"
+      ],
+      "genderNotes": {
+        "men": "No sex-specific dosing differences documented.",
+        "women": "Avoid in pregnancy and breastfeeding. Some users report menstrual cycle awareness during high-dose IV protocols."
+      },
+      "research": [
+        {
+          "title": "A pilot study investigating changes in the human plasma and urine NAD+ metabolome during a 6 hour intravenous infusion of NAD+",
+          "summary": "First human pharmacokinetic study of IV NAD+ — established that infused NAD+ is rapidly metabolized with measurable changes in metabolite pool.",
+          "year": 2019,
+          "journal": "Frontiers in Aging Neuroscience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31551750/"
+        },
+        {
+          "title": "NAD+ precursor supplementation in human ageing: clinical evidence and challenges",
+          "summary": "Review of clinical trials using NR and NMN — confirms tissue NAD+ elevation, with mixed evidence for downstream aging biomarkers.",
+          "year": 2025,
+          "journal": "Nature Reviews Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41083806/"
+        },
+        {
+          "title": "Intravenous infusion of NAD+ versus nicotinamide riboside: a retrospective tolerability pilot study",
+          "summary": "Real-world tolerability comparison; both well-tolerated at studied doses, with IV NAD+ showing higher rate of infusion-reaction symptoms.",
+          "year": 2026,
+          "journal": "Frontiers in Aging",
+          "url": "https://www.frontiersin.org/journals/aging/articles/10.3389/fragi.2026.1652582/full"
+        }
+      ],
+      "stacksWellWith": [
+        "glutathione",
+        "epitalon",
+        "mots-c",
+        "ss-31"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "methylene-blue",
+      "name": "Methylene Blue",
+      "fullName": "Methylthioninium chloride",
+      "categories": [
+        "cognitive",
+        "longevity"
+      ],
+      "tagline": "Mitochondrial electron donor and nootropic",
+      "description": "A synthetic phenothiazine dye and small molecule (not a peptide) with over 130 years of medical use. FDA-approved as injectable ProvayBlue for acquired methemoglobinemia. At low oral doses it acts as an alternative electron carrier in the mitochondrial electron transport chain and a reversible MAO-A inhibitor, driving interest as a nootropic for attention, memory, and mitochondrial support. Sold as ready-to-use oral liquid drops; serotonin syndrome risk with antidepressants is the dominant safety concern.",
+      "mechanism": "Bypasses dysfunctional complexes I and III by donating electrons directly to cytochrome c oxidase, boosting mitochondrial ATP output. Inhibits monoamine oxidase A, raising serotonin and dopamine. At high doses paradoxically generates methemoglobin; at low doses reduces it.",
+      "halfLife": "~5-6.5 hours in plasma; clearance extends over roughly a day via urine (blue-tinted)",
+      "fdaApproved": true,
+      "researchStatus": "FDA-approved IV form for methemoglobinemia; small human fMRI trials support cognitive effects; oral nootropic use unregulated",
+      "dosage": {
+        "beginner": {
+          "amount": "0.5-2 mg",
+          "frequency": "Once daily",
+          "route": "Oral (sublingual drops, with water or juice)",
+          "duration": "2-4 weeks"
+        },
+        "standard": {
+          "amount": "5-20 mg",
+          "frequency": "Once daily",
+          "route": "Oral",
+          "duration": "4-12 weeks"
+        },
+        "advanced": {
+          "amount": "0.5-4 mg/kg (research-context single doses up to 280 mg)",
+          "frequency": "Per study protocol",
+          "route": "Oral; IV reserved for clinical methemoglobinemia at 1 mg/kg",
+          "duration": "Acute or short-term only"
+        }
+      },
+      "timing": "Morning or early afternoon to avoid sleep disruption from mild stimulation. Take with food to reduce stomach upset. A 1% solution delivers ~0.5 mg per drop; a 2% solution ~1 mg per drop — verify concentration before dosing.",
+      "cycleInfo": "No standardized cycling protocol exists for oral use. Cognitive studies used single acute doses. Common community pattern: 5-10 mg daily for 4-8 weeks, then 1-2 week break. Always assess MAO-inhibitor interactions before each cycle.",
+      "reconstitution": {
+        "vialSize": "N/A",
+        "bacWater": "N/A",
+        "concentration": "N/A",
+        "note": "Oral compound — no reconstitution needed."
+      },
+      "storage": "Room temperature 15-30°C, away from direct light, cap tightly closed. Stains skin, fabric, and surfaces permanently — handle with care. Pharmaceutical-grade (USP) product only; industrial-grade contains heavy metals.",
+      "benefits": [
+        "Improved sustained attention and short-term memory in fMRI studies",
+        "Supports mitochondrial ATP synthesis via electron shuttle",
+        "Mild mood elevation (MAO-A inhibition)",
+        "Neuroprotective potential in preclinical models",
+        "FDA-approved treatment for methemoglobinemia"
+      ],
+      "sideEffects": [
+        "Blue-green urine and stool (expected)",
+        "Nausea, abdominal discomfort, headache",
+        "Mild insomnia if dosed late",
+        "Tongue and tooth staining (rinse mouth after sublingual use)",
+        "Dizziness at higher doses"
+      ],
+      "contraindications": [
+        "G6PD deficiency (hemolysis risk)",
+        "Pregnancy (fetal harm risk)",
+        "Concurrent SSRIs, SNRIs, MAOIs, or other serotonergic drugs — serotonin syndrome emergency",
+        "Severe renal impairment",
+        "Breastfeeding (unknown safety)"
+      ],
+      "genderNotes": {
+        "men": "No sex-specific dosing adjustments.",
+        "women": "Hard contraindication in pregnancy. Discontinue at least 2 weeks before any serotonergic antidepressant initiation."
+      },
+      "research": [
+        {
+          "title": "Multimodal randomized functional MR imaging of the effects of methylene blue in the human brain",
+          "summary": "RCT in 26 healthy adults — single 280 mg oral dose increased fMRI activity in prefrontal and parietal cortex during memory tasks and improved retrieval by 7%.",
+          "year": 2016,
+          "journal": "Radiology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27351678/"
+        },
+        {
+          "title": "Methylene blue modulates functional connectivity in the human brain",
+          "summary": "Resting-state and task-based fMRI study showing low-dose methylene blue modulates default mode and attention network connectivity.",
+          "year": 2016,
+          "journal": "Brain Imaging and Behavior",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27246997/"
+        },
+        {
+          "title": "Methylene blue counteracts age-related cognitive impairment in mice and humans",
+          "summary": "Preclinical-to-clinical translation study supporting mitochondrial mechanism of cognitive enhancement.",
+          "year": 2017,
+          "journal": "Neurobiology of Aging",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27431094/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "semax",
+        "cerebrolysin"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "cjc-1295-dac",
+      "name": "CJC-1295 (DAC)",
+      "fullName": "CJC-1295 with Drug Affinity Complex",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Long-acting GHRH analog with weekly dosing",
+      "description": "A modified 30-amino-acid growth hormone-releasing hormone (GHRH) analog with a Drug Affinity Complex (DAC) that covalently binds to circulating albumin, extending half-life to roughly 6-8 days. This is the long-acting variant of CJC-1295, distinct from the No-DAC version in this database (which has a half-life of about 30 minutes and is dosed daily). Stimulates sustained pulsatile GH release for 6+ days from a single injection. Not FDA-approved; a 2006 Phase II trial was halted after a participant death.",
+      "mechanism": "Binds GHRH receptors on pituitary somatotrophs, triggering cAMP signaling and pulsatile GH release. The DAC (a maleimidopropionic acid linker) attaches the peptide to serum albumin's cysteine-34, shielding it from enzymatic degradation. Resulting elevated GH drives hepatic IGF-1 production.",
+      "halfLife": "~5.8-8.1 days (subcutaneous, albumin-bound)",
+      "fdaApproved": false,
+      "researchStatus": "Human Phase I/II pharmacokinetic data from ConjuChem trials; development halted after 2006 Phase II safety event",
+      "dosage": {
+        "beginner": {
+          "amount": "500-1,000 mcg",
+          "frequency": "Once weekly",
+          "route": "Subcutaneous",
+          "duration": "Weeks 1-2 (titration)"
+        },
+        "standard": {
+          "amount": "1,000 mcg (1 mg)",
+          "frequency": "Once weekly",
+          "route": "Subcutaneous",
+          "duration": "Weeks 3-8"
+        },
+        "advanced": {
+          "amount": "2,000 mcg weekly OR 1,000 mcg twice weekly",
+          "frequency": "1-2x weekly",
+          "route": "Subcutaneous",
+          "duration": "Weeks 3-12"
+        }
+      },
+      "timing": "Same day each week, evening preferred to align elevated GH with natural sleep-phase secretion. Steady state develops over 3-4 weeks. Site rotation (abdomen, thigh, deltoid) reduces local reactions.",
+      "cycleInfo": "Standard: 8-12 weeks on, 4-6 weeks off. Extended: 12-16 weeks on, 6-8 weeks off. Side effects can persist for days rather than minutes due to extended half-life — adverse reactions cannot be quickly reversed by stopping. Often stacked with a GHRP/ghrelin mimetic (ipamorelin) for synergistic GH pulses.",
+      "reconstitution": {
+        "vialSize": "10 mg lyophilized",
+        "bacWater": "3.0 mL bacteriostatic water",
+        "concentration": "~3,333 mcg/mL",
+        "note": "A 1 mg dose = 30 units on a U-100 insulin syringe. Inject water slowly down vial wall, swirl gently — do not shake. Smaller 2 mg or 5 mg vials are also common; recalculate concentration accordingly."
+      },
+      "storage": "Lyophilized: refrigerate 2-8°C; freezer -20°C for long-term. Reconstituted: refrigerate 2-8°C and use within 4-6 weeks given weekly dosing. Protect from light.",
+      "benefits": [
+        "Sustained 6-day GH elevation from a single weekly injection",
+        "1.5-3x baseline IGF-1 elevation lasting 9-11 days",
+        "Improved body composition (muscle gain, fat loss)",
+        "Enhanced recovery and sleep quality",
+        "Convenient weekly dosing schedule"
+      ],
+      "sideEffects": [
+        "Water retention and mild edema",
+        "Flushing and warmth after injection",
+        "Headache, lethargy, brain fog",
+        "Injection-site reactions",
+        "Numbness or tingling (carpal tunnel-like)",
+        "Effects persist for days due to long half-life"
+      ],
+      "contraindications": [
+        "Active malignancy (sustained IGF-1 elevation concern)",
+        "Cardiovascular disease",
+        "Type 2 diabetes or insulin resistance (worsens insulin sensitivity)",
+        "Pregnancy and breastfeeding",
+        "Known peptide hypersensitivity",
+        "Adolescents with open growth plates"
+      ],
+      "genderNotes": {
+        "men": "May notice more pronounced strength and recovery effects. Monitor for gynecomastia signs with extended cycles.",
+        "women": "Sensitivity to water retention often higher; start at 500 mcg weekly. Avoid in pregnancy or while attempting conception."
+      },
+      "research": [
+        {
+          "title": "Prolonged stimulation of growth hormone and IGF-I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults",
+          "summary": "Landmark Teichman et al. Phase I trial — single SubQ injection produced 2-10x GH elevation for 6+ days and 1.5-3x IGF-1 elevation for 9-11 days; estimated half-life 5.8-8.1 days.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16352683/"
+        },
+        {
+          "title": "Sustained release of human growth hormone from a novel GHRH analog conjugated to albumin",
+          "summary": "Mechanism paper describing DAC-albumin conjugation chemistry and resulting pharmacokinetic extension.",
+          "year": 2005,
+          "journal": "Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15919742/"
+        },
+        {
+          "title": "Effects of long-acting growth hormone-releasing hormone agonist (CJC-1295) on growth hormone secretion and IGF-1 levels",
+          "summary": "Follow-up pharmacodynamic study in adults with abdominal obesity confirming sustained GH/IGF-1 axis stimulation.",
+          "year": 2008,
+          "journal": "Growth Hormone & IGF Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18329310/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "tesamorelin",
+        "bpc-157",
+        "mk-677"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "igf-1-lr3",
+      "name": "IGF-1 LR3",
+      "fullName": "Long Arginine 3 Insulin-like Growth Factor 1",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Long-acting IGF-1 analog for anabolic signaling",
+      "description": "IGF-1 LR3 is a synthetic 83-amino-acid analog of human IGF-1 with an arginine substitution at position 3 and a 13-amino-acid N-terminal extension. These modifications reduce binding to IGF-binding proteins, extending its half-life roughly 2-3x versus native IGF-1. It is widely used in research contexts for muscle protein synthesis studies and has no published human clinical trials of its own.",
+      "mechanism": "Binds IGF-1R with high affinity and activates PI3K/Akt/mTOR (protein synthesis, glucose uptake) and RAS/RAF/MEK/ERK (proliferation) pathways.",
+      "halfLife": "~20-30 hours (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "No human RCTs of LR3 specifically; preclinical data and native IGF-1 (Increlex) safety profile inform use.",
+      "dosage": {
+        "beginner": {
+          "amount": "20-40 mcg",
+          "frequency": "Once daily",
+          "route": "SubQ",
+          "duration": "3-4 weeks"
+        },
+        "standard": {
+          "amount": "40-80 mcg",
+          "frequency": "Once daily",
+          "route": "SubQ or IM",
+          "duration": "4-6 weeks"
+        },
+        "advanced": {
+          "amount": "80-100 mcg",
+          "frequency": "Once daily",
+          "route": "SubQ or IM",
+          "duration": "4-6 weeks"
+        }
+      },
+      "timing": "Post-workout on training days; morning with food on rest days. Never inject fasted and never within 2 hours of bedtime. Consume 30-50g fast-acting carbohydrate within 30 minutes of injection.",
+      "cycleInfo": "3-6 weeks on, minimum equal time off (4-6 weeks). Continuous use is discouraged due to insulin resistance and receptor desensitization risk.",
+      "reconstitution": {
+        "vialSize": "1 mg",
+        "bacWater": "2 mL",
+        "concentration": "500 mcg/mL",
+        "note": "50 mcg dose = 10 units on a U-100 insulin syringe."
+      },
+      "storage": "Lyophilized: -20°C freezer up to 12 months. Reconstituted: 2-8°C, use within ~28 days. Do not freeze reconstituted solution.",
+      "benefits": [
+        "Enhanced muscle protein synthesis",
+        "Anti-catabolic support during training",
+        "Possible localized hypertrophy with site-specific IM injection",
+        "Improved nutrient partitioning and glucose uptake into muscle"
+      ],
+      "sideEffects": [
+        "Hypoglycemia (reported in ~42% of Increlex subjects, can be severe)",
+        "Lymphoid/tonsillar hypertrophy",
+        "Visceral organ growth (kidney, spleen) — largely irreversible",
+        "Fluid retention, joint discomfort, headaches",
+        "Injection-site lipohypertrophy",
+        "Possible feedback suppression of endogenous GH"
+      ],
+      "contraindications": [
+        "Active or prior cancer history (mitogenic concern)",
+        "Diabetes or glucose dysregulation",
+        "Concurrent insulin or sulfonylurea therapy",
+        "Pregnancy and breastfeeding",
+        "Pre-existing cardiac, kidney, liver, or splenic disease",
+        "Adolescents with open growth plates"
+      ],
+      "genderNotes": {
+        "men": "Standard 40-80 mcg/day range. Monitor fasting glucose weekly during first cycle.",
+        "women": "Typically 10-20 mcg/day. Lower lean-mass baseline means higher sensitivity to anabolic and hypoglycemic effects."
+      },
+      "research": [
+        {
+          "title": "Anabolic effects of insulin-like growth factor-I (IGF-I) variants in normal female rats",
+          "summary": "Tomas et al. demonstrated that IGF-1 analogs with reduced IGFBP binding (including LR3) maintain superior anabolic potency versus native IGF-1 when injected, supporting protein retention in rat models.",
+          "year": 1996,
+          "journal": "Journal of Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8708555/"
+        },
+        {
+          "title": "Mecasermin (recombinant human IGF-1) for the treatment of short stature",
+          "summary": "Pivotal Increlex data document hypoglycemia in ~42% of pediatric subjects and tonsillar hypertrophy in ~15%, informing the safety expectations for IGF-1 analog use.",
+          "year": 2007,
+          "journal": "Expert Opinion on Biological Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18034655/"
+        },
+        {
+          "title": "Detection of IGF-1 LR3 in human urine by mass spectrometry",
+          "summary": "First validated WADA detection assay for IGF-1 LR3, confirming its abuse in sport and its banned status under category S2.",
+          "year": 2020,
+          "journal": "Drug Testing and Analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32436625/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "cjc-1295",
+        "sermorelin",
+        "bpc-157",
+        "tb-500"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "oxytocin",
+      "name": "Oxytocin",
+      "fullName": "Oxytocin (cyclic nonapeptide)",
+      "categories": [
+        "libido",
+        "cognitive"
+      ],
+      "tagline": "Social bonding and intimacy peptide",
+      "description": "Oxytocin is a 9-amino-acid cyclic peptide hormone produced in the hypothalamus and released by the posterior pituitary. Approved by the FDA in IV/IM form for obstetric use only (labor induction, postpartum hemorrhage, milk let-down). Off-label research interest centers on intranasal use for social cognition, bonding, anxiety, and sexual function, though large trials have produced mostly null results.",
+      "mechanism": "Binds the oxytocin receptor (a Gq-coupled GPCR) in the CNS and peripheral tissues, modulating amygdala reactivity, prosocial behavior, smooth-muscle contraction, and reward circuitry.",
+      "halfLife": "~3-6 minutes IV; central effects from intranasal dose persist ~20-90 minutes",
+      "fdaApproved": true,
+      "researchStatus": "Approved for obstetric use. SOARS-B (Sikich et al. NEJM 2021, n=290) found no benefit of intranasal oxytocin for autism social outcomes; broader social-cognition literature is heterogeneous.",
+      "dosage": {
+        "beginner": {
+          "amount": "10-24 IU",
+          "frequency": "Once daily",
+          "route": "Intranasal",
+          "duration": "1-2 weeks"
+        },
+        "standard": {
+          "amount": "24-48 IU",
+          "frequency": "Twice daily (split)",
+          "route": "Intranasal",
+          "duration": "4-6 weeks"
+        },
+        "advanced": {
+          "amount": "Up to 72 IU",
+          "frequency": "Once or twice daily",
+          "route": "Intranasal",
+          "duration": "4-6 weeks"
+        }
+      },
+      "timing": "Dose 30-60 minutes before the targeted social context. Effects on behavioral endpoints typically measured 30-90 minutes post-administration.",
+      "cycleInfo": "Standard cycle is 4-6 weeks on followed by 1-2 weeks off. Tolerance and receptor downregulation are theoretical concerns with daily long-term use.",
+      "reconstitution": {
+        "vialSize": "2 mg (~1,000 IU)",
+        "bacWater": "2 mL",
+        "concentration": "~500 IU/mL (1 IU ≈ 2 mcg)",
+        "note": "For intranasal use, transfer reconstituted solution to a metered nasal spray bottle; 10 units on a U-100 syringe ≈ 50 IU."
+      },
+      "storage": "Lyophilized: -20°C long-term. Reconstituted: 2-8°C, use within 2-4 weeks. Discard if cloudy. Do not freeze reconstituted.",
+      "benefits": [
+        "Possible enhancement of social attention and trust (mixed evidence)",
+        "Reported increase in feelings of bonding and intimacy",
+        "Approved efficacy for labor induction and postpartum hemorrhage",
+        "Anxiolytic effects reported in some small studies"
+      ],
+      "sideEffects": [
+        "Nasal irritation and sneezing (intranasal)",
+        "Transient headache",
+        "Irritability or emotional blunting at higher doses",
+        "Hyponatremia and water intoxication (high IV doses)",
+        "Uterine hyperstimulation (obstetric IV use)"
+      ],
+      "contraindications": [
+        "Pregnancy outside hospital obstetric protocols",
+        "Cardiovascular disease and arrhythmias",
+        "Hyponatremia",
+        "Concurrent lithium or prostaglandin analogues",
+        "Children and adolescents (SOARS-B showed no benefit)",
+        "Hypersensitivity to oxytocin or preservatives"
+      ],
+      "genderNotes": {
+        "men": "Reported effects on partner bonding, empathy, and reduced amygdala reactivity in social tasks.",
+        "women": "Effects can vary across the menstrual cycle. Avoid entirely if pregnant or attempting pregnancy outside clinical supervision."
+      },
+      "research": [
+        {
+          "title": "Intranasal Oxytocin in Children and Adolescents with Autism Spectrum Disorder",
+          "summary": "SOARS-B, the largest RCT (n=290), found no significant difference between intranasal oxytocin (up to 48 IU/day for 24 weeks) and placebo on social withdrawal or any secondary social endpoint.",
+          "year": 2021,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34644471/"
+        },
+        {
+          "title": "Oxytocin enhances amygdala-dependent, socially reinforced learning",
+          "summary": "Single-dose intranasal oxytocin modulated amygdala responses and trust behavior in healthy adults, supporting a CNS-relevant pharmacology despite limited bioavailability.",
+          "year": 2008,
+          "journal": "Journal of Neuroscience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18550770/"
+        },
+        {
+          "title": "Intranasal oxytocin versus placebo for hypoactive sexual desire disorder in women",
+          "summary": "Small RCTs of intranasal oxytocin for sexual desire have shown modest or null effects on arousal and orgasm endpoints versus placebo.",
+          "year": 2017,
+          "journal": "Fertility and Sterility",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28238492/"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141",
+        "kisspeptin-10",
+        "selank",
+        "semax"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "pinealon",
+      "name": "Pinealon",
+      "fullName": "Pinealon (Glu-Asp-Arg tripeptide)",
+      "categories": [
+        "sleep",
+        "cognitive"
+      ],
+      "tagline": "Russian neuroprotective sleep tripeptide",
+      "description": "Pinealon is a synthetic Glu-Asp-Arg (EDR) tripeptide from the Khavinson bioregulator family, developed at the St. Petersburg Institute of Bioregulation and Gerontology. It is proposed to enter cells and cross the nuclear membrane to bind gene promoter regions, influencing antioxidant and neurotrophic gene expression. The evidence base is dominated by Russian-language preclinical work and small clinical cohorts.",
+      "mechanism": "Proposed epigenetic regulation via direct binding to DNA promoter regions, modulating ERK 1/2 signaling and upregulating antioxidant and anti-apoptotic gene expression in neurons.",
+      "halfLife": "Not well characterized in published literature",
+      "fdaApproved": false,
+      "researchStatus": "No large Western RCTs published. Evidence consists of Russian preclinical work in Alzheimer's models and a 72-patient TBI cohort study.",
+      "dosage": {
+        "beginner": {
+          "amount": "1.0 mg",
+          "frequency": "Once daily",
+          "route": "SubQ",
+          "duration": "5 days"
+        },
+        "standard": {
+          "amount": "1.5 mg",
+          "frequency": "Once daily",
+          "route": "SubQ",
+          "duration": "9 days (days 6-14)"
+        },
+        "advanced": {
+          "amount": "2.0 mg",
+          "frequency": "Once daily",
+          "route": "SubQ",
+          "duration": "6 days (days 15-20)"
+        }
+      },
+      "timing": "Morning or early afternoon. Most subjective changes appear after 10-14 days of daily use.",
+      "cycleInfo": "10-20 day cycles (extendable to 28 days), 2-3 cycles per year, with 2-3 months between cycles.",
+      "reconstitution": {
+        "vialSize": "20 mg",
+        "bacWater": "3 mL",
+        "concentration": "~6.67 mg/mL",
+        "note": "1 unit on a U-100 syringe ≈ 66.7 mcg; swirl gently, do not shake. Oral capsule form also exists."
+      },
+      "storage": "Lyophilized: -20°C long-term or 2-8°C short-term. Reconstituted: 2-8°C. Avoid freeze-thaw cycles.",
+      "benefits": [
+        "Reported reduction of reactive oxygen species in neural cells",
+        "Restoration of dendritic spines in Alzheimer's animal models",
+        "Improvements in memory and mental clarity in small TBI cohorts",
+        "Reported sleep quality improvements (often first noticeable effect)",
+        "Possible mood and stress-resilience effects"
+      ],
+      "sideEffects": [
+        "Mild headache early in cycle",
+        "Vivid dreams or altered sleep depth",
+        "Mild GI effects (oral route)",
+        "Injection-site redness or itching",
+        "Long-term safety unmapped in Western trials"
+      ],
+      "contraindications": [
+        "Pregnancy and breastfeeding",
+        "Active or recent cancer history",
+        "Seizure disorders",
+        "Children and adolescents",
+        "Concurrent CNS prescription medications",
+        "Known peptide allergies"
+      ],
+      "genderNotes": {
+        "men": "Same dosing schedule. Some users pair with Epitalon for combined longevity protocol.",
+        "women": "Same dosing schedule. Hormonal effects not documented but caution advised during reproductive years."
+      },
+      "research": [
+        {
+          "title": "Neuroprotective Effects of Tripeptides — Epigenetic Regulators in Mouse Model of Alzheimer's Disease",
+          "summary": "EDR tripeptide treatment restored dendritic spine density (~71% increase) and reduced amyloid-beta toxicity markers in transgenic Alzheimer's mouse models.",
+          "year": 2021,
+          "journal": "Pharmaceuticals (MDPI)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34073194/"
+        },
+        {
+          "title": "EDR Peptide: Possible Mechanism of Gene Expression and Protein Synthesis Regulation Involved in the Pathogenesis of Alzheimer's Disease",
+          "summary": "Khavinson group review proposing the mechanism by which Pinealon enters the nucleus and binds promoter regions to modulate antioxidant and neurotrophic gene expression.",
+          "year": 2020,
+          "journal": "International Journal of Molecular Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33396399/"
+        },
+        {
+          "title": "Peptide regulation of cell differentiation, gene expression and protein synthesis",
+          "summary": "Khavinson review of short peptide bioregulators (including Pinealon) and their proposed mechanisms in aging and CNS function, summarizing decades of Russian preclinical data.",
+          "year": 2014,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24771411/"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "semax",
+        "selank",
+        "dsip",
+        "cerebrolysin"
+      ],
+      "popularity": 55
+    }
+  ],
+  "stacks": [
+    {
+      "id": "gh-classic",
+      "name": "GH Pulse Classic",
+      "description": "Classic GH stack for muscle growth and fat loss",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin"
+      ],
+      "protocol": "100-200 mcg of each, 1-2x per day before sleep and/or on an empty stomach.",
+      "goal": "muscle",
+      "experienceLevel": "beginner",
+      "duration": "12-16 weeks"
+    },
+    {
+      "id": "healing-stack",
+      "name": "Total Recovery Stack",
+      "description": "Strongest regenerative stack for injuries and recovery",
+      "peptides": [
+        "bpc-157",
+        "tb-500"
+      ],
+      "protocol": "BPC-157 250-500 mcg 2x per day + TB-500 2.5 mg 2x per week.",
+      "goal": "healing",
+      "experienceLevel": "beginner",
+      "duration": "6-8 weeks"
+    },
+    {
+      "id": "anti-aging-elite",
+      "name": "Anti-Aging Elite",
+      "description": "Comprehensive anti-aging combination",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin",
+        "ghk-cu",
+        "epitalon"
+      ],
+      "protocol": "CJC+Ipa nightly. GHK-Cu 2 mg daily. Epitalon 10 mg in 20-day cycles 2x per year.",
+      "goal": "anti_aging",
+      "experienceLevel": "advanced",
+      "duration": "16+ weeks"
+    },
+    {
+      "id": "fat-loss-extreme",
+      "name": "Fat Loss Maximizer",
+      "description": "Aggressive fat loss with metabolic support",
+      "peptides": [
+        "semaglutide",
+        "tesamorelin",
+        "mots-c"
+      ],
+      "protocol": "Semaglutide 0.5-2.4 mg weekly. Tesamorelin 2 mg nightly. MOTS-c 10 mg 3x/week.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "16-24 weeks"
+    },
+    {
+      "id": "cognitive-stack",
+      "name": "Brain Optimization",
+      "description": "Triple nootropic blend for peak brain function",
+      "peptides": [
+        "semax",
+        "selank",
+        "dsip"
+      ],
+      "protocol": "Semax 600 mcg AM/PM. Selank 750 mcg AM/PM. DSIP 200 mcg before sleep.",
+      "goal": "cognitive",
+      "experienceLevel": "standard",
+      "duration": "6-8 weeks"
+    },
+    {
+      "id": "womens-essentials",
+      "name": "Women's Essentials",
+      "description": "Tailored for women 35+",
+      "peptides": [
+        "ipamorelin",
+        "ghk-cu",
+        "bpc-157"
+      ],
+      "protocol": "Ipamorelin 100-150 mcg nightly. GHK-Cu 2 mg daily. BPC-157 250 mcg as needed.",
+      "goal": "anti_aging",
+      "experienceLevel": "beginner",
+      "duration": "12 weeks"
+    },
+    {
+      "id": "mens-performance",
+      "name": "Men's Performance",
+      "description": "Performance and recovery for men",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin",
+        "bpc-157",
+        "mots-c"
+      ],
+      "protocol": "CJC+Ipa 200 mcg nightly. BPC-157 250 mcg 2x. MOTS-c 10 mg 3x/week.",
+      "goal": "muscle",
+      "experienceLevel": "standard",
+      "duration": "12-16 weeks"
+    },
+    {
+      "id": "mitochondrial-renewal",
+      "name": "Mitochondrial Renewal",
+      "description": "Triple mitochondrial stack — protect, biogenesis, and cellular survival signaling",
+      "peptides": [
+        "humanin",
+        "mots-c",
+        "ss-31"
+      ],
+      "protocol": "Humanin 5-10 mg AM. MOTS-c 10 mg 3x/week. SS-31 40 mg AM. Run all three in parallel for 8-12 weeks, then 4 weeks off.",
+      "goal": "anti_aging",
+      "experienceLevel": "advanced",
+      "duration": "8-12 weeks"
+    },
+    {
+      "id": "klow",
+      "name": "KLOW Stack",
+      "description": "Four-peptide repair blend combining tissue healing, copper-mediated regeneration, and gut-barrier support.",
+      "peptides": [
+        "bpc-157",
+        "tb-500",
+        "ghk-cu",
+        "kpv"
+      ],
+      "protocol": "Pre-blended 80 mg vial (GHK-Cu 50 mg + KPV 10 mg + BPC-157 10 mg + TB-500 10 mg) reconstituted with 3 mL bacteriostatic water (~26.7 mg/mL). Once-daily SubQ injection titrated as follows: Weeks 1-2 at ~250 mcg total (7.5 units), Weeks 3-4 at ~500 mcg (15 units), Weeks 5-8 at ~750 mcg (22.5 units), Weeks 9-12 taper to ~500 mcg (15 units). Inject in rotating sites to limit local irritation from copper content.",
+      "goal": "recovery",
+      "experienceLevel": "intermediate",
+      "duration": "4-12 weeks on, 2-4 weeks off"
+    },
+    {
+      "id": "cagrilintide-tirzepatide",
+      "name": "Cagrilintide + Tirzepatide",
+      "description": "Triple-pathway satiety stack combining amylin agonism with dual GLP-1/GIP incretin signaling for maximum appetite suppression.",
+      "peptides": [
+        "cagrilintide",
+        "tirzepatide"
+      ],
+      "protocol": "Both compounds once weekly SubQ, same day at different injection sites. Staggered 24-week titration. Tirzepatide alone for the first 8 weeks: 2.5 mg (weeks 1-4), 5.0 mg (weeks 5-8). At week 9 introduce cagrilintide: tirzepatide 5.0 mg + cagrilintide 0.25 mg (weeks 9-12), tirzepatide 7.5 mg + cagrilintide 0.5 mg (weeks 13-16), tirzepatide 10 mg + cagrilintide 1.0 mg (weeks 17-20), tirzepatide 12.5 mg + cagrilintide 1.7 mg (weeks 21-24). Maintenance from week 25+: tirzepatide 15 mg + cagrilintide 2.4 mg weekly.",
+      "goal": "fat_loss",
+      "experienceLevel": "beginner",
+      "duration": "24 weeks titration + open-ended maintenance"
+    },
+    {
+      "id": "cagrilintide-retatrutide",
+      "name": "Cagrilintide + Retatrutide",
+      "description": "Quad-receptor metabolic stack combining amylin agonism with triple GLP-1/GIP/glucagon agonism for maximum pathway coverage.",
+      "peptides": [
+        "cagrilintide",
+        "retatrutide"
+      ],
+      "protocol": "Both compounds once weekly SubQ, same day at different sites. 24-week staggered titration. Retatrutide solo first: 2 mg/week (weeks 1-4), 4 mg/week (weeks 5-8). Add cagrilintide at week 9: retatrutide 4 mg + cagrilintide 0.25 mg (weeks 9-12), retatrutide 8 mg + cagrilintide 0.5 mg (weeks 13-16), retatrutide 8 mg + cagrilintide 1.0 mg (weeks 17-20), retatrutide 12 mg + cagrilintide 1.7 mg (weeks 21-24). Maintenance week 25+: retatrutide 12 mg + cagrilintide 2.4 mg weekly. Cycle 4-8 weeks off between full runs.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "24 weeks titration + maintenance, 4-8 weeks off"
+    },
+    {
+      "id": "retatrutide-mots-c",
+      "name": "Retatrutide + MOTS-c",
+      "description": "Triple-agonist fat loss paired with mitochondrial signaling for improved fat oxidation efficiency during a deep deficit.",
+      "peptides": [
+        "retatrutide",
+        "mots-c"
+      ],
+      "protocol": "Retatrutide once weekly SubQ, titrated solo for the first 4 weeks before adding MOTS-c. Retatrutide: 1 mg (weeks 1-4), 2 mg (weeks 5-8), 4 mg (weeks 9-12), 6 mg (weeks 13-16), 9 mg from week 17+ (maintenance, max 12 mg). MOTS-c introduced at week 5 via two options: intermittent 5-10 mg, 2-3x weekly on training days (Mon/Wed/Fri, 30-60 min before exercise) OR daily low-dose 200 mcg increasing by 200 mcg every 2 weeks up to 1 mg/day.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "16-48 weeks (up to 68 weeks aggressive)"
+    },
+    {
+      "id": "tesamorelin-ipamorelin",
+      "name": "Tesamorelin + Ipamorelin",
+      "description": "GHRH plus selective GHRP dual approach driving pulsatile GH release, with focus on visceral adiposity reduction.",
+      "peptides": [
+        "tesamorelin",
+        "ipamorelin"
+      ],
+      "protocol": "Once daily SubQ injection, ideally at bedtime to follow natural nocturnal GH pulse. Balanced 5/5 vial example: reconstitute to draw 167 mcg of each per 10 units. Weeks 1-2 at 167 mcg + 167 mcg (10 units), weeks 3-4 at 333 mcg + 333 mcg (20 units), weeks 5-8 at 500 mcg + 500 mcg (30 units), weeks 9-16 at 667 mcg + 667 mcg (40 units). Alternative GHRH-dominant 10/3 vial: 333 mcg tesamorelin + 100 mcg ipamorelin per 30-unit draw.",
+      "goal": "fat_loss",
+      "experienceLevel": "intermediate",
+      "duration": "8-16 weeks on, 4-8 weeks off"
+    }
+  ],
+  "interactions": [
+    {
+      "peptides": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "warning": "Never combine — both are GLP-1 agonists."
+    },
+    {
+      "peptides": [
+        "pt-141",
+        "melanotan-2"
+      ],
+      "warning": "Caution — both have melanocortin effects and can amplify each other."
+    },
+    {
+      "peptides": [
+        "ipamorelin",
+        "cjc-1295"
+      ],
+      "warning": "Synergistic — strong benefit when combined, but start at low doses."
+    }
+  ]
+}

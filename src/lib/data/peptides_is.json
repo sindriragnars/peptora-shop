@@ -1,0 +1,4051 @@
+{
+  "version": "2026-05-26-42-peptides",
+  "lastUpdated": "2026-05-26",
+  "disclaimer": "Þessi gögn eru aðeins til upplýsinga. Mörg peptíð eru ekki samþykkt af FDA og eru rannsóknarefni. Ráðfærðu þig alltaf við lækni áður en notkun hefst.",
+  "categories": [
+    {
+      "id": "healing",
+      "name": "Healing & Recovery",
+      "icon": "healing",
+      "color": "#10B981",
+      "description": "Vefjagræðsla, bólgueyðing, viðgerð"
+    },
+    {
+      "id": "muscle",
+      "name": "Muscle Growth",
+      "icon": "fitness_center",
+      "color": "#EF4444",
+      "description": "Vöðvauppbygging og styrkur"
+    },
+    {
+      "id": "fat_loss",
+      "name": "Fat Loss",
+      "icon": "local_fire_department",
+      "color": "#F97316",
+      "description": "Fitubrennsla og þyngdartap"
+    },
+    {
+      "id": "anti_aging",
+      "name": "Anti-Aging",
+      "icon": "spa",
+      "color": "#8B5CF6",
+      "description": "Öldrun og endurnýjun"
+    },
+    {
+      "id": "cognitive",
+      "name": "Cognitive",
+      "icon": "psychology",
+      "color": "#3B82F6",
+      "description": "Heilastarfsemi, einbeiting, minni"
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep",
+      "icon": "bedtime",
+      "color": "#6366F1",
+      "description": "Svefn og hvíld"
+    },
+    {
+      "id": "libido",
+      "name": "Sexual Health",
+      "icon": "favorite",
+      "color": "#EC4899",
+      "description": "Kynheilsa og kynhvöt"
+    },
+    {
+      "id": "longevity",
+      "name": "Longevity",
+      "icon": "auto_awesome",
+      "color": "#14B8A6",
+      "description": "Heilsa og líftími"
+    }
+  ],
+  "peptides": [
+    {
+      "id": "bpc-157",
+      "name": "BPC-157",
+      "fullName": "Body Protection Compound-157",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Vefjagræðsla og bólgueyðing",
+      "description": "Tilbúið 15-amínósýra peptíð sem dregið er úr náttúrulegu prótíni í magasafa. Þekkt fyrir merkilega endurnýjunarhæfileika í vöðvum, sinum, liðböndum og taugum.",
+      "mechanism": "Stuðlar að æðamyndun (angiogenesis), eykur kollagen-myndun, hraðar viðgerð vefja.",
+      "halfLife": "~4 klst (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Sterk gögn í dýrum, takmörkuð í mönnum",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "250-500 mcg",
+          "frequency": "2x á dag (morgun + kvöld)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 vikur"
+        },
+        "advanced": {
+          "amount": "500-750 mcg",
+          "frequency": "2-3x á dag (við bráð meiðsl)",
+          "route": "SubQ eða perilesional (við áverkasvæði)",
+          "duration": "6-12 vikur"
+        }
+      },
+      "timing": "Best á fastandi maga, fjarri matar (a.m.k. 30 mín fyrir mat)",
+      "cycleInfo": "4-8 vikna lotur með 2-4 vikna pásu á milli",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Sprauta BAC vatni hægt á glasvegginn. Þeyta varlega, aldrei hrista."
+      },
+      "storage": "Þurrt: kælir, mánuðir. Eftir blöndun: 2-8°C, 28-30 daga. Aldrei frjósa eftir blöndun.",
+      "benefits": [
+        "Hraðar sinaviðgerð",
+        "Læknar liðamót",
+        "Verndar magaslímhúð",
+        "Dregur úr bólgum",
+        "Stuðlar að taugaviðgerð"
+      ],
+      "sideEffects": [
+        "Almennt mjög vel þolað",
+        "Sjaldan: ógleði, þreyta, höfuðverkur",
+        "Smá erting á stungustað"
+      ],
+      "contraindications": [
+        "Þungun (engar rannsóknir)",
+        "Krabbamein - varúð (ræðir við lækni)",
+        "Lyf gegn blóðsegamyndun (milliverkun)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtur og almennt. Vinsælt fyrir vöðvameiðsl.",
+        "women": "Sami skammtur. Vinsælt fyrir liðverki eftir 40 ára."
+      },
+      "research": [
+        {
+          "title": "BPC-157 systematic review: musculoskeletal healing",
+          "summary": "2025 yfirlitsgrein í Orthopaedic Journal of Sports Medicine sem skoðaði 36 rannsóknir (35 dýr, 1 klínísk). Stöðugur ávinningur í sina- og vöðvaviðgerð.",
+          "year": 2025,
+          "journal": "Orthopaedic Journal of Sports Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=BPC-157+systematic+review"
+        },
+        {
+          "title": "Chang et al: GHR upregulation in tendon fibroblasts",
+          "summary": "BPC-157 sýndi 7-falda hækkun á vaxtarhormón viðtaka í sinafrumum.",
+          "year": 2014,
+          "journal": "Molecules",
+          "url": "https://www.mdpi.com/1420-3049/19/12/19066"
+        },
+        {
+          "title": "Sikiric P: Cytoprotective and tissue healing properties",
+          "summary": "Yfirlit yfir frumuverndandi áhrif og vefjagræðslu.",
+          "year": 2018,
+          "journal": "World Journal of Gastroenterology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Sikiric+BPC-157"
+        }
+      ],
+      "stacksWellWith": [
+        "tb-500",
+        "ghk-cu",
+        "ipamorelin"
+      ],
+      "popularity": 95
+    },
+    {
+      "id": "tb-500",
+      "name": "TB-500",
+      "fullName": "Thymosin Beta-4 (fragment)",
+      "categories": [
+        "healing",
+        "muscle"
+      ],
+      "tagline": "Vefjaviðgerð á kerfisbundnu stigi",
+      "description": "Tilbúið brot af Thymosin Beta-4 prótíni. Stuðlar að frumufærslu, æðamyndun og endurnýjun vöðva, húðar og bandvefs.",
+      "mechanism": "Bindur G-actin sem stuðlar að frumuhreyfanleika og viðgerð á skemmdum vef.",
+      "halfLife": "~2-3 daga",
+      "fdaApproved": false,
+      "researchStatus": "Forklínískt sterkt, klínískar rannsóknir í gangi",
+      "dosage": {
+        "beginner": {
+          "amount": "2 mg",
+          "frequency": "1-2x á viku",
+          "route": "SubQ eða IM",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "2-2.5 mg",
+          "frequency": "2x á viku (hleðsla 4-6 vikur), svo 2 mg/viku viðhald",
+          "route": "SubQ eða IM",
+          "duration": "6-12 vikur"
+        },
+        "advanced": {
+          "amount": "5 mg loading",
+          "frequency": "2x á viku í 4 vikur, svo 2 mg/viku",
+          "route": "SubQ eða IM",
+          "duration": "12 vikur"
+        }
+      },
+      "timing": "Skiptir litlu vegna langs helmingunartíma. Algengt að taka að kvöldi.",
+      "cycleInfo": "4-8 vikur on, 2-4 vikur off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Lágt mg, þannig að 2.5 mL gefur þægilega skammta."
+      },
+      "storage": "Þurrt: frystir eða kælir. Blandað: 2-8°C, 4 vikur.",
+      "benefits": [
+        "Kerfisbundin vefjaviðgerð",
+        "Bætir hreyfigetu",
+        "Hjálpar við djúpa áverka",
+        "Endurnýjun æðakerfis",
+        "Stuðlar að hárvöxt"
+      ],
+      "sideEffects": [
+        "Almennt mjög vel þolað",
+        "Sjaldan: þreyta í fyrstu",
+        "Höfuðverkur (mjög sjaldan)"
+      ],
+      "contraindications": [
+        "Þungun",
+        "Virkt krabbamein",
+        "Sjálfsofnæmissjúkdómar (varúð)"
+      ],
+      "genderNotes": {
+        "men": "Vinsælt eftir íþróttameiðsl. Sami skammtur.",
+        "women": "Sami skammtur. Hjálpar með hárvöxt og húðheilsu."
+      },
+      "research": [
+        {
+          "title": "Thymosin Beta-4: A Multi-Functional Regenerative Peptide",
+          "summary": "Yfirlit yfir endurnýjunaráhrif TB-4 á húð, hjarta og taugar.",
+          "year": 2012,
+          "journal": "Annals of NY Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22994218/"
+        },
+        {
+          "title": "Goldstein AL: Thymosin beta-4 clinical applications",
+          "summary": "Klínísk notkun TB-4 í áverkagræðslu og hjartavernd.",
+          "year": 2017,
+          "journal": "Expert Opinion on Biological Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+beta-4"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ghk-cu",
+        "ipamorelin"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "ipamorelin",
+      "name": "Ipamorelin",
+      "fullName": "Ipamorelin",
+      "categories": [
+        "muscle",
+        "anti_aging",
+        "fat_loss"
+      ],
+      "tagline": "Hreinn GH pulse án kortisól-aukningar",
+      "description": "Sértækur ghrelin viðtaka örvi sem stuðlar að vaxtarhormóns losun án þess að hækka kortisól eða prolaktín.",
+      "mechanism": "Bindur GHS-R1a viðtaka í heiladingli og kallar fram hreinan GH púls.",
+      "halfLife": "~2 klst",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 2 rannsóknir kláraðar, vel þolað",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "200-300 mcg",
+          "frequency": "1-2x á dag (kvöld + morgun)",
+          "route": "SubQ",
+          "duration": "12-16 vikur"
+        },
+        "advanced": {
+          "amount": "300 mcg",
+          "frequency": "3x á dag (morgun, pre-workout, kvöld)",
+          "route": "SubQ",
+          "duration": "12-16 vikur með pásu"
+        }
+      },
+      "timing": "Á fastandi maga, 30-60 mín fyrir mat eða svefn. Mikilvægt: enginn matur í 30-60 mín á eftir.",
+      "cycleInfo": "12-16 vikur on, 4 vikur off til að forðast viðtaka-desensitization",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Algengt að blanda saman við CJC-1295 í sömu sprautu."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 28 daga.",
+      "benefits": [
+        "Náttúruleg GH aukning",
+        "Bætt svefn",
+        "Vöðvauppbygging",
+        "Fitubrennsla",
+        "Bætt hárhárgæði",
+        "Engin kortisól-aukning"
+      ],
+      "sideEffects": [
+        "Náladofi í höndum (passing)",
+        "Lifandi draumar",
+        "Tímabundinn höfuðverkur",
+        "Hungur (mildur)"
+      ],
+      "contraindications": [
+        "Virkt krabbamein (ófrávíkjanleg frábending)",
+        "Þungun og brjóstagjöf",
+        "Sykursýki (eftirlit á blóðsykri)",
+        "Æxli í heiladingli"
+      ],
+      "genderNotes": {
+        "men": "Algeng skammtur 200-300 mcg. Stuðlar að testosterón optimization óbeint.",
+        "women": "Byrja á 100-150 mcg. Næmni á hormón er meiri. Frábært fyrir aging og húðheilsu."
+      },
+      "research": [
+        {
+          "title": "Raun H et al: Ipamorelin selective GH release without ACTH/cortisol",
+          "summary": "Lykilrannsókn sem sýndi að ipamorelin örvar GH án þess að hækka kortisól eða ACTH.",
+          "year": 1998,
+          "journal": "European Journal of Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"
+        },
+        {
+          "title": "Sinha DK et al: Clinical applications of GH secretagogues",
+          "summary": "Yfirlit yfir GH secretagogues í klínískri notkun.",
+          "year": 2020,
+          "journal": "Translational Andrology and Urology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=ipamorelin+clinical"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "bpc-157",
+        "tesamorelin"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": "cjc-1295",
+      "name": "CJC-1295 (no DAC)",
+      "fullName": "Modified GRF 1-29",
+      "categories": [
+        "muscle",
+        "anti_aging",
+        "fat_loss"
+      ],
+      "tagline": "GHRH analog - styrkir náttúrulegan GH púls",
+      "description": "Tilbúið analog af GHRH (Growth Hormone Releasing Hormone) sem virkjar GHRH viðtaka í heiladingli. Án DAC hefur stuttan helmingunartíma sem viðheldur náttúrulegri púlsering.",
+      "mechanism": "Bindur GHRH viðtaka í somatotroph frumum í heiladingli, stuðlar að GH framleiðslu og losun.",
+      "halfLife": "30 mín - 2 klst (no DAC), 6-8 dagar (með DAC)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 2 rannsóknir, utan ábendingar notkun víða",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "1-2x á dag",
+          "route": "SubQ",
+          "duration": "12-16 vikur"
+        },
+        "advanced": {
+          "amount": "200-300 mcg",
+          "frequency": "2-3x á dag (synced við máltíðir)",
+          "route": "SubQ",
+          "duration": "16 vikur með 4 vikna pásu"
+        }
+      },
+      "timing": "Best á fastandi maga, 30-60 mín fyrir mat eða svefn. Næstum alltaf parað við Ipamorelin.",
+      "cycleInfo": "12-16 vikur on, 4 vikur off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Hægt að blanda í sömu sprautu og Ipamorelin (sami concentration)."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 28 daga.",
+      "benefits": [
+        "Hækkar GH og IGF-1",
+        "Vöðvauppbygging",
+        "Fitubrennsla (sérstaklega visceral)",
+        "Bætt svefn",
+        "Hægari öldrun",
+        "Bætt orku og endurheimt"
+      ],
+      "sideEffects": [
+        "Roða í andliti (flushing) - tímabundið",
+        "Náladofi",
+        "Höfuðverkur",
+        "Vökvasöfnun (sjaldan)"
+      ],
+      "contraindications": [
+        "Virkt krabbamein",
+        "Þungun",
+        "Sjúkdómar í heiladingli",
+        "Insulin resistance (varúð)"
+      ],
+      "genderNotes": {
+        "men": "Algengur skammtur 200 mcg + 200 mcg Ipamorelin nightly.",
+        "women": "Byrja á 100 mcg + 100 mcg Ipamorelin. Næmni er hærri."
+      },
+      "research": [
+        {
+          "title": "Teichman SL et al: CJC-1295 sustained GH release",
+          "summary": "Rannsókn á CJC-1295 með og án DAC, sýndi viðvarandi GH og IGF-1 hækkun.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16352683/"
+        },
+        {
+          "title": "Ionescu M, Frohman LA: CJC-1295 in healthy adults",
+          "summary": "Klínísk rannsókn á CJC-1295 í heilbrigðum fullorðnum.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1295+Ionescu"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "bpc-157",
+        "tesamorelin"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": "semaglutide",
+      "name": "Semaglutide",
+      "fullName": "Semaglutide (Ozempic, Wegovy)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "GLP-1 örvi - þyngdartap og blóðsykur",
+      "description": "GLP-1 viðtaka örvi, FDA samþykktur fyrir sykursýki týpu 2 og offitu. Eitt mest áhrifaríka þyngdartapslyf sem til er.",
+      "mechanism": "Hermir eftir GLP-1, eykur insúlín, dregur úr glúkagon, hægir á magatæmingu, dregur úr matarlyst.",
+      "halfLife": "~7 dagar",
+      "fdaApproved": true,
+      "researchStatus": "FDA samþykkt (Wegovy 2021 fyrir offitu)",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg",
+          "frequency": "1x á viku í 4 vikur",
+          "route": "SubQ",
+          "duration": "Titration phase"
+        },
+        "standard": {
+          "amount": "0.5 mg → 1.0 mg → 1.7 mg",
+          "frequency": "1x á viku, hækkun á 4 vikna fresti",
+          "route": "SubQ",
+          "duration": "16+ vikur"
+        },
+        "advanced": {
+          "amount": "2.4 mg (max dose)",
+          "frequency": "1x á viku",
+          "route": "SubQ",
+          "duration": "Langtíma (12+ mánuðir)"
+        }
+      },
+      "timing": "Sami dagur vikulega. Skiptir litlu hvort fyrir eða eftir mat.",
+      "cycleInfo": "Ekki cyclað - langtímanotkun. Smátt og smátt taper niður ef hætt.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Geymist í kæli eftir blöndun, 30 daga."
+      },
+      "storage": "Lyfseðilsskylt: kæli. Sérsett: 2-8°C, 30-56 daga eftir blöndun.",
+      "benefits": [
+        "15-20% þyngdartap (STEP-rannsóknir)",
+        "Bætt blóðsykurstjórnun",
+        "Lækkað HbA1c",
+        "Lækkun á hjartaáhættu (SELECT-rannsókn)",
+        "Dregur úr matarlyst og 'food noise'"
+      ],
+      "sideEffects": [
+        "Ógleði (algengt fyrst)",
+        "Niðurgangur / hægðatregða",
+        "Bakflæði",
+        "Þreyta",
+        "Sjaldan: gallsteinar, pancreatitis"
+      ],
+      "contraindications": [
+        "Medullary thyroid carcinoma (saga)",
+        "MEN 2 syndrome",
+        "Þungun",
+        "Saga um pancreatitis"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur, sami efficacy.",
+        "women": "Sami skammtur. Á að hætta a.m.k. 2 mánuðum fyrir þungun. Mun draga úr virkni getnaðarvarnatöflu."
+      },
+      "research": [
+        {
+          "title": "STEP 1: Semaglutide 2.4 mg for obesity",
+          "summary": "Tímamóta-RCT, 1961 þátttakendur. 14.9% þyngdartap á 68 vikum vs 2.4% lyfleysu.",
+          "year": 2021,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183"
+        },
+        {
+          "title": "SELECT Trial: Cardiovascular outcomes",
+          "summary": "20% minnkun á MACE (cardiovascular events) hjá offitusjúklingum án sykursýki.",
+          "year": 2023,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2307563"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": "tirzepatide",
+      "name": "Tirzepatide",
+      "fullName": "Tirzepatide (Mounjaro, Zepbound)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Dual GLP-1/GIP agonist - sterkara en Semaglutide",
+      "description": "Dual agonist sem virkjar bæði GLP-1 og GIP viðtaka. FDA samþykktur 2022. Sýnir 20-22% þyngdartap í klínískum rannsóknum.",
+      "mechanism": "Virkjar bæði GLP-1 og GIP, sem gefur samverkandi áhrif á blóðsykur, insúlín og fituvefsstjórnun.",
+      "halfLife": "~5 dagar",
+      "fdaApproved": true,
+      "researchStatus": "FDA samþykkt (Mounjaro 2022, Zepbound 2023)",
+      "dosage": {
+        "beginner": {
+          "amount": "2.5 mg",
+          "frequency": "1x á viku í 4 vikur",
+          "route": "SubQ",
+          "duration": "Titration phase"
+        },
+        "standard": {
+          "amount": "5 mg → 7.5 mg → 10 mg",
+          "frequency": "1x á viku, hækkun á 4 vikna fresti",
+          "route": "SubQ",
+          "duration": "16-20 vikur"
+        },
+        "advanced": {
+          "amount": "12.5 mg → 15 mg (max)",
+          "frequency": "1x á viku",
+          "route": "SubQ",
+          "duration": "Langtíma"
+        }
+      },
+      "timing": "Sami dagur vikulega. Hvenær sem er, með eða án matar.",
+      "cycleInfo": "Ekki cyclað. Langtímanotkun með taper ef hætt.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Sérsett útgáfa. Pen version (lyfseðill) er forfylltur."
+      },
+      "storage": "Kæli 2-8°C. Sérsett: 30-56 daga eftir blöndun.",
+      "benefits": [
+        "20-22% þyngdartap (SURMOUNT-rannsóknir)",
+        "Sterkari áhrif en Semaglutide (samanburðarrannsókn)",
+        "Bætt blóðsykur",
+        "Lækkað blóðþrýstingur",
+        "Bætt blóðfitur"
+      ],
+      "sideEffects": [
+        "Ógleði (algengt fyrst)",
+        "Niðurgangur",
+        "Bakflæði",
+        "Hægðatregða",
+        "Magaverkur"
+      ],
+      "contraindications": [
+        "Medullary thyroid carcinoma",
+        "MEN 2 syndrome",
+        "Þungun",
+        "Saga um pancreatitis",
+        "Severe gastrointestinal disease"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtur. Marktækari þyngdartap en hjá konum stundum.",
+        "women": "Sami skammtur. Mun draga úr virkni getnaðarvarnatöflu (nota viðbótar getnaðarvörn fyrstu 4 vikur eftir hækkun)."
+      },
+      "research": [
+        {
+          "title": "SURMOUNT-1: Tirzepatide for obesity",
+          "summary": "2539 þátttakendur, 22.5% þyngdartap á 15 mg skammt í 72 vikur.",
+          "year": 2022,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038"
+        },
+        {
+          "title": "SURMOUNT-5: Tirzepatide vs Semaglutide head-to-head",
+          "summary": "Tirzepatide gaf 20.2% þyngdartap vs 13.7% Semaglutide á 72 vikum.",
+          "year": 2025,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2416394"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": "tesamorelin",
+      "name": "Tesamorelin",
+      "fullName": "Tesamorelin (Egrifta)",
+      "categories": [
+        "fat_loss",
+        "anti_aging"
+      ],
+      "tagline": "GHRH analog sérstaklega fyrir innyflafitu",
+      "description": "FDA samþykkt GHRH analog, notað í HIV lipodystrophy. Mjög áhrifaríkt fyrir innyflafitu.",
+      "mechanism": "GHRH analog með mun lengri helmingunartíma, örvar GH/IGF-1 öxulinn.",
+      "halfLife": "~26-38 mín, en áhrif viðvarandi",
+      "fdaApproved": true,
+      "researchStatus": "FDA samþykkt 2010 fyrir HIV-tengda lipodystrophy",
+      "dosage": {
+        "beginner": {
+          "amount": "1 mg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "12 vikur"
+        },
+        "standard": {
+          "amount": "2 mg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "16-26 vikur"
+        },
+        "advanced": {
+          "amount": "2 mg + 1 mg AM",
+          "frequency": "Skipt í tvo skammta",
+          "route": "SubQ",
+          "duration": "26 vikur"
+        }
+      },
+      "timing": "Á fastandi maga fyrir svefn (30-60 mín fyrir).",
+      "cycleInfo": "16-26 vikur on, 4-8 vikur off",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Viðkvæmt - geyma alltaf í kæli eftir blöndun."
+      },
+      "storage": "Þurrt: kæli. Blandað: 2-8°C, 7 daga.",
+      "benefits": [
+        "Marktæk minnkun innyflafitu",
+        "Bætt blóðfitur",
+        "Aukin IGF-1",
+        "Vöðvauppbygging",
+        "Bætt orku"
+      ],
+      "sideEffects": [
+        "Roða í andliti",
+        "Náladofi",
+        "Vökvasöfnun",
+        "Liðverkir",
+        "Sjaldan: hækkaður blóðsykur"
+      ],
+      "contraindications": [
+        "Sjúkdómar í heiladingli",
+        "Virkt krabbamein",
+        "Þungun",
+        "Sykursýki (eftirlit)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtur. Best fyrir middle-age belly fat.",
+        "women": "Sama skammtur, 1-2 mg. Mjög áhrifaríkt fyrir eftir tíðahvörf belly fat."
+      },
+      "research": [
+        {
+          "title": "Falutz J et al: Tesamorelin reduces visceral fat in HIV",
+          "summary": "26 vikna rannsókn, 15% minnkun á innyflafitu samanborið við lyfleysu.",
+          "year": 2007,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18094375/"
+        },
+        {
+          "title": "Stanley TL et al: Tesamorelin and NAFLD",
+          "summary": "Tesamorelin minnkar fitulifur óháð HIV stöðu.",
+          "year": 2019,
+          "journal": "The Lancet HIV",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31402327/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "bpc-157"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "ghk-cu",
+      "name": "GHK-Cu",
+      "fullName": "Copper Tripeptide-1 (GHK-Cu)",
+      "categories": [
+        "anti_aging",
+        "healing"
+      ],
+      "tagline": "Anti-aging, húð, hár og endurnýjun",
+      "description": "Náttúrulegt koparbundið tripeptíð sem lækkar í blóði eftir 60 ára aldur. Sterk gögn fyrir hárvöxt, húðgræðslu og collagen framleiðslu.",
+      "mechanism": "Bindur kopar, stuðlar að collagen, elastin og hyaluronic acid framleiðslu. Virkjar 4000+ gene.",
+      "halfLife": "~1 klst",
+      "fdaApproved": false,
+      "researchStatus": "Notað í snyrtivörum víða, klínískar rannsóknir á injection format",
+      "dosage": {
+        "beginner": {
+          "amount": "1 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ eða topical",
+          "duration": "4-8 vikur"
+        },
+        "standard": {
+          "amount": "2 mg",
+          "frequency": "1x á dag (SubQ) eða 2x á dag (topical)",
+          "route": "SubQ eða topical 1-2%",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "3 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ + topical samhliða",
+          "duration": "12-16 vikur"
+        }
+      },
+      "timing": "Hvenær sem er. Topical: kvöldið best.",
+      "cycleInfo": "8-12 vikur on, 4 vikur off",
+      "reconstitution": {
+        "vialSize": "50 mg",
+        "bacWater": "5 mL",
+        "concentration": "10 mg/mL",
+        "note": "Lausn er blá á litinn vegna kopars - eðlilegt."
+      },
+      "storage": "Þurrt: dimmt og kalt. Blandað: 2-8°C, 4 vikur.",
+      "benefits": [
+        "Stuðlar að hárvöxt",
+        "Lækkar fínar línur og hrukkur",
+        "Hækkar húðþykkt",
+        "Sár-græðsla",
+        "Andoxun",
+        "Bólgueyðandi"
+      ],
+      "sideEffects": [
+        "Almennt mjög vel þolað",
+        "Smá roða á stungustað",
+        "Sjaldan: koparofnæmi"
+      ],
+      "contraindications": [
+        "Koparofnæmi",
+        "Wilson's disease",
+        "Þungun (varúð)"
+      ],
+      "genderNotes": {
+        "men": "Vinsælt fyrir hárvöxt (DHT-óháð), húðheilsa og post-workout recovery.",
+        "women": "Vinsælast fyrir anti-aging skin, hárvöxt og eftir tíðahvörf collagen tap."
+      },
+      "research": [
+        {
+          "title": "Pickart L, Margolina A: GHK-Cu: A Three-Decade Review",
+          "summary": "Yfirlit yfir 30 ára rannsóknir á GHK-Cu - gene expression, healing, anti-aging.",
+          "year": 2018,
+          "journal": "International Journal of Molecular Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29849021/"
+        },
+        {
+          "title": "Pickart L: GHK gene modulation",
+          "summary": "GHK breytir tjáningu yfir 4000 gena í human stofnfrumum.",
+          "year": 2017,
+          "journal": "BioMed Research International",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29062812/"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500",
+        "ipamorelin"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "epitalon",
+      "name": "Epitalon",
+      "fullName": "Epithalon / Epithalamin",
+      "categories": [
+        "anti_aging",
+        "longevity",
+        "sleep"
+      ],
+      "tagline": "Telomerase aktivator - longevity peptide",
+      "description": "Rússneskt peptíð sem virkjar telomerase ensímið og lengir telomera. Mest rannsökuð longevity peptíð.",
+      "mechanism": "Eykur telomerase virkni, sem viðheldur telomera lengd. Stuðlar einnig að melatóní framleiðslu.",
+      "halfLife": "Stuttur (~30 mín) en biological áhrif langvarandi",
+      "fdaApproved": false,
+      "researchStatus": "Rússneskar klínískar rannsóknir, mjög lítil vestrænar rannsóknir",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "10-20 daga lota"
+        },
+        "standard": {
+          "amount": "10 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "20 daga lota, 1-2x á ári"
+        },
+        "advanced": {
+          "amount": "10 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "20 daga lota, 2-3x á ári"
+        }
+      },
+      "timing": "Á kvöldin fyrir svefn (bætir melatonin).",
+      "cycleInfo": "20 daga lotur, 2-3 sinnum á ári. Ekki daglegt allt árið.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Notkun innan 30 daga eftir blöndun."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 30 daga.",
+      "benefits": [
+        "Telomerase aktivation",
+        "Bætt svefn",
+        "Bætt melatonin framleiðslu",
+        "Andoxun",
+        "Possible longevity áhrif (animal data)",
+        "Húðheilsa"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Engar marktækar aukaverkanir í rannsóknum"
+      ],
+      "contraindications": [
+        "Þungun",
+        "Virkt krabbamein (telomerase virkjar gæti fræðilega örvað)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtur. Vinsælt eftir 40 ára.",
+        "women": "Sama skammtur. Sérstaklega gott eftir tíðahvörf fyrir svefn og húð."
+      },
+      "research": [
+        {
+          "title": "Khavinson V: Peptides and aging",
+          "summary": "20+ ára rannsóknir á epitalon og longevity í Rússlandi.",
+          "year": 2002,
+          "journal": "Neuroendocrinology Letters",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/12374973/"
+        },
+        {
+          "title": "Khavinson V et al: Epitalon and telomere length",
+          "summary": "Epitalon eykur telomerase virkni og lengir telomera in vitro.",
+          "year": 2003,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=epitalon+telomerase"
+        }
+      ],
+      "stacksWellWith": [
+        "ghk-cu",
+        "ipamorelin",
+        "dsip"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "pt-141",
+      "name": "PT-141",
+      "fullName": "Bremelanotide (Vyleesi)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "Kynhvöt fyrir bæði konur og karla",
+      "description": "Melanocortin viðtaka örvi sem virkar á heila til að auka kynhvöt - ekki æðakerfi (eins og Viagra). FDA samþykkt 2019.",
+      "mechanism": "Virkjar MC3R og MC4R viðtaka í dópamín-vegum heilans, sem stýra kynhvöt og arousal.",
+      "halfLife": "~2 klst",
+      "fdaApproved": true,
+      "researchStatus": "FDA samþykkt fyrir HSDD (konur). Utan ábendingar fyrir karla.",
+      "dosage": {
+        "beginner": {
+          "amount": "500-750 mcg",
+          "frequency": "On-demand, 45 mín fyrir",
+          "route": "SubQ",
+          "duration": "On-demand"
+        },
+        "standard": {
+          "amount": "1.0-1.75 mg",
+          "frequency": "On-demand, max 8x á mánuði",
+          "route": "SubQ",
+          "duration": "On-demand"
+        },
+        "advanced": {
+          "amount": "1.75 mg",
+          "frequency": "On-demand, hámark 8 skammtar/mánuði",
+          "route": "SubQ",
+          "duration": "On-demand"
+        }
+      },
+      "timing": "45 mín - 4 klst fyrir kynlíf. Ekki á fastandi maga (versta ógleðin).",
+      "cycleInfo": "On-demand. Ekki daglegt.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
+        "note": "Geyma kalt eftir blöndun."
+      },
+      "storage": "Þurrt: kalt. Blandað: 2-8°C, 4 vikur.",
+      "benefits": [
+        "Eykur kynhvöt (bæði kyn)",
+        "Hjálpar með ED þegar PDE5 lyf virka ekki",
+        "Virkar á heila, ekki æðar",
+        "Engin þörf á sjónrænni örvun"
+      ],
+      "sideEffects": [
+        "Ógleði (mjög algeng, 40%+)",
+        "Roða í andliti",
+        "Tímabundin hækkun blóðþrýstings",
+        "Höfuðverkur",
+        "Dökknun á húð við endurtekna notkun (sjaldan)"
+      ],
+      "contraindications": [
+        "Háþrýstingur (ekki vel stjórnað)",
+        "Cardiovascular sjúkdómur",
+        "Þungun"
+      ],
+      "genderNotes": {
+        "men": "Utan ábendingar notkun. 1-1.75 mg algengt. Stundum stacked með tadalafil.",
+        "women": "FDA samþykkt fyrir HSDD fyrir tíðahvörf. 1.75 mg standard. Ekki enn ábending eftir tíðahvörf."
+      },
+      "research": [
+        {
+          "title": "RECONNECT studies: Bremelanotide for HSDD",
+          "summary": "Fasa 3 RCT, 1247 konur. Marktæk hækkun á kynhvöt samanborið við lyfleysu.",
+          "year": 2019,
+          "journal": "Obstetrics & Gynecology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31599840/"
+        },
+        {
+          "title": "Rosen RC et al: PT-141 safety and pharmacokinetics",
+          "summary": "Snemma rannsókn á PT-141 hjá körlum með ED.",
+          "year": 2004,
+          "journal": "International Journal of Impotence Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=rosen+PT-141"
+        }
+      ],
+      "stacksWellWith": [
+        "kisspeptin-10"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "melanotan-2",
+      "name": "Melanotan II",
+      "fullName": "Melanotan II (MT-II)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "Bronze suntan + libido",
+      "description": "Cyclic melanocortin viðtaka örvi - þróað sem brúnkupeptíð. Líka kynhvöt áhrif.",
+      "mechanism": "Virkjar MC1R (melanín, brúnka) og MC3R/MC4R (kynhvöt, matarlyst).",
+      "halfLife": "~1 klst",
+      "fdaApproved": false,
+      "researchStatus": "Ekki samþykkt - rannsóknarefni",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x á dag (hleðsla)",
+          "route": "SubQ",
+          "duration": "4-8 vikur hleðsla"
+        },
+        "standard": {
+          "amount": "500 mcg",
+          "frequency": "1x á dag (hleðsla), svo 2-3x/viku viðhald",
+          "route": "SubQ",
+          "duration": "Loading 4-8 vikur, svo viðhald"
+        },
+        "advanced": {
+          "amount": "1000 mcg",
+          "frequency": "1x á dag hleðsla, svo 2-3x/viku",
+          "route": "SubQ",
+          "duration": "Continuous með breaks"
+        }
+      },
+      "timing": "Að kvöldi (oftast). UV exposure (sól/solarium) þarf í 1-2 daga eftir til að virka brúnkan.",
+      "cycleInfo": "Loading 4-8 vikur, svo lágskammta viðhald.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
+        "note": "10 units á insulin sprautu = 333 mcg."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 4-6 vikur.",
+      "benefits": [
+        "Dökk og lengi varandi brúnka",
+        "Vörn gegn sólbruna (theoretical)",
+        "Aukin kynhvöt",
+        "Minnkuð matarlyst (bonus)"
+      ],
+      "sideEffects": [
+        "Ógleði (algeng fyrst)",
+        "Roða",
+        "Dökknun á freknum og fæðingarblettum",
+        "Spontaneous erections (karlar)",
+        "MIKILVÆGT: monitora nýja eða breytta blettir"
+      ],
+      "contraindications": [
+        "Saga um melanóma",
+        "Margir blettir á húð",
+        "Familial dysplastic nevus syndrome",
+        "Þungun",
+        "Cardiovascular sjúkdómar"
+      ],
+      "genderNotes": {
+        "men": "Veldur stundum óvæntum stinningu fyrst. Lægri skammtar oft nóg.",
+        "women": "Vinsælt fyrir brúnku. Varúð á blettum - sjá húðlækni reglulega."
+      },
+      "research": [
+        {
+          "title": "Dorr RT et al: Melanotan II safety study",
+          "summary": "Snemma klínísk rannsókn á MT-II hjá heilbrigðum sjálfboðaliðum.",
+          "year": 1996,
+          "journal": "Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=dorr+melanotan"
+        },
+        {
+          "title": "Hadley ME: Discovery of melanocortin sexual function",
+          "summary": "Yfirlit yfir uppgötvunina að melanokortinar stjórni kynhvöt.",
+          "year": 2005,
+          "journal": "Peptides",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16005101/"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "selank",
+      "name": "Selank",
+      "fullName": "Selank (TP-7)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Kvíðastilling án sefjandi áhrifa",
+      "description": "Rússneskt nootropic peptíð sem dregur úr kvíða án sedation. Analog af tuftsin.",
+      "mechanism": "Modulerar GABA og serotonin kerfi. Eykur BDNF.",
+      "halfLife": "Stuttur, en biological áhrif yfir 24+ klst",
+      "fdaApproved": false,
+      "researchStatus": "Samþykkt í Rússlandi sem lyf, ekki í USA/EU",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mcg",
+          "frequency": "1-2x á dag (í nef)",
+          "route": "Intranasal",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "750-1500 mcg",
+          "frequency": "2-3x á dag (í nef) eða 1x SubQ",
+          "route": "Intranasal eða SubQ",
+          "duration": "4-6 vikur"
+        },
+        "advanced": {
+          "amount": "2000-3000 mcg total daily",
+          "frequency": "Skipt í 2-3 skammta",
+          "route": "Intranasal",
+          "duration": "6 vikur, svo 2 vikur off"
+        }
+      },
+      "timing": "Á morgnana eða snemma síðdegis. Forðast eftir kl. 15 (gæti truflað svefn).",
+      "cycleInfo": "4-6 vikur on, 1-2 vikur off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL (fyrir nef-úða)",
+        "concentration": "2500 mcg/mL",
+        "note": "Notað oftast sem nef-úða. Hver puff = 250-500 mcg."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 14-21 daga.",
+      "benefits": [
+        "Kvíðastilling án sedation",
+        "Bætt einbeiting",
+        "Engin fíknaráhrif (ólíkt benzós)",
+        "Stress resilience",
+        "Bætt skap",
+        "Bólgueyðandi áhrif"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Sjaldan: höfuðverkur",
+        "Nef erting (við nef-notkun)"
+      ],
+      "contraindications": [
+        "Þungun",
+        "Saga um geðrof (varúð)",
+        "Önnur GABA-virk lyf (samverkan)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir 'high performers' með kvíða.",
+        "women": "Sami skammtur. Vinsælt fyrir hormonal kvíða, sérstaklega PMS-tengt."
+      },
+      "research": [
+        {
+          "title": "Medvedev VE et al: Selank in generalized anxiety",
+          "summary": "Rússnesk klínísk rannsókn, marktæk minnkun á kvíða samanborið við lyfleysu.",
+          "year": 2014,
+          "journal": "Zhurnal Nevrologii i Psikhiatrii",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24800022/"
+        },
+        {
+          "title": "Inozemtseva LS et al: Selank molecular mechanisms",
+          "summary": "Yfirlit yfir Selank og BDNF/GABA mekanisma.",
+          "year": 2008,
+          "journal": "Doklady Biological Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=selank+BDNF"
+        }
+      ],
+      "stacksWellWith": [
+        "semax",
+        "dsip"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "semax",
+      "name": "Semax",
+      "fullName": "Semax (ACTH 4-10 analog)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Einbeiting og minni",
+      "description": "Rússneskt nootropic peptíð, analog af ACTH(4-10). Eykur BDNF og NGF.",
+      "mechanism": "Eykur BDNF (Brain-Derived Neurotrophic Factor), NGF. Modulerar dópamín og serótónín.",
+      "halfLife": "Stuttur (mín), en áhrif yfir 24 klst",
+      "fdaApproved": false,
+      "researchStatus": "Samþykkt í Rússlandi fyrir heilablóðfall og kognitív einkenni",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mcg",
+          "frequency": "1-2x á dag (í nef)",
+          "route": "Intranasal",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "600-900 mcg",
+          "frequency": "2-3x á dag (í nef)",
+          "route": "Intranasal",
+          "duration": "4-8 vikur"
+        },
+        "advanced": {
+          "amount": "1200-1800 mcg (0.1% solution)",
+          "frequency": "Skipt í 2-3 skammta",
+          "route": "Intranasal eða SubQ",
+          "duration": "6-8 vikur"
+        }
+      },
+      "timing": "Morgun + síðdegis. Ekki seint - getur valdið svefnvanda.",
+      "cycleInfo": "4-8 vikur on, 2 vikur off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Notað oftast sem nef-úða."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 14 daga.",
+      "benefits": [
+        "Bætt einbeiting og focus",
+        "Hraðari minni og processing",
+        "Neuroprotection",
+        "Bætt skap",
+        "Engin krass eftir notkun",
+        "Stuðlar að taugaviðgerð"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Sjaldan: yfirörvun ef of seint",
+        "Nef erting"
+      ],
+      "contraindications": [
+        "Þungun",
+        "Geðsjúkdómar (varúð)",
+        "Háþrýstingur (mild interaction)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir cognitive demanding starf.",
+        "women": "Sami skammtur. Hjálpar gegn brain fog í tíðahvörfum og postpartum."
+      },
+      "research": [
+        {
+          "title": "Kaplan AY et al: Semax effects on attention",
+          "summary": "Rússnesk rannsókn á Semax og athyglisstyrk.",
+          "year": 2011,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=semax+attention"
+        },
+        {
+          "title": "Levitskaya NG: Semax neuroprotection",
+          "summary": "Mekanísk rannsókn á taugaverndandi áhrifum Semax.",
+          "year": 2008,
+          "journal": "Neuroscience Letters",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=semax+neuroprotection"
+        }
+      ],
+      "stacksWellWith": [
+        "selank",
+        "dsip",
+        "bpc-157"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "dsip",
+      "name": "DSIP",
+      "fullName": "Delta Sleep-Inducing Peptide",
+      "categories": [
+        "sleep"
+      ],
+      "tagline": "Djúpsvefn og deltabylgjur",
+      "description": "Náttúrulegt peptíð sem örvar delta-bylgju svefn. Stuðlar að djúpum, endurnýjandi svefni.",
+      "mechanism": "Stuðlar að delta-bylgju virkni í EEG. Modulerar circadian taktur.",
+      "halfLife": "Stuttur (~7 mín) en biological áhrif viðvarandi",
+      "fdaApproved": false,
+      "researchStatus": "Lítil vestrænar rannsóknir, sterk áhugamannareynsla",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "Eins lengi og þörf krefur"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "4-8 vikna lota"
+        },
+        "advanced": {
+          "amount": "200-500 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "SubQ",
+          "duration": "Cycled 4-6 vikur"
+        }
+      },
+      "timing": "30 mín fyrir svefn.",
+      "cycleInfo": "Hægt að nota daglega lengur en líka cyclað 4-6 vikur on, 1-2 vikur off.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Lágur skammtur, þannig að 2.5 mL er þægilegt."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 30 daga.",
+      "benefits": [
+        "Djúpsvefn (slow-wave sleep)",
+        "Hraðari sofnun",
+        "Bætt morgun-energy",
+        "Stress reduction",
+        "Mögulega gagnlegt fyrir alkóhól withdrawal",
+        "Engin morgunsyfja"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Sjaldan: lifandi draumar"
+      ],
+      "contraindications": [
+        "Þungun",
+        "Önnur svefnlyf (samverkan möguleg)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir shift workers.",
+        "women": "Sami skammtur. Mjög áhrifaríkt fyrir tíðahvörf-tengda svefnvandamál."
+      },
+      "research": [
+        {
+          "title": "Schneider-Helmert D: DSIP for sleep disorders",
+          "summary": "Klínísk rannsókn á DSIP fyrir krónískt svefnleysi.",
+          "year": 1987,
+          "journal": "European Neurology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=DSIP+sleep"
+        },
+        {
+          "title": "Graf MV, Kastin AJ: DSIP biological actions",
+          "summary": "Yfirlit yfir biological actions DSIP.",
+          "year": 1986,
+          "journal": "Neuroscience & Biobehavioral Reviews",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=graf+DSIP"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "ipamorelin",
+        "selank"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "mots-c",
+      "name": "MOTS-c",
+      "fullName": "Mitochondrial-derived peptide MOTS-c",
+      "categories": [
+        "longevity",
+        "fat_loss",
+        "muscle"
+      ],
+      "tagline": "Hvatberapeptíð - efnaskipta-rofi",
+      "description": "Náttúrulegt peptíð úr hvatbera-DNA. Eykur AMPK virkni, bætir glúkósaviðnám og efnaskipta-sveigjanleika.",
+      "mechanism": "Virkjar AMPK pathway, sem stuðlar að fitubrennslu, glúkósanýtingu og mitochondrial heilbrigði.",
+      "halfLife": "Stuttur, en áhrif yfir 24+ klst",
+      "fdaApproved": false,
+      "researchStatus": "Forklínískt sterkt, fyrstu klíniskar rannsóknir í gangi",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "3x á viku",
+          "route": "SubQ",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "10 mg",
+          "frequency": "3x á viku",
+          "route": "SubQ",
+          "duration": "6-8 vikur"
+        },
+        "advanced": {
+          "amount": "10-15 mg",
+          "frequency": "3-5x á viku",
+          "route": "SubQ",
+          "duration": "8-12 vikur með 4 vikna pásu"
+        }
+      },
+      "timing": "Pre-workout eða á morgnana á fastandi maga.",
+      "cycleInfo": "6-12 vikur on, 4 vikur off.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Tiltölulega dýrt - nota nákvæmlega."
+      },
+      "storage": "Þurrt: frystir. Blandað: 2-8°C, 14 daga.",
+      "benefits": [
+        "Bætt mitochondrial function",
+        "Aukið insúlínnæmi",
+        "Fitubrennsla",
+        "Bætt orku",
+        "Hægari öldrun (animal data)",
+        "Bætt íþróttagrip"
+      ],
+      "sideEffects": [
+        "Almennt mjög vel þolað",
+        "Sjaldan: smá þreyta í fyrstu"
+      ],
+      "contraindications": [
+        "Þungun (engar rannsóknir)",
+        "Sykursýki týpa 1 (varúð - blóðsykurseftirlit)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir performance.",
+        "women": "Sami skammtur. Sérstaklega gagnlegt í tíðahvörfum (hægara efnaskipti)."
+      },
+      "research": [
+        {
+          "title": "Lee C et al: MOTS-c regulates insulin sensitivity",
+          "summary": "Landmark rannsókn sem skilgreindi MOTS-c og virkni þess.",
+          "year": 2015,
+          "journal": "Cell Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25738459/"
+        },
+        {
+          "title": "Reynolds JC et al: MOTS-c improves muscle insulin sensitivity",
+          "summary": "MOTS-c bætir vöðva efnaskipta-heilbrigði og þrekíþróttagrip í músum.",
+          "year": 2021,
+          "journal": "Nature Communications",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33623040/"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "ipamorelin",
+        "tesamorelin"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "retatrutide",
+      "name": "Retatrutide",
+      "fullName": "Retatrutide (LY3437943)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Þríþættur GLP-1/GIP/glucagon agonisti",
+      "description": "Eli Lilly's þríörvunarpeptíð sem virkjar GLP-1, GIP og glucagon viðtaka samtímis. Fasa 3 klínískar rannsóknir sýna 24%+ þyngdartap eftir 48 vikur — sterkasta þyngdartap sem sést hefur með GLP-1 lyfjum til þessa.",
+      "mechanism": "Þríþætt virkjun: GLP-1 (matarlystarminnkun + insúlín), GIP (insúlín sensitivity), glucagon (orkubrennsla og fitusundrun).",
+      "halfLife": "~6 dagar (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 3 (TRIUMPH program 2024-2025), líklega FDA-samþykkt 2026",
+      "dosage": {
+        "beginner": {
+          "amount": "2 mg",
+          "frequency": "1x á viku (stigvaxandi skammtur fyrstu 4 vikurnar)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "standard": {
+          "amount": "4 mg → 8 mg",
+          "frequency": "1x á viku (uppstigning hver 4 vikur)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "advanced": {
+          "amount": "12 mg (max)",
+          "frequency": "1x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Sami vikudagur, óháð máltíðum. Best á morgnana eða kvöldi.",
+      "cycleInfo": "Engin skipulögð pása — long-term viðhald svipað og semaglutide.",
+      "reconstitution": {
+        "vialSize": "8 mg",
+        "bacWater": "2 mL",
+        "concentration": "4 mg/mL",
+        "note": "Hægt að geyma í kæli eftir blöndun í allt að 4 vikur."
+      },
+      "storage": "Þurrt: kælir 2-8°C. Eftir blöndun: 2-8°C, 28 daga.",
+      "benefits": [
+        "Stærsta þyngdartap meðal GLP-1 lyfja",
+        "Bætt blóðsykur stjórn",
+        "Aukin orkubrennsla",
+        "Hjartaverndandi áhrif (forrannsóknir)"
+      ],
+      "sideEffects": [
+        "Ógleði og uppköst (algeng í fyrstu)",
+        "Niðurgangur og hægðatregða",
+        "Höfuðverkur",
+        "Möguleg pancreatitis (sjaldgæft)"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Saga um pancreatitis",
+        "Medullary thyroid carcinoma (MEN2)",
+        "Alvarleg magalömun"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt. Vinsælt fyrir efnaskipta-heilkenni.",
+        "women": "Sami skammtur. Athugaðu frjósemi áður en byrjað er."
+      },
+      "research": [
+        {
+          "title": "Jastreboff et al: Retatrutide phase 2 obesity trial",
+          "summary": "338 fullorðnir með offitu. 24% þyngdartap eftir 48 vikur á 12 mg vikulega — meira en semaglutide eða tirzepatide.",
+          "year": 2023,
+          "journal": "New England Journal of Medicine",
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2301972"
+        },
+        {
+          "title": "TRIUMPH-1 phase 3 results (interim)",
+          "summary": "Eli Lilly Fasa 3 program, 2024 millibils-gögn.",
+          "year": 2024,
+          "journal": "Eli Lilly press release",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=retatrutide+phase+3"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "tesamorelin"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": "thymosin-alpha-1",
+      "name": "Thymosin α-1",
+      "fullName": "Thymosin Alpha-1 (Zadaxin)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Ónæmismódulator og T-frumu stuðningur",
+      "description": "28-amínósýra peptíð sem stýrir T-frumu þroska. FDA-samþykkt í 35+ löndum (sem Zadaxin) fyrir lifrarbólgu B og sem viðbót við krabbameinsmeðferð. Lykill í ónæmissvörun.",
+      "mechanism": "Eykur Th1 svörun, virkjar tindfrumur og NK-frumur, kemur jafnvægi á cýtókín-myndun.",
+      "halfLife": "~2 klst (SubQ)",
+      "fdaApproved": true,
+      "researchStatus": "FDA-samþykkt í mörgum löndum, ekki Bandaríkjunum",
+      "dosage": {
+        "beginner": {
+          "amount": "1.6 mg",
+          "frequency": "2x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-12 vikur"
+        },
+        "standard": {
+          "amount": "1.6 mg",
+          "frequency": "1x á dag (5 dagar á viku)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "6-8 vikur"
+        },
+        "advanced": {
+          "amount": "3.2 mg",
+          "frequency": "2x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        }
+      },
+      "timing": "Skiptir litlu — má taka morgun eða kvöld.",
+      "cycleInfo": "Standard meðferð er 4-12 vikna lota, með pásu á milli ef notkun heldur áfram.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Mjög stable peptíð. Þolir frystingu eftir blöndun (ólíkt mörgum öðrum)."
+      },
+      "storage": "Þurrt: kælir, 24+ mánuðir. Eftir blöndun: 2-8°C, 30 daga eða -20°C í 6 mánuði.",
+      "benefits": [
+        "Styrkir ónæmiskerfi (sérstaklega T-frumur)",
+        "Hjálp við krónískar veirusýkingar",
+        "Stuðningur við krabbameinsmeðferð",
+        "Mjög örugg langtímanotkun",
+        "Bætt sárgróun via immune mediation"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Sjaldgæft: erting á stungustað",
+        "Sjaldgæft: létt þreyta í fyrstu vikur"
+      ],
+      "contraindications": [
+        "Sjálfsofnæmissjúkdómar (varúð — gæti aukið virkni)",
+        "Líffæraígræðsla (ónæmisbælandi lyf nauðsynleg)",
+        "Þungun (lítil gögn)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur. Vel rannsakað í konum með HBV."
+      },
+      "research": [
+        {
+          "title": "Camerini & Garaci: Historical review of Thymosin α1",
+          "summary": "Yfirlit yfir 40 ára notkun: ónæmisstuðningur, krabbamein, sýkingar.",
+          "year": 2015,
+          "journal": "Annals of the New York Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26031623/"
+        },
+        {
+          "title": "Liu et al: Thymosin alpha-1 in chronic HBV",
+          "summary": "Meta-analysis 23 rannsóknir, virkur við HBV clearance.",
+          "year": 2020,
+          "journal": "Hepatology International",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=thymosin+alpha-1+hepatitis"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500",
+        "ll-37"
+      ],
+      "popularity": 82
+    },
+    {
+      "id": "sermorelin",
+      "name": "Sermorelin",
+      "fullName": "Sermorelin Acetate (GRF 1-29)",
+      "categories": [
+        "muscle",
+        "anti_aging"
+      ],
+      "tagline": "Klassísk GHRH analog — náttúrulegri GH pulse",
+      "description": "29-amínósýra GHRH analog, FDA-samþykkt frá 1990 sem Geref. Stuttur helmingunartími gefur náttúrulegri GH pulse en CJC-1295. Vinsælt í anti-aging klíníkum í USA.",
+      "mechanism": "Virkjar GHRH viðtaka í heiladingli, eykur eigin GH framleiðslu án ofútsetningar.",
+      "halfLife": "~10-20 mínútur",
+      "fdaApproved": true,
+      "researchStatus": "FDA-samþykkt fyrir GH deficiency hjá börnum, utan ábendingar fyrir anti-aging",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "200-300 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12-24 vikur"
+        },
+        "advanced": {
+          "amount": "300-500 mcg",
+          "frequency": "1-2x á dag (kvöld + morgun)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "16-24 vikur"
+        }
+      },
+      "timing": "Best fyrir svefn (a.m.k. 2 klst eftir mat) — náttúruleg GH pulse er sterkust þá.",
+      "cycleInfo": "3-6 mánaða lotur með 4-8 vikna pásu á milli.",
+      "reconstitution": {
+        "vialSize": "3 mg",
+        "bacWater": "1.5 mL",
+        "concentration": "2 mg/mL",
+        "note": "Mjög viðkvæmt — meðhöndla varlega, geyma í kæli strax eftir blöndun."
+      },
+      "storage": "Þurrt: kælir, 24+ mánuðir. Eftir blöndun: 2-8°C, 14 daga (styttri en CJC-1295).",
+      "benefits": [
+        "Náttúrulegri GH pulse en CJC-1295",
+        "Bætt svefn dýpt",
+        "Aukin vöðvamassa",
+        "Bætt húð og hár",
+        "Mýkri side-effect profile"
+      ],
+      "sideEffects": [
+        "Erting á stungustað",
+        "Höfuðverkur (ferskur skammtur)",
+        "Smá svefntrufla fyrstu daga",
+        "Möguleg ógleði"
+      ],
+      "contraindications": [
+        "Virkt krabbamein",
+        "Þungun og brjóstagjöf",
+        "Diabetic retinopathy (skoða með lækni)",
+        "Æxli í heiladingli"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt eftir 35 ára.",
+        "women": "Sami skammtur. Vinsælt fyrir húð og hár."
+      },
+      "research": [
+        {
+          "title": "Walker et al: Sermorelin in adult GH deficiency",
+          "summary": "Klínísk próf sem sýna sermorelin er virkur við GH deficiency.",
+          "year": 2006,
+          "journal": "Aging Male",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sermorelin+adult+growth+hormone"
+        },
+        {
+          "title": "Khorram et al: Sermorelin in older adults",
+          "summary": "16-vikna sermorelin meðferð hjá 60-71 ára: aukin GH, IGF-1.",
+          "year": 1997,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9239556/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "ghk-cu"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "cagrisema",
+      "name": "CagriSema",
+      "fullName": "Cagrilintide + Semaglutide combination",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Sterk semaglutide + cagrilintide samsetning",
+      "description": "Novo Nordisk Fasa 3 samsetning af cagrilintide (langvirk amýlín-hliðstæða) og semaglutide. Stefnt á að toppa tirzepatide í þyngdartapi.",
+      "mechanism": "Tvíþætt: Cagrilintide minnkar matarlyst via amylin viðtaka, semaglutide virkjar GLP-1.",
+      "halfLife": "~1 vika (bæði components)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 3 (REDEFINE program), væntanleg samþykki 2025-2026",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg + 0.25 mg",
+          "frequency": "1x á viku (stigvaxandi skammtur fyrstu 4 vikurnar)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "standard": {
+          "amount": "1.0 mg + 1.0 mg",
+          "frequency": "1x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        },
+        "advanced": {
+          "amount": "2.4 mg + 2.4 mg",
+          "frequency": "1x á viku (max)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Long-term"
+        }
+      },
+      "timing": "Sami vikudagur. Best á morgni eða kvöldi.",
+      "cycleInfo": "Long-term viðhald, sami patten og semaglutide.",
+      "reconstitution": {
+        "vialSize": "5 mg + 5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL each",
+        "note": "Klínísk forma er forblandað pen. Sérsett form blandast saman."
+      },
+      "storage": "Þurrt: kælir 2-8°C. Eftir blöndun: 2-8°C, 28 daga.",
+      "benefits": [
+        "Hugsanlega stærsta þyngdartap meðal GLP-1 lyfja",
+        "Mýkri matarlystarstýring (dual mechanism)",
+        "Bætt blóðsykur stjórn",
+        "Lægri ógleði en hreint semaglutide"
+      ],
+      "sideEffects": [
+        "Ógleði og uppköst (algeng í fyrstu)",
+        "Niðurgangur eða hægðatregða",
+        "Höfuðverkur",
+        "Möguleg pancreatitis (sjaldgæft)"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Saga um pancreatitis",
+        "Medullary thyroid carcinoma (MEN2)",
+        "Alvarleg magalömun"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur. Athugaðu frjósemi áður en byrjað er."
+      },
+      "research": [
+        {
+          "title": "Frias et al: CagriSema phase 2 in T2D",
+          "summary": "Fasa 2 með type 2 sykursýki: 15.6% þyngdartap.",
+          "year": 2023,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrisema+phase+2"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "tesamorelin"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "ss-31",
+      "name": "SS-31",
+      "fullName": "SS-31 / Elamipretide (Bendavia)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Mítókondría-verndandi peptíð",
+      "description": "Lítið peptíð sem binst innra himnu mítókondría og dregur úr cardiolipin-oxun. Fasa 3 klínísk próf í frumkomnum hvatberasjúkdómi og hjartabilun.",
+      "mechanism": "Binst cardiolipin í innra mítokondría himnu, verndar electron transport chain, dregur úr ROS.",
+      "halfLife": "~2-3 klst (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 3 (Stealth BioTherapeutics), orphan drug status fyrir Barth syndrome",
+      "dosage": {
+        "beginner": {
+          "amount": "20 mg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 vikur"
+        },
+        "standard": {
+          "amount": "40 mg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "60 mg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12-16 vikur"
+        }
+      },
+      "timing": "Best á morgni — orku-relateruð áhrif.",
+      "cycleInfo": "8-16 vikna lotur, með 4 vikna pásu.",
+      "reconstitution": {
+        "vialSize": "100 mg",
+        "bacWater": "2 mL",
+        "concentration": "50 mg/mL",
+        "note": "Stærri vials þurfa stærri bac volume vegna mg-magns."
+      },
+      "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 30 daga.",
+      "benefits": [
+        "Verndar mítókondría",
+        "Bætt orka og þrek",
+        "Hjartaverndandi áhrif",
+        "Hugsanlega anti-aging via mitochondrial biogenesis",
+        "Reduced muscle fatigue"
+      ],
+      "sideEffects": [
+        "Erting á stungustað",
+        "Sjaldgæft: höfuðverkur",
+        "Vel þolað í klínískum prófum"
+      ],
+      "contraindications": [
+        "Lítil rannsóknargögn í þungun",
+        "Líffræðileg lyfjasamskipti enn ekki fullkönnuð"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur."
+      },
+      "research": [
+        {
+          "title": "Karaa et al: SS-31 in mitochondrial myopathy",
+          "summary": "MMPOWER-3 klínísk próf í frumkomnum hvatberasjúkdómi.",
+          "year": 2020,
+          "journal": "Neurology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=elamipretide+SS-31"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "epitalon"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "cerebrolysin",
+      "name": "Cerebrolysin",
+      "fullName": "Cerebrolysin (neuropeptide preparation)",
+      "categories": [
+        "cognitive"
+      ],
+      "tagline": "Neuropeptide complex fyrir heilastarfsemi",
+      "description": "Eitt rannsakaðasta nootropic — blanda af lágmólmassa peptíðum og amínósýrum úr svínaheilum. Mikið notað í Evrópu og Asíu fyrir Alzheimer, slag og heilaáverka.",
+      "mechanism": "Neurotrophic, taugaverndandi, og neurogenerative áhrif — líkir eftir BDNF og NGF, eykur taugamóts-sveigjanleika.",
+      "halfLife": "Margfalt (mörg peptíð)",
+      "fdaApproved": false,
+      "researchStatus": "FDA-samþykkt í 40+ löndum (Evrópa, Rússland, Kína, Suður-Kórea), ekki USA",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mL",
+          "frequency": "1x á dag",
+          "route": "Intramuscular (IM) eða IV",
+          "duration": "10-20 dagar"
+        },
+        "standard": {
+          "amount": "10 mL",
+          "frequency": "1x á dag",
+          "route": "Intramuscular (IM) eða slow IV",
+          "duration": "20 dagar"
+        },
+        "advanced": {
+          "amount": "30 mL",
+          "frequency": "1x á dag (IV infusion)",
+          "route": "IV infusion (klínísk umhverfi)",
+          "duration": "15-20 dagar"
+        }
+      },
+      "timing": "Best á morgni — vakandi áhrif.",
+      "cycleInfo": "10-20 daga lotur, 2-3 lotur á ári með 1-2 mánaða pásu.",
+      "reconstitution": {
+        "vialSize": "10 mL ampoule (forblandað)",
+        "bacWater": "engin — kemur í lausn",
+        "concentration": "215.2 mg/mL",
+        "note": "Cerebrolysin kemur sem tilbúin lausn í lokuðum lykjum — ekki blandað."
+      },
+      "storage": "Stofuhita, varið frá ljósi. Notkun strax eftir opnun.",
+      "benefits": [
+        "Bætt minni og einbeitting",
+        "Hraðari endurheimt eftir heilaslag",
+        "Hægur framgangur Alzheimer",
+        "Bætt neuroplasticity",
+        "Hugsanlega lengri lifaldur taugafrumna"
+      ],
+      "sideEffects": [
+        "Vægt: hitatilfinning",
+        "Sjaldgæft: erting á stungustað",
+        "Sjaldgæft: ofnæmissvörun",
+        "Yfirleitt mjög vel þolað"
+      ],
+      "contraindications": [
+        "Status epilepticus (varúð — getur lækkað seizure threshold)",
+        "Alvarleg nýrnabilun",
+        "Þungun (ekki nóg gögn)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur."
+      },
+      "research": [
+        {
+          "title": "Heiss et al: Cerebrolysin in acute ischemic stroke",
+          "summary": "CASTA klínísk próf — 1070 sjúklingar. Bætt FIM-skor við 90 daga.",
+          "year": 2012,
+          "journal": "Stroke",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22282885/"
+        },
+        {
+          "title": "Alvarez et al: Cerebrolysin in Alzheimer disease",
+          "summary": "Yfirlit yfir klínísk próf í AD — bætt ADAS-cog og CGI.",
+          "year": 2011,
+          "journal": "Journal of Alzheimer's Disease",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cerebrolysin+alzheimer"
+        }
+      ],
+      "stacksWellWith": [
+        "semax",
+        "selank"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "kpv",
+      "name": "KPV",
+      "fullName": "Lysine-Proline-Valine (α-MSH 11-13)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Bólgueyðandi tripeptide úr α-MSH",
+      "description": "Þríamínósýru peptíð sem dregið er úr C-enda α-MSH (melanocyte stimulating hormone). Sterk bólgueyðandi áhrif án melanocortin viðtaka virkjunar.",
+      "mechanism": "Hindrar NF-κB pathway, dregur úr TNF-α, IL-1β og IL-6. Sterk áhrif í bólgu tengdri þörmum.",
+      "halfLife": "Stuttur (mínútur SubQ, lengra oral)",
+      "fdaApproved": false,
+      "researchStatus": "Preclinical sterkur, takmörkuð klínísk gögn",
+      "dosage": {
+        "beginner": {
+          "amount": "200 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ) eða oral",
+          "duration": "4-8 vikur"
+        },
+        "standard": {
+          "amount": "500 mcg",
+          "frequency": "1-2x á dag",
+          "route": "Subcutaneous (SubQ) eða oral",
+          "duration": "6-12 vikur"
+        },
+        "advanced": {
+          "amount": "1000 mcg",
+          "frequency": "2x á dag",
+          "route": "Subcutaneous (SubQ) eða oral",
+          "duration": "8-12 vikur"
+        }
+      },
+      "timing": "Skiptir litlu — má taka morgun eða kvöld.",
+      "cycleInfo": "4-12 vikna lotur með 2-4 vikna pásu.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Stable peptíð. Hægt að taka oral með minni absorption."
+      },
+      "storage": "Þurrt: kælir, mánuðir. Eftir blöndun: 2-8°C, 28 daga.",
+      "benefits": [
+        "Dregur úr kerfisbundnum bólgum",
+        "Hjálp við IBD og leaky gut",
+        "Húðsjúkdómar (acne, psoriasis)",
+        "Anti-microbial",
+        "Vel þolað"
+      ],
+      "sideEffects": [
+        "Mjög vel þolað",
+        "Sjaldgæft: erting á stungustað",
+        "Engin þekkt alvarleg side-effect"
+      ],
+      "contraindications": [
+        "Þungun (lítil gögn)",
+        "Saga um melanóma (varúð — α-MSH derivative)"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur."
+      },
+      "research": [
+        {
+          "title": "Brzoska et al: KPV anti-inflammatory mechanism",
+          "summary": "Yfirlit yfir bólgueyðandi mechanisms KPV.",
+          "year": 2008,
+          "journal": "Endocrine Reviews",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=KPV+anti-inflammatory"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "tb-500"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "kisspeptin-10",
+      "name": "Kisspeptin-10",
+      "fullName": "Kisspeptin-10 (Metastin 45-54)",
+      "categories": [
+        "libido"
+      ],
+      "tagline": "GnRH stimulator — HPG axis virkjari",
+      "description": "10-amínósýru peptíð sem virkjar Kiss1R viðtaka í hypothalamus, sterkasti náttúrulegi virkjari GnRH. Rannsakaður fyrir kynkirtla-vanstarfsemi og lágan testosterón.",
+      "mechanism": "Bindst Kiss1R viðtaka í GnRH taugafrumum, kallar fram LH og FSH pulse, þá testosterón eða estradiol.",
+      "halfLife": "~4 mínútur (mjög stuttur!)",
+      "fdaApproved": false,
+      "researchStatus": "Klínísk próf í gangi fyrir HSDD og kynkirtla-vanstarfsemi",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 vikur"
+        },
+        "standard": {
+          "amount": "100 mcg",
+          "frequency": "1-2x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "6-8 vikur"
+        },
+        "advanced": {
+          "amount": "200 mcg",
+          "frequency": "2x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        }
+      },
+      "timing": "Best á morgni þegar náttúrulegir hormón pulses eru að virkjast.",
+      "cycleInfo": "4-12 vikna lotur, með a.m.k. 4 vikna pásu (forða desensitization).",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "5 mL",
+        "concentration": "1 mg/mL",
+        "note": "Stór bac volume gefur þægilega litla skammta. Mjög viðkvæmt — peptíð brotnar fljótt niður."
+      },
+      "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 7-14 daga (styttri en flest).",
+      "benefits": [
+        "Eykur LH og FSH náttúrulega",
+        "Bætt libido (báðir kynjar)",
+        "Hækkað testosterón (karlar)",
+        "Möguleg frjósemi-aukning",
+        "Mýkri en HCG (engin desensitization)"
+      ],
+      "sideEffects": [
+        "Höfuðverkur",
+        "Roði og hitatilfinning",
+        "Sjaldgæft: ógleði",
+        "Vel þolað í lágum skömmtum"
+      ],
+      "contraindications": [
+        "Hormone-sensitive krabbamein",
+        "Þungun",
+        "Æxli í heiladingli",
+        "Tamoxifen eða aromatase inhibitor notkun"
+      ],
+      "genderNotes": {
+        "men": "Eykur LH → testosterón. Vinsælt sem HCG alternative.",
+        "women": "Rannsakað fyrir HSDD og frjósemi — fer eftir tíðahring."
+      },
+      "research": [
+        {
+          "title": "Comninos et al: Kisspeptin in HSDD women",
+          "summary": "Klínísk próf í konum með low sexual desire — bætt arousal og response.",
+          "year": 2020,
+          "journal": "JCI Insight",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=kisspeptin+HSDD"
+        },
+        {
+          "title": "George et al: Kisspeptin in male testosterone",
+          "summary": "Karlar — virkjar LH náttúrulega, sterkara en GnRH analog.",
+          "year": 2011,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=kisspeptin+testosterone"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141"
+      ],
+      "popularity": 68
+    },
+    {
+      "id": "mk-677",
+      "name": "MK-677",
+      "fullName": "MK-677 (Ibutamoren / Nutrobal)",
+      "categories": [
+        "muscle",
+        "anti_aging"
+      ],
+      "tagline": "GH-örvi til inntöku — engin sprauta",
+      "description": "Non-peptide ghrelin receptor agonist í pilluformi. Eykur GH og IGF-1 í 12-24 klst. Vinsælt fyrir þá sem vilja GH-related ávinning án sprauta.",
+      "mechanism": "Virkjar ghrelin (GHS-R1a) viðtaka í heiladingli, kallar fram GH pulse svipað og hexarelin.",
+      "halfLife": "~24 klst (oral)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 2 klínísk próf í Merck, varið fyrir Alzheimer (2007 hættu þróun)",
+      "dosage": {
+        "beginner": {
+          "amount": "10 mg",
+          "frequency": "1x á dag (fyrir svefn)",
+          "route": "Oral",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "15-20 mg",
+          "frequency": "1x á dag (fyrir svefn)",
+          "route": "Oral",
+          "duration": "12-16 vikur"
+        },
+        "advanced": {
+          "amount": "25 mg",
+          "frequency": "1x á dag eða skipt í 2",
+          "route": "Oral",
+          "duration": "16-24 vikur"
+        }
+      },
+      "timing": "Best fyrir svefn — GH pulse stillist við náttúrulega svefnpulse.",
+      "cycleInfo": "8-24 vikna lotur, með 4-8 vikna pásu (forða insúlín resistance).",
+      "reconstitution": {
+        "vialSize": "Oral (engin reconstitution)",
+        "bacWater": "Á ekki við",
+        "concentration": "Á ekki við",
+        "note": "MK-677 kemur sem capsule eða liquid suspension. Sprauta-visualizer á ekki við."
+      },
+      "storage": "Stofuhita, varið frá ljósi og raka.",
+      "benefits": [
+        "Aukin GH og IGF-1 í 24 klst",
+        "Bætt svefn dýpt",
+        "Aukin matarlyst og vöðvamassa",
+        "Bætt húð og hár",
+        "Engin sprauta þarf"
+      ],
+      "sideEffects": [
+        "Mikil matarlyst (gæti verið ókostur)",
+        "Vatnssöfnun",
+        "Hærri blóðsykur — insúlín resistance áhætta",
+        "Letur og þreyta í fyrstu vikur",
+        "Hærri prólaktín"
+      ],
+      "contraindications": [
+        "Sykursýki eða pre-diabetes",
+        "Virkt krabbamein",
+        "Hjartabilun (vatnssöfnun)",
+        "Þungun og brjóstagjöf"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir bulking.",
+        "women": "Lægri skammtur (10-15 mg) oft nóg. Athugaðu vatnssöfnun."
+      },
+      "research": [
+        {
+          "title": "Nass et al: MK-677 in older adults",
+          "summary": "12-mánaða MK-677 í eldri fullorðnum — sustained GH/IGF-1 hækkun.",
+          "year": 2008,
+          "journal": "Annals of Internal Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19018019/"
+        }
+      ],
+      "stacksWellWith": [
+        "sermorelin",
+        "cjc-1295"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": "hexarelin",
+      "name": "Hexarelin",
+      "fullName": "Hexarelin (Examorelin)",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Sterkasta GHRP — kröftugur GH pulse",
+      "description": "Sterkari en GHRP-2 og GHRP-6. Hraðari verkun og hærri GH pulse, en líka hraðari desensitization. Vinsælt í stuttar lotur fyrir intense bulking.",
+      "mechanism": "Virkjar ghrelin viðtaka (GHS-R1a) í heiladingli — sterkari pulse en aðrir GHRPs. Líka cardioprotective áhrif.",
+      "halfLife": "~55 mínútur",
+      "fdaApproved": false,
+      "researchStatus": "Klínísk próf í cardiovascular og GH deficiency, en óvalið orphan drug",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4 vikur (sömu lotur)"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "2x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 vikur"
+        },
+        "advanced": {
+          "amount": "200 mcg",
+          "frequency": "3x á dag (morgun, eftir æfingu, kvöld)",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 vikur (mikilvægt: stuttar lotur)"
+        }
+      },
+      "timing": "Á fastandi maga, helst 30 mín fyrir mat eða 90 mín eftir.",
+      "cycleInfo": "MIKILVÆGT: 4-8 vikna lotur með 4-8 vikna pásu. Desensitization er hröð.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Sami protocol og aðrir GHRPs. Geyma kalt strax eftir blöndun."
+      },
+      "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 28 daga.",
+      "benefits": [
+        "Sterkasti GH pulse meðal GHRPs",
+        "Hraðari vöðvavöxtur",
+        "Cardioprotective áhrif",
+        "Aukin matarlyst",
+        "Bætt svefn"
+      ],
+      "sideEffects": [
+        "Hröð desensitization (eftir 4-8 vikur)",
+        "Aukinn prólaktín og kortisól",
+        "Hungur (intense)",
+        "Tímabundin vatnssöfnun",
+        "Lethargy eftir injection"
+      ],
+      "contraindications": [
+        "Sykursýki",
+        "Hjartabilun (þrátt fyrir cardioprotection — varúð)",
+        "Æxli í heiladingli",
+        "Þungun"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur. Vinsælt fyrir bulking lotur.",
+        "women": "Lægri skammtur (50-100 mcg) oft nóg vegna prólaktín hækkunar."
+      },
+      "research": [
+        {
+          "title": "Imbimbo et al: Hexarelin GH response in humans",
+          "summary": "Sterk GH response í heilbrigðum og GHD sjúklingum.",
+          "year": 1994,
+          "journal": "J Clin Endocrinol Metab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hexarelin+growth+hormone"
+        },
+        {
+          "title": "Mao et al: Cardioprotective effects of hexarelin",
+          "summary": "Hexarelin sýnir cardioprotection óháð GH áhrifum.",
+          "year": 2014,
+          "journal": "Cardiovascular Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=hexarelin+cardiac"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": "ll-37",
+      "name": "LL-37",
+      "fullName": "LL-37 (Cathelicidin antimicrobial peptide)",
+      "categories": [
+        "healing"
+      ],
+      "tagline": "Eina mannlega cathelicidin — sýklavarnar + healing",
+      "description": "37-amínósýru peptíð, eina human cathelicidin. Sterk sýklavarna-áhrif gegn bakteríum, sveppum, vírusum og líffilmum. Líka ónæmisstýrandi og sárabati.",
+      "mechanism": "Eyðileggur sýkla-frumuhimnur, stýrir ónæmissvörun, eykur angiogenesis og vefjaviðgerð.",
+      "halfLife": "~30 mínútur (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 1-2 klínísk próf fyrir sárabati og langvinnar sýkingar",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ) eða topical",
+          "duration": "2-4 vikur"
+        },
+        "standard": {
+          "amount": "200 mcg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-6 vikur"
+        },
+        "advanced": {
+          "amount": "500 mcg",
+          "frequency": "1-2x á dag",
+          "route": "Subcutaneous (SubQ) eða perilesional",
+          "duration": "6-8 vikur"
+        }
+      },
+      "timing": "Skiptir litlu. Stuttar lotur við virka sýkingu, lengri við langvinna.",
+      "cycleInfo": "2-8 vikna lotur, með 4 vikna pásu á milli.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Pínu viðkvæmt — geyma kalt strax eftir blöndun."
+      },
+      "storage": "Þurrt: frystir eða kælir. Eftir blöndun: 2-8°C, 14 daga.",
+      "benefits": [
+        "Sterk sýklavarnar (bakteríur, sveppir, vírusar)",
+        "Brýtur líffilmum",
+        "Hraðari sárabati",
+        "Ónæmisstýring",
+        "Hugsanlega krabbameins-varnandi (forrannsóknir)"
+      ],
+      "sideEffects": [
+        "Erting á stungustað (algeng)",
+        "Roði og smá hitatilfinning",
+        "Sjaldgæft: létt ofnæmissvörun",
+        "Þolinn í lágum skömmtum"
+      ],
+      "contraindications": [
+        "Þungun (lítil gögn)",
+        "Sjálfsofnæmissjúkdómar (varúð)",
+        "Saga um cýtókín-stormur"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtur og almennt.",
+        "women": "Sami skammtur. Vinsælt fyrir langvinn þvagfærasýking og endurteknar sýkingar."
+      },
+      "research": [
+        {
+          "title": "Vandamme et al: LL-37 antimicrobial properties",
+          "summary": "Yfirlit yfir sýklavarna-virkni LL-37.",
+          "year": 2012,
+          "journal": "Cellular and Molecular Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LL-37+antimicrobial"
+        },
+        {
+          "title": "Mansour et al: LL-37 in wound healing",
+          "summary": "LL-37 í langvinnum sárabata — æðamyndun og þekjumyndun.",
+          "year": 2014,
+          "journal": "Wound Repair and Regeneration",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=LL-37+wound+healing"
+        }
+      ],
+      "stacksWellWith": [
+        "bpc-157",
+        "thymosin-alpha-1"
+      ],
+      "popularity": 60
+    },
+    {
+      "id": "ghrp-2",
+      "name": "GHRP-2",
+      "fullName": "Growth Hormone Releasing Peptide-2 (Pralmorelin)",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Klassískur GH-örvi — sterkari púls en Ipamorelin",
+      "description": "Tilbúinn ghrelín-viðtaka örvi sem kallar fram sterka GH-losun. Sterkari GH-púls en Ipamorelin en með aukaverkunum: hækkað kortisól, prólaktín og mikil matarlyst.",
+      "mechanism": "Bindst GHS-R1a viðtökum í heiladingli til að valda GH-losun; örvar einnig ghrelín-matarlystarferil.",
+      "halfLife": "~15-60 mínútur (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Rannsakað síðan á 10. áratug fyrir GH-skort, en náði aldrei FDA-samþykki. Mikið notað utan ábendingar.",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á dag fyrir svefn",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "100-200 mcg",
+          "frequency": "2x á dag (morgun + kvöld, fastandi)",
+          "route": "SubQ",
+          "duration": "12-16 vikur"
+        },
+        "advanced": {
+          "amount": "200-300 mcg",
+          "frequency": "3x á dag (morgun, eftir æfingu, kvöld)",
+          "route": "SubQ",
+          "duration": "12-16 vikur með pásum"
+        }
+      },
+      "timing": "Á fastandi maga, 30-60 mín fyrir mat. Forðast sykur/kolvetni 30 mín á undan til að koma í veg fyrir GH demp.",
+      "cycleInfo": "12-16 vikur on, 4-6 vikur off til að endurstilla viðtaka og stoppa prólaktín-aukningu.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Oft blandað við CJC-1295 í sömu sprautu."
+      },
+      "storage": "Þurrt: frystir. Eftir blöndun: 2-8°C, 28 dagar.",
+      "benefits": [
+        "Sterk GH og IGF-1 hækkun",
+        "Bætt svefn-dýpt",
+        "Vöðvauppbygging",
+        "Ódýrara en Ipamorelin",
+        "Gagnlegt til að brjóta lean-muscle plateaus"
+      ],
+      "sideEffects": [
+        "Mikil hungur-aukning (oft innan 30 mín)",
+        "Hækkað kortisól (tímabundin streita)",
+        "Hækkað prólaktín (getur haft áhrif á kynhvöt til lengri tíma)",
+        "Vökvasöfnun",
+        "Náladofi í höndum"
+      ],
+      "contraindications": [
+        "Virkt krabbamein (ófrávíkjanleg frábending)",
+        "Þungun og brjóstagjöf",
+        "Sykursýki (eftirlit með blóðsykri)",
+        "Æxli í heiladingli",
+        "Saga um hækkað prólaktín"
+      ],
+      "genderNotes": {
+        "men": "Algeng skammtastærð 200-300 mcg, 2-3x á dag. Fylgist með brjóstavefsmyndun af völdum prólaktíns á löngum lotum.",
+        "women": "Byrja á 100 mcg. Hormón-næmi er meira — prólaktín hækkun hefur sterkari áhrif."
+      },
+      "research": [
+        {
+          "title": "Bowers CY: Growth hormone-releasing peptide (GHRP)",
+          "summary": "Upprunaleg lýsing GHRP-fjölskyldunnar af uppgötvanda hennar; skoðar byggingar-virkni og klínískan möguleika.",
+          "year": 1998,
+          "journal": "Cellular and Molecular Life Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Bowers+GHRP"
+        },
+        {
+          "title": "Laferrère B et al: GHRP-2 eykur matarlyst í heilbrigðum mönnum",
+          "summary": "GHRP-2 örvar matarlyst ~2-3x í heilbrigðum fullorðnum, sem útskýrir hungur-aukaverkun.",
+          "year": 2005,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Laferrere+GHRP-2"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin",
+        "bpc-157"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "aod-9604",
+      "name": "AOD-9604",
+      "fullName": "Anti-Obesity Drug 9604 (HGH fragment 176-191)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "HGH-brot — fitubrennsla án GH-aukaverkana",
+      "description": "16-amínósýru brot úr HGH sem heldur fitubrennslu-virkni vaxtarhormóns án áhrifa á vöðvauppbyggingu eða blóðsykur. Náði fasa 2b-prófunum hjá Metabolic Pharmaceuticals.",
+      "mechanism": "Örvar fitusundrun (lipolysis) og hindrar fitumyndun (lipogenesis) með því að virkja β3-adrenerga viðtaka í fitufrumum; hefur ekki áhrif á IGF-1 eða blóðsykur.",
+      "halfLife": "~30 mínútur (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 2b-prófunum á mönnum lokið (Metabolic Pharmaceuticals); fór ekki áfram í fasa 3. TGA-samþykkt til samsetningar í lyfjabúðum í Ástralíu.",
+      "dosage": {
+        "beginner": {
+          "amount": "250 mcg",
+          "frequency": "1x á dag fastandi",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "8-12 vikur"
+        },
+        "standard": {
+          "amount": "300-500 mcg",
+          "frequency": "1x á dag á morgnana",
+          "route": "SubQ",
+          "duration": "12-16 vikur"
+        },
+        "advanced": {
+          "amount": "500-1000 mcg",
+          "frequency": "Skipt morgun + kvöld (fastandi)",
+          "route": "SubQ",
+          "duration": "12-16 vikur"
+        }
+      },
+      "timing": "Best á fastandi maga á morgnana. Forðast mat í 90 mín á eftir til að hámarka lipolysis.",
+      "cycleInfo": "Langar lotur þolaðar — 12-16 vikur on, 4 vikur off. Viðtaka-desensitization er lítil.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Hefðbundin endurblöndun. Oft blandað við GH-örva fyrir samverkandi fitubrennslu."
+      },
+      "storage": "Þurrt: frystir. Eftir blöndun: 2-8°C, 28 dagar.",
+      "benefits": [
+        "Minnkun á innyflafitu og kviðfitu",
+        "Engin áhrif á blóðsykur eða insúlín",
+        "Engin áhrif á IGF-1 (öruggara fyrir sögu um krabbamein)",
+        "Liðmjúkt (ólíkt fullum GH)",
+        "Vel þolað í klínískum prófunum"
+      ],
+      "sideEffects": [
+        "Yfirleitt mjög vægar",
+        "Stundum erting á stungustað",
+        "Væg þreyta fyrstu viku",
+        "Engar tilkynntar alvarlegar aukaverkanir í prófunum"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf (takmörkuð gögn)",
+        "Saga um átraskanir (varúð við viljandi þyngdartap)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtastærð. Vinsælt fyrir þrjóska kviðfitu eftir fertugt.",
+        "women": "Sama skammtastærð. Sérstaklega áhrifaríkt fyrir kviðfitu eftir tíðahvörf."
+      },
+      "research": [
+        {
+          "title": "Ng FM et al: Lipolytic and antilipogenic actions of HGH fragment 177-191",
+          "summary": "Upprunaleg lýsing á fitubrennslu-virkni HGH 176-191 brotsins.",
+          "year": 2000,
+          "journal": "Hormone and Metabolic Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604+lipolytic"
+        },
+        {
+          "title": "Heffernan M et al: AOD-9604 Phase 2 obesity trial",
+          "summary": "12-vikna fasa 2-prófun í offitu; hóflegt en stöðugt fitutap án GH-aukaverkana.",
+          "year": 2007,
+          "journal": "Diabetes, Obesity and Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=AOD-9604+obesity"
+        }
+      ],
+      "stacksWellWith": [
+        "cjc-1295",
+        "ipamorelin",
+        "tesamorelin",
+        "bpc-157"
+      ],
+      "popularity": 73
+    },
+    {
+      "id": "humanin",
+      "name": "Humanin",
+      "fullName": "Humanin (HN, peptíð úr hvatberum)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Hvatberapeptíð — taugavernd og langlífi",
+      "description": "24-amínósýru peptíð úr hvatberum. Systursameind MOTS-c. Sterk forklínísk gögn fyrir Alzheimer-vernd, blóðþurrðarbata og frumulanglífi.",
+      "mechanism": "Bindst IGFBP-3 / FPR2L-viðtakaflóka; virkjar JAK/STAT3 lífunarboð, hindrar Bax-miðlaða apoptósu og minnkar ER-streitu.",
+      "halfLife": "~30 mínútur (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Sterk forklínísk gögn (rottur, in vitro). Fyrstu lyfjahvarfarannsóknir á mönnum í gangi 2024-2025.",
+      "dosage": {
+        "beginner": {
+          "amount": "5 mg",
+          "frequency": "1x á dag",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "4-8 vikur"
+        },
+        "standard": {
+          "amount": "5-10 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "10-15 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "12 vikur með 4 vikna pásu"
+        }
+      },
+      "timing": "Að morgni fyrir hugræn áhrif; hvenær sem er virkar.",
+      "cycleInfo": "8-12 vikna lotur, 4 vikur frí.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Stöðugt peptíð. Hefðbundið endurblöndunarferli."
+      },
+      "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 28 dagar.",
+      "benefits": [
+        "Taugavernd (Alzheimer-líkön)",
+        "Bætt insúlínnæmi",
+        "Minnkuð fruma-apoptósa",
+        "Hjartavernd",
+        "Hvatbera-nýmyndun"
+      ],
+      "sideEffects": [
+        "Yfirleitt mjög vel þolað",
+        "Sjaldan: væg þreyta í byrjun",
+        "Engar alvarlegar aukaverkanir tilkynntar í dýraprófunum"
+      ],
+      "contraindications": [
+        "Þungun (engar rannsóknir)",
+        "Virkt krabbamein (varúð — lífunarboð gætu fræðilega verndað æxlisfrumur)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtastærð. Vinsælt í langlífis-stacks fyrir hugræna heilsu.",
+        "women": "Sama skammtastærð. Innrænt humanin minnkar með tíðahvörfum — viðbót gæti haft sérstaka virkni."
+      },
+      "research": [
+        {
+          "title": "Hashimoto Y et al: Humanin verndar gegn Alzheimer-tengdum frumudauða",
+          "summary": "Tímamóta-rannsókn frá 2001 sem uppgötvaði humanin með skimun fyrir Alzheimer-verndandi peptíðum.",
+          "year": 2001,
+          "journal": "Proceedings of the National Academy of Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Hashimoto+humanin+2001"
+        },
+        {
+          "title": "Yen K et al: Humanin gildi minnka með aldri og sjúkdómum",
+          "summary": "Humanin í blóði fellur verulega með öldrun og enn hraðar í Alzheimer sjúklingum.",
+          "year": 2020,
+          "journal": "GeroScience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=humanin+aging+decline"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "epitalon",
+        "ss-31"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "klotho",
+      "name": "Klotho",
+      "fullName": "α-Klotho (uppleysanlegt brot)",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Andöldrunar-prótein — yfir-tjáning eykur lífslíkur músa um ~30%",
+      "description": "Uppleysanlegt α-klotho er brot Klotho-próteinsins sem flæðir um blóðið, nefnt eftir grísku örlagagyðjunni sem spinnur þráð lífsins. Mýs sem yfir-tjá klotho lifa 30% lengur; mýs með klotho-skort eldast hraðar.",
+      "mechanism": "Meðhjálparviðtaki fyrir FGF23 (fosfat-jafnvægi); hindrar insúlín/IGF-1 boð (langlífis-ferill); eflir FOXO-andoxunarboð; mótar Wnt- og TGF-β-boð.",
+      "halfLife": "Stuttur líftími í blóði (~30 mín) en áhrif viðvarandi vegna breytinga á genatjáningu.",
+      "fdaApproved": false,
+      "researchStatus": "Mjög tilraunakennt sem meðferð. Sterk erfða- og forklínísk gögn; engin FDA-samþykkt peptíðmeðferð á mönnum enn. Lyfjabúðir sem sérsetja saman bjóða rannsóknarefni.",
+      "dosage": {
+        "beginner": {
+          "amount": "100 mcg",
+          "frequency": "1x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "12 vikur (ein lota)"
+        },
+        "standard": {
+          "amount": "200-400 mcg",
+          "frequency": "1-2x á viku",
+          "route": "SubQ",
+          "duration": "12-24 vikur"
+        },
+        "advanced": {
+          "amount": "500 mcg",
+          "frequency": "2x á viku",
+          "route": "SubQ",
+          "duration": "24 vikur með 4-8 vikna pásu"
+        }
+      },
+      "timing": "Hvenær sem er; vikuleg tíðni gerir tímasetningu minna mikilvæga.",
+      "cycleInfo": "Langar lotur þolaðar. Íhaldssöm protocol: 12-24 vikur on, 8 vikur off.",
+      "reconstitution": {
+        "vialSize": "1 mg",
+        "bacWater": "1 mL",
+        "concentration": "1 mg/mL",
+        "note": "Dýrt — mæla nákvæmlega. Hitanæmt; halda köldu allan tímann."
+      },
+      "storage": "Þurrt: -20°C frystir. Eftir blöndun: 2-8°C, 14 dagar.",
+      "benefits": [
+        "Möguleg aukning á lífslíkum (dýragögn)",
+        "Hugræn vernd (Alzheimer-líkön)",
+        "Hjarta- og æðavernd",
+        "Nýrnavernd",
+        "Viðhald á beinþéttni",
+        "Mótun á insúlín/IGF-1-ferli"
+      ],
+      "sideEffects": [
+        "Takmörkuð gögn á mönnum — aukaverkanir að mestu óþekktar",
+        "Fræðilegt: breytt fosfat-efnaskipti (FGF23 meðhjálparviðtaka-áhrif)",
+        "Dýrarannsóknir sýna gott þol"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Langvinn nýrnabilun (samverkun við fosfat-efnaskipti)",
+        "Of mikið fosfat í blóði",
+        "Virkt krabbamein (ófullnægjandi gögn um áhrif á æxlisboð)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtastærð. Vinsælt í lengra komnum langlífis-stacks.",
+        "women": "Sama skammtastærð. Klotho-gildi falla með tíðahvörfum — viðbót talin styðja bein og hugræna heilsu."
+      },
+      "research": [
+        {
+          "title": "Kuro-o M et al: Stökkbreyting í klotho-geni músa veldur öldrunarlíku heilkenni",
+          "summary": "Upprunaleg uppgötvun frá 1997: mýs með klotho-skort sýna hraðari öldrun.",
+          "year": 1997,
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Kuro-o+klotho+1997"
+        },
+        {
+          "title": "Kurosu H et al: Bæling öldrunar í músum með hormóninu Klotho",
+          "summary": "Mýs sem yfir-tjá klotho lifa 19-31% lengur en villtgerð.",
+          "year": 2005,
+          "journal": "Science",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Kurosu+klotho+aging+2005"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "mots-c",
+        "humanin",
+        "ss-31"
+      ],
+      "popularity": 58
+    },
+    {
+      "id": "cagrilintide",
+      "name": "Cagrilintide",
+      "fullName": "Cagrilintide (langvirk amýlín-hliðstæða)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Langvirk amýlín-hliðstæða — matarlystarstjórnun um aðra leið en GLP-1",
+      "description": "Langvirk amýlín-hliðstæða frá Novo Nordisk. Hægir á magatæmingu og bælir matarlyst um amýlín-viðtaka. Rannsökuð sem einlyfjameðferð og sem cagri-hluti CagriSema.",
+      "mechanism": "Sértækur örvi á amýlín-viðtaka (AMY1-3); amýlín seytt úr brisi samhliða insúlíni. Hægir á magatæmingu, bælir glúkagon eftir mat og minnkar matarlyst um area postrema í heilastofni.",
+      "halfLife": "~7 dagar (acýl-breytt fyrir vikulega skömmtun)",
+      "fdaApproved": false,
+      "researchStatus": "Í fasa 3 einlyfjameðferðar-prófunum (Novo Nordisk). Búist við FDA-umsókn 2025-2026 sem valkostur eða viðbót við semaglutíð.",
+      "dosage": {
+        "beginner": {
+          "amount": "0.3 mg",
+          "frequency": "1x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Titration phase 4 vikur"
+        },
+        "standard": {
+          "amount": "0.6 → 1.2 → 1.7 mg",
+          "frequency": "1x á viku, hækkun á 4 vikna fresti",
+          "route": "SubQ",
+          "duration": "16-20 vikur"
+        },
+        "advanced": {
+          "amount": "2.4 mg (max)",
+          "frequency": "1x á viku",
+          "route": "SubQ",
+          "duration": "Langtíma"
+        }
+      },
+      "timing": "Sami dagur vikunnar. Óháð máltíðum.",
+      "cycleInfo": "Langtíma viðhald eins og GLP-1 lyf. Trappa niður ef hætt til að forðast endurkomu matarlystar.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2.5 mg/mL",
+        "note": "Sérsett útgáfa. Klínísk vara er forfylltur penni."
+      },
+      "storage": "Þurrt: kælir 2-8°C. Eftir blöndun: 2-8°C, 28 dagar.",
+      "benefits": [
+        "10-12% þyngdartap sem einlyfjameðferð í fasa 2",
+        "Önnur verkunarleið en GLP-1 (viðbót eða valkostur)",
+        "Minni ógleði en semaglutíð",
+        "Slétt matarlystarstjórn án 'food noise'-falla",
+        "Vinnur samverkandi með semaglutíði (sjá CagriSema)"
+      ],
+      "sideEffects": [
+        "Ógleði (væg, minni en GLP-1)",
+        "Minnkuð matarlyst (ætlað)",
+        "Viðbrögð á stungustað",
+        "Lágur blóðsykur (ef blandað við önnur sykursýkislyf)"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Alvarleg magalömun",
+        "Persónuleg saga um briskirtilsbólgu",
+        "Sykursýki tegund 1 (takmörkuð gögn)"
+      ],
+      "genderNotes": {
+        "men": "Sama skammtastærð. Rannsakað í blönduðum kynjahópum í fasa 2/3.",
+        "women": "Sama skammtastærð. Athugaðu frjósemis-áætlanir — takmörkuð gögn á mönnum."
+      },
+      "research": [
+        {
+          "title": "Lau DCW et al: Cagrilintide monotherapy in obesity",
+          "summary": "26-vikna fasa 2-prófun: ~10% þyngdartap með cagrilintide einu á 2.4 mg vikulega.",
+          "year": 2021,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrilintide+phase+2"
+        },
+        {
+          "title": "Enebo LB et al: Cagrilintide + Semaglutide (CagriSema)",
+          "summary": "20-vikna sannprófunar-rannsókn sýndi 15,6% sameinað þyngdartap.",
+          "year": 2021,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/?term=cagrilintide+semaglutide"
+        }
+      ],
+      "stacksWellWith": [
+        "semaglutide",
+        "tesamorelin",
+        "mots-c"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "5-amino-1mq",
+      "name": "5-Amino-1MQ",
+      "fullName": "5-Amino-1-methylquinolinium",
+      "categories": [
+        "fat_loss",
+        "longevity"
+      ],
+      "tagline": "NNMT-hemill fyrir fitutap án matarlystarbælingar",
+      "description": "5-Amino-1MQ er tilbúin smásameind (ekki eiginlegt peptíð) sem hemur sértækt nicotinamide N-methyltransferase (NNMT), ensím sem tæmir metýl-gefendur og NAD+ forefni sem notuð eru í orkuframleiðslu frumna. Að hemja NNMT í fitufrumum færir þær úr geymslu yfir í eldsneytisbrennslu og hækkar innanfrumu NAD+ og S-adenosyl-methionine. Ólíkt GLP-1 lyfjum dregur það úr fitumassa hjá nagdýrum án þess að bæla matarlyst eða fæðuinntöku. Allir núverandi skammtar koma úr músatilraunum, færðir yfir á jafngild gildi fyrir menn — engin birt Fasa 1 rannsókn í mönnum er til.",
+      "mechanism": "Hemur NNMT sértækt í fitu- og lifrarvef, varðveitir nikótínamíð fyrir NAD+ myndun og eykur SAM-stuðla, sem stuðlar að fitusýruoxun og minnkun fitufrumna.",
+      "halfLife": "~4-7 klst (lyfjahvörf hjá nagdýrum; engin gögn úr mönnum)",
+      "fdaApproved": false,
+      "researchStatus": "Aðeins forklínískt — sterk gögn í músum, engar rannsóknir í mönnum",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mg",
+          "frequency": "1x á dag (að morgni)",
+          "route": "Munnhylki",
+          "duration": "2 vikur (stigvaxandi skammtur)"
+        },
+        "standard": {
+          "amount": "100 mg",
+          "frequency": "1x á dag (að morgni)",
+          "route": "Munnhylki",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "150 mg eða 50 mg 2x á dag",
+          "frequency": "1-2x á dag",
+          "route": "Munnhylki",
+          "duration": "8-12 vikur"
+        }
+      },
+      "timing": "Aðeins að morgni. Skammtur síðdegis eða að kvöldi veldur oft svefnleysi vegna hækkaðs NAD+ og vægra örvandi áhrifa.",
+      "cycleInfo": "8-12 vikna lotur með 4-6 vikna pásu á eftir til að leyfa grunnvirkni NNMT að jafna sig.",
+      "reconstitution": {
+        "vialSize": "Á ekki við",
+        "bacWater": "Á ekki við",
+        "concentration": "Á ekki við",
+        "note": "Munnlegt efni — engin blöndun þörf."
+      },
+      "storage": "Hylki: stofuhiti, lokað, stöðugt í ~12 mánuði. Forðast hita og raka.",
+      "benefits": [
+        "Minnkun fitumassa án matarlystarbælingar",
+        "Hækkar innanfrumu NAD+ og SAM stuðla",
+        "Bætir efnaskiptamerki í lifur hjá feitum músum",
+        "Verndar vöðvamassa (engin vöðvarýrnun í nagdýrarannsóknum)",
+        "Dregur ekki úr fæðuinntöku — gagnlegt þegar matarlystarbæling er óæskileg"
+      ],
+      "sideEffects": [
+        "Smá hitatilfinning og lítillega hækkaður hvíldarpúls (vikur 1-2)",
+        "Svefnleysi ef tekið síðdegis eða að kvöldi",
+        "Smá meltingaróþægindi með hylkjum",
+        "Minnkað þol í þrekæfingum í byrjun",
+        "Mögulegar breytingar á lifrarensímum (mælt með ALT/AST mælingu fyrir og eftir lotu)"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Virkt krabbamein eða nýleg saga um krabbamein (hlutverk NNMT í æxlislíffræði óljóst)",
+        "Lifrarsjúkdómur",
+        "Börn og unglingar",
+        "Þekktar svefntruflanir",
+        "Samhliða methotrexate, metýleruð B-vítamín eða geðlyf næm fyrir metýlgjöfum"
+      ],
+      "genderNotes": {
+        "men": "Hefðbundnir skammtar gilda. Vinsælt í samsetningu fyrir líkamssamsetningu með áherslu á viscerala fitu.",
+        "women": "Hefðbundnir skammtar gilda. Engin estrógen-milliverkun skráð, en engar rannsóknir í mönnum hafa sérstaklega tekið konur með."
+      },
+      "research": [
+        {
+          "title": "Selective and membrane-permeable small molecule inhibitors of nicotinamide N-methyltransferase reverse high-fat diet-induced obesity in mice",
+          "summary": "Fyrsta sýningin á að 5-Amino-1MQ hemur NNMT, hækkar NAD+ í fitufrumum og minnkar hvítfitu og líkamsþyngd hjá músum með offitu af völdum fæðis, án þess að breyta fæðuinntöku.",
+          "year": 2018,
+          "journal": "Biochemical Pharmacology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29787721/"
+        },
+        {
+          "title": "Nicotinamide N-methyltransferase knockdown protects against diet-induced obesity",
+          "summary": "Grundvallar-sannprófun sem sýnir að erfðafræðileg slokkun á NNMT í fituvef verndar mýs gegn offitu af völdum fæðis og staðfestir NNMT sem efnaskiptaviðfang.",
+          "year": 2014,
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24717514/"
+        },
+        {
+          "title": "Reduced calorie diet combined with NNMT inhibition establishes a distinct microbiome in DIO mice",
+          "summary": "Samsetning 5-Amino-1MQ við minnkaða kaloríuinntöku skilaði samverkandi minnkun á fitu- og lifrarfitumassa umfram hvora aðferð fyrir sig.",
+          "year": 2022,
+          "journal": "Scientific Reports",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35013352/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "mots-c",
+        "tesofensine",
+        "aod-9604"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "slu-pp-332",
+      "name": "SLU-PP-332",
+      "fullName": "Saint Louis University Pan-ERR Agonist 332",
+      "categories": [
+        "fat_loss",
+        "muscle",
+        "longevity"
+      ],
+      "tagline": "Æfingahermandi ERR-örvi fyrir þol og fitutap",
+      "description": "SLU-PP-332 er tilbúin smásameind, allsherjarörvi á estrogen-related receptors (ERRα/β/γ) — kjarnaviðtaka sem stýra hvatberamyndun og oxunarefnaskiptum. Með því að virkja beint sömu umritunaráætlun og þolþjálfun kallar fram eykur hún oxunar-vöðvaþráðamagn og orkubrennslu án vélrænnar áreynslu. Hún er um 4-falt öflugri á ERRα en ERRγ, sem hyglar áhrifum í vöðvum og efnaskiptavef. Þrátt fyrir sláandi árangur í nagdýrum eru engar rannsóknir í mönnum til árið 2026.",
+      "mechanism": "Allsherjarörvun á ERRα/β/γ kjarnaviðtökum eykur hvatberamyndun, fitusýruoxun og myndun oxunar-vöðvaþráða af gerð IIa — endurskapar umritunaráhrif þolþjálfunar.",
+      "halfLife": "Ekki formlega skilgreindur í mönnum; mælanleg gildi í blóði og vöðvum eftir 6 klst hjá músum (styður BID forklíníska skömmtun)",
+      "fdaApproved": false,
+      "researchStatus": "Aðeins forklínískt — engin lyfjahvörf eða öryggisgögn úr mönnum",
+      "dosage": {
+        "beginner": {
+          "amount": "12.5-25 mg",
+          "frequency": "1x á dag",
+          "route": "Munnlega",
+          "duration": "4 vikur"
+        },
+        "standard": {
+          "amount": "50 mg",
+          "frequency": "1x á dag",
+          "route": "Munnlega",
+          "duration": "6-8 vikur"
+        },
+        "advanced": {
+          "amount": "50 mg 2x á dag eða 100 mg 1x á dag",
+          "frequency": "1-2x á dag",
+          "route": "Munnlega (SubQ 250 mcg-1.5 mg einnig nefnt í samfélaginu)",
+          "duration": "8-12 vikur"
+        }
+      },
+      "timing": "Skammtur að morgni er æskilegur til að forðast svefntruflanir vegna örvandi áhrifa. BID-prótókólar skipta milli morguns og fyrri hluta síðdegis.",
+      "cycleInfo": "6-8 vikna lotur í samræmi við birtar langtímarannsóknir í músum; 4 vikna pása milli lota mælt með.",
+      "reconstitution": {
+        "vialSize": "5 mg",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
+        "note": "Sprauta BAC vatni hægt á glasvegginn; þeyta varlega. Vernda blandaða lausn gegn ljósi — dýpkun gul litar bendir til oxunar, þá skal skipta um."
+      },
+      "storage": "Þurrt: mánuðir í kæli, lengur við -20°C. Blandað: 2-8°C ljósvarið, 2-4 vikur. Munntöflur: stofuhiti, þurrt, dimmt.",
+      "benefits": [
+        "25-30% minnkun fitumassa hjá músum með offitu af völdum fæðis (28 dagar)",
+        "Aukin þol á hlaupabretti og fleiri oxunar-vöðvaþræðir",
+        "Bætt sykurþol án breytinga á fæðuinntöku",
+        "Bætt hjartsláttarbrot í músalíkönum af hjartabilun",
+        "Endurheimt á starfsemi hvatbera í öldrunarlíkönum af nýrum"
+      ],
+      "sideEffects": [
+        "Svefntruflanir og örvandi áhrif",
+        "Hækkaður hvíldarpúls",
+        "Breytingar á matarlyst (frá samfélaginu)",
+        "Óþekkt langtímaáhætta á hjarta",
+        "Óvissar milliverkanir við krabbameins-efnaskipti (ERRα tengt sumum æxlisleiðum)"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Yngri en 18 ára",
+        "Virkt eða nýlegt krabbamein",
+        "Hjarta- og æðasjúkdómur, hjartsláttartruflanir, óstýrður háþrýstingur",
+        "Marktæk lifrar- eða nýrnaskerðing",
+        "Keppendur undir WADA-prófunum (fellur undir S4.5 metabolic modulators)",
+        "Samhliða örvandi efni án læknisumsjár"
+      ],
+      "genderNotes": {
+        "men": "Hefðbundnir skammtar gilda. Vinsælt í þoli- og líkamssamsetningarsamsetningum.",
+        "women": "Hefðbundnir skammtar gilda. ERR-viðtakar eru ekki estrogen-viðtakar þrátt fyrir nafnið — engin bein hormónaáhrif, en engin sérstök gögn úr konum eru til."
+      },
+      "research": [
+        {
+          "title": "Synthetic ERRα/β/γ Agonist Induces an ERRα-Dependent Acute Aerobic Exercise Response and Enhances Exercise Capacity",
+          "summary": "Fyrsta in-vivo greining á SLU-PP-332. Við 25 mg/kg IP daglega sýndu mýs aukna þol á hlaupabretti og umritunarmynstur þolæfingar í vöðvum.",
+          "year": 2023,
+          "journal": "ACS Chemical Biology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36947694/"
+        },
+        {
+          "title": "An ERR agonist as exercise mimetic: effects on body composition and glucose tolerance in obese mice",
+          "summary": "50 mg/kg BID í 28 daga minnkaði fitumassa um 25-30% og bætti sykurþol hjá músum með offitu af völdum fæðis án breytinga á fæðuinntöku.",
+          "year": 2024,
+          "journal": "Journal of Pharmacology and Experimental Therapeutics",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38777605/"
+        },
+        {
+          "title": "Pharmacological activation of ERR improves cardiac function and survival in heart failure",
+          "summary": "Sex vikna SLU-PP-332 meðferð bætti hjartsláttarbrot og lifun í músalíkani af hjartabilun með varðveittu útkasti.",
+          "year": 2024,
+          "journal": "Circulation",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38583093/"
+        }
+      ],
+      "stacksWellWith": [
+        "mots-c",
+        "5-amino-1mq",
+        "aod-9604",
+        "tesamorelin"
+      ],
+      "popularity": 55
+    },
+    {
+      "id": "tesofensine",
+      "name": "Tesofensine",
+      "fullName": "Tesofensine (NS2330)",
+      "categories": [
+        "fat_loss",
+        "cognitive"
+      ],
+      "tagline": "Þríþættur monoamine endurupptökuhemill fyrir þyngdartap",
+      "description": "Tesofensine er smásameind (ekki peptíð) sem er þríþættur monoamine endurupptökuhemill — hindrar endurupptöku dópamíns, noradrenalíns og serótóníns í heila. Upphaflega þróað fyrir Parkinson og Alzheimer, en þyngdartap kom fram sem sláandi aukaverkun og beindi þróun að offitu. Fasa 2 rannsóknir sýndu um tvöfalt þyngdartap miðað við þá samþykkt lyf, en hjarta- og geðheilsumerki við hærri skammta töfðu FDA-samþykki. Það er enn rannsóknarefni í BNA árið 2026, en skilyrt samþykki er á leið í Mexíkó.",
+      "mechanism": "Hemur for-synaptíska endurupptöku á dópamíni, noradrenalíni og serótóníni, sem lengir monoamin-merki í undirhökum — bælir matarlyst og hækkar hvíldarorku lítillega.",
+      "halfLife": "~9 dagar (móðurefni); ~16 dagar (M1/NS2360 virkt umbrotsefni)",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 3 lokið í Mexíkó; ekki FDA-samþykkt; tilraunakennt í BNA/EU",
+      "dosage": {
+        "beginner": {
+          "amount": "0.25 mg",
+          "frequency": "1x á dag (að morgni)",
+          "route": "Munntafla",
+          "duration": "24 vikur"
+        },
+        "standard": {
+          "amount": "0.5 mg",
+          "frequency": "1x á dag (að morgni)",
+          "route": "Munntafla",
+          "duration": "24 vikur"
+        },
+        "advanced": {
+          "amount": "0.5 mg (1.0 mg var hætt í Fasa 2 vegna BP-hækkunar)",
+          "frequency": "1x á dag (að morgni)",
+          "route": "Munntafla",
+          "duration": "24 vikur"
+        }
+      },
+      "timing": "Að morgni, með eða án matar. Skammtur að kvöldi veldur svefnleysi vegna langs helmingunartíma og dópamín-virkni.",
+      "cycleInfo": "Samfelldar 24 vikna meðferðir eins og rannsakaðar í tilraunum. Jafnvægisstaða næst eftir 4-6 vikur vegna langs helmingunartíma; skyndileg hætta fylgt eftir með 4-6 vikna útskolun.",
+      "reconstitution": {
+        "vialSize": "Á ekki við",
+        "bacWater": "Á ekki við",
+        "concentration": "Á ekki við",
+        "note": "Munnlegt efni — engin blöndun þörf."
+      },
+      "storage": "Stofuhiti (15-25°C / 59-77°F), lokað ílát, ljós- og rakavarið.",
+      "benefits": [
+        "~10% þyngdartap við 0.5 mg yfir 24 vikur (Fasa 2)",
+        "Um tvöfalt þyngdartap miðað við eldri samþykkt offitulyf",
+        "Einn skammtur á dag — engar sprautur",
+        "Snemmkomin matarlystarbæling innan 1-2 vikna",
+        "Möguleg skapsbót og hvatning af dópamín-virkni"
+      ],
+      "sideEffects": [
+        "Munnþurrkur, ógleði, hægðatregða, kviðverkur",
+        "Svefnleysi og svefntruflanir",
+        "Hjartsláttarhraði eykst um 5-10 slög/mín við 0.5 mg",
+        "Blóðþrýstingshækkun við 1.0 mg (sá skammtur var lagður af)",
+        "Kvíði, pirringur, skapsveiflur",
+        "~20% hættutíðni vegna aukaverkana í rannsóknum"
+      ],
+      "contraindications": [
+        "Óstýrður háþrýstingur eða marktækur hjarta- og æðasjúkdómur",
+        "Saga um kvíðaröskun, geðhvarfasýki eða geðrof",
+        "Notkun MAO-hemla (hætta á serótónín-heilkenni)",
+        "Samhliða SSRI, SNRI eða önnur serótónvirk lyf",
+        "Sterkir CYP3A4-hemlar (ákveðin sveppalyf, sýklalyf)",
+        "Þungun, fyrirhuguð þungun eða brjóstagjöf",
+        "Börn og unglingar"
+      ],
+      "genderNotes": {
+        "men": "Hefðbundnir skammtar gilda. Fylgstu vandlega með blóðþrýstingi — karlmenn í rannsóknum sýndu örlítið hærri BP-merki við 1.0 mg.",
+        "women": "Hefðbundnir skammtar gilda. Strangt forðast þungun vegna langs helmingunartíma (áhrif vara vikum eftir hætt)."
+      },
+      "research": [
+        {
+          "title": "Effect of tesofensine on bodyweight loss, body composition, and quality of life in obese patients: a randomised, double-blind, placebo-controlled trial",
+          "summary": "Fasa 2 rannsókn á 203 dönskum fullorðnum með offitu yfir 24 vikur. Tesofensine 0.5 mg skilaði ~10% þyngdartapi (umfram lyfleysu), um tvöfalt á við samþykkt offitulyf þess tíma.",
+          "year": 2008,
+          "journal": "The Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18950853/"
+        },
+        {
+          "title": "The effect of the triple monoamine reuptake inhibitor tesofensine on energy metabolism and appetite in overweight and moderately obese men",
+          "summary": "Vélrænisrannsókn sem staðfestir að tesofensine minnkar matarlyst og hækkar 24 klst orkunotkun hjá karlmönnum í yfirvigt, sem styður tvíþætta vélrænis-skýringu.",
+          "year": 2010,
+          "journal": "International Journal of Obesity",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20531350/"
+        },
+        {
+          "title": "Randomized controlled trial of Tesomet for weight loss in hypothalamic obesity",
+          "summary": "Samsetning tesofensine + metoprolol (Tesomet) skilaði þyngdartapi í undirhökuoffitu á sama tíma og metoprolol dró úr hjartsláttarmerki — bendir á öruggari skammtanálgun.",
+          "year": 2022,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35552711/"
+        }
+      ],
+      "stacksWellWith": [
+        "5-amino-1mq",
+        "semaglutide",
+        "aod-9604"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "survodutide",
+      "name": "Survodutide",
+      "fullName": "Survodutide (BI 456906)",
+      "categories": [
+        "fat_loss"
+      ],
+      "tagline": "Tvöfaldur GLP-1 og glucagon viðtakaörvi fyrir þyngdartap",
+      "description": "Survodutide er tvöfaldur örvi á GLP-1 og glucagon viðtökum, þróaður af Boehringer Ingelheim og Zealand Pharma. GLP-1 hlutinn dregur úr matarlyst en glucagon-armurinn hækkar hvíldarorku — tvíhliða nálgun sem sameinar minnkaða inntöku og aukna brennslu. Fitusýruhali leyfir vikulega skömmtun undir húð. Fasa 3 SYNCHRONIZE-1 (apríl 2026) skilaði 16.6% þyngdartapi yfir 76 vikur, og efnið hefur FDA Fast Track tilnefningu fyrir MASH (efnaskiptatengd fitulifrarbólga). Það er ekki enn FDA-samþykkt í maí 2026.",
+      "mechanism": "Tvöföld örvun á GLP-1 viðtaka (dregur úr matarlyst, hægir á magatæmingu) og glucagon viðtaka (hækkar hvíldarorku og fitusýruoxun í lifur), sem keyrir þyngdartap og minnkun lifrarfitu.",
+      "halfLife": "Hannað fyrir vikulega skömmtun með C18 fitusýru-albúmín-bindihala",
+      "fdaApproved": false,
+      "researchStatus": "Fasa 3 SYNCHRONIZE-1 jákvæð grunngögn (apríl 2026); FDA Fast Track fyrir MASH",
+      "dosage": {
+        "beginner": {
+          "amount": "0.6 mg",
+          "frequency": "1x á viku",
+          "route": "Subcutaneous (SubQ)",
+          "duration": "Vikur 1-4 (stigvaxandi skammtur)"
+        },
+        "standard": {
+          "amount": "2.4-3.6 mg",
+          "frequency": "1x á viku",
+          "route": "SubQ",
+          "duration": "Vikur 8-46 (stöðugur skammtur)"
+        },
+        "advanced": {
+          "amount": "4.8 mg",
+          "frequency": "1x á viku",
+          "route": "SubQ",
+          "duration": "Vikur 20-76 (hæsti rannsakaði skammtur)"
+        }
+      },
+      "timing": "Sami vikudagur, hvenær sem er. Sprauta í kvið, læri eða upphandlegg; skipta um stungustað til að forðast fituvefsmyndun.",
+      "cycleInfo": "Stöðug notkun eins og rannsakað. Hæg 20 vikna upptröppun (0.6 → 2.4 → 3.6 → 4.8 mg) er nauðsynleg til að lágmarka meltingaraukaverkanir.",
+      "reconstitution": {
+        "vialSize": "10 mg",
+        "bacWater": "2 mL",
+        "concentration": "5 mg/mL",
+        "note": "Þrífa tappa með spritti, draga BAC vatn hægt á innra glasveggi, þeyta varlega (ekki hrista), skoða fyrir tærleika, merkja með dagsetningu. Við 5 mg/mL er 1 U á U-100 insúlínsprautu = 0.05 mg."
+      },
+      "storage": "Þurrt langtíma: -20°C, dimmt og þurrt. Þurrt skammtíma: 2-8°C. Blandað: 2-8°C, notast innan endingartíma BAC vatns. Forðast endurtekna frystingu/þíðingu.",
+      "benefits": [
+        "Allt að 16.6% þyngdartap yfir 76 vikur (Fasa 3)",
+        "85% þátttakenda í Fasa 3 náðu ≥5% þyngdartapi",
+        "Tvíþætt vélrænis getur hækkað hvíldarorku umfram GLP-1-ein lyf",
+        "Lofandi bæting í MASH/lifrartrefjun (Fasa 2)",
+        "Vikuleg sprautun",
+        "Að mestu fitutap með litlu vöðvatapi"
+      ],
+      "sideEffects": [
+        "Ógleði (66% í MASH rannsókn vs 23% lyfleysu)",
+        "Niðurgangur, uppköst — verst á 20 vikna upptröppun",
+        "~20-25% hættutíðni vegna meltingaraukaverkana",
+        "Sjaldgæft: vökvatap með bráðri nýrnaskerðingu",
+        "Sjaldgæft: angioedema í einum Fasa 2 þátttakanda",
+        "Hjartsláttarhækkun (eins og með GLP-1 lyfjum)"
+      ],
+      "contraindications": [
+        "Persónuleg eða fjölskyldusaga um medullary thyroid carcinoma eða MEN 2",
+        "Saga um pancreatitis",
+        "Alvarlegur meltingarsjúkdómur eða magalömun",
+        "Þungun eða brjóstagjöf",
+        "Sykursýki meðhöndluð með insúlíni eða súlfónýlúrum (hætta á lágum blóðsykri — krefst náins eftirlits)",
+        "Börn og unglingar",
+        "Þekkt peptíðofnæmi"
+      ],
+      "genderNotes": {
+        "men": "Hefðbundnir skammtar gilda. Undirhópagreiningar sýndu svipaða virkni milli kynja.",
+        "women": "Hefðbundnir skammtar gilda. Strangt mælt með getnaðarvörnum — áhrif peptíðs á fósturþroska óþekkt. Hætta á minnkaðri verkun getnaðarvarnartaflna vegna hægðar magatæmingar á einnig við hér eins og með öðrum GLP-1 lyfjum."
+      },
+      "research": [
+        {
+          "title": "Glucagon and GLP-1 receptor dual agonist survodutide for obesity: a randomised, double-blind, placebo-controlled, dose-finding phase 2 trial",
+          "summary": "387 fullorðnir með BMI ≥27 í 12 löndum fengu vikulegt survodutide (0.6-4.8 mg) eða lyfleysu í 46 vikur. Skammtaháð þyngdartap náði 14.9% við hæsta skammt, að mestu sem fitutap.",
+          "year": 2024,
+          "journal": "Lancet Diabetes & Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38330987/"
+        },
+        {
+          "title": "Survodutide for the treatment of metabolic dysfunction-associated steatohepatitis",
+          "summary": "Fasa 2 rannsókn á 295 fullorðnum með MASH og lifrartrefjun. Survodutide skilaði marktækri vefjafræðilegri bætingu í MASH og minnkun á lifrarfitu samanborið við lyfleysu.",
+          "year": 2024,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38875111/"
+        },
+        {
+          "title": "Dose-response effects of the glucagon receptor/GLP-1 receptor dual agonist survodutide on HbA1c in type 2 diabetes: a phase 2 trial",
+          "summary": "Fasa 2 rannsókn á fullorðnum með sykursýki tegund 2 sýndi HbA1c lækkun um ~1.5% miðað við lyfleysu við hæstu skammta, samhliða skammtaháðu þyngdartapi.",
+          "year": 2023,
+          "journal": "Diabetologia",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37782403/"
+        }
+      ],
+      "stacksWellWith": [
+        "cagrilintide",
+        "5-amino-1mq",
+        "tesamorelin"
+      ],
+      "popularity": 60
+    },
+    {
+      "id": "glutathione",
+      "name": "Glutathione",
+      "fullName": "L-Glutathione (GSH, reduced)",
+      "categories": [
+        "anti_aging",
+        "longevity"
+      ],
+      "tagline": "Aðal-andoxunarefni fyrir afeitrun og húðheilbrigði",
+      "description": "Þrípeptíð úr cystein, glútamíni og glýsíni sem þjónar sem ríkasta innræna andoxunarefni líkamans. Framleitt í hverri frumu, gluthathione hreinsar súrefnisstakeindir, endurnýtir vítamín C og E og styður fasa II afeitrun í lifur. Fáanlegt sem munnhylki, liposomal lausnir, tungutöflur, sprauta undir húð og innrennsli í æð. Best rannsökuðu áhrifin í mönnum eru væg, afturkræf húðlýsing; sprautuform hafa marktæka öryggisáhyggjur og eru ekki FDA-samþykkt.",
+      "mechanism": "Gefur rafeindir með cystein-þíólhópi sínum til að hreinsa fríhópa, og er svo endurnýjað af glutathione reductase. Hemur litarefnisensímið tyrosinase, sem færir eumelanin-myndun yfir í ljósara pheomelanin. Stuðlar fyrir glutathione peroxidase og glutathione-S-transferase afeitrunarleiðir.",
+      "halfLife": "Helmingunartími í blóði undir 10 mínútum (IV); áhrif af reglulegri skömmtun dofna á vikum eftir að hætt er",
+      "fdaApproved": false,
+      "researchStatus": "Misjöfn gögn úr RCT í mönnum fyrir húðlýsingu; sprautuform ósamþykkt með FDA-öryggisviðvörunum",
+      "dosage": {
+        "beginner": {
+          "amount": "250-500 mg",
+          "frequency": "1x á dag",
+          "route": "Munnhylki eða liposomal",
+          "duration": "4-8 vikur"
+        },
+        "standard": {
+          "amount": "500-1.000 mg",
+          "frequency": "1x á dag munnlega, eða 200-600 mg 2-3x á viku SubQ",
+          "route": "Munnlega, liposomal eða undir húð",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "600-1.200 mg",
+          "frequency": "1-2x á viku",
+          "route": "Í æð (gefið á heilsugæslu)",
+          "duration": "4-12 vikur undir eftirliti"
+        }
+      },
+      "timing": "Fastandi magi er hefðbundið en ekki sannað nauðsynlegt. Sprautuskammtar að morgni eða snemma síðdegis. Samsetning með NAC og C-vítamíni styður innræna endurnýjun.",
+      "cycleInfo": "Sjáanleg húðáhrif birtast eftir 2-4 vikur, ná hámarki á 4-12 vikum. Öll áhrif ganga til baka á vikum eftir að hætt er. Engar strangar lotur þarf fyrir munngjöf; sprautunotendur keyra venjulega 8-12 vikna lotur með pásum.",
+      "reconstitution": {
+        "vialSize": "1.200 mg lyophilized",
+        "bacWater": "3.0 mL",
+        "concentration": "400 mg/mL",
+        "note": "Sumir vörur koma sem tilbúin lausn (engin blöndun þarf). Sprauta vatninu á glasvegginn og þeyta varlega — ekki hrista."
+      },
+      "storage": "Þurrt: frystir við -20°C langtíma. Blandað eða tilbúin lausn: kælir 2-8°C, ljósvarið. Henda ef gult eða skýjað. Tilbúnar lausnir fylgja vörumerki, venjulega 30 daga í kæli.",
+      "benefits": [
+        "Væg, afturkræf húðlýsing á sólarljósssvæðum",
+        "Styður lifrarafeitrun og fasa II tengingu",
+        "Endurnýjar andoxunarforða líkamans",
+        "Getur bætt lifrarensím-merki í NAFLD í litlum rannsóknum",
+        "Dregur úr lífmerkjum oxunarstreitu"
+      ],
+      "sideEffects": [
+        "Munnlega: uppþemba, lausar hægðir, vægir krampar",
+        "IV: roði, svimi, sjaldgæft anaphylaxis",
+        "Sprautur: hætta á endotoxín-mengun (FDA-viðvörun 2019)",
+        "Brennisteinslykt í andardrátt eða af húð",
+        "Sjaldgæfur bráður lifrarskaði tilkynntur við IV notkun"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Astmi (innöndunarform geta valdið berkjusamdrætti)",
+        "G6PD-skortur, sérstaklega með hárri IV C-vítamín skömmtun",
+        "Virk súlfa-ofnæmi (varúð)",
+        "Samhliða krabbameinslyfjameðferð án samþykkis krabbameinslæknis"
+      ],
+      "genderNotes": {
+        "men": "Engar kynbundnar skammtabreytingar skráðar.",
+        "women": "Forðast á meðgöngu og við brjóstagjöf vegna ófullnægjandi öryggisgagna. Húðlýsing er oft aðalnotkunartilgangurinn."
+      },
+      "research": [
+        {
+          "title": "Oral glutathione supplementation impacts skin pigmentation: a randomised double-blind placebo-controlled trial",
+          "summary": "Munnleg 500 mg/dag í 4 vikur lækkaði marktækt melanin-vísitölur á sólarljóssbornum húðsvæðum samanborið við lyfleysu.",
+          "year": 2017,
+          "journal": "Journal of Dermatological Treatment",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29445569/"
+        },
+        {
+          "title": "The clinical effect of glutathione on skin color and other related skin conditions: a systematic review",
+          "summary": "Yfirlit yfir RCT-rannsóknir finnur misjöfn en jákvæð gögn fyrir húðlýsingu; munnleg form öruggari en IV.",
+          "year": 2019,
+          "journal": "Journal of Cosmetic Dermatology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30895708/"
+        },
+        {
+          "title": "Systemic glutathione as a skin-whitening agent in adult individuals",
+          "summary": "Yfirlit yfir skammta-svörun og öryggi á milli munnlegrar, tungumáls og IV leiða.",
+          "year": 2020,
+          "journal": "Dermatologic Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32373172/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "ghk-cu",
+        "epitalon"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": "nad-plus",
+      "name": "NAD+",
+      "fullName": "Nicotinamide Adenine Dinucleotide",
+      "categories": [
+        "longevity",
+        "anti_aging"
+      ],
+      "tagline": "Frumuorku-coenzými fyrir langlífis-prótókólla",
+      "description": "Coenzými sem er til staðar í hverri frumu, færir rafeindir í ATP-framleiðslu, knýr DNA-viðgerð með PARP-ensímum og virkjar sirtuin-fjölskyldu langlífisstýritækja. NAD+ gildi í vefjum lækka stigvaxandi með aldri, sem hvetur til endurnýjunar-prótókólla með beinni sprautun eða forefnum (NR, NMN). Tæknilega séð smásameindar-coenzými frekar en peptíð. Sprautuform af NAD+ er ekki FDA-samþykkt og er aðeins fáanlegt í gegnum sérsetnar apótek.",
+      "mechanism": "Virkar sem rafeindaberi í oxunarfosfórun í hvatberum. Stuðull fyrir sirtuin (SIRT1-7) sem stýra efnaskiptum, bólgu og DNA-viðgerð. Stuðlar fyrir PARP-ensím við DNA-skemmdaviðbrögð. CD38 sundrar NAD+ á auknu hraða með aldri, sem stuðlar að lækkun.",
+      "halfLife": "Stuttur helmingunartími í blóði (undir 1 klst); líffræðileg áhrif lengjast með endurnýtingu umbrotsefna",
+      "fdaApproved": false,
+      "researchStatus": "Takmörkuð RCT-gögn í mönnum fyrir sprautuform; sterkari gögn fyrir munnlegt NR forefni í vefja-NAD+ hækkun",
+      "dosage": {
+        "beginner": {
+          "amount": "50 mg",
+          "frequency": "1x á viku",
+          "route": "SubQ (hæg sprautun á 5-10 sek)",
+          "duration": "2-4 vikur stigvaxandi skammtur"
+        },
+        "standard": {
+          "amount": "100 mg",
+          "frequency": "2-3x á viku",
+          "route": "SubQ",
+          "duration": "8-12 vikur"
+        },
+        "advanced": {
+          "amount": "250-1.000 mg",
+          "frequency": "Vikulega til hálfsmánaðarlega",
+          "route": "Innrennsli í æð á 2-4 klst",
+          "duration": "4-8 vikur ákafar, svo viðhald"
+        }
+      },
+      "timing": "Að morgni eða snemma síðdegis — virkjun orkuleiða getur truflað svefn ef tekið seint. Sprauta hægt til að lágmarka sviða á stungustað. IV verður að vera hægt dreypi; hröð innrennsli kallar fram bringuþrengsli og roða.",
+      "cycleInfo": "Hefðbundnar SubQ lotur eru 4-8 vikur. Algeng samsetning: 8-12 vikur SubQ fylgt eftir með 4 vikum af munnlegu NMN eða NR fyrir lagskiptan stuðning. IV-prótókólar hefjast oft með vikulegum lotum í mánuð, svo viðhald á 4-8 vikna fresti.",
+      "reconstitution": {
+        "vialSize": "750 mg lyophilized",
+        "bacWater": "7.5 mL",
+        "concentration": "100 mg/mL",
+        "note": "Sum sérsett apótek senda sem tilbúna lausn — engin blöndun þarf þá. Sprauta vatninu á glasvegginn, þeyta varlega. Henda ef gult eða skýjað."
+      },
+      "storage": "Þurrt: stofuhiti skammtíma, kæli langtíma. Blandað eða tilbúin lausn: 2-8°C kælir, notast innan 14-30 daga. Vernda gegn ljósi.",
+      "benefits": [
+        "Viðvarandi orka og minni þreyta (huglægt)",
+        "Styður starfsemi hvatbera og ATP-myndun",
+        "Virkjar sirtuin-tengdar langlífisleiðir",
+        "Hjálpar við DNA-skemmdaviðgerð sem PARP-stuðull",
+        "Tilkynnt bæting í endurheimt og hugarskýrleika"
+      ],
+      "sideEffects": [
+        "Sviði, brunatilfinning eða roði á stungustað (SubQ)",
+        "Roði, hiti, bringuþrengsli (IV, sérstaklega hröð innrennsli)",
+        "Ógleði og höfuðverkur við stigvaxandi skammt",
+        "Tímabundinn kvíði eða eirðarleysi",
+        "Vægt meltingaróþægindi"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Virkt krabbamein (sirtuin og PARP virkni óviss í krabbameinslíffræði)",
+        "Alvarlegur lifrar- eða nýrnasjúkdómur",
+        "Samhliða hár skammtur af níasíni",
+        "Blóðsykurslækkandi lyf án eftirlits"
+      ],
+      "genderNotes": {
+        "men": "Engar kynbundnar skammtabreytingar skráðar.",
+        "women": "Forðast á meðgöngu og við brjóstagjöf. Sumir notendur tilkynna um vitund um tíðahring við háar IV-skammta-prótókóla."
+      },
+      "research": [
+        {
+          "title": "A pilot study investigating changes in the human plasma and urine NAD+ metabolome during a 6 hour intravenous infusion of NAD+",
+          "summary": "Fyrsta rannsókn á lyfjahvörfum IV NAD+ í mönnum — staðfesti að innrennsli NAD+ er hratt umbrotið með mælanlegum breytingum í umbrotsefnasafni.",
+          "year": 2019,
+          "journal": "Frontiers in Aging Neuroscience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31551750/"
+        },
+        {
+          "title": "NAD+ precursor supplementation in human ageing: clinical evidence and challenges",
+          "summary": "Yfirlit yfir klínískar rannsóknir með NR og NMN — staðfestir hækkun á NAD+ í vefjum, með blönduðum gögnum fyrir öldrunarlífmerki.",
+          "year": 2025,
+          "journal": "Nature Reviews Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41083806/"
+        },
+        {
+          "title": "Intravenous infusion of NAD+ versus nicotinamide riboside: a retrospective tolerability pilot study",
+          "summary": "Raunheims-samanburður á þoli; bæði vel þoluð við rannsakaða skammta, með IV NAD+ sýnandi hærri tíðni innrennslis-viðbragða.",
+          "year": 2026,
+          "journal": "Frontiers in Aging",
+          "url": "https://www.frontiersin.org/journals/aging/articles/10.3389/fragi.2026.1652582/full"
+        }
+      ],
+      "stacksWellWith": [
+        "glutathione",
+        "epitalon",
+        "mots-c",
+        "ss-31"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "methylene-blue",
+      "name": "Methylene Blue",
+      "fullName": "Methylthioninium chloride",
+      "categories": [
+        "cognitive",
+        "longevity"
+      ],
+      "tagline": "Rafeindagjafi hvatbera og nootrópík",
+      "description": "Tilbúin phenothiazine-litarefni og smásameind (ekki peptíð) með yfir 130 ára læknisfræðilega notkun. FDA-samþykkt sem sprautanlegt ProvayBlue fyrir áunnið methemoglobinemia. Í lágum munnlegum skömmtum virkar það sem annar rafeindaberi í rafeindaflutningskeðju hvatbera og afturkræfur MAO-A hemill, sem hefur vakið áhuga á því sem nootrópík fyrir athygli, minni og hvatberastuðning. Selt sem tilbúnir munnlegir vökvadropar; hætta á serótónín-heilkenni með þunglyndislyfjum er ríkjandi öryggisáhyggjuefni.",
+      "mechanism": "Fer fram hjá biluðum complexum I og III með því að gefa rafeindir beint til cytochrome c oxidase, sem eykur ATP-framleiðslu hvatbera. Hemur monoamine oxidase A, sem hækkar serótónín og dópamín. Í háum skömmtum myndar það paradox methemoglobin; í lágum skömmtum lækkar það það.",
+      "halfLife": "~5-6.5 klst í blóði; útskilnaður tekur um sólarhring í þvagi (blálitað)",
+      "fdaApproved": true,
+      "researchStatus": "FDA-samþykkt IV form fyrir methemoglobinemia; litlar fMRI-rannsóknir í mönnum styðja hugræn áhrif; munnleg nootrópík-notkun óreglulegri",
+      "dosage": {
+        "beginner": {
+          "amount": "0.5-2 mg",
+          "frequency": "1x á dag",
+          "route": "Munnlega (tungudropar, með vatni eða safa)",
+          "duration": "2-4 vikur"
+        },
+        "standard": {
+          "amount": "5-20 mg",
+          "frequency": "1x á dag",
+          "route": "Munnlega",
+          "duration": "4-12 vikur"
+        },
+        "advanced": {
+          "amount": "0.5-4 mg/kg (stakir skammtar í rannsóknum allt að 280 mg)",
+          "frequency": "Samkvæmt rannsóknarprótókóli",
+          "route": "Munnlega; IV aðeins fyrir klínískt methemoglobinemia við 1 mg/kg",
+          "duration": "Aðeins bráð eða skammtíma"
+        }
+      },
+      "timing": "Að morgni eða snemma síðdegis til að forðast svefntruflanir vegna vægrar örvunar. Tekið með mat til að draga úr magaóþægindum. 1% lausn skilar ~0.5 mg á dropa; 2% lausn ~1 mg á dropa — staðfestu styrkleika fyrir skömmtun.",
+      "cycleInfo": "Engin stöðluð lota-prótókóll er til fyrir munnlega notkun. Hugrænar rannsóknir notuðu staka bráða skammta. Algengt samfélagsmynstur: 5-10 mg á dag í 4-8 vikur, svo 1-2 vikna pása. Metið alltaf MAO-hemla-milliverkanir fyrir hverja lotu.",
+      "reconstitution": {
+        "vialSize": "Á ekki við",
+        "bacWater": "Á ekki við",
+        "concentration": "Á ekki við",
+        "note": "Munnlegt efni — engin blöndun þörf."
+      },
+      "storage": "Stofuhiti 15-30°C, fjarri beinu ljósi, lokað þétt. Litar húð, dúk og fleti varanlega — meðhöndla með varúð. Aðeins lyfsöluvöru (USP); iðnaðarvara inniheldur þungmálma.",
+      "benefits": [
+        "Bætt viðvarandi athygli og skammtímaminni í fMRI-rannsóknum",
+        "Styður ATP-myndun hvatbera með rafeindaflutningi",
+        "Vægt skapshækkun (MAO-A hömlun)",
+        "Möguleg taugaverndandi áhrif í forklínískum líkönum",
+        "FDA-samþykkt meðferð fyrir methemoglobinemia"
+      ],
+      "sideEffects": [
+        "Blágrænt þvag og hægðir (eðlilegt)",
+        "Ógleði, kviðóþægindi, höfuðverkur",
+        "Vægt svefnleysi ef tekið seint",
+        "Tungu- og tannlit (skola munninn eftir tungunotkun)",
+        "Svimi við hærri skammta"
+      ],
+      "contraindications": [
+        "G6PD-skortur (hætta á blóðrofi)",
+        "Þungun (hætta á fósturskaða)",
+        "Samhliða SSRI, SNRI, MAOI eða önnur serótónvirk lyf — serótónín-heilkenni neyðartilfelli",
+        "Alvarleg nýrnaskerðing",
+        "Brjóstagjöf (öryggi óþekkt)"
+      ],
+      "genderNotes": {
+        "men": "Engar kynbundnar skammtabreytingar.",
+        "women": "Hörð frábending á meðgöngu. Hætta a.m.k. 2 vikum áður en byrjað er á serótónvirkum þunglyndislyfjum."
+      },
+      "research": [
+        {
+          "title": "Multimodal randomized functional MR imaging of the effects of methylene blue in the human brain",
+          "summary": "RCT á 26 heilbrigðum fullorðnum — stakur 280 mg munnlegur skammtur jók fMRI-virkni í framan- og hliðarbörki við minnisverkefni og bætti endurheimt um 7%.",
+          "year": 2016,
+          "journal": "Radiology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27351678/"
+        },
+        {
+          "title": "Methylene blue modulates functional connectivity in the human brain",
+          "summary": "Hvíldarstaðar og verkefnamiðuð fMRI-rannsókn sem sýnir að lágskammta methylene blue stillir default mode og athygli-net tengingu.",
+          "year": 2016,
+          "journal": "Brain Imaging and Behavior",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27246997/"
+        },
+        {
+          "title": "Methylene blue counteracts age-related cognitive impairment in mice and humans",
+          "summary": "Forklínísk-til-klínísk þýðingarrannsókn sem styður hvatbera-vélrænis hugrænnar bætingar.",
+          "year": 2017,
+          "journal": "Neurobiology of Aging",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27431094/"
+        }
+      ],
+      "stacksWellWith": [
+        "nad-plus",
+        "semax",
+        "cerebrolysin"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": "cjc-1295-dac",
+      "name": "CJC-1295 (DAC)",
+      "fullName": "CJC-1295 with Drug Affinity Complex",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Langvirkur GHRH-hliðstæða með vikulegri skömmtun",
+      "description": "Breyttur 30-amínósýra GHRH-hliðstæða (growth hormone-releasing hormone) með Drug Affinity Complex (DAC) sem bindist samgildum tengjum við albúmín í blóði og lengir helmingunartíma í um 6-8 daga. Þetta er langvirka útgáfan af CJC-1295, frábrugðin No-DAC útgáfunni í þessum gagnagrunni (sem hefur um 30 mínútna helmingunartíma og er skammtað daglega). Örvar viðvarandi púls-losun á vaxtarhormóni í 6+ daga frá einni sprautun. Ekki FDA-samþykkt; Fasa II rannsókn 2006 var stöðvuð eftir andlát þátttakanda.",
+      "mechanism": "Bindur GHRH-viðtaka á heiladingulsfrumum, kveikir cAMP-merki og púls-losun vaxtarhormóns. DAC (maleimidopropionic acid tengihlekkur) festir peptíðið við cystein-34 á sermisalbúmíni, sem ver það fyrir ensímbroti. Hækkað vaxtarhormón keyrir IGF-1 framleiðslu í lifur.",
+      "halfLife": "~5.8-8.1 dagar (undir húð, albúmín-bundið)",
+      "fdaApproved": false,
+      "researchStatus": "Lyfjahvörf úr Fasa I/II ConjuChem-rannsóknum í mönnum; þróun stöðvuð eftir öryggisatvik í Fasa II 2006",
+      "dosage": {
+        "beginner": {
+          "amount": "500-1.000 mcg",
+          "frequency": "1x á viku",
+          "route": "Undir húð",
+          "duration": "Vikur 1-2 (stigvaxandi skammtur)"
+        },
+        "standard": {
+          "amount": "1.000 mcg (1 mg)",
+          "frequency": "1x á viku",
+          "route": "Undir húð",
+          "duration": "Vikur 3-8"
+        },
+        "advanced": {
+          "amount": "2.000 mcg vikulega EÐA 1.000 mcg tvisvar í viku",
+          "frequency": "1-2x á viku",
+          "route": "Undir húð",
+          "duration": "Vikur 3-12"
+        }
+      },
+      "timing": "Sami vikudagur, að kvöldi æskilegt til að samhæfa hækkað vaxtarhormón við náttúrulega nóttar-seyti. Jafnvægisstaða þróast yfir 3-4 vikur. Skipta um stungustað (kviður, læri, axlir) til að draga úr staðbundnum viðbrögðum.",
+      "cycleInfo": "Hefðbundið: 8-12 vikur on, 4-6 vikur off. Lengra: 12-16 vikur on, 6-8 vikur off. Aukaverkanir geta varað í daga frekar en mínútur vegna langs helmingunartíma — ekki er hægt að snúa við viðbrögðum með því að hætta. Oft samansett með GHRP/ghrelin-hermandi efni (ipamorelin) fyrir samverkandi GH-púlsa.",
+      "reconstitution": {
+        "vialSize": "10 mg lyophilized",
+        "bacWater": "3.0 mL",
+        "concentration": "~3.333 mcg/mL",
+        "note": "1 mg skammtur = 30 einingar á U-100 insúlínsprautu. Sprauta vatninu hægt á glasvegginn, þeyta varlega — ekki hrista. Minni 2 mg eða 5 mg glös eru einnig algeng; reiknaðu styrkleika í samræmi."
+      },
+      "storage": "Þurrt: kælir 2-8°C; frystir -20°C langtíma. Blandað: kælir 2-8°C og notist innan 4-6 vikna miðað við vikulega skömmtun. Vernda gegn ljósi.",
+      "benefits": [
+        "Viðvarandi 6 daga hækkun GH frá einni vikulegri sprautun",
+        "1.5-3x grunnvirkni IGF-1 í 9-11 daga",
+        "Bætt líkamssamsetning (vöðvauppbygging, fitutap)",
+        "Bætt endurheimt og svefngæði",
+        "Þægileg vikuleg skömmtun"
+      ],
+      "sideEffects": [
+        "Vökvasöfnun og vægur bjúgur",
+        "Roði og hiti eftir sprautun",
+        "Höfuðverkur, slen, heilaþoka",
+        "Viðbrögð á stungustað",
+        "Doði eða stingur (eins og við úlnliðsgöngheilkenni)",
+        "Áhrif vara í daga vegna langs helmingunartíma"
+      ],
+      "contraindications": [
+        "Virkt krabbamein (viðvarandi IGF-1 hækkun áhyggjuefni)",
+        "Hjarta- og æðasjúkdómur",
+        "Sykursýki tegund 2 eða insúlínviðnám (versnar insúlínnæmi)",
+        "Þungun og brjóstagjöf",
+        "Þekkt peptíðofnæmi",
+        "Unglingar með opnar vaxtarplötur"
+      ],
+      "genderNotes": {
+        "men": "Geta tekið eftir greinilegri styrk- og endurheimtaráhrifum. Fylgist með merkjum um brjóstamyndun í lengri lotum.",
+        "women": "Næmi fyrir vökvasöfnun oft hærra; byrja á 500 mcg vikulega. Forðast á meðgöngu eða þegar reynt er að verða þunguð."
+      },
+      "research": [
+        {
+          "title": "Prolonged stimulation of growth hormone and IGF-I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults",
+          "summary": "Tímamóta Teichman et al. Fasa I rannsókn — stök SubQ sprautun skilaði 2-10x hækkun á GH í 6+ daga og 1.5-3x hækkun á IGF-1 í 9-11 daga; áætlaður helmingunartími 5.8-8.1 dagar.",
+          "year": 2006,
+          "journal": "Journal of Clinical Endocrinology & Metabolism",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/16352683/"
+        },
+        {
+          "title": "Sustained release of human growth hormone from a novel GHRH analog conjugated to albumin",
+          "summary": "Vélrænisgrein sem lýsir DAC-albúmín samtengingarefnafræði og þeim lyfjahvarfslengingum sem af því leiða.",
+          "year": 2005,
+          "journal": "Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15919742/"
+        },
+        {
+          "title": "Effects of long-acting growth hormone-releasing hormone agonist (CJC-1295) on growth hormone secretion and IGF-1 levels",
+          "summary": "Eftirfylgni-lyfjahvarfsrannsókn á fullorðnum með kviðfitu sem staðfestir viðvarandi örvun GH/IGF-1 ássins.",
+          "year": 2008,
+          "journal": "Growth Hormone & IGF Research",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18329310/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "tesamorelin",
+        "bpc-157",
+        "mk-677"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": "igf-1-lr3",
+      "name": "IGF-1 LR3",
+      "fullName": "Long Arginine 3 Insulin-like Growth Factor 1",
+      "categories": [
+        "muscle"
+      ],
+      "tagline": "Langvirkur IGF-1 hliðstæða fyrir anabólísk merki",
+      "description": "IGF-1 LR3 er tilbúin 83-amínósýra hliðstæða af IGF-1 í mönnum með arginín-skiptingu á stöðu 3 og 13-amínósýra N-enda lengingu. Þessar breytingar draga úr bindingu við IGF-bindiprótein, sem lengir helmingunartíma hennar um 2-3x miðað við innræna IGF-1. Hún er víða notuð í rannsóknarsamhengi fyrir rannsóknir á vöðvaprótínmyndun og hefur engar birtar klínískar rannsóknir í mönnum.",
+      "mechanism": "Bindur IGF-1R með háu sæknum og virkjar PI3K/Akt/mTOR (prótínmyndun, glúkósaupptaka) og RAS/RAF/MEK/ERK (frumufjölgun) leiðir.",
+      "halfLife": "~20-30 klst (SubQ)",
+      "fdaApproved": false,
+      "researchStatus": "Engar RCT á LR3 sérstaklega í mönnum; forklínísk gögn og öryggisprófíll innrænnar IGF-1 (Increlex) leiðbeina notkun.",
+      "dosage": {
+        "beginner": {
+          "amount": "20-40 mcg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "3-4 vikur"
+        },
+        "standard": {
+          "amount": "40-80 mcg",
+          "frequency": "1x á dag",
+          "route": "SubQ eða IM",
+          "duration": "4-6 vikur"
+        },
+        "advanced": {
+          "amount": "80-100 mcg",
+          "frequency": "1x á dag",
+          "route": "SubQ eða IM",
+          "duration": "4-6 vikur"
+        }
+      },
+      "timing": "Eftir æfingar á æfingadögum; að morgni með mat á hvíldardögum. Sprauta aldrei fastandi og aldrei innan 2 klst frá svefntíma. Neyttu 30-50g af hraðvirkum kolvetnum innan 30 mínútna frá sprautun.",
+      "cycleInfo": "3-6 vikur on, lágmark jafn langur tími off (4-6 vikur). Samfelld notkun er ekki ráðlögð vegna hættu á insúlínviðnámi og viðtaka-ofnæmi.",
+      "reconstitution": {
+        "vialSize": "1 mg",
+        "bacWater": "2 mL",
+        "concentration": "500 mcg/mL",
+        "note": "50 mcg skammtur = 10 einingar á U-100 insúlínsprautu."
+      },
+      "storage": "Þurrt: frystir -20°C í allt að 12 mánuði. Blandað: 2-8°C, notist innan ~28 daga. Ekki frjósa blandaða lausn.",
+      "benefits": [
+        "Bætt vöðvaprótínmyndun",
+        "Andkatabólískur stuðningur við þjálfun",
+        "Möguleg staðbundin vöðvastækkun við IM-sprautun á tilteknum stað",
+        "Bætt næringarefnaskipting og glúkósaupptaka í vöðva"
+      ],
+      "sideEffects": [
+        "Blóðsykurslækkun (skráð hjá ~42% Increlex-þátttakenda, getur verið alvarleg)",
+        "Stækkun á eitlavef/hálskirtlum",
+        "Vöxtur innri líffæra (nýra, milta) — að mestu óafturkræfur",
+        "Vökvasöfnun, liðverkir, höfuðverkur",
+        "Fituvefsmyndun á stungustað",
+        "Möguleg afturvirk bæling á innrænu GH"
+      ],
+      "contraindications": [
+        "Virkt eða nýlegt krabbamein (mitogen-áhyggjuefni)",
+        "Sykursýki eða röskun á blóðsykri",
+        "Samhliða insúlín eða súlfónýlúru-meðferð",
+        "Þungun og brjóstagjöf",
+        "Fyrirliggjandi hjarta-, nýrna-, lifrar- eða milta-sjúkdómur",
+        "Unglingar með opnar vaxtarplötur"
+      ],
+      "genderNotes": {
+        "men": "Hefðbundið 40-80 mcg/dag svið. Fylgist með fastandi glúkósa vikulega í fyrstu lotu.",
+        "women": "Yfirleitt 10-20 mcg/dag. Lægri grunnur vöðvamassa þýðir hærra næmi fyrir anabólískum og blóðsykurslækkandi áhrifum."
+      },
+      "research": [
+        {
+          "title": "Anabolic effects of insulin-like growth factor-I (IGF-I) variants in normal female rats",
+          "summary": "Tomas et al. sýndu fram á að IGF-1 hliðstæður með minnkaða IGFBP-bindingu (þ.m.t. LR3) viðhalda yfirburða anabólískri virkni miðað við innræna IGF-1 við sprautun, sem styður prótín-varðveislu í rottulíkönum.",
+          "year": 1996,
+          "journal": "Journal of Endocrinology",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8708555/"
+        },
+        {
+          "title": "Mecasermin (recombinant human IGF-1) for the treatment of short stature",
+          "summary": "Lykilgögn um Increlex skrá blóðsykurslækkun hjá ~42% barna og hálskirtlastækkun hjá ~15%, sem upplýsa öryggisvæntingar fyrir IGF-1 hliðstæðu-notkun.",
+          "year": 2007,
+          "journal": "Expert Opinion on Biological Therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18034655/"
+        },
+        {
+          "title": "Detection of IGF-1 LR3 in human urine by mass spectrometry",
+          "summary": "Fyrsta staðfesta WADA-greiningaraðferðin fyrir IGF-1 LR3, staðfestir misnotkun hennar í íþróttum og bann hennar undir flokki S2.",
+          "year": 2020,
+          "journal": "Drug Testing and Analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32436625/"
+        }
+      ],
+      "stacksWellWith": [
+        "ipamorelin",
+        "cjc-1295",
+        "sermorelin",
+        "bpc-157",
+        "tb-500"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": "oxytocin",
+      "name": "Oxytocin",
+      "fullName": "Oxytocin (cyclic nonapeptide)",
+      "categories": [
+        "libido",
+        "cognitive"
+      ],
+      "tagline": "Peptíð fyrir félagsleg tengsl og nánd",
+      "description": "Oxytocin er 9-amínósýra hringlaga peptíðhormón sem er framleitt í undirhökum og losað af aftari heiladingli. FDA-samþykkt á IV/IM-formi aðeins fyrir fæðingarþjónustu (fæðingarvökva, blóðmissi eftir fæðingu, mjólkurleiðslu). Áhugi utan ábendingar beinist að nef-notkun fyrir félagslega vitund, tengsl, kvíða og kynstarfsemi, þótt stórar rannsóknir hafi að mestu skilað engum áhrifum.",
+      "mechanism": "Bindur oxytocin-viðtaka (Gq-tengdur GPCR) í miðtaugakerfi og útlægum vefjum, mótar viðbrögð möndlukjarna, félagshegðun, samdrátt sléttra vöðva og umbunarrásir.",
+      "halfLife": "~3-6 mínútur IV; áhrif í miðtaugakerfi frá nefskammti vara ~20-90 mínútur",
+      "fdaApproved": true,
+      "researchStatus": "Samþykkt fyrir fæðingarnotkun. SOARS-B (Sikich et al. NEJM 2021, n=290) fann engin áhrif intranasal oxytocin á einhverfu-félagsútkomur; víðari félagslega-vitundar bókmenntir misjafnar.",
+      "dosage": {
+        "beginner": {
+          "amount": "10-24 IU",
+          "frequency": "1x á dag",
+          "route": "Í nef",
+          "duration": "1-2 vikur"
+        },
+        "standard": {
+          "amount": "24-48 IU",
+          "frequency": "2x á dag (skipt)",
+          "route": "Í nef",
+          "duration": "4-6 vikur"
+        },
+        "advanced": {
+          "amount": "Allt að 72 IU",
+          "frequency": "1-2x á dag",
+          "route": "Í nef",
+          "duration": "4-6 vikur"
+        }
+      },
+      "timing": "Skammtur 30-60 mínútum fyrir tilætlað félagslegt samhengi. Áhrif á atferlisendapunkta venjulega mæld 30-90 mínútum eftir gjöf.",
+      "cycleInfo": "Hefðbundin lota er 4-6 vikur on og 1-2 vikur off. Þol og viðtaka-niðurfærsla eru fræðilegar áhyggjur við daglega langtímanotkun.",
+      "reconstitution": {
+        "vialSize": "2 mg (~1.000 IU)",
+        "bacWater": "2 mL",
+        "concentration": "~500 IU/mL (1 IU ≈ 2 mcg)",
+        "note": "Fyrir nef-notkun, færa blandaða lausn í mældan nefúða; 10 einingar á U-100 sprautu ≈ 50 IU."
+      },
+      "storage": "Þurrt: -20°C langtíma. Blandað: 2-8°C, notist innan 2-4 vikna. Henda ef skýjað. Ekki frjósa blandað.",
+      "benefits": [
+        "Möguleg aukning á félagslegri athygli og trausti (misjöfn gögn)",
+        "Tilkynnt aukning á tengsla- og nándarútilfinningu",
+        "Samþykkt virkni fyrir fæðingarvökva og blóðmissi eftir fæðingu",
+        "Kvíðastillandi áhrif tilkynnt í sumum litlum rannsóknum"
+      ],
+      "sideEffects": [
+        "Nef-erting og hnerri (í nef)",
+        "Tímabundinn höfuðverkur",
+        "Pirringur eða tilfinningadeyfa við hærri skammta",
+        "Lágt natríum og vatnseitrun (háir IV skammtar)",
+        "Yfirörvun legs (IV-notkun við fæðingu)"
+      ],
+      "contraindications": [
+        "Þungun utan fæðingarprótókólla á sjúkrahúsi",
+        "Hjarta- og æðasjúkdómur og hjartsláttartruflanir",
+        "Lágt natríum í blóði",
+        "Samhliða lithium eða prostaglandín-hliðstæður",
+        "Börn og unglingar (SOARS-B sýndi engin áhrif)",
+        "Ofnæmi fyrir oxytocin eða rotvarnarefnum"
+      ],
+      "genderNotes": {
+        "men": "Tilkynnt áhrif á tengsl við maka, samkennd og minnkaða möndlukjarna-svörun í félagsverkefnum.",
+        "women": "Áhrif geta verið breytileg yfir tíðahring. Forðast algjörlega ef ófrísk eða að reyna að verða ófrísk utan klínískrar umsjár."
+      },
+      "research": [
+        {
+          "title": "Intranasal Oxytocin in Children and Adolescents with Autism Spectrum Disorder",
+          "summary": "SOARS-B, stærsta RCT-rannsóknin (n=290), fann engin marktækan mun á intranasal oxytocin (allt að 48 IU/dag í 24 vikur) og lyfleysu á félagslegri einangrun eða neinum aukaendapunkti.",
+          "year": 2021,
+          "journal": "New England Journal of Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34644471/"
+        },
+        {
+          "title": "Oxytocin enhances amygdala-dependent, socially reinforced learning",
+          "summary": "Einn skammtur af intranasal oxytocin stillti möndlukjarna-svörun og traust-hegðun hjá heilbrigðum fullorðnum, sem styður CNS-viðeigandi lyfjafræði þrátt fyrir takmarkað aðgengi.",
+          "year": 2008,
+          "journal": "Journal of Neuroscience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18550770/"
+        },
+        {
+          "title": "Intranasal oxytocin versus placebo for hypoactive sexual desire disorder in women",
+          "summary": "Litlar RCT-rannsóknir á intranasal oxytocin fyrir kynlöngun hafa sýnt hófleg eða engin áhrif á örvun og fullnægingu samanborið við lyfleysu.",
+          "year": 2017,
+          "journal": "Fertility and Sterility",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28238492/"
+        }
+      ],
+      "stacksWellWith": [
+        "pt-141",
+        "kisspeptin-10",
+        "selank",
+        "semax"
+      ],
+      "popularity": 65
+    },
+    {
+      "id": "pinealon",
+      "name": "Pinealon",
+      "fullName": "Pinealon (Glu-Asp-Arg tripeptide)",
+      "categories": [
+        "sleep",
+        "cognitive"
+      ],
+      "tagline": "Rússnesk taugaverndandi svefn-þrípeptíð",
+      "description": "Pinealon er tilbúin Glu-Asp-Arg (EDR) þrípeptíð úr Khavinson-lífstýritækjafjölskyldunni, þróuð við St. Petersburg Institute of Bioregulation and Gerontology. Lagt er til að hún fari inn í frumur og yfir kjarnahimnu til að bindast genastýrisvæðum og hafa áhrif á tjáningu andoxunar- og taugaörva-gena. Gagnagrunnurinn er ráðinn af rússneskri forklínískri vinnu og litlum klínískum hópum.",
+      "mechanism": "Lögð til epigenetísk stjórnun í gegnum beina bindingu við DNA-stýrisvæði, mótun á ERK 1/2 merki og uppstjórnun andoxunar- og frumudauða-hindrandi gena í taugum.",
+      "halfLife": "Ekki vel skilgreindur í birtum bókmenntum",
+      "fdaApproved": false,
+      "researchStatus": "Engar stórar vestrænar RCT birtar. Gögn samanstanda af rússneskri forklínískri vinnu í Alzheimer-líkönum og 72 sjúklinga TBI-hóprannsókn.",
+      "dosage": {
+        "beginner": {
+          "amount": "1.0 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "5 dagar"
+        },
+        "standard": {
+          "amount": "1.5 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "9 dagar (dagar 6-14)"
+        },
+        "advanced": {
+          "amount": "2.0 mg",
+          "frequency": "1x á dag",
+          "route": "SubQ",
+          "duration": "6 dagar (dagar 15-20)"
+        }
+      },
+      "timing": "Að morgni eða snemma síðdegis. Flestar huglægar breytingar koma fram eftir 10-14 daga daglegrar notkunar.",
+      "cycleInfo": "10-20 daga lotur (má lengja í 28 daga), 2-3 lotur á ári, með 2-3 mánuðum milli lota.",
+      "reconstitution": {
+        "vialSize": "20 mg",
+        "bacWater": "3 mL",
+        "concentration": "~6.67 mg/mL",
+        "note": "1 eining á U-100 sprautu ≈ 66.7 mcg; þeyta varlega, ekki hrista. Munnhylki-form er einnig til."
+      },
+      "storage": "Þurrt: -20°C langtíma eða 2-8°C skammtíma. Blandað: 2-8°C. Forðast frystingu/þíðingu.",
+      "benefits": [
+        "Tilkynnt minnkun á súrefnisstakeindum í taugafrumum",
+        "Endurheimt á dendrítu-toppum í Alzheimer-dýralíkönum",
+        "Bæting í minni og hugarskýrleika í litlum TBI-hópum",
+        "Tilkynnt bæting á svefngæðum (oft fyrstu áhrif sem sjást)",
+        "Möguleg skap- og streituþols-áhrif"
+      ],
+      "sideEffects": [
+        "Vægur höfuðverkur snemma í lotu",
+        "Lifandi draumar eða breytt svefndýpt",
+        "Vægt meltingaróþægindi (munnleg leið)",
+        "Roði eða kláði á stungustað",
+        "Langtímaöryggi ókortlagt í vestrænum rannsóknum"
+      ],
+      "contraindications": [
+        "Þungun og brjóstagjöf",
+        "Virkt eða nýlegt krabbamein",
+        "Flogasjúkdómar",
+        "Börn og unglingar",
+        "Samhliða CNS-lyfseðilskyld lyf",
+        "Þekkt peptíðofnæmi"
+      ],
+      "genderNotes": {
+        "men": "Sami skammtaáætlun. Sumir notendur para við Epitalon fyrir sameinaðan langlífis-prótókóll.",
+        "women": "Sami skammtaáætlun. Hormónaáhrif ekki skráð en varúð ráðlögð á barneignaraldri."
+      },
+      "research": [
+        {
+          "title": "Neuroprotective Effects of Tripeptides — Epigenetic Regulators in Mouse Model of Alzheimer's Disease",
+          "summary": "EDR-þrípeptíð meðferð endurheimti þéttleika dendrítu-toppa (~71% aukning) og dró úr eiturmerkjum amyloid-beta í transgen Alzheimer-músalíkönum.",
+          "year": 2021,
+          "journal": "Pharmaceuticals (MDPI)",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34073194/"
+        },
+        {
+          "title": "EDR Peptide: Possible Mechanism of Gene Expression and Protein Synthesis Regulation Involved in the Pathogenesis of Alzheimer's Disease",
+          "summary": "Khavinson-hópurinn fer yfir tilgátu um vélrænis þess hvernig Pinealon fer inn í kjarnann og bindst stýrisvæðum til að móta tjáningu andoxunar- og taugaörva-gena.",
+          "year": 2020,
+          "journal": "International Journal of Molecular Sciences",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33396399/"
+        },
+        {
+          "title": "Peptide regulation of cell differentiation, gene expression and protein synthesis",
+          "summary": "Khavinson-yfirlit yfir stuttar peptíð-lífstýritæki (þ.m.t. Pinealon) og fyrirhugaðar vélrænisleiðir í öldrun og miðtaugakerfis-virkni, samantekt áratuga rússneskra forklínískra gagna.",
+          "year": 2014,
+          "journal": "Bulletin of Experimental Biology and Medicine",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24771411/"
+        }
+      ],
+      "stacksWellWith": [
+        "epitalon",
+        "semax",
+        "selank",
+        "dsip",
+        "cerebrolysin"
+      ],
+      "popularity": 55
+    }
+  ],
+  "stacks": [
+    {
+      "id": "gh-classic",
+      "name": "GH Pulse Classic",
+      "description": "Klassísk GH stack fyrir vöðvavöxt og fitubrennslu",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin"
+      ],
+      "protocol": "100-200 mcg af hvoru, 1-2x á dag fyrir svefn og/eða á fastandi maga.",
+      "goal": "muscle",
+      "experienceLevel": "beginner",
+      "duration": "12-16 vikur"
+    },
+    {
+      "id": "healing-stack",
+      "name": "Total Recovery Stack",
+      "description": "Sterkasta endurnýjunarstack fyrir meiðsl og endurheimt",
+      "peptides": [
+        "bpc-157",
+        "tb-500"
+      ],
+      "protocol": "BPC-157 250-500 mcg 2x á dag + TB-500 2.5 mg 2x á viku.",
+      "goal": "healing",
+      "experienceLevel": "beginner",
+      "duration": "6-8 vikur"
+    },
+    {
+      "id": "anti-aging-elite",
+      "name": "Anti-Aging Elite",
+      "description": "Yfirgripsmikil anti-aging samsetning",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin",
+        "ghk-cu",
+        "epitalon"
+      ],
+      "protocol": "CJC+Ipa nightly. GHK-Cu 2 mg daglega. Epitalon 10 mg í 20 daga lotum 2x á ári.",
+      "goal": "anti_aging",
+      "experienceLevel": "advanced",
+      "duration": "16+ vikur"
+    },
+    {
+      "id": "fat-loss-extreme",
+      "name": "Fat Loss Maximizer",
+      "description": "Aggressive fat loss með metabolic support",
+      "peptides": [
+        "semaglutide",
+        "tesamorelin",
+        "mots-c"
+      ],
+      "protocol": "Semaglutide 0.5-2.4 mg vikulega. Tesamorelin 2 mg nightly. MOTS-c 10 mg 3x/viku.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "16-24 vikur"
+    },
+    {
+      "id": "cognitive-stack",
+      "name": "Brain Optimization",
+      "description": "Triple nootropic blanda fyrir bestu heilastarfsemi",
+      "peptides": [
+        "semax",
+        "selank",
+        "dsip"
+      ],
+      "protocol": "Semax 600 mcg AM/PM. Selank 750 mcg AM/PM. DSIP 200 mcg fyrir svefn.",
+      "goal": "cognitive",
+      "experienceLevel": "standard",
+      "duration": "6-8 vikur"
+    },
+    {
+      "id": "womens-essentials",
+      "name": "Women's Essentials",
+      "description": "Sérsniðið fyrir konur 35+",
+      "peptides": [
+        "ipamorelin",
+        "ghk-cu",
+        "bpc-157"
+      ],
+      "protocol": "Ipamorelin 100-150 mcg nightly. GHK-Cu 2 mg daglega. BPC-157 250 mcg eftir þörf.",
+      "goal": "anti_aging",
+      "experienceLevel": "beginner",
+      "duration": "12 vikur"
+    },
+    {
+      "id": "mens-performance",
+      "name": "Men's Performance",
+      "description": "Performance og recovery fyrir karla",
+      "peptides": [
+        "cjc-1295",
+        "ipamorelin",
+        "bpc-157",
+        "mots-c"
+      ],
+      "protocol": "CJC+Ipa 200 mcg nightly. BPC-157 250 mcg 2x. MOTS-c 10 mg 3x/viku.",
+      "goal": "muscle",
+      "experienceLevel": "standard",
+      "duration": "12-16 vikur"
+    },
+    {
+      "id": "mitochondrial-renewal",
+      "name": "Mitochondrial Renewal",
+      "description": "Þrefaldur hvatberastack — vernd, biogenesis og frumufari-boð",
+      "peptides": [
+        "humanin",
+        "mots-c",
+        "ss-31"
+      ],
+      "protocol": "Humanin 5-10 mg að morgni. MOTS-c 10 mg 3x/viku. SS-31 40 mg að morgni. Keyrðu öll þrjú samhliða í 8-12 vikur, svo 4 vikur frí.",
+      "goal": "anti_aging",
+      "experienceLevel": "advanced",
+      "duration": "8-12 vikur"
+    },
+    {
+      "id": "klow",
+      "name": "KLOW Stack",
+      "description": "Fjögurra-peptíða viðgerðarblanda sem sameinar vefjagræðslu, koparmiðlaða endurnýjun og stuðning við þarmaslímhúð.",
+      "peptides": [
+        "bpc-157",
+        "tb-500",
+        "ghk-cu",
+        "kpv"
+      ],
+      "protocol": "Forblandað 80 mg glas (GHK-Cu 50 mg + KPV 10 mg + BPC-157 10 mg + TB-500 10 mg) blandað með 3 mL af bacteriostatic vatni (~26.7 mg/mL). Ein sprauta á dag SubQ stigvaxandi sem hér segir: vikur 1-2 á ~250 mcg samtals (7.5 einingar), vikur 3-4 á ~500 mcg (15 einingar), vikur 5-8 á ~750 mcg (22.5 einingar), vikur 9-12 niður í ~500 mcg (15 einingar). Sprauta á rótandi stungustöðum til að takmarka staðbundna ertingu vegna koparinnihalds.",
+      "goal": "recovery",
+      "experienceLevel": "intermediate",
+      "duration": "4-12 vikur on, 2-4 vikur off"
+    },
+    {
+      "id": "cagrilintide-tirzepatide",
+      "name": "Cagrilintide + Tirzepatide",
+      "description": "Þríþætt mettunarsamsetning sem sameinar amýlín-örvun við tvöfalt GLP-1/GIP incretin-merki fyrir hámarks matarlystarbælingu.",
+      "peptides": [
+        "cagrilintide",
+        "tirzepatide"
+      ],
+      "protocol": "Bæði efnin vikulega SubQ, sami dagur á mismunandi stungustöðum. Stigvaxandi 24 vikna stigvaxandi skömmtun. Tirzepatide eitt fyrstu 8 vikurnar: 2.5 mg (vikur 1-4), 5.0 mg (vikur 5-8). Á viku 9 bætist cagrilintide við: tirzepatide 5.0 mg + cagrilintide 0.25 mg (vikur 9-12), tirzepatide 7.5 mg + cagrilintide 0.5 mg (vikur 13-16), tirzepatide 10 mg + cagrilintide 1.0 mg (vikur 17-20), tirzepatide 12.5 mg + cagrilintide 1.7 mg (vikur 21-24). Viðhald frá viku 25+: tirzepatide 15 mg + cagrilintide 2.4 mg vikulega.",
+      "goal": "fat_loss",
+      "experienceLevel": "beginner",
+      "duration": "24 vikur stigvaxandi + opin viðhald"
+    },
+    {
+      "id": "cagrilintide-retatrutide",
+      "name": "Cagrilintide + Retatrutide",
+      "description": "Fjór-viðtaka efnaskiptasamsetning sem sameinar amýlín-örvun við þrefalt GLP-1/GIP/glucagon-örvun fyrir hámarks leiðar-þekju.",
+      "peptides": [
+        "cagrilintide",
+        "retatrutide"
+      ],
+      "protocol": "Bæði efnin vikulega SubQ, sami dagur á mismunandi stöðum. 24 vikna stigvaxandi skömmtun. Retatrutide eitt fyrst: 2 mg/viku (vikur 1-4), 4 mg/viku (vikur 5-8). Bæta við cagrilintide á viku 9: retatrutide 4 mg + cagrilintide 0.25 mg (vikur 9-12), retatrutide 8 mg + cagrilintide 0.5 mg (vikur 13-16), retatrutide 8 mg + cagrilintide 1.0 mg (vikur 17-20), retatrutide 12 mg + cagrilintide 1.7 mg (vikur 21-24). Viðhald viku 25+: retatrutide 12 mg + cagrilintide 2.4 mg vikulega. Lota 4-8 vikur off milli fullra keyrslna.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "24 vikur stigvaxandi + viðhald, 4-8 vikur off"
+    },
+    {
+      "id": "retatrutide-mots-c",
+      "name": "Retatrutide + MOTS-c",
+      "description": "Þríörvunar-fitutap parað við hvatberamerki fyrir bætta fitubrennsluskilvirkni í djúpum kaloríuhalla.",
+      "peptides": [
+        "retatrutide",
+        "mots-c"
+      ],
+      "protocol": "Retatrutide vikulega SubQ, stigvaxandi eitt fyrstu 4 vikurnar áður en MOTS-c er bætt við. Retatrutide: 1 mg (vikur 1-4), 2 mg (vikur 5-8), 4 mg (vikur 9-12), 6 mg (vikur 13-16), 9 mg frá viku 17+ (viðhald, hámark 12 mg). MOTS-c kynnt á viku 5 með tveimur valkostum: óregluleg 5-10 mg, 2-3x á viku á æfingadögum (mán/mið/fös, 30-60 mín fyrir æfingu) EÐA daglegur lágskammtur 200 mcg sem eykst um 200 mcg á 2 vikna fresti upp í 1 mg/dag.",
+      "goal": "fat_loss",
+      "experienceLevel": "advanced",
+      "duration": "16-48 vikur (allt að 68 vikur ákafar)"
+    },
+    {
+      "id": "tesamorelin-ipamorelin",
+      "name": "Tesamorelin + Ipamorelin",
+      "description": "GHRH ásamt sértækum GHRP-tvíþættri nálgun sem keyrir púls-losun GH, með áherslu á minnkun viscerals fitu.",
+      "peptides": [
+        "tesamorelin",
+        "ipamorelin"
+      ],
+      "protocol": "Ein sprauta á dag SubQ, helst fyrir svefn til að fylgja náttúrulegri nóttar-GH-púls. Jafnvægisdæmi með 5/5 glasi: blanda þannig að 167 mcg af hvoru sé dregið á hverjar 10 einingar. Vikur 1-2 á 167 mcg + 167 mcg (10 einingar), vikur 3-4 á 333 mcg + 333 mcg (20 einingar), vikur 5-8 á 500 mcg + 500 mcg (30 einingar), vikur 9-16 á 667 mcg + 667 mcg (40 einingar). GHRH-ríkjandi 10/3 glas valkostur: 333 mcg tesamorelin + 100 mcg ipamorelin á hver 30 eininga drátt.",
+      "goal": "fat_loss",
+      "experienceLevel": "intermediate",
+      "duration": "8-16 vikur on, 4-8 vikur off"
+    }
+  ],
+  "interactions": [
+    {
+      "peptides": [
+        "semaglutide",
+        "tirzepatide"
+      ],
+      "warning": "Aldrei nota saman - báðir eru GLP-1 agonistar."
+    },
+    {
+      "peptides": [
+        "pt-141",
+        "melanotan-2"
+      ],
+      "warning": "Varúð - báðir hafa melanocortin áhrif, geta aukið hvor annan."
+    },
+    {
+      "peptides": [
+        "ipamorelin",
+        "cjc-1295"
+      ],
+      "warning": "Synergistic - mikill plús að nota saman, en byrja á lágum skömmtum."
+    }
+  ]
+}
