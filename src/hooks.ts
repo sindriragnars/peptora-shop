@@ -32,6 +32,12 @@ export const reroute: Reroute = ({ url }) => {
 	// path — prefixing would 404 because routes/[slug]/api/ doesn't exist.
 	if (url.pathname.startsWith('/api/')) return;
 
+	// PWA endpoints (manifest + icon) live at the platform root. They
+	// read locals.tenant (populated by hooks.server.ts from the subdomain
+	// host) to serve per-tenant content. Prefixing with /<slug>/ would
+	// 404 since there's no route at [slug]/manifest.webmanifest.
+	if (url.pathname === '/manifest.webmanifest' || url.pathname === '/pwa-icon.svg') return;
+
 	const expectedPrefix = `/${sub}`;
 	if (url.pathname === expectedPrefix || url.pathname.startsWith(`${expectedPrefix}/`)) {
 		// Already prefixed (e.g. visitor typed demo.peptora.app/demo/...).
