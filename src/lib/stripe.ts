@@ -41,7 +41,13 @@ export function getWebhookSecret(tenant: TenantConfig): string {
 }
 
 function stripeClient(tenant: TenantConfig): Stripe {
-	return new Stripe(getApiKey(tenant));
+	// Force the SDK to use native fetch instead of Node's http module —
+	// the default Node HTTP client throws StripeConnectionError on
+	// Vercel's serverless functions ("Request was retried 2 times").
+	// Native fetch is the documented workaround.
+	return new Stripe(getApiKey(tenant), {
+		httpClient: Stripe.createFetchHttpClient()
+	});
 }
 
 export interface CreateCheckoutInput {
