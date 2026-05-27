@@ -49,9 +49,10 @@
 </svelte:head>
 
 <div style={themeStyle} class="min-h-screen flex flex-col">
+	<!-- Header: tenant name removed for now (TBD: logo or nothing).
+	     Cart link stays right-aligned so the count badge is reachable. -->
 	<header class="border-outline border-b">
-		<div class="mx-auto flex max-w-4xl items-baseline justify-between px-6 py-5">
-			<a href={pathPrefix || '/'} class="text-xl font-semibold tracking-tight">{tenant.name}</a>
+		<div class="mx-auto flex max-w-4xl items-baseline justify-end px-6 py-5">
 			<nav class="text-muted flex items-center gap-6 text-sm">
 				<a
 					href="{pathPrefix}/cart"
