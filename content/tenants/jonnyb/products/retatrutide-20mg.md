@@ -1,7 +1,7 @@
 ---
 title: Retatrutide 20 mg
 description: Stuðlar að fitutapi og minnkar matarlyst.
-price_isk: 10000
+price_isk: 20000
 stock: in-stock
 category: peptides
 images:
