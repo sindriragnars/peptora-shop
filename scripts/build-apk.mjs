@@ -76,6 +76,20 @@ config = config.replace(/appName: '[^']+'/, `appName: '${appName}'`);
 config = config.replace(/url: 'https:\/\/[^']+'/, `url: '${serverUrl}'`);
 writeFileSync(configPath, config);
 
+// Capacitor sync doesn't propagate appId to android/app/build.gradle —
+// the Gradle applicationId is set once when the native project is
+// generated and never touched after. Rewrite it in place so the built
+// APK ships with the right package name (otherwise every tenant APK
+// would install over the same Gradle-default package and Sindri's
+// "install side-by-side" guarantee would silently break).
+const gradlePath = join(root, 'android', 'app', 'build.gradle');
+let gradleFile = readFileSync(gradlePath, 'utf8');
+gradleFile = gradleFile.replace(
+	/applicationId\s+"[^"]+"/,
+	`applicationId "${appId}"`
+);
+writeFileSync(gradlePath, gradleFile);
+
 // Copy the canonical Peptora source assets into capacitor-assets/,
 // replacing anything left behind from a previous tenant build. The
 // tenant-letter-square generator (scripts/generate-tenant-assets.mjs)
