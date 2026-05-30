@@ -695,7 +695,7 @@
 							<button
 								type="button"
 								onclick={() => toggleDay(i)}
-								class="h-10 w-10 rounded-full text-sm font-medium transition-colors"
+								class="h-10 min-w-10 shrink-0 whitespace-nowrap rounded-full px-2 text-sm font-medium transition-colors"
 								class:bg-brand={active}
 								class:text-white={active}
 								class:border={!active}
