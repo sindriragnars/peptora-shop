@@ -54,10 +54,16 @@ async function syncRemindersToBackend(): Promise<void> {
 	if (!subId) return;
 	try {
 		const all = await allReminders();
-		// Only sync ENABLED reminders. Disabled ones stay local — no
-		// point burning QStash schedule slots on them.
-		const enabled = all.filter((r) => r.enabled);
-		const payload = enabled.map((r) => {
+		const now = Date.now();
+		// Sync only enabled reminders still inside their protocol window.
+		// Disabled or expired reminders stay local — skipping expired here
+		// means we don't need backend changes to stop firing past endsAt.
+		const active = all.filter((r) => {
+			if (!r.enabled) return false;
+			if (r.endsAt && r.endsAt <= now) return false;
+			return true;
+		});
+		const payload = active.map((r) => {
 			const peptide = getPeptide(r.peptideId, 'en');
 			return {
 				id: r.id ?? 0,
@@ -65,7 +71,9 @@ async function syncRemindersToBackend(): Promise<void> {
 				peptideName: peptide?.name ?? r.peptideId,
 				dose: r.dose,
 				time: r.time,
-				days: r.days
+				days: r.days,
+				startsAt: r.startsAt,
+				endsAt: r.endsAt
 			};
 		});
 		await fetch(`${env.PUBLIC_PUSH_API_URL}/api/sync-reminders`, {

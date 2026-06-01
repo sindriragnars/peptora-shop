@@ -7,6 +7,7 @@
 	import {
 		dayStreak,
 		deleteLog,
+		dosesOnDay,
 		dosesThisMonth,
 		heatmap,
 		logDose,
@@ -49,6 +50,23 @@
 	let monthCount = $state(0);
 	let topPeptide = $state<string | null>(null);
 	let loaded = $state(false);
+	// Heatmap day-detail sheet: opens when the user taps a cell so they
+	// can see what was actually logged that day (and delete individual
+	// entries without leaving the heatmap context).
+	let dayDetailOpen = $state(false);
+	let dayDetailDate = $state(''); // YYYY-MM-DD
+	let dayDetailLogs = $state<DoseLog[]>([]);
+
+	async function openDayDetail(date: string) {
+		dayDetailDate = date;
+		dayDetailLogs = await dosesOnDay(date);
+		dayDetailOpen = true;
+	}
+
+	async function refreshDayDetail() {
+		if (!dayDetailDate) return;
+		dayDetailLogs = await dosesOnDay(dayDetailDate);
+	}
 
 	async function refreshTracking() {
 		const [r, h, s, m, t] = await Promise.all([
@@ -115,6 +133,15 @@
 	let logSheetOpen = $state(false);
 	let logPicker = $state(freshPicker());
 	let logDoseInput = $state('');
+	// Backdating: lets the user catch up on missed doses. Defaults to
+	// "now" each time the sheet opens; HTML date + time inputs are easy
+	// for users to skim past if they don't need to change them.
+	function todayTimeInput(): string {
+		const d = new Date();
+		return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+	}
+	let logDateInput = $state(todayDateInput());
+	let logTimeInput = $state(todayTimeInput());
 
 	const logPickerResults = $derived(
 		logPicker.query.trim()
@@ -128,6 +155,8 @@
 	function openLogSheet() {
 		logPicker = freshPicker();
 		logDoseInput = '';
+		logDateInput = todayDateInput();
+		logTimeInput = todayTimeInput();
 		logSheetOpen = true;
 	}
 
@@ -139,7 +168,16 @@
 
 	async function saveDoseLog() {
 		if (!logPicker.selectedId || !logDoseInput.trim()) return;
-		await logDose({ peptideId: logPicker.selectedId, dose: logDoseInput.trim() });
+		// Combine the date + time pickers into an epoch ms. logDose()
+		// already accepts an explicit takenAt; if the user hasn't touched
+		// the inputs we still build a fresh timestamp here, but it'll be
+		// within ~1 minute of "now" which is good enough.
+		const takenAt = new Date(`${logDateInput}T${logTimeInput}`).getTime();
+		await logDose({
+			peptideId: logPicker.selectedId,
+			dose: logDoseInput.trim(),
+			takenAt
+		});
 		logSheetOpen = false;
 		await refreshTracking();
 	}
@@ -157,6 +195,16 @@
 	let reminderDose = $state('');
 	let reminderTime = $state('09:00');
 	let reminderDays = $state<number[]>([1, 2, 3, 4, 5, 6, 0]); // default daily
+	// Protocol window. Empty endDate = open-ended ("Forever" in the UI).
+	// startDate defaults to today; the user can shift it forward if a
+	// protocol is supposed to start later.
+	function todayDateInput(): string {
+		const d = new Date();
+		return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+	}
+	let reminderStartDate = $state(todayDateInput());
+	let reminderDuration = $state<'forever' | '4w' | '6w' | '8w' | '12w' | 'custom'>('forever');
+	let reminderEndDate = $state('');
 
 	const reminderPickerResults = $derived(
 		reminderPicker.query.trim()
@@ -172,12 +220,28 @@
 		reminderDose = '';
 		reminderTime = '09:00';
 		reminderDays = [1, 2, 3, 4, 5, 6, 0];
+		reminderStartDate = todayDateInput();
+		reminderDuration = 'forever';
+		reminderEndDate = '';
 		reminderSheetOpen = true;
 		// Deep-link from a peptide page: pre-select that peptide so the
 		// user lands directly on the dose/time/days form.
 		if (peptideId && getPeptide(peptideId, prefs.lang)) {
 			pickForReminder(peptideId);
 		}
+	}
+
+	/** Compute the protocol end-date from the selected duration preset.
+	 *  Returns YYYY-MM-DD or '' for 'forever'. Custom keeps whatever the
+	 *  user typed into the date field. */
+	function endDateFromDuration(): string {
+		if (reminderDuration === 'forever') return '';
+		if (reminderDuration === 'custom') return reminderEndDate;
+		const weeks = { '4w': 4, '6w': 6, '8w': 8, '12w': 12 }[reminderDuration];
+		if (!weeks) return '';
+		const start = new Date(reminderStartDate);
+		start.setDate(start.getDate() + weeks * 7);
+		return `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, '0')}-${String(start.getDate()).padStart(2, '0')}`;
 	}
 
 	function pickForReminder(id: string) {
@@ -194,6 +258,13 @@
 
 	async function saveReminder() {
 		if (!reminderPicker.selectedId || !reminderDose.trim() || reminderDays.length === 0) return;
+		// Resolve the protocol window into epoch ms. Parse as local time
+		// (00:00) so a user setting endDate "2026-07-15" expects the
+		// reminder to stop firing once that day starts in their TZ.
+		const startsAt = new Date(reminderStartDate + 'T00:00:00').getTime();
+		const endIso = endDateFromDuration();
+		const endsAt = endIso ? new Date(endIso + 'T00:00:00').getTime() : undefined;
+
 		// IndexedDB's structured clone chokes on Svelte 5 $state proxies.
 		// Spread reminderDays into a plain array before persisting.
 		await addReminder({
@@ -201,7 +272,9 @@
 			dose: reminderDose.trim(),
 			time: reminderTime,
 			days: [...reminderDays],
-			enabled: true
+			enabled: true,
+			startsAt,
+			endsAt
 		});
 		reminderSheetOpen = false;
 		await refreshReminders();
@@ -344,21 +417,24 @@
 				<div class="grid grid-cols-7 gap-1.5">
 					{#each cells as cell (cell.date)}
 						{@const intensity = Math.min(cell.count, 3)}
-						<div
-							class="aspect-square rounded-md"
+						<button
+							type="button"
+							onclick={() => openDayDetail(cell.date)}
+							class="hover:ring-brand/40 aspect-square rounded-md transition-shadow hover:ring-2"
 							style={intensity === 0
-								? 'background-color: color-mix(in srgb, var(--color-brand) 8%, transparent);'
-								: `background-color: color-mix(in srgb, var(--color-brand) ${(0.25 + intensity * 0.2) * 100}%, transparent);`}
+								? 'background-color: rgb(14 124 102 / 0.08);'
+								: `background-color: rgb(14 124 102 / ${0.25 + intensity * 0.2});`}
 							title={`${cell.date}: ${cell.count} dose${cell.count === 1 ? '' : 's'}`}
-						></div>
+							aria-label={`${cell.date}: ${cell.count} dose${cell.count === 1 ? '' : 's'}`}
+						></button>
 					{/each}
 				</div>
 				<div class="text-muted mt-3 flex items-center justify-end gap-1.5 text-xs">
 					<span>{s.tracking_heatmap_less}</span>
-					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 8%, transparent);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 35%, transparent);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 55%, transparent);"></div>
-					<div class="h-3 w-3 rounded" style="background-color: color-mix(in srgb, var(--color-brand) 75%, transparent);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.08);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.35);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.55);"></div>
+					<div class="h-3 w-3 rounded" style="background-color: rgb(14 124 102 / 0.75);"></div>
 					<span>{s.tracking_heatmap_more}</span>
 				</div>
 			</div>
@@ -439,6 +515,21 @@
 								<div class="text-muted mt-0.5 text-xs">
 									{r.dose} · {r.time} · {describeDays(r.days)}
 								</div>
+								{#if r.endsAt}
+									{@const daysLeft = Math.ceil((r.endsAt - Date.now()) / 86400000)}
+									<div class="text-muted mt-1 text-xs">
+										{#if daysLeft <= 0}
+											<span class="text-red-600">{s.reminder_protocol_finished ?? 'Lokið'}</span>
+										{:else if daysLeft === 1}
+											{s.reminder_protocol_one_day_left ?? '1 dagur eftir'}
+										{:else if daysLeft <= 14}
+											{(s.reminder_protocol_days_left ?? '{n} dagar eftir').replace('{n}', String(daysLeft))}
+										{:else}
+											{@const weeksLeft = Math.round(daysLeft / 7)}
+											{(s.reminder_protocol_weeks_left ?? '{n} vikur eftir').replace('{n}', String(weeksLeft))}
+										{/if}
+									</div>
+								{/if}
 							</div>
 							<div class="flex items-center gap-1">
 								<button
@@ -586,6 +677,32 @@
 						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
 					/>
 				</label>
+				<!-- Backdate option: defaults to now, but lets the user catch
+				     up on missed doses without lying about when they took them.
+				     Two-column grid so date + time stay scannable. -->
+				<div class="mb-4 grid grid-cols-2 gap-3">
+					<label class="block">
+						<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">
+							{s.log_dose_date ?? 'Dagsetning'}
+						</span>
+						<input
+							type="date"
+							bind:value={logDateInput}
+							max={todayDateInput()}
+							class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
+						/>
+					</label>
+					<label class="block">
+						<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">
+							{s.log_dose_time ?? 'Tími'}
+						</span>
+						<input
+							type="time"
+							bind:value={logTimeInput}
+							class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
+						/>
+					</label>
+				</div>
 				<button
 					type="button"
 					onclick={saveDoseLog}
@@ -594,6 +711,83 @@
 				>
 					{s.log_dose_save}
 				</button>
+			{/if}
+		</div>
+	</div>
+{/if}
+
+<!-- Heatmap day-detail sheet -->
+{#if dayDetailOpen}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		onclick={(e) => {
+			if (e.target === e.currentTarget) dayDetailOpen = false;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') dayDetailOpen = false;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); max-height: 90vh; overflow-y: auto;"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">
+					{new Date(dayDetailDate + 'T00:00:00').toLocaleDateString(prefs.lang === 'is' ? 'is-IS' : 'en-US', { weekday: 'long', day: 'numeric', month: 'long' })}
+				</h2>
+				<button
+					type="button"
+					onclick={() => (dayDetailOpen = false)}
+					class="text-muted hover:text-foreground -mr-1 p-1"
+					aria-label={s.add_reminder_close ?? 'Loka'}
+				>
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			{#if dayDetailLogs.length === 0}
+				<p class="text-muted py-8 text-center text-sm">
+					{s.tracking_day_empty ?? 'Engar skammtar þennan dag.'}
+				</p>
+			{:else}
+				<ul class="space-y-2">
+					{#each dayDetailLogs as log (log.id)}
+						{@const p = getPeptide(log.peptideId, prefs.lang)}
+						<li class="border-outline dark:border-outline-dark flex items-start justify-between gap-3 rounded-2xl border p-3">
+							<div class="min-w-0 flex-1">
+								<div class="font-semibold">{p?.name ?? log.peptideId}</div>
+								<div class="text-muted mt-0.5 text-xs">
+									{log.dose} · {new Date(log.takenAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+								</div>
+								{#if log.note}
+									<div class="text-muted mt-1 text-xs italic">{log.note}</div>
+								{/if}
+							</div>
+							<button
+								type="button"
+								onclick={async () => {
+									if (log.id === undefined) return;
+									if (!confirm(s.reminders_delete)) return;
+									await deleteLog(log.id);
+									await refreshDayDetail();
+									await refreshTracking();
+								}}
+								class="text-muted hover:text-red-600 p-1"
+								aria-label={s.reminders_delete}
+							>
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<polyline points="3 6 5 6 21 6" />
+									<path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6" />
+								</svg>
+							</button>
+						</li>
+					{/each}
+				</ul>
 			{/if}
 		</div>
 	</div>
@@ -709,6 +903,51 @@
 							</button>
 						{/each}
 					</div>
+				</div>
+
+				<!-- Protocol window: start date + duration chooser. End date is
+				     derived from duration unless the user explicitly picks
+				     "Custom" and types one in. "Forever" is the default so a
+				     plain daily reminder still works without filling anything. -->
+				<div class="mb-4">
+					<span class="text-muted mb-2 block text-xs font-medium uppercase tracking-wide">
+						{s.add_reminder_protocol ?? 'Tímabil (valfrjálst)'}
+					</span>
+					<div class="grid grid-cols-2 gap-2">
+						<label class="block">
+							<span class="text-muted mb-1 block text-xs">{s.add_reminder_start_date ?? 'Hefst'}</span>
+							<input
+								type="date"
+								bind:value={reminderStartDate}
+								class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
+							/>
+						</label>
+						<label class="block">
+							<span class="text-muted mb-1 block text-xs">{s.add_reminder_duration ?? 'Lengd'}</span>
+							<select
+								bind:value={reminderDuration}
+								class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
+							>
+								<option value="forever">{s.add_reminder_forever ?? 'Áframhaldandi'}</option>
+								<option value="4w">4 {s.weeks_label ?? 'vikur'}</option>
+								<option value="6w">6 {s.weeks_label ?? 'vikur'}</option>
+								<option value="8w">8 {s.weeks_label ?? 'vikur'}</option>
+								<option value="12w">12 {s.weeks_label ?? 'vikur'}</option>
+								<option value="custom">{s.add_reminder_custom ?? 'Eigin dagsetning'}</option>
+							</select>
+						</label>
+					</div>
+					{#if reminderDuration === 'custom'}
+						<label class="mt-2 block">
+							<span class="text-muted mb-1 block text-xs">{s.add_reminder_end_date ?? 'Lýkur'}</span>
+							<input
+								type="date"
+								bind:value={reminderEndDate}
+								min={reminderStartDate}
+								class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-lg border bg-transparent px-3 py-2 text-sm outline-none"
+							/>
+						</label>
+					{/if}
 				</div>
 
 				<button

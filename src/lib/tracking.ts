@@ -37,6 +37,17 @@ export async function recentDoses(limit = 5): Promise<DoseLog[]> {
 	return db().dose_logs.orderBy('takenAt').reverse().limit(limit).toArray();
 }
 
+/** All logs for a given calendar day (YYYY-MM-DD, local time). Newest first. */
+export async function dosesOnDay(date: string): Promise<DoseLog[]> {
+	const start = new Date(date + 'T00:00:00').getTime();
+	const end = start + DAY_MS;
+	return db()
+		.dose_logs.where('takenAt')
+		.between(start, end, true, false)
+		.reverse()
+		.sortBy('takenAt');
+}
+
 export interface HeatmapCell {
 	date: string; // YYYY-MM-DD
 	count: number;

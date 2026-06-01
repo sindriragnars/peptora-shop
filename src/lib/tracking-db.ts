@@ -25,6 +25,10 @@ export interface Reminder {
 	days: number[];
 	enabled: boolean;
 	createdAt: number;
+	/** Protocol start (epoch ms). Defaults to createdAt on legacy rows. */
+	startsAt?: number;
+	/** Protocol end (epoch ms). Undefined = open-ended. */
+	endsAt?: number;
 }
 
 class PeptoraDB extends Dexie {
@@ -44,6 +48,11 @@ class PeptoraDB extends Dexie {
 		// allReminders() needs for orderBy(). Existing v1 reminders
 		// auto-migrate.
 		this.version(2).stores({
+			reminders: '++id, peptideId, createdAt'
+		});
+		// v3: add startsAt + endsAt for protocol support. New fields are
+		// optional, so prior rows stay readable without a data migration.
+		this.version(3).stores({
 			reminders: '++id, peptideId, createdAt'
 		});
 	}

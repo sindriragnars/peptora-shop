@@ -191,6 +191,21 @@ interface UIStrings {
 	add_reminder_days: string;
 	add_reminder_save: string;
 	add_reminder_cancel: string;
+	add_reminder_close: string;
+	add_reminder_protocol: string;
+	add_reminder_start_date: string;
+	add_reminder_duration: string;
+	add_reminder_forever: string;
+	add_reminder_custom: string;
+	add_reminder_end_date: string;
+	weeks_label: string;
+	reminder_protocol_finished: string;
+	reminder_protocol_one_day_left: string;
+	reminder_protocol_days_left: string;
+	reminder_protocol_weeks_left: string;
+	log_dose_date: string;
+	log_dose_time: string;
+	tracking_day_empty: string;
 	day_short_sun: string;
 	day_short_mon: string;
 	day_short_tue: string;
@@ -480,6 +495,21 @@ const en: UIStrings = {
 	add_reminder_days: 'Repeat on',
 	add_reminder_save: 'Save reminder',
 	add_reminder_cancel: 'Cancel',
+	add_reminder_close: 'Close',
+	add_reminder_protocol: 'Protocol (optional)',
+	add_reminder_start_date: 'Start',
+	add_reminder_duration: 'Duration',
+	add_reminder_forever: 'Ongoing',
+	add_reminder_custom: 'Custom date',
+	add_reminder_end_date: 'Ends',
+	weeks_label: 'weeks',
+	reminder_protocol_finished: 'Finished',
+	reminder_protocol_one_day_left: '1 day left',
+	reminder_protocol_days_left: '{n} days left',
+	reminder_protocol_weeks_left: '{n} weeks left',
+	log_dose_date: 'Date',
+	log_dose_time: 'Time',
+	tracking_day_empty: 'No doses logged this day.',
 	day_short_sun: 'Su',
 	day_short_mon: 'Mo',
 	day_short_tue: 'Tu',
@@ -781,6 +811,21 @@ const is: UIStrings = {
 	add_reminder_days: 'Endurtaka á',
 	add_reminder_save: 'Vista áminningu',
 	add_reminder_cancel: 'Hætta við',
+	add_reminder_close: 'Loka',
+	add_reminder_protocol: 'Tímabil (valfrjálst)',
+	add_reminder_start_date: 'Hefst',
+	add_reminder_duration: 'Lengd',
+	add_reminder_forever: 'Áframhaldandi',
+	add_reminder_custom: 'Eigin dagsetning',
+	add_reminder_end_date: 'Lýkur',
+	weeks_label: 'vikur',
+	reminder_protocol_finished: 'Lokið',
+	reminder_protocol_one_day_left: '1 dagur eftir',
+	reminder_protocol_days_left: '{n} dagar eftir',
+	reminder_protocol_weeks_left: '{n} vikur eftir',
+	log_dose_date: 'Dagsetning',
+	log_dose_time: 'Tími',
+	tracking_day_empty: 'Engar skammtar þennan dag.',
 	day_short_sun: 'Su',
 	day_short_mon: 'Má',
 	day_short_tue: 'Þr',
