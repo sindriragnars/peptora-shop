@@ -30,39 +30,47 @@ import {
 import { join, resolve } from 'node:path';
 
 const args = process.argv.slice(2);
-const slug = args[0];
 const isRelease = args.includes('--release');
+const isStandalone = args.includes('--standalone');
+// First non-flag positional arg is the tenant slug. Optional under
+// --standalone (the script doesn't read a tenant config in that case).
+const slug = args.find((a) => !a.startsWith('--'));
 
-if (!slug) {
+if (!slug && !isStandalone) {
 	console.error('Usage: node scripts/build-apk.mjs <slug> [--release]');
+	console.error('       node scripts/build-apk.mjs --standalone [--release]');
 	process.exit(1);
 }
 
 const root = resolve(import.meta.dirname, '..');
-const tenantPath = join(root, 'content', 'tenants', slug, 'tenant.json');
 
-if (!existsSync(tenantPath)) {
-	console.error(`Tenant config not found: ${tenantPath}`);
-	process.exit(1);
+// --standalone: build the generic Peptora APK that opens the WebApp
+// at app.peptora.app, no per-tenant shop. Same Peptora icon + name
+// every other build uses; appId is distinct from the tenant pattern
+// so it installs alongside any tenant APK without conflict.
+let serverUrl;
+let appId;
+if (isStandalone) {
+	serverUrl = 'https://app.peptora.app';
+	appId = 'app.peptora.standalone';
+	console.log('[build-apk] standalone build (app.peptora.app, no tenant shop)');
+} else {
+	const tenantPath = join(root, 'content', 'tenants', slug, 'tenant.json');
+	if (!existsSync(tenantPath)) {
+		console.error(`Tenant config not found: ${tenantPath}`);
+		process.exit(1);
+	}
+	// Read for side-effect validation; tenant fields no longer flow
+	// into the APK (name + icon are always Peptora) but missing tenant
+	// config still means "wrong slug".
+	JSON.parse(readFileSync(tenantPath, 'utf8'));
+	serverUrl = `https://${slug}.peptora.app`;
+	appId = `app.peptora.shop.${slug.replace(/-/g, '')}`;
+	console.log(`[build-apk] tenant=${slug}`);
 }
-
-const tenant = JSON.parse(readFileSync(tenantPath, 'utf8'));
-
-// Build the production URL for this tenant. Subdomains are wired in
-// Vercel as of 2026-05-26 — each tenant gets `<slug>.peptora.app`
-// pointing at the peptora-shop project. The path-based form remains
-// supported by the tenant resolver for dev + preview.
-const serverUrl = `https://${slug}.peptora.app`;
-
-// Tenant-specific appId so each APK installs side-by-side and Play
-// Store treats them as distinct apps for distinct developer accounts.
-// The user-visible name + icon, on the other hand, are always
-// "Peptora" — Sindri is marketing the Peptora brand and doesn't want
-// per-tenant fragmentation in the app drawer.
-const appId = `app.peptora.shop.${slug.replace(/-/g, '')}`;
 const appName = 'Peptora';
+const outputLabel = isStandalone ? 'standalone' : slug;
 
-console.log(`[build-apk] tenant=${slug}`);
 console.log(`[build-apk] appId=${appId}`);
 console.log(`[build-apk] appName=${appName} (always Peptora — brand unification)`);
 console.log(`[build-apk] serverUrl=${serverUrl}`);
@@ -138,7 +146,7 @@ const builtApk = join(
 );
 const distDir = join(root, 'dist');
 mkdirSync(distDir, { recursive: true });
-const distApk = join(distDir, `${slug}-${gradleVariant}.apk`);
+const distApk = join(distDir, `${outputLabel}-${gradleVariant}.apk`);
 copyFileSync(builtApk, distApk);
 
 console.log(`[build-apk] ✓ ${distApk}`);
