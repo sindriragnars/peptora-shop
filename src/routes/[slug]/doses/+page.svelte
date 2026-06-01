@@ -119,7 +119,7 @@
 	const logPickerResults = $derived(
 		logPicker.query.trim()
 			? searchPeptides(logPicker.query, prefs.lang)
-			: allPeptides.slice(0, 10)
+			: allPeptides
 	);
 	const logSelected = $derived(
 		logPicker.selectedId ? getPeptide(logPicker.selectedId, prefs.lang) : undefined
@@ -161,7 +161,7 @@
 	const reminderPickerResults = $derived(
 		reminderPicker.query.trim()
 			? searchPeptides(reminderPicker.query, prefs.lang)
-			: allPeptides.slice(0, 10)
+			: allPeptides
 	);
 	const reminderSelected = $derived(
 		reminderPicker.selectedId ? getPeptide(reminderPicker.selectedId, prefs.lang) : undefined
