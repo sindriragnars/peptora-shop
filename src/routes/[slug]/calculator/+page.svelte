@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
-	import { calculate, parseDoseToMg, type SyringeType } from '$lib/calculator';
+	import { calculate, parseDoseToMg, type SyringeCapacity } from '$lib/calculator';
 	import { getPeptide } from '$lib/peptides';
 	import { prefs } from '$lib/prefs.svelte';
 	import { strings } from '$lib/i18n';
@@ -20,7 +20,7 @@
 	let bacWaterMl = $state(2);
 	let doseValue = $state(250);
 	let doseUnit = $state<'mcg' | 'mg'>('mcg');
-	let syringe = $state<SyringeType>('U100');
+	let syringeCapacity = $state<SyringeCapacity>(100);
 
 	// Pre-fill the dose box if the URL pointed us at a specific peptide,
 	// but only on first render — don't fight the user once they edit.
@@ -42,7 +42,20 @@
 	});
 
 	const desiredDoseMg = $derived(doseUnit === 'mg' ? doseValue : doseValue / 1000);
-	const result = $derived(calculate({ vialSizeMg, bacWaterMl, desiredDoseMg, syringe }));
+	const result = $derived(
+		calculate({ vialSizeMg, bacWaterMl, desiredDoseMg, syringeCapacity })
+	);
+	// Visual slider fill, 0–100% of the chosen barrel. Cap at 100% so an
+	// over-draw doesn't make the bar overflow visually — the unit number
+	// below still shows the true value so the user sees something's off.
+	const fillPercent = $derived(
+		isFinite(result.unitsToDraw)
+			? Math.min(100, Math.max(0, (result.unitsToDraw / syringeCapacity) * 100))
+			: 0
+	);
+	const overdraw = $derived(
+		isFinite(result.unitsToDraw) && result.unitsToDraw > syringeCapacity
+	);
 
 	// Format helpers — clamp ridiculous decimals.
 	function fmt(n: number, digits = 2): string {
@@ -92,7 +105,35 @@
 		<p class="text-brand my-2 font-mono text-5xl font-bold tracking-tight">
 			{fmt(result.unitsToDraw, 1)}
 		</p>
-		<p class="text-muted text-xs">{s.calc_units_suffix(syringe)}</p>
+		<p class="text-muted text-xs">{s.calc_units_suffix(syringeCapacity)}</p>
+
+		<!-- Visual syringe: horizontal bar with 0/N markers and a brand
+		     fill up to the units-to-draw. Same wireframe as the Bailey
+		     calculator screenshot — a quick visual sanity check that the
+		     dose actually fits the chosen barrel. -->
+		<div class="mt-5">
+			<div
+				class="border-outline dark:border-outline-dark relative h-6 overflow-hidden rounded-full border bg-cream"
+				role="img"
+				aria-label={`Syringe fill: ${fmt(result.unitsToDraw, 1)} of ${syringeCapacity} units`}
+			>
+				<div
+					class="h-full transition-all"
+					class:bg-brand={!overdraw}
+					class:bg-red-500={overdraw}
+					style={`width: ${fillPercent}%`}
+				></div>
+			</div>
+			<div class="text-muted mt-1 flex justify-between font-mono text-[10px]">
+				<span>0</span>
+				<span>{Math.round(syringeCapacity / 3)}</span>
+				<span>{Math.round((syringeCapacity * 2) / 3)}</span>
+				<span>{syringeCapacity}</span>
+			</div>
+			{#if overdraw}
+				<p class="mt-1 text-center text-xs text-red-600">{s.calc_overdraw}</p>
+			{/if}
+		</div>
 		<div class="text-muted mt-4 grid grid-cols-4 gap-2 text-xs">
 			<div>
 				<div class="font-mono text-sm font-semibold">{fmt(result.doseVolumeMl, 3)}</div>
@@ -186,18 +227,18 @@
 				class="border-outline dark:border-outline-dark flex rounded-full border p-1 text-xs"
 				role="radiogroup"
 			>
-				{#each ['U100', 'U50', 'U40'] as const as s}
+				{#each [30, 50, 100] as const as cap}
 					<button
 						type="button"
 						role="radio"
-						aria-checked={syringe === s}
+						aria-checked={syringeCapacity === cap}
 						class="flex-1 rounded-full py-1.5 font-medium transition-colors"
-						class:bg-brand={syringe === s}
-						class:text-white={syringe === s}
-						class:text-muted={syringe !== s}
-						onclick={() => (syringe = s)}
+						class:bg-brand={syringeCapacity === cap}
+						class:text-white={syringeCapacity === cap}
+						class:text-muted={syringeCapacity !== cap}
+						onclick={() => (syringeCapacity = cap)}
 					>
-						{s}
+						{cap} units
 					</button>
 				{/each}
 			</div>

@@ -58,7 +58,7 @@
 					vialSizeMg: vialMg,
 					bacWaterMl: bacMl,
 					desiredDoseMg: doseMg,
-					syringe: 'U100'
+					syringeCapacity: 100
 				})
 			: null
 	);

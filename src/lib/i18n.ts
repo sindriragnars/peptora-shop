@@ -147,7 +147,8 @@ interface UIStrings {
 	calc_label_dose: string;
 	calc_label_syringe: string;
 	calc_units_label: string;
-	calc_units_suffix: (size: string) => string;
+	calc_units_suffix: (size: number) => string;
+	calc_overdraw: string;
 	calc_concentration: string;
 	calc_doses_per_vial: string;
 	calc_days: string;
@@ -452,9 +453,10 @@ const en: UIStrings = {
 	calc_label_dose: 'Desired dose (mg)',
 	calc_label_syringe: 'Syringe',
 	calc_units_label: 'Draw to',
-	calc_units_suffix: (size) => `on a ${size} insulin syringe`,
+	calc_units_suffix: (size) => `on a ${size}-unit syringe`,
+	calc_overdraw: "Won't fit — pick a larger syringe.",
 	calc_concentration: 'Concentration',
-	calc_doses_per_vial: 'Doses per vial',
+	calc_doses_per_vial: 'Uses per vial',
 	calc_days: 'Days at 2×/week',
 	calc_disclaimer:
 		'For reconstitution math only. Not medical advice — always consult a healthcare provider before dosing.',
@@ -767,9 +769,10 @@ const is: UIStrings = {
 	calc_label_dose: 'Æskilegur skammtur (mg)',
 	calc_label_syringe: 'Sprauta',
 	calc_units_label: 'Draga upp að',
-	calc_units_suffix: (size) => `á ${size} insúlínsprautu`,
+	calc_units_suffix: (size) => `á ${size}-unit sprautu`,
+	calc_overdraw: 'Passar ekki — veldu stærri sprautu.',
 	calc_concentration: 'Þéttleiki',
-	calc_doses_per_vial: 'Skammtar í glasi',
+	calc_doses_per_vial: 'Notkanir í glasi',
 	calc_days: 'Dagar (2×/viku)',
 	calc_disclaimer:
 		'Aðeins fyrir blöndun og umreikning. Ekki læknisráð — ráðfærðu þig alltaf við lækni áður en þú tekur skammt.',

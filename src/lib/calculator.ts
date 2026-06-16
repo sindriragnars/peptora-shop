@@ -1,27 +1,23 @@
 /**
- * Reconstitution math. Ported from the Android app's
- * `DoseCalculator.kt`. Pure functions — no UI, no state.
+ * Reconstitution math. Pure functions — no UI, no state.
  *
  * The Peptora calculator answers one question: given a powder vial
  * mixed with N mL of bacteriostatic water, how many *insulin syringe
  * units* do you draw for your desired dose?
  *
- * Insulin syringes are marked in units (e.g. a U100 syringe has
- * 100 units per mL), which is what biohackers actually use to dose
- * peptides — not mL. Hence the conversion below.
+ * Modelling note: peptide-community syringes are uniformly U100
+ * concentration — 100 units == 1 mL — even when the barrel is smaller.
+ * What varies is the barrel CAPACITY (30 / 50 / 100 units, i.e.
+ * 0.3 / 0.5 / 1.0 mL). Capacity doesn't change the units-to-draw math;
+ * it just bounds the visual scale on the UI's syringe illustration.
+ * (Older U50/U40 insulin concentrations exist but are rare in peptide
+ * use; we deliberately don't model them.)
  */
 
-export type SyringeType = 'U100' | 'U50' | 'U40';
+export type SyringeCapacity = 30 | 50 | 100;
 
-/**
- * Units per mL for each common insulin syringe type.
- * U100 is by far the most common (and what the Android app defaults to).
- */
-const UNITS_PER_ML: Record<SyringeType, number> = {
-	U100: 100,
-	U50: 50,
-	U40: 40
-};
+/** U100 concentration is the only assumption baked in — 100 units = 1 mL. */
+const UNITS_PER_ML = 100;
 
 export interface CalcInputs {
 	/** Total peptide content in the vial, in mg. */
@@ -30,7 +26,10 @@ export interface CalcInputs {
 	bacWaterMl: number;
 	/** Desired dose. Always in mg internally — UI converts from mcg if needed. */
 	desiredDoseMg: number;
-	syringe: SyringeType;
+	/** Barrel capacity in units. Affects only the UI's visual scale —
+	 *  the math below is identical for every capacity since they're all
+	 *  U100. Included on the input so consumers carry it through. */
+	syringeCapacity: SyringeCapacity;
 }
 
 export interface CalcResult {
@@ -52,7 +51,7 @@ export interface CalcResult {
  * guard against rendering NaN values.
  */
 export function calculate(inputs: CalcInputs): CalcResult {
-	const { vialSizeMg, bacWaterMl, desiredDoseMg, syringe } = inputs;
+	const { vialSizeMg, bacWaterMl, desiredDoseMg } = inputs;
 	if (vialSizeMg <= 0 || bacWaterMl <= 0 || desiredDoseMg <= 0) {
 		return {
 			unitsToDraw: NaN,
@@ -65,7 +64,7 @@ export function calculate(inputs: CalcInputs): CalcResult {
 
 	const concentrationMgPerMl = vialSizeMg / bacWaterMl;
 	const doseVolumeMl = desiredDoseMg / concentrationMgPerMl;
-	const unitsToDraw = doseVolumeMl * UNITS_PER_ML[syringe];
+	const unitsToDraw = doseVolumeMl * UNITS_PER_ML;
 	const dosesPerVial = vialSizeMg / desiredDoseMg;
 	// Twice a week → every ~3.5 days.
 	const daysAtTwicePerWeek = dosesPerVial * 3.5;
