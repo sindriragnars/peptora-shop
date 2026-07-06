@@ -1,20 +1,32 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { browser } from '$app/environment';
-	import { calculate, parseDoseToMg, type SyringeCapacity } from '$lib/calculator';
-	import { getPeptide } from '$lib/peptides';
+	import {
+		calculate,
+		parseDoseToMg,
+		SYRINGE_OPTIONS,
+		type SyringeCapacity
+	} from '$lib/calculator';
+	import { getPeptide, getAllPeptidesAlphabetical } from '$lib/peptides';
 	import { prefs } from '$lib/prefs.svelte';
 	import { strings } from '$lib/i18n';
 
 	const s = $derived(strings[prefs.lang]);
+	const allPeptides = $derived(getAllPeptidesAlphabetical(prefs.lang));
 
-	// If we arrived via /calculator?peptide=foo, pre-fill the dose from
-	// that peptide's standard tier — vial size + BAC water still need
-	// the user's input because they vary by what they actually bought.
-	// `browser` gate keeps the prerenderer happy (searchParams aren't
-	// allowed at build-time on a prerendered route).
-	const peptideId = $derived(browser ? page.url.searchParams.get('peptide') : null);
-	const peptide = $derived(peptideId ? getPeptide(peptideId, prefs.lang) : undefined);
+	// Selected peptide drives the auto-fill. Seed from ?peptide= (a deep link
+	// from a peptide page) once, then it's user-driven via the picker.
+	let selectedId = $state<string>('');
+	let urlSeeded = $state(false);
+	$effect(() => {
+		if (!urlSeeded && browser) {
+			const q = page.url.searchParams.get('peptide');
+			if (q) selectedId = q;
+			urlSeeded = true;
+		}
+	});
+	const peptide = $derived(selectedId ? getPeptide(selectedId, prefs.lang) : undefined);
+	const preset = $derived(peptide?.calcPreset);
 
 	let vialSizeMg = $state(5);
 	let bacWaterMl = $state(2);
@@ -22,11 +34,26 @@
 	let doseUnit = $state<'mcg' | 'mg'>('mcg');
 	let syringeCapacity = $state<SyringeCapacity>(100);
 
-	// Pre-fill the dose box if the URL pointed us at a specific peptide,
-	// but only on first render — don't fight the user once they edit.
-	let dosePrefilled = $state(false);
+	const round2 = (n: number) => Math.round(n * 100) / 100;
+
+	// Auto-fill when the selected peptide changes. `appliedId` guards against
+	// re-applying on every reactive tick — we fill once per selection, then
+	// leave the user free to tweak. Peptides with a calcPreset get the full
+	// treatment (vial + water + dose); the rest fall back to their standard
+	// dose so the box isn't empty.
+	let appliedId = $state<string | null>(null);
 	$effect(() => {
-		if (peptide && !dosePrefilled) {
+		if (!peptide) {
+			appliedId = null;
+			return;
+		}
+		if (appliedId === peptide.id) return;
+		if (preset) {
+			vialSizeMg = preset.vialOptionsMg[0];
+			bacWaterMl = preset.recommendedBacMl;
+			doseUnit = preset.doseUnit;
+			doseValue = round2(preset.doseUnit === 'mcg' ? preset.doseLowMg * 1000 : preset.doseLowMg);
+		} else {
 			const mg = parseDoseToMg(peptide.dosage.standard.amount);
 			if (mg !== null) {
 				if (mg < 1) {
@@ -36,28 +63,34 @@
 					doseValue = mg;
 					doseUnit = 'mg';
 				}
-				dosePrefilled = true;
 			}
 		}
+		appliedId = peptide.id;
 	});
 
 	const desiredDoseMg = $derived(doseUnit === 'mg' ? doseValue : doseValue / 1000);
-	const result = $derived(
-		calculate({ vialSizeMg, bacWaterMl, desiredDoseMg, syringeCapacity })
-	);
+	const result = $derived(calculate({ vialSizeMg, bacWaterMl, desiredDoseMg, syringeCapacity }));
+
+	const syringeMl = $derived((SYRINGE_OPTIONS.find((o) => o.capacity === syringeCapacity)?.ml ?? 1).toFixed(1));
+
 	// Visual slider fill, 0–100% of the chosen barrel. Cap at 100% so an
-	// over-draw doesn't make the bar overflow visually — the unit number
-	// below still shows the true value so the user sees something's off.
+	// over-draw doesn't overflow the bar — the number still shows the truth.
 	const fillPercent = $derived(
 		isFinite(result.unitsToDraw)
 			? Math.min(100, Math.max(0, (result.unitsToDraw / syringeCapacity) * 100))
 			: 0
 	);
-	const overdraw = $derived(
-		isFinite(result.unitsToDraw) && result.unitsToDraw > syringeCapacity
-	);
+	const overdraw = $derived(isFinite(result.unitsToDraw) && result.unitsToDraw > syringeCapacity);
 
-	// Format helpers — clamp ridiculous decimals.
+	// Typical-dose hint shown under the dose box, in the preset's own unit.
+	const rangeText = $derived.by(() => {
+		if (!preset) return null;
+		const lo = preset.doseUnit === 'mcg' ? preset.doseLowMg * 1000 : preset.doseLowMg;
+		const hi = preset.doseUnit === 'mcg' ? preset.doseHighMg * 1000 : preset.doseHighMg;
+		const fmtNum = (n: number) => String(round2(n));
+		return s.calc_dose_range(fmtNum(lo), fmtNum(hi), preset.doseUnit);
+	});
+
 	function fmt(n: number, digits = 2): string {
 		if (!isFinite(n)) return '—';
 		return n.toFixed(digits);
@@ -99,18 +132,36 @@
 		</p>
 	</header>
 
+	<!-- Peptide picker: selecting one auto-fills the inputs below. -->
+	<div class="border-outline dark:border-outline-dark mb-6 rounded-2xl border p-4">
+		<label for="calc-peptide" class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">
+			{s.calc_pick_peptide}
+		</label>
+		<select
+			id="calc-peptide"
+			bind:value={selectedId}
+			class="w-full bg-transparent text-lg font-semibold outline-none"
+		>
+			<option value="">{s.calc_manual}</option>
+			{#each allPeptides as p (p.id)}
+				<option value={p.id}>{p.name}</option>
+			{/each}
+		</select>
+	</div>
+
 	<!-- Result card -->
 	<div class="bg-brand/10 mb-6 rounded-2xl p-5 text-center">
 		<p class="text-muted text-xs uppercase tracking-wide">{s.calc_units_label}</p>
-		<p class="text-brand my-2 font-mono text-5xl font-bold tracking-tight">
+		<p class="text-brand my-1 font-mono text-5xl font-bold tracking-tight">
 			{fmt(result.unitsToDraw, 1)}
 		</p>
-		<p class="text-muted text-xs">{s.calc_units_suffix(syringeCapacity)}</p>
+		<p class="text-muted text-sm">
+			<span class="font-mono font-semibold">= {fmt(result.doseVolumeMl, 2)} mL</span>
+			· {s.calc_units_suffix(Number(syringeMl))}
+		</p>
 
-		<!-- Visual syringe: horizontal bar with 0/N markers and a brand
-		     fill up to the units-to-draw. Same wireframe as the Bailey
-		     calculator screenshot — a quick visual sanity check that the
-		     dose actually fits the chosen barrel. -->
+		<!-- Visual syringe: horizontal bar scaled to the chosen barrel, with a
+		     brand fill up to the units-to-draw — a quick check the dose fits. -->
 		<div class="mt-5">
 			<div
 				class="border-outline dark:border-outline-dark relative h-6 overflow-hidden rounded-full border bg-cream"
@@ -134,11 +185,7 @@
 				<p class="mt-1 text-center text-xs text-red-600">{s.calc_overdraw}</p>
 			{/if}
 		</div>
-		<div class="text-muted mt-4 grid grid-cols-4 gap-2 text-xs">
-			<div>
-				<div class="font-mono text-sm font-semibold">{fmt(result.doseVolumeMl, 3)}</div>
-				<div>mL</div>
-			</div>
+		<div class="text-muted mt-4 grid grid-cols-3 gap-2 text-xs">
 			<div>
 				<div class="font-mono text-sm font-semibold">{fmt(result.concentrationMgPerMl)}</div>
 				<div>mg/mL</div>
@@ -156,8 +203,26 @@
 
 	<!-- Inputs -->
 	<div class="space-y-4">
-		<label class="border-outline dark:border-outline-dark block rounded-2xl border p-4">
+		<div class="border-outline dark:border-outline-dark rounded-2xl border p-4">
 			<div class="text-muted mb-1 text-xs font-medium uppercase tracking-wide">{s.calc_label_vial}</div>
+			{#if preset && preset.vialOptionsMg.length > 1}
+				<div class="mb-2 flex flex-wrap gap-1.5">
+					{#each preset.vialOptionsMg as opt (opt)}
+						<button
+							type="button"
+							class="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+							class:border-brand={vialSizeMg === opt}
+							class:bg-brand={vialSizeMg === opt}
+							class:text-white={vialSizeMg === opt}
+							class:border-outline={vialSizeMg !== opt}
+							class:text-muted={vialSizeMg !== opt}
+							onclick={() => (vialSizeMg = opt)}
+						>
+							{opt} mg
+						</button>
+					{/each}
+				</div>
+			{/if}
 			<div class="flex items-baseline gap-2">
 				<input
 					type="number"
@@ -169,7 +234,7 @@
 				/>
 				<span class="text-muted text-sm">mg</span>
 			</div>
-		</label>
+		</div>
 
 		<div class="border-outline dark:border-outline-dark rounded-2xl border p-4">
 			<div class="mb-1 flex items-center justify-between">
@@ -191,7 +256,7 @@
 			</div>
 		</div>
 
-		<label class="border-outline dark:border-outline-dark block rounded-2xl border p-4">
+		<div class="border-outline dark:border-outline-dark block rounded-2xl border p-4">
 			<div class="text-muted mb-1 text-xs font-medium uppercase tracking-wide">{s.calc_label_dose}</div>
 			<div class="flex items-baseline gap-3">
 				<input
@@ -202,9 +267,7 @@
 					class="w-full bg-transparent text-2xl font-semibold outline-none"
 					aria-label={s.calc_label_dose}
 				/>
-				<div
-					class="border-outline dark:border-outline-dark flex rounded-full border p-0.5 text-xs"
-				>
+				<div class="border-outline dark:border-outline-dark flex rounded-full border p-0.5 text-xs">
 					{#each ['mcg', 'mg'] as const as u}
 						<button
 							type="button"
@@ -219,26 +282,27 @@
 					{/each}
 				</div>
 			</div>
-		</label>
+			{#if rangeText}
+				<p class="text-muted mt-2 text-xs">{rangeText}</p>
+			{/if}
+		</div>
 
 		<div class="border-outline dark:border-outline-dark rounded-2xl border p-4">
 			<div class="text-muted mb-2 text-xs font-medium uppercase tracking-wide">{s.calc_label_syringe}</div>
-			<div
-				class="border-outline dark:border-outline-dark flex rounded-full border p-1 text-xs"
-				role="radiogroup"
-			>
-				{#each [30, 50, 100] as const as cap}
+			<div class="border-outline dark:border-outline-dark flex rounded-full border p-1 text-xs" role="radiogroup">
+				{#each SYRINGE_OPTIONS as opt (opt.capacity)}
 					<button
 						type="button"
 						role="radio"
-						aria-checked={syringeCapacity === cap}
-						class="flex-1 rounded-full py-1.5 font-medium transition-colors"
-						class:bg-brand={syringeCapacity === cap}
-						class:text-white={syringeCapacity === cap}
-						class:text-muted={syringeCapacity !== cap}
-						onclick={() => (syringeCapacity = cap)}
+						aria-checked={syringeCapacity === opt.capacity}
+						class="flex-1 rounded-full py-1.5 text-center font-medium transition-colors"
+						class:bg-brand={syringeCapacity === opt.capacity}
+						class:text-white={syringeCapacity === opt.capacity}
+						class:text-muted={syringeCapacity !== opt.capacity}
+						onclick={() => (syringeCapacity = opt.capacity)}
 					>
-						{cap} units
+						<span class="block text-sm leading-none">{opt.ml.toFixed(1)}</span>
+						<span class="block text-[10px] opacity-70">mL</span>
 					</button>
 				{/each}
 			</div>

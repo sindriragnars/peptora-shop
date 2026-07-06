@@ -67,6 +67,30 @@
 			? Math.min(100, Math.max(0, calcResult.unitsToDraw))
 			: 0
 	);
+
+	/* Per-vial dosing reference. For each vial size the peptide ships in,
+	   compute the units to draw for the low and high of its typical dose
+	   range at the recommended reconstitution volume. Turns the page into a
+	   quick reference chart without the user touching the calculator. */
+	const reconRows = $derived.by(() => {
+		const cp = peptide.calcPreset;
+		if (!cp) return null;
+		const drawUnits = (doseMg: number, vialMg: number) =>
+			(doseMg / (vialMg / cp.recommendedBacMl)) * 100;
+		return cp.vialOptionsMg.map((vial) => ({
+			vial,
+			water: cp.recommendedBacMl,
+			unitsLow: drawUnits(cp.doseLowMg, vial),
+			unitsHigh: drawUnits(cp.doseHighMg, vial)
+		}));
+	});
+
+	// Round units to the nearest half — the finest mark a syringe realistically
+	// resolves — and drop a trailing .0 so whole numbers read cleanly.
+	function fmtUnits(n: number): string {
+		const v = Math.round(n * 2) / 2;
+		return Number.isInteger(v) ? String(v) : v.toFixed(1);
+	}
 </script>
 
 <svelte:head>
@@ -180,7 +204,7 @@
 
 		<!-- Main dosage card -->
 		<div class="border-outline dark:border-outline-dark rounded-2xl border p-5">
-			<div class="text-brand text-5xl font-bold tracking-tight">{tierData.amount}</div>
+			<div class="text-brand font-mono text-5xl font-bold tracking-tight tabular-nums">{tierData.amount}</div>
 			<div class="text-muted mt-1 text-sm">{tierData.frequency}</div>
 
 			{#if calcResult && isFinite(calcResult.unitsToDraw)}
@@ -240,6 +264,36 @@
 			</p>
 			{#if peptide.reconstitution.note}
 				<p class="text-muted mt-2 text-xs">{peptide.reconstitution.note}</p>
+			{/if}
+
+			{#if reconRows}
+				<div class="border-outline dark:border-outline-dark mt-4 border-t pt-3">
+					<h3 class="text-brand mb-0.5 text-sm font-semibold">{s.peptide_recon_reference}</h3>
+					<p class="text-muted mb-2 text-xs">{s.peptide_recon_reference_note}</p>
+					<table class="w-full text-xs">
+						<thead>
+							<tr class="text-muted text-left">
+								<th class="pb-1 font-medium">{s.peptide_recon_th_vial}</th>
+								<th class="pb-1 font-medium">{s.peptide_recon_th_water}</th>
+								<th class="pb-1 text-right font-medium">{s.peptide_recon_th_draw}</th>
+							</tr>
+						</thead>
+						<tbody class="font-mono">
+							{#each reconRows as r (r.vial)}
+								<tr class="border-outline/40 dark:border-outline-dark/40 border-t">
+									<td class="py-1">{r.vial} mg</td>
+									<td class="py-1">{r.water} mL</td>
+									<td class="py-1 text-right">
+										{fmtUnits(r.unitsLow)}{r.unitsLow !== r.unitsHigh
+											? `–${fmtUnits(r.unitsHigh)}`
+											: ''}
+										<span class="text-muted">{s.peptide_recon_units_suffix}</span>
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
 			{/if}
 		</div>
 	</section>

@@ -7,14 +7,28 @@
  *
  * Modelling note: peptide-community syringes are uniformly U100
  * concentration — 100 units == 1 mL — even when the barrel is smaller.
- * What varies is the barrel CAPACITY (30 / 50 / 100 units, i.e.
- * 0.3 / 0.5 / 1.0 mL). Capacity doesn't change the units-to-draw math;
- * it just bounds the visual scale on the UI's syringe illustration.
+ * What varies is the barrel CAPACITY (0.3 / 0.5 / 1.0 / 2.0 / 3.0 mL,
+ * i.e. 30 / 50 / 100 / 200 / 300 units). Capacity doesn't change the
+ * units-to-draw math; it just bounds the visual scale on the UI's
+ * syringe illustration. The 2.0/3.0 mL sizes are ordinary (non-insulin)
+ * syringes marked in mL — we still report units for a consistent
+ * read-out and surface the mL figure alongside for those barrels.
  * (Older U50/U40 insulin concentrations exist but are rare in peptide
  * use; we deliberately don't model them.)
  */
 
-export type SyringeCapacity = 30 | 50 | 100;
+export type SyringeCapacity = 30 | 50 | 100 | 200 | 300;
+
+/** Syringe options offered in the picker, smallest barrel first. `ml` is
+ *  the physical barrel size; `capacity` is that at U100 (100 units = 1 mL).
+ *  Single source of truth so webapp + shop pickers stay identical. */
+export const SYRINGE_OPTIONS: { capacity: SyringeCapacity; ml: number }[] = [
+	{ capacity: 30, ml: 0.3 },
+	{ capacity: 50, ml: 0.5 },
+	{ capacity: 100, ml: 1.0 },
+	{ capacity: 200, ml: 2.0 },
+	{ capacity: 300, ml: 3.0 }
+];
 
 /** U100 concentration is the only assumption baked in — 100 units = 1 mL. */
 const UNITS_PER_ML = 100;
@@ -30,6 +44,24 @@ export interface CalcInputs {
 	 *  the math below is identical for every capacity since they're all
 	 *  U100. Included on the input so consumers carry it through. */
 	syringeCapacity: SyringeCapacity;
+}
+
+/**
+ * Per-peptide calculator preset. Optional block on a peptide's data that
+ * lets the calculator auto-fill sensible starting values when the user
+ * picks that peptide: the vial sizes it commonly ships in, a recommended
+ * reconstitution volume, and the typical dose range. All amounts in mg.
+ */
+export interface CalcPreset {
+	/** Common vial sizes the peptide ships in, mg. First is the default. */
+	vialOptionsMg: number[];
+	/** Recommended bacteriostatic water to add, mL. */
+	recommendedBacMl: number;
+	/** Typical dose range, mg. */
+	doseLowMg: number;
+	doseHighMg: number;
+	/** Preferred unit for showing the dose box (mcg for sub-mg peptides). */
+	doseUnit: 'mcg' | 'mg';
 }
 
 export interface CalcResult {

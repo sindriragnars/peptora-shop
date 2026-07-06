@@ -121,6 +121,12 @@ interface UIStrings {
 	peptide_section_stacks_well_with: string;
 	peptide_section_research: string;
 	peptide_section_reconstitution: string;
+	peptide_recon_reference: string;
+	peptide_recon_reference_note: string;
+	peptide_recon_th_vial: string;
+	peptide_recon_th_water: string;
+	peptide_recon_th_draw: string;
+	peptide_recon_units_suffix: string;
 	peptide_fda_badge: string;
 	peptide_dose_tab_beginner: string;
 	peptide_dose_tab_standard: string;
@@ -147,13 +153,15 @@ interface UIStrings {
 	calc_label_dose: string;
 	calc_label_syringe: string;
 	calc_units_label: string;
-	calc_units_suffix: (size: number) => string;
+	calc_units_suffix: (ml: number) => string;
 	calc_overdraw: string;
 	calc_concentration: string;
 	calc_doses_per_vial: string;
 	calc_days: string;
 	calc_disclaimer: string;
 	calc_pick_peptide: string;
+	calc_manual: string;
+	calc_dose_range: (low: string, high: string, unit: string) => string;
 
 	// Doses (Reminders + Tracking)
 	doses_title: string;
@@ -427,6 +435,12 @@ const en: UIStrings = {
 	peptide_section_stacks_well_with: 'Stacks well with',
 	peptide_section_research: 'Research',
 	peptide_section_reconstitution: 'Reconstitution',
+	peptide_recon_reference: 'Dosing reference',
+	peptide_recon_reference_note: 'Units to draw at the typical dose range, per vial size.',
+	peptide_recon_th_vial: 'Vial',
+	peptide_recon_th_water: 'Water',
+	peptide_recon_th_draw: 'Typical draw',
+	peptide_recon_units_suffix: 'units',
 	peptide_fda_badge: 'FDA approved',
 	peptide_dose_tab_beginner: 'Beginner',
 	peptide_dose_tab_standard: 'Standard',
@@ -453,7 +467,7 @@ const en: UIStrings = {
 	calc_label_dose: 'Desired dose (mg)',
 	calc_label_syringe: 'Syringe',
 	calc_units_label: 'Draw to',
-	calc_units_suffix: (size) => `on a ${size}-unit syringe`,
+	calc_units_suffix: (ml) => `on a ${ml} mL syringe`,
 	calc_overdraw: "Won't fit — pick a larger syringe.",
 	calc_concentration: 'Concentration',
 	calc_doses_per_vial: 'Uses per vial',
@@ -461,6 +475,8 @@ const en: UIStrings = {
 	calc_disclaimer:
 		'For reconstitution math only. Not medical advice — always consult a healthcare provider before dosing.',
 	calc_pick_peptide: 'Pick a peptide to autofill',
+	calc_manual: 'Manual entry',
+	calc_dose_range: (low, high, unit) => `Typical dose: ${low}–${high} ${unit}`,
 
 	doses_title: 'Doses',
 	doses_tab_reminders: 'Reminders',
@@ -743,6 +759,12 @@ const is: UIStrings = {
 	peptide_section_stacks_well_with: 'Virkar vel með',
 	peptide_section_research: 'Rannsóknir',
 	peptide_section_reconstitution: 'Blöndun',
+	peptide_recon_reference: 'Skammtatafla',
+	peptide_recon_reference_note: 'Einingar til að draga upp á dæmigerðu skammtabili, eftir glasastærð.',
+	peptide_recon_th_vial: 'Glas',
+	peptide_recon_th_water: 'Vatn',
+	peptide_recon_th_draw: 'Dæmigert',
+	peptide_recon_units_suffix: 'ein.',
 	peptide_fda_badge: 'FDA samþykkt',
 	peptide_dose_tab_beginner: 'Byrjandi',
 	peptide_dose_tab_standard: 'Staðall',
@@ -769,7 +791,7 @@ const is: UIStrings = {
 	calc_label_dose: 'Æskilegur skammtur (mg)',
 	calc_label_syringe: 'Sprauta',
 	calc_units_label: 'Draga upp að',
-	calc_units_suffix: (size) => `á ${size}-unit sprautu`,
+	calc_units_suffix: (ml) => `á ${ml} mL sprautu`,
 	calc_overdraw: 'Passar ekki — veldu stærri sprautu.',
 	calc_concentration: 'Þéttleiki',
 	calc_doses_per_vial: 'Notkanir í glasi',
@@ -777,6 +799,8 @@ const is: UIStrings = {
 	calc_disclaimer:
 		'Aðeins fyrir blöndun og umreikning. Ekki læknisráð — ráðfærðu þig alltaf við lækni áður en þú tekur skammt.',
 	calc_pick_peptide: 'Veldu peptíð til að fylla út',
+	calc_manual: 'Handvirk færsla',
+	calc_dose_range: (low, high, unit) => `Dæmigerður skammtur: ${low}–${high} ${unit}`,
 
 	doses_title: 'Skammtar',
 	doses_tab_reminders: 'Áminningar',

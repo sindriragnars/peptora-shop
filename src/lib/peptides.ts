@@ -10,6 +10,7 @@
  */
 import peptidesEn from './data/peptides_en.json';
 import peptidesIs from './data/peptides_is.json';
+import type { CalcPreset } from './calculator';
 
 export type Locale = 'en' | 'is';
 
@@ -44,6 +45,9 @@ export interface Peptide {
 		concentration: string;
 		note: string;
 	};
+	/** Optional calculator preset — present for injectable peptides we have
+	 *  reconstitution data for. Drives the calculator's auto-fill. */
+	calcPreset?: CalcPreset;
 	storage: string;
 	benefits: string[];
 	sideEffects: string[];

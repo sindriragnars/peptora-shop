@@ -152,7 +152,18 @@
         "ghk-cu",
         "ipamorelin"
       ],
-      "popularity": 95
+      "popularity": 95,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10,
+          20
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.25,
+        "doseHighMg": 0.75,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "tb-500",
@@ -239,7 +250,18 @@
         "ghk-cu",
         "ipamorelin"
       ],
-      "popularity": 85
+      "popularity": 85,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10,
+          20
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 2.5,
+        "doseHighMg": 5,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "ipamorelin",
@@ -330,7 +352,16 @@
         "bpc-157",
         "tesamorelin"
       ],
-      "popularity": 92
+      "popularity": 92,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.2,
+        "doseHighMg": 0.3,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "cjc-1295",
@@ -421,7 +452,17 @@
         "bpc-157",
         "tesamorelin"
       ],
-      "popularity": 90
+      "popularity": 90,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.2,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "semaglutide",
@@ -509,7 +550,20 @@
         "bpc-157",
         "ipamorelin"
       ],
-      "popularity": 98
+      "popularity": 98,
+      "calcPreset": {
+        "vialOptionsMg": [
+          2,
+          5,
+          10,
+          20,
+          50
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.25,
+        "doseHighMg": 2.5,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "tirzepatide",
@@ -598,7 +652,20 @@
         "bpc-157",
         "ipamorelin"
       ],
-      "popularity": 96
+      "popularity": 96,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10,
+          20,
+          30,
+          40,
+          60
+        ],
+        "recommendedBacMl": 3,
+        "doseLowMg": 2.5,
+        "doseHighMg": 15,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "tesamorelin",
@@ -687,7 +754,16 @@
         "ipamorelin",
         "bpc-157"
       ],
-      "popularity": 75
+      "popularity": 75,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 1,
+        "doseHighMg": 2,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "ghk-cu",
@@ -775,7 +851,18 @@
         "tb-500",
         "ipamorelin"
       ],
-      "popularity": 80
+      "popularity": 80,
+      "calcPreset": {
+        "vialOptionsMg": [
+          50,
+          75,
+          100
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 1,
+        "doseHighMg": 2,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "epitalon",
@@ -862,7 +949,17 @@
         "ipamorelin",
         "dsip"
       ],
-      "popularity": 70
+      "popularity": 70,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10,
+          50
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 5,
+        "doseHighMg": 10,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "pt-141",
@@ -947,7 +1044,17 @@
       "stacksWellWith": [
         "kisspeptin-10"
       ],
-      "popularity": 78
+      "popularity": 78,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.5,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "melanotan-2",
@@ -1034,7 +1141,16 @@
       "stacksWellWith": [
         "pt-141"
       ],
-      "popularity": 65
+      "popularity": 65,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.5,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "selank",
@@ -1120,7 +1236,17 @@
         "semax",
         "dsip"
       ],
-      "popularity": 72
+      "popularity": 72,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.25,
+        "doseHighMg": 0.5,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "semax",
@@ -1207,7 +1333,17 @@
         "dsip",
         "bpc-157"
       ],
-      "popularity": 75
+      "popularity": 75,
+      "calcPreset": {
+        "vialOptionsMg": [
+          20,
+          30
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.5,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "dsip",
@@ -1292,7 +1428,17 @@
         "ipamorelin",
         "selank"
       ],
-      "popularity": 70
+      "popularity": 70,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.5,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "mots-c",
@@ -1379,7 +1525,16 @@
         "ipamorelin",
         "tesamorelin"
       ],
-      "popularity": 78
+      "popularity": 78,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 5,
+        "doseHighMg": 10,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "retatrutide",
@@ -1465,7 +1620,18 @@
         "mots-c",
         "tesamorelin"
       ],
-      "popularity": 88
+      "popularity": 88,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10,
+          12,
+          24
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 2,
+        "doseHighMg": 12,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "thymosin-alpha-1",
@@ -1551,7 +1717,16 @@
         "tb-500",
         "ll-37"
       ],
-      "popularity": 82
+      "popularity": 82,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 3,
+        "doseHighMg": 8,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "sermorelin",
@@ -1639,7 +1814,17 @@
         "ipamorelin",
         "ghk-cu"
       ],
-      "popularity": 75
+      "popularity": 75,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.5,
+        "doseHighMg": 2,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "cagrisema",
@@ -1796,7 +1981,17 @@
         "mots-c",
         "epitalon"
       ],
-      "popularity": 70
+      "popularity": 70,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10,
+          15
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 5,
+        "doseHighMg": 5,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "cerebrolysin",
@@ -1959,7 +2154,17 @@
         "bpc-157",
         "tb-500"
       ],
-      "popularity": 65
+      "popularity": 65,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.2,
+        "doseHighMg": 0.5,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "kisspeptin-10",
@@ -2045,7 +2250,17 @@
       "stacksWellWith": [
         "pt-141"
       ],
-      "popularity": 68
+      "popularity": 68,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.1,
+        "doseHighMg": 0.2,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "mk-677",
@@ -2215,7 +2430,16 @@
         "cjc-1295",
         "ipamorelin"
       ],
-      "popularity": 72
+      "popularity": 72,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.1,
+        "doseHighMg": 0.1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "ll-37",
@@ -2301,7 +2525,17 @@
         "bpc-157",
         "thymosin-alpha-1"
       ],
-      "popularity": 60
+      "popularity": 60,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.25,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "ghrp-2",
@@ -2391,7 +2625,17 @@
         "ipamorelin",
         "bpc-157"
       ],
-      "popularity": 70
+      "popularity": 70,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.15,
+        "doseHighMg": 0.3,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "aod-9604",
@@ -2478,7 +2722,17 @@
         "tesamorelin",
         "bpc-157"
       ],
-      "popularity": 73
+      "popularity": 73,
+      "calcPreset": {
+        "vialOptionsMg": [
+          3,
+          6
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 0.5,
+        "doseHighMg": 1,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "humanin",
@@ -2742,7 +2996,17 @@
         "tesamorelin",
         "mots-c"
       ],
-      "popularity": 75
+      "popularity": 75,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.3,
+        "doseHighMg": 4.5,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "5-amino-1mq",
@@ -3343,7 +3607,17 @@
         "mots-c",
         "ss-31"
       ],
-      "popularity": 85
+      "popularity": 85,
+      "calcPreset": {
+        "vialOptionsMg": [
+          750,
+          1000
+        ],
+        "recommendedBacMl": 2,
+        "doseLowMg": 50,
+        "doseHighMg": 150,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "methylene-blue",
@@ -3541,7 +3815,16 @@
         "bpc-157",
         "mk-677"
       ],
-      "popularity": 80
+      "popularity": 80,
+      "calcPreset": {
+        "vialOptionsMg": [
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 2,
+        "doseHighMg": 4,
+        "doseUnit": "mg"
+      }
     },
     {
       "id": "igf-1-lr3",
@@ -3641,7 +3924,16 @@
         "bpc-157",
         "tb-500"
       ],
-      "popularity": 85
+      "popularity": 85,
+      "calcPreset": {
+        "vialOptionsMg": [
+          1
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.1,
+        "doseHighMg": 0.2,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "oxytocin",
@@ -3740,7 +4032,17 @@
         "selank",
         "semax"
       ],
-      "popularity": 65
+      "popularity": 65,
+      "calcPreset": {
+        "vialOptionsMg": [
+          5,
+          10
+        ],
+        "recommendedBacMl": 1,
+        "doseLowMg": 0.25,
+        "doseHighMg": 0.5,
+        "doseUnit": "mcg"
+      }
     },
     {
       "id": "pinealon",
