@@ -14,15 +14,45 @@
 	const s = $derived(strings[prefs.lang]);
 	const allPeptides = $derived(getAllPeptidesAlphabetical(prefs.lang));
 
-	// Selected peptide drives the auto-fill. Seed from ?peptide= (a deep link
-	// from a peptide page) once, then it's user-driven via the picker.
+	// Selected peptide drives the auto-fill. A fully-specified URL
+	// (peptide + vial + bac + dose + unit + syringe) makes any calculation a
+	// shareable link — the "just use this calculator" answer in a thread, and
+	// a crawlable scenario for AI answers. Seed once, then user-driven.
 	let selectedId = $state<string>('');
 	let urlSeeded = $state(false);
+	// One-time inputs parsed from the URL, applied on top of (and winning
+	// over) the peptide preset so a shared link lands exactly as sent.
+	type UrlOverrides = {
+		vial?: number;
+		bac?: number;
+		dose?: number;
+		unit?: 'mcg' | 'mg';
+		syringe?: SyringeCapacity;
+	};
+	let pendingOverrides: UrlOverrides | null = null;
 	$effect(() => {
-		if (!urlSeeded && browser) {
-			const q = page.url.searchParams.get('peptide');
-			if (q) selectedId = q;
-			urlSeeded = true;
+		if (urlSeeded || !browser) return;
+		urlSeeded = true;
+		const p = page.url.searchParams;
+		const o: UrlOverrides = {};
+		const vial = posNum(p.get('vial'));
+		if (vial) o.vial = vial;
+		const bac = posNum(p.get('bac'));
+		if (bac) o.bac = bac;
+		const dose = posNum(p.get('dose'));
+		if (dose) o.dose = dose;
+		const unit = p.get('unit');
+		if (unit === 'mcg' || unit === 'mg') o.unit = unit;
+		const syr = posNum(p.get('syringe'));
+		if (syr && SYRINGE_OPTIONS.some((x) => x.capacity === syr)) o.syringe = syr as SyringeCapacity;
+		pendingOverrides = Object.keys(o).length ? o : null;
+
+		const pid = p.get('peptide');
+		if (pid) {
+			selectedId = pid; // preset effect applies the preset, then the overrides
+		} else if (pendingOverrides) {
+			applyOverrides(); // manual scenario shared with no peptide selected
+			pendingOverrides = null;
 		}
 	});
 	const peptide = $derived(selectedId ? getPeptide(selectedId, prefs.lang) : undefined);
@@ -65,8 +95,53 @@
 				}
 			}
 		}
+		// A shared link's explicit params win over the preset defaults.
+		if (pendingOverrides) {
+			applyOverrides();
+			pendingOverrides = null;
+		}
 		appliedId = peptide.id;
 	});
+
+	// Parse a positive number from a URL param, else null.
+	function posNum(v: string | null): number | null {
+		if (v == null) return null;
+		const n = parseFloat(v);
+		return isFinite(n) && n > 0 ? n : null;
+	}
+
+	// Push the pending URL inputs into live state (overrides win over preset).
+	function applyOverrides() {
+		const o = pendingOverrides;
+		if (!o) return;
+		if (o.vial) vialSizeMg = o.vial;
+		if (o.bac) bacWaterMl = o.bac;
+		if (o.unit) doseUnit = o.unit;
+		if (o.dose) doseValue = o.dose;
+		if (o.syringe) syringeCapacity = o.syringe;
+	}
+
+	// A shareable URL that reproduces the current calculation exactly.
+	let copied = $state(false);
+	function shareLink(): string {
+		const p = new URLSearchParams();
+		if (selectedId) p.set('peptide', selectedId);
+		p.set('vial', String(vialSizeMg));
+		p.set('bac', String(bacWaterMl));
+		p.set('dose', String(doseValue));
+		p.set('unit', doseUnit);
+		p.set('syringe', String(syringeCapacity));
+		return `${location.origin}/calculator?${p.toString()}`;
+	}
+	async function copyLink() {
+		try {
+			await navigator.clipboard.writeText(shareLink());
+			copied = true;
+			setTimeout(() => (copied = false), 2000);
+		} catch {
+			/* clipboard unavailable — leave state unchanged */
+		}
+	}
 
 	const desiredDoseMg = $derived(doseUnit === 'mg' ? doseValue : doseValue / 1000);
 	const result = $derived(calculate({ vialSizeMg, bacWaterMl, desiredDoseMg, syringeCapacity }));
@@ -200,6 +275,31 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Share: copies a URL that pre-fills this exact calculation. -->
+	<button
+		type="button"
+		onclick={copyLink}
+		class="border-outline dark:border-outline-dark hover:border-brand mb-6 flex w-full items-center justify-center gap-2 rounded-full border py-2.5 text-sm font-medium transition-colors"
+		class:bg-brand={copied}
+		class:text-white={copied}
+	>
+		<svg
+			width="15"
+			height="15"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+			<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+		</svg>
+		{copied ? s.calc_copied : s.calc_copy_link}
+	</button>
 
 	<!-- Inputs -->
 	<div class="space-y-4">

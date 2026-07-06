@@ -162,6 +162,8 @@ interface UIStrings {
 	calc_pick_peptide: string;
 	calc_manual: string;
 	calc_dose_range: (low: string, high: string, unit: string) => string;
+	calc_copy_link: string;
+	calc_copied: string;
 
 	// Doses (Reminders + Tracking)
 	doses_title: string;
@@ -477,6 +479,8 @@ const en: UIStrings = {
 	calc_pick_peptide: 'Pick a peptide to autofill',
 	calc_manual: 'Manual entry',
 	calc_dose_range: (low, high, unit) => `Typical dose: ${low}–${high} ${unit}`,
+	calc_copy_link: 'Copy shareable link',
+	calc_copied: 'Link copied',
 
 	doses_title: 'Doses',
 	doses_tab_reminders: 'Reminders',
@@ -801,6 +805,8 @@ const is: UIStrings = {
 	calc_pick_peptide: 'Veldu peptíð til að fylla út',
 	calc_manual: 'Handvirk færsla',
 	calc_dose_range: (low, high, unit) => `Dæmigerður skammtur: ${low}–${high} ${unit}`,
+	calc_copy_link: 'Afrita deilanlegan hlekk',
+	calc_copied: 'Hlekkur afritaður',
 
 	doses_title: 'Skammtar',
 	doses_tab_reminders: 'Áminningar',
