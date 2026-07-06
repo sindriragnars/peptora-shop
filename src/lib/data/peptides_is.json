@@ -203,8 +203,8 @@
       "cycleInfo": "4-8 vikur on, 2-4 vikur off",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Lágt mg, þannig að 2.5 mL gefur þægilega skammta."
       },
       "storage": "Þurrt: frystir eða kælir. Blandað: 2-8°C, 4 vikur.",
@@ -301,9 +301,9 @@
       "timing": "Á fastandi maga, 30-60 mín fyrir mat eða svefn. Mikilvægt: enginn matur í 30-60 mín á eftir.",
       "cycleInfo": "12-16 vikur on, 4 vikur off til að forðast viðtaka-desensitization",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "10 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "5000 mcg/mL",
         "note": "Algengt að blanda saman við CJC-1295 í sömu sprautu."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 28 daga.",
@@ -500,9 +500,9 @@
       "timing": "Sami dagur vikulega. Skiptir litlu hvort fyrir eða eftir mat.",
       "cycleInfo": "Ekki cyclað - langtímanotkun. Smátt og smátt taper niður ef hætt.",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "vialSize": "2 mg",
+        "bacWater": "1 mL",
+        "concentration": "2 mg/mL",
         "note": "Geymist í kæli eftir blöndun, 30 daga."
       },
       "storage": "Lyfseðilsskylt: kæli. Sérsett: 2-8°C, 30-56 daga eftir blöndun.",
@@ -602,8 +602,8 @@
       "cycleInfo": "Ekki cyclað. Langtímanotkun með taper ef hætt.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
         "note": "Sérsett útgáfa. Pen version (lyfseðill) er forfylltur."
       },
       "storage": "Kæli 2-8°C. Sérsett: 30-56 daga eftir blöndun.",
@@ -704,9 +704,9 @@
       "timing": "Á fastandi maga fyrir svefn (30-60 mín fyrir).",
       "cycleInfo": "16-26 vikur on, 4-8 vikur off",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Viðkvæmt - geyma alltaf í kæli eftir blöndun."
       },
       "storage": "Þurrt: kæli. Blandað: 2-8°C, 7 daga.",
@@ -803,8 +803,8 @@
       "cycleInfo": "8-12 vikur on, 4 vikur off",
       "reconstitution": {
         "vialSize": "50 mg",
-        "bacWater": "5 mL",
-        "concentration": "10 mg/mL",
+        "bacWater": "2 mL",
+        "concentration": "25 mg/mL",
         "note": "Lausn er blá á litinn vegna kopars - eðlilegt."
       },
       "storage": "Þurrt: dimmt og kalt. Blandað: 2-8°C, 4 vikur.",
@@ -903,8 +903,8 @@
       "cycleInfo": "20 daga lotur, 2-3 sinnum á ári. Ekki daglegt allt árið.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Notkun innan 30 daga eftir blöndun."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 30 daga.",
@@ -997,9 +997,9 @@
       "timing": "45 mín - 4 klst fyrir kynlíf. Ekki á fastandi maga (versta ógleðin).",
       "cycleInfo": "On-demand. Ekki daglegt.",
       "reconstitution": {
-        "vialSize": "10 mg",
-        "bacWater": "3 mL",
-        "concentration": "3.33 mg/mL",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Geyma kalt eftir blöndun."
       },
       "storage": "Þurrt: kalt. Blandað: 2-8°C, 4 vikur.",
@@ -1093,8 +1093,8 @@
       "cycleInfo": "Loading 4-8 vikur, svo lágskammta viðhald.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "3 mL",
-        "concentration": "3.33 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10000 mcg/mL",
         "note": "10 units á insulin sprautu = 333 mcg."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 4-6 vikur.",
@@ -1189,8 +1189,8 @@
       "cycleInfo": "4-6 vikur on, 1-2 vikur off.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL (fyrir nef-úða)",
-        "concentration": "2500 mcg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Notað oftast sem nef-úða. Hver puff = 250-500 mcg."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 14-21 daga.",
@@ -1284,9 +1284,9 @@
       "timing": "Morgun + síðdegis. Ekki seint - getur valdið svefnvanda.",
       "cycleInfo": "4-8 vikur on, 2 vikur off.",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "20 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "10000 mcg/mL",
         "note": "Notað oftast sem nef-úða."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 14 daga.",
@@ -1382,8 +1382,8 @@
       "cycleInfo": "Hægt að nota daglega lengur en líka cyclað 4-6 vikur on, 1-2 vikur off.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Lágur skammtur, þannig að 2.5 mL er þægilegt."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 30 daga.",
@@ -1479,8 +1479,8 @@
       "cycleInfo": "6-12 vikur on, 4 vikur off.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Tiltölulega dýrt - nota nákvæmlega."
       },
       "storage": "Þurrt: frystir. Blandað: 2-8°C, 14 daga.",
@@ -1572,9 +1572,9 @@
       "timing": "Sami vikudagur, óháð máltíðum. Best á morgnana eða kvöldi.",
       "cycleInfo": "Engin skipulögð pása — long-term viðhald svipað og semaglutide.",
       "reconstitution": {
-        "vialSize": "8 mg",
-        "bacWater": "2 mL",
-        "concentration": "4 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Hægt að geyma í kæli eftir blöndun í allt að 4 vikur."
       },
       "storage": "Þurrt: kælir 2-8°C. Eftir blöndun: 2-8°C, 28 daga.",
@@ -1669,9 +1669,9 @@
       "timing": "Skiptir litlu — má taka morgun eða kvöld.",
       "cycleInfo": "Standard meðferð er 4-12 vikna lota, með pásu á milli ef notkun heldur áfram.",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Mjög stable peptíð. Þolir frystingu eftir blöndun (ólíkt mörgum öðrum)."
       },
       "storage": "Þurrt: kælir, 24+ mánuðir. Eftir blöndun: 2-8°C, 30 daga eða -20°C í 6 mánuði.",
@@ -1765,9 +1765,9 @@
       "timing": "Best fyrir svefn (a.m.k. 2 klst eftir mat) — náttúruleg GH pulse er sterkust þá.",
       "cycleInfo": "3-6 mánaða lotur með 4-8 vikna pásu á milli.",
       "reconstitution": {
-        "vialSize": "3 mg",
-        "bacWater": "1.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Mjög viðkvæmt — meðhöndla varlega, geyma í kæli strax eftir blöndun."
       },
       "storage": "Þurrt: kælir, 24+ mánuðir. Eftir blöndun: 2-8°C, 14 daga (styttri en CJC-1295).",
@@ -1942,9 +1942,9 @@
       "timing": "Best á morgni — orku-relateruð áhrif.",
       "cycleInfo": "8-16 vikna lotur, með 4 vikna pásu.",
       "reconstitution": {
-        "vialSize": "100 mg",
-        "bacWater": "2 mL",
-        "concentration": "50 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Stærri vials þurfa stærri bac volume vegna mg-magns."
       },
       "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 30 daga.",
@@ -2116,8 +2116,8 @@
       "cycleInfo": "4-12 vikna lotur með 2-4 vikna pásu.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Stable peptíð. Hægt að taka oral með minni absorption."
       },
       "storage": "Þurrt: kælir, mánuðir. Eftir blöndun: 2-8°C, 28 daga.",
@@ -2203,8 +2203,8 @@
       "cycleInfo": "4-12 vikna lotur, með a.m.k. 4 vikna pásu (forða desensitization).",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "5 mL",
-        "concentration": "1 mg/mL",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
         "note": "Stór bac volume gefur þægilega litla skammta. Mjög viðkvæmt — peptíð brotnar fljótt niður."
       },
       "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 7-14 daga (styttri en flest).",
@@ -2382,7 +2382,7 @@
       "reconstitution": {
         "vialSize": "5 mg",
         "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "concentration": "2500 mcg/mL",
         "note": "Sami protocol og aðrir GHRPs. Geyma kalt strax eftir blöndun."
       },
       "storage": "Þurrt: kælir. Eftir blöndun: 2-8°C, 28 daga.",
@@ -2479,7 +2479,7 @@
       "reconstitution": {
         "vialSize": "5 mg",
         "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "concentration": "2500 mcg/mL",
         "note": "Pínu viðkvæmt — geyma kalt strax eftir blöndun."
       },
       "storage": "Þurrt: frystir eða kælir. Eftir blöndun: 2-8°C, 14 daga.",
@@ -2673,9 +2673,9 @@
       "timing": "Best á fastandi maga á morgnana. Forðast mat í 90 mín á eftir til að hámarka lipolysis.",
       "cycleInfo": "Langar lotur þolaðar — 12-16 vikur on, 4 vikur off. Viðtaka-desensitization er lítil.",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "3 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "1500 mcg/mL",
         "note": "Hefðbundin endurblöndun. Oft blandað við GH-örva fyrir samverkandi fitubrennslu."
       },
       "storage": "Þurrt: frystir. Eftir blöndun: 2-8°C, 28 dagar.",
@@ -2947,8 +2947,8 @@
       "cycleInfo": "Langtíma viðhald eins og GLP-1 lyf. Trappa niður ef hætt til að forðast endurkomu matarlystar.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Sérsett útgáfa. Klínísk vara er forfylltur penni."
       },
       "storage": "Þurrt: kælir 2-8°C. Eftir blöndun: 2-8°C, 28 dagar.",
@@ -3547,9 +3547,9 @@
       "timing": "Að morgni eða snemma síðdegis — virkjun orkuleiða getur truflað svefn ef tekið seint. Sprauta hægt til að lágmarka sviða á stungustað. IV verður að vera hægt dreypi; hröð innrennsli kallar fram bringuþrengsli og roða.",
       "cycleInfo": "Hefðbundnar SubQ lotur eru 4-8 vikur. Algeng samsetning: 8-12 vikur SubQ fylgt eftir með 4 vikum af munnlegu NMN eða NR fyrir lagskiptan stuðning. IV-prótókólar hefjast oft með vikulegum lotum í mánuð, svo viðhald á 4-8 vikna fresti.",
       "reconstitution": {
-        "vialSize": "750 mg lyophilized",
-        "bacWater": "7.5 mL",
-        "concentration": "100 mg/mL",
+        "vialSize": "750 mg",
+        "bacWater": "2 mL",
+        "concentration": "375 mg/mL",
         "note": "Sum sérsett apótek senda sem tilbúna lausn — engin blöndun þarf þá. Sprauta vatninu á glasvegginn, þeyta varlega. Henda ef gult eða skýjað."
       },
       "storage": "Þurrt: stofuhiti skammtíma, kæli langtíma. Blandað eða tilbúin lausn: 2-8°C kælir, notast innan 14-30 daga. Vernda gegn ljósi.",
@@ -3753,9 +3753,9 @@
       "timing": "Sami vikudagur, að kvöldi æskilegt til að samhæfa hækkað vaxtarhormón við náttúrulega nóttar-seyti. Jafnvægisstaða þróast yfir 3-4 vikur. Skipta um stungustað (kviður, læri, axlir) til að draga úr staðbundnum viðbrögðum.",
       "cycleInfo": "Hefðbundið: 8-12 vikur on, 4-6 vikur off. Lengra: 12-16 vikur on, 6-8 vikur off. Aukaverkanir geta varað í daga frekar en mínútur vegna langs helmingunartíma — ekki er hægt að snúa við viðbrögðum með því að hætta. Oft samansett með GHRP/ghrelin-hermandi efni (ipamorelin) fyrir samverkandi GH-púlsa.",
       "reconstitution": {
-        "vialSize": "10 mg lyophilized",
-        "bacWater": "3.0 mL",
-        "concentration": "~3.333 mcg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "1 mg skammtur = 30 einingar á U-100 insúlínsprautu. Sprauta vatninu hægt á glasvegginn, þeyta varlega — ekki hrista. Minni 2 mg eða 5 mg glös eru einnig algeng; reiknaðu styrkleika í samræmi."
       },
       "storage": "Þurrt: kælir 2-8°C; frystir -20°C langtíma. Blandað: kælir 2-8°C og notist innan 4-6 vikna miðað við vikulega skömmtun. Vernda gegn ljósi.",
@@ -3863,8 +3863,8 @@
       "cycleInfo": "3-6 vikur on, lágmark jafn langur tími off (4-6 vikur). Samfelld notkun er ekki ráðlögð vegna hættu á insúlínviðnámi og viðtaka-ofnæmi.",
       "reconstitution": {
         "vialSize": "1 mg",
-        "bacWater": "2 mL",
-        "concentration": "500 mcg/mL",
+        "bacWater": "1 mL",
+        "concentration": "1000 mcg/mL",
         "note": "50 mcg skammtur = 10 einingar á U-100 insúlínsprautu."
       },
       "storage": "Þurrt: frystir -20°C í allt að 12 mánuði. Blandað: 2-8°C, notist innan ~28 daga. Ekki frjósa blandaða lausn.",
@@ -3972,9 +3972,9 @@
       "timing": "Skammtur 30-60 mínútum fyrir tilætlað félagslegt samhengi. Áhrif á atferlisendapunkta venjulega mæld 30-90 mínútum eftir gjöf.",
       "cycleInfo": "Hefðbundin lota er 4-6 vikur on og 1-2 vikur off. Þol og viðtaka-niðurfærsla eru fræðilegar áhyggjur við daglega langtímanotkun.",
       "reconstitution": {
-        "vialSize": "2 mg (~1.000 IU)",
-        "bacWater": "2 mL",
-        "concentration": "~500 IU/mL (1 IU ≈ 2 mcg)",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Fyrir nef-notkun, færa blandaða lausn í mældan nefúða; 10 einingar á U-100 sprautu ≈ 50 IU."
       },
       "storage": "Þurrt: -20°C langtíma. Blandað: 2-8°C, notist innan 2-4 vikna. Henda ef skýjað. Ekki frjósa blandað.",

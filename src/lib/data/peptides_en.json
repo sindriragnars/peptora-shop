@@ -203,8 +203,8 @@
       "cycleInfo": "4-8 weeks on, 2-4 weeks off",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Low mg per dose, so 2.5 mL yields convenient unit measurements."
       },
       "storage": "Lyophilized: freezer or fridge. Reconstituted: 2-8°C, 4 weeks.",
@@ -301,9 +301,9 @@
       "timing": "On an empty stomach, 30-60 min before food or sleep. Important: no food for 30-60 min after.",
       "cycleInfo": "12-16 weeks on, 4 weeks off to avoid receptor desensitization",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "10 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "5000 mcg/mL",
         "note": "Often blended with CJC-1295 in the same syringe."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
@@ -500,9 +500,9 @@
       "timing": "Same day each week. Timing relative to meals matters little.",
       "cycleInfo": "Not cycled — long-term use. Taper gradually if discontinuing.",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "vialSize": "2 mg",
+        "bacWater": "1 mL",
+        "concentration": "2 mg/mL",
         "note": "Store refrigerated after reconstitution, 30 days."
       },
       "storage": "Prescription product: refrigerated. Compounded: 2-8°C, 30-56 days after reconstitution.",
@@ -602,8 +602,8 @@
       "cycleInfo": "Not cycled. Long-term use with taper if discontinuing.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "3 mL",
+        "concentration": "3.33 mg/mL",
         "note": "Compounded version. Prescription pen is pre-filled."
       },
       "storage": "Refrigerated 2-8°C. Compounded: 30-56 days after reconstitution.",
@@ -704,9 +704,9 @@
       "timing": "On an empty stomach before sleep (30-60 min prior).",
       "cycleInfo": "16-26 weeks on, 4-8 weeks off",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Fragile — always store refrigerated after reconstitution."
       },
       "storage": "Lyophilized: refrigerated. Reconstituted: 2-8°C, 7 days.",
@@ -803,8 +803,8 @@
       "cycleInfo": "8-12 weeks on, 4 weeks off",
       "reconstitution": {
         "vialSize": "50 mg",
-        "bacWater": "5 mL",
-        "concentration": "10 mg/mL",
+        "bacWater": "2 mL",
+        "concentration": "25 mg/mL",
         "note": "The solution is blue due to the copper — this is normal."
       },
       "storage": "Lyophilized: dark and cool. Reconstituted: 2-8°C, 4 weeks.",
@@ -903,8 +903,8 @@
       "cycleInfo": "20 day cycles, 2-3 times a year. Not daily year-round.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Use within 30 days after reconstitution."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 30 days.",
@@ -997,9 +997,9 @@
       "timing": "45 min - 4 hours before sex. Not on an empty stomach (worst nausea).",
       "cycleInfo": "On-demand. Not daily.",
       "reconstitution": {
-        "vialSize": "10 mg",
-        "bacWater": "3 mL",
-        "concentration": "3.33 mg/mL",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Store refrigerated after reconstitution."
       },
       "storage": "Lyophilized: cool. Reconstituted: 2-8°C, 4 weeks.",
@@ -1093,8 +1093,8 @@
       "cycleInfo": "Loading 4-8 weeks, then low-dose maintenance.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "3 mL",
-        "concentration": "3.33 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10000 mcg/mL",
         "note": "10 units on an insulin syringe = 333 mcg."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 4-6 weeks.",
@@ -1189,8 +1189,8 @@
       "cycleInfo": "4-6 weeks on, 1-2 weeks off.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL (for nasal)",
-        "concentration": "2500 mcg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Most often used as a nasal spray. Each puff = 250-500 mcg."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14-21 days.",
@@ -1284,9 +1284,9 @@
       "timing": "Morning and afternoon. Not too late — can cause sleep problems.",
       "cycleInfo": "4-8 weeks on, 2 weeks off.",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "20 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "10000 mcg/mL",
         "note": "Most often used as a nasal spray."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14 days.",
@@ -1382,8 +1382,8 @@
       "cycleInfo": "Can be used daily long-term but also cycled 4-6 weeks on, 1-2 weeks off.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Low dose, so 2.5 mL is convenient."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 30 days.",
@@ -1479,8 +1479,8 @@
       "cycleInfo": "6-12 weeks on, 4 weeks off.",
       "reconstitution": {
         "vialSize": "10 mg",
-        "bacWater": "2 mL",
-        "concentration": "5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Relatively expensive — measure precisely."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 14 days.",
@@ -1572,9 +1572,9 @@
       "timing": "Same weekday each week, independent of meals. Best in the morning or evening.",
       "cycleInfo": "No structured break — long-term maintenance like semaglutide.",
       "reconstitution": {
-        "vialSize": "8 mg",
-        "bacWater": "2 mL",
-        "concentration": "4 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Can be stored refrigerated after reconstitution for up to 4 weeks."
       },
       "storage": "Lyophilized: refrigerated 2-8°C. After reconstitution: 2-8°C, 28 days.",
@@ -1669,9 +1669,9 @@
       "timing": "Timing matters little — morning or evening is fine.",
       "cycleInfo": "Standard course is 4-12 weeks with a break before any repeat course.",
       "reconstitution": {
-        "vialSize": "5 mg",
-        "bacWater": "2.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Very stable peptide. Tolerates freezing after reconstitution (unlike many others)."
       },
       "storage": "Lyophilized: refrigerated, 24+ months. After reconstitution: 2-8°C for 30 days or -20°C for 6 months.",
@@ -1765,9 +1765,9 @@
       "timing": "Best before sleep (at least 2 hours after food) — the natural GH pulse is strongest then.",
       "cycleInfo": "3-6 month cycles with 4-8 week breaks in between.",
       "reconstitution": {
-        "vialSize": "3 mg",
-        "bacWater": "1.5 mL",
-        "concentration": "2 mg/mL",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Very fragile — handle gently, refrigerate immediately after reconstitution."
       },
       "storage": "Lyophilized: refrigerated, 24+ months. Reconstituted: 2-8°C, 14 days (shorter than CJC-1295).",
@@ -1942,9 +1942,9 @@
       "timing": "Best in the morning — energy-related effects.",
       "cycleInfo": "8-16 week cycles, with a 4-week break.",
       "reconstitution": {
-        "vialSize": "100 mg",
-        "bacWater": "2 mL",
-        "concentration": "50 mg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "Larger vials require larger bac volumes due to mg quantity."
       },
       "storage": "Lyophilized: refrigerated. Reconstituted: 2-8°C, 30 days.",
@@ -2116,8 +2116,8 @@
       "cycleInfo": "4-12 week cycles with 2-4 week breaks.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "Stable peptide. Can be taken orally with reduced absorption."
       },
       "storage": "Lyophilized: refrigerated, months. After reconstitution: 2-8°C, 28 days.",
@@ -2203,8 +2203,8 @@
       "cycleInfo": "4-12 week cycles, with at least a 4-week break (to avoid desensitization).",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "5 mL",
-        "concentration": "1 mg/mL",
+        "bacWater": "2 mL",
+        "concentration": "2500 mcg/mL",
         "note": "A large bac volume yields convenient small doses. Very fragile — the peptide degrades quickly."
       },
       "storage": "Lyophilized: refrigerated. After reconstitution: 2-8°C, 7-14 days (shorter than most).",
@@ -2382,7 +2382,7 @@
       "reconstitution": {
         "vialSize": "5 mg",
         "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "concentration": "2500 mcg/mL",
         "note": "Same protocol as other GHRPs. Refrigerate immediately after reconstitution."
       },
       "storage": "Lyophilized: refrigerated. After reconstitution: 2-8°C, 28 days.",
@@ -2479,7 +2479,7 @@
       "reconstitution": {
         "vialSize": "5 mg",
         "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "concentration": "2500 mcg/mL",
         "note": "Slightly fragile — refrigerate immediately after reconstitution."
       },
       "storage": "Lyophilized: freezer or refrigerator. After reconstitution: 2-8°C, 14 days.",
@@ -2673,9 +2673,9 @@
       "timing": "Best on an empty stomach in the morning. Avoid food for 90 min after to maximize lipolysis.",
       "cycleInfo": "Long cycles tolerated — 12-16 weeks on, 4 weeks off. Receptor desensitization is minimal.",
       "reconstitution": {
-        "vialSize": "5 mg",
+        "vialSize": "3 mg",
         "bacWater": "2 mL",
-        "concentration": "2500 mcg/mL",
+        "concentration": "1500 mcg/mL",
         "note": "Standard reconstitution. Often stacked with GH secretagogues for synergistic fat loss."
       },
       "storage": "Lyophilized: freezer. Reconstituted: 2-8°C, 28 days.",
@@ -2947,8 +2947,8 @@
       "cycleInfo": "Long-term maintenance like GLP-1 drugs. Taper down if discontinuing to avoid rebound appetite.",
       "reconstitution": {
         "vialSize": "5 mg",
-        "bacWater": "2 mL",
-        "concentration": "2.5 mg/mL",
+        "bacWater": "1 mL",
+        "concentration": "5 mg/mL",
         "note": "Compounded version. Clinical product is pre-filled pen."
       },
       "storage": "Lyophilized: refrigerated 2-8°C. After reconstitution: 2-8°C, 28 days.",
@@ -3547,9 +3547,9 @@
       "timing": "Morning or early afternoon — energy-pathway activation can disrupt sleep if dosed late. Inject slowly to minimize site stinging. IV must be slow-drip; rapid infusion triggers chest tightness and flushing.",
       "cycleInfo": "Standard SubQ cycles run 4-8 weeks. Common stack: 8-12 weeks SubQ followed by 4 weeks oral NMN or NR for layered support. IV protocols often front-load with weekly sessions for a month, then maintenance every 4-8 weeks.",
       "reconstitution": {
-        "vialSize": "750 mg lyophilized",
-        "bacWater": "7.5 mL bacteriostatic water",
-        "concentration": "100 mg/mL",
+        "vialSize": "750 mg",
+        "bacWater": "2 mL",
+        "concentration": "375 mg/mL",
         "note": "Some compounding pharmacies ship as pre-mixed solution — no reconstitution needed in that case. Inject water down vial wall, swirl gently. Discard if yellow or cloudy."
       },
       "storage": "Lyophilized: room temperature short-term, refrigerated long-term. Reconstituted or pre-mixed solution: 2-8°C refrigerated, use within 14-30 days. Protect from light.",
@@ -3753,9 +3753,9 @@
       "timing": "Same day each week, evening preferred to align elevated GH with natural sleep-phase secretion. Steady state develops over 3-4 weeks. Site rotation (abdomen, thigh, deltoid) reduces local reactions.",
       "cycleInfo": "Standard: 8-12 weeks on, 4-6 weeks off. Extended: 12-16 weeks on, 6-8 weeks off. Side effects can persist for days rather than minutes due to extended half-life — adverse reactions cannot be quickly reversed by stopping. Often stacked with a GHRP/ghrelin mimetic (ipamorelin) for synergistic GH pulses.",
       "reconstitution": {
-        "vialSize": "10 mg lyophilized",
-        "bacWater": "3.0 mL bacteriostatic water",
-        "concentration": "~3,333 mcg/mL",
+        "vialSize": "10 mg",
+        "bacWater": "1 mL",
+        "concentration": "10 mg/mL",
         "note": "A 1 mg dose = 30 units on a U-100 insulin syringe. Inject water slowly down vial wall, swirl gently — do not shake. Smaller 2 mg or 5 mg vials are also common; recalculate concentration accordingly."
       },
       "storage": "Lyophilized: refrigerate 2-8°C; freezer -20°C for long-term. Reconstituted: refrigerate 2-8°C and use within 4-6 weeks given weekly dosing. Protect from light.",
@@ -3863,8 +3863,8 @@
       "cycleInfo": "3-6 weeks on, minimum equal time off (4-6 weeks). Continuous use is discouraged due to insulin resistance and receptor desensitization risk.",
       "reconstitution": {
         "vialSize": "1 mg",
-        "bacWater": "2 mL",
-        "concentration": "500 mcg/mL",
+        "bacWater": "1 mL",
+        "concentration": "1000 mcg/mL",
         "note": "50 mcg dose = 10 units on a U-100 insulin syringe."
       },
       "storage": "Lyophilized: -20°C freezer up to 12 months. Reconstituted: 2-8°C, use within ~28 days. Do not freeze reconstituted solution.",
@@ -3972,9 +3972,9 @@
       "timing": "Dose 30-60 minutes before the targeted social context. Effects on behavioral endpoints typically measured 30-90 minutes post-administration.",
       "cycleInfo": "Standard cycle is 4-6 weeks on followed by 1-2 weeks off. Tolerance and receptor downregulation are theoretical concerns with daily long-term use.",
       "reconstitution": {
-        "vialSize": "2 mg (~1,000 IU)",
-        "bacWater": "2 mL",
-        "concentration": "~500 IU/mL (1 IU ≈ 2 mcg)",
+        "vialSize": "5 mg",
+        "bacWater": "1 mL",
+        "concentration": "5000 mcg/mL",
         "note": "For intranasal use, transfer reconstituted solution to a metered nasal spray bottle; 10 units on a U-100 syringe ≈ 50 IU."
       },
       "storage": "Lyophilized: -20°C long-term. Reconstituted: 2-8°C, use within 2-4 weeks. Discard if cloudy. Do not freeze reconstituted.",

@@ -31,4 +31,15 @@
 	body {
 		min-height: 100vh;
 	}
+	/* Native <select> option lists render on a light surface in some
+	   browsers even under a dark page, leaving light option text
+	   unreadable. Pin option contrast explicitly for both themes. */
+	option {
+		background-color: var(--color-cream);
+		color: var(--color-ink);
+	}
+	html.dark option {
+		background-color: var(--color-ink-soft);
+		color: var(--color-cream);
+	}
 }
