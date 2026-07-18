@@ -197,6 +197,7 @@ interface UIStrings {
 	bac_left: (left: string, total: string) => string;
 	vials_remaining: (left: string, total: string) => string;
 	vials_use_by: (date: string, days: string) => string;
+	vials_delete_stack: (n: string) => string;
 	doses_created_toast: (n: number) => string;
 	doses_dismiss: string;
 	doses_picker_choose_different: string;
@@ -541,6 +542,7 @@ const en: UIStrings = {
 	bac_left: (left, total) => `${left} mL left of ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg left of ${total} mg`,
 	vials_use_by: (date, days) => `Use by ${date} · ${days} days left`,
+	vials_delete_stack: (n) => `Delete all ${n} vials in this stack?`,
 	doses_created_toast: (n) => `${n} ${n === 1 ? 'reminder' : 'reminders'} created from your stack.`,
 	doses_dismiss: 'Dismiss',
 	doses_picker_choose_different: '← Choose a different peptide',
@@ -895,6 +897,7 @@ const is: UIStrings = {
 	bac_left: (left, total) => `${left} mL eftir af ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg eftir af ${total} mg`,
 	vials_use_by: (date, days) => `Nota fyrir ${date} · ${days} dagar eftir`,
+	vials_delete_stack: (n) => `Eyða öllum ${n} glösunum í þessari stæðu?`,
 	doses_created_toast: (n) =>
 		`${n} ${n === 1 ? 'áminning' : 'áminningar'} búnar til úr stack-num þínum.`,
 	doses_dismiss: 'Loka',

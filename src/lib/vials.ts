@@ -53,13 +53,58 @@ export async function addVial(
 	qty = 1
 ): Promise<void> {
 	const now = Date.now();
+	const count = Math.max(1, Math.round(qty));
+
+	// Unmixed vials of the same peptide and size are interchangeable, so they
+	// belong on one counted row however you added them — three at once or one
+	// at a time. A mixed vial always gets its own row: it owns a mix date,
+	// strength and expiry that can't be shared.
+	if (!(bacMl && bacMl > 0)) {
+		const stack = await findDryStack(peptideId, vialMg);
+		if (stack) {
+			await db().vials.update(stack.id!, { qty: (stack.qty ?? 1) + count });
+			return;
+		}
+	}
+
 	await db().vials.add({
 		peptideId,
 		vialMg,
-		qty: Math.max(1, Math.round(qty)),
+		qty: count,
 		...(bacMl && bacMl > 0 ? { bacMl, mixedAt: now } : {}),
 		createdAt: now
 	});
+}
+
+const findDryStack = async (peptideId: string, vialMg: number): Promise<Vial | undefined> =>
+	(await db().vials.toArray()).find(
+		(v) => !v.mixedAt && v.peptideId === peptideId && v.vialMg === vialMg
+	);
+
+/**
+ * Fold duplicate dry stacks into one row.
+ *
+ * Vials added one at a time used to each get their own row, so the same
+ * powder could sit in the list several times over. Run on load and after
+ * every change, so a row edited to match another merges too. Idempotent —
+ * a no-op once every peptide/size pair is unique.
+ */
+export async function consolidateDryVials(): Promise<void> {
+	const dry = (await db().vials.toArray()).filter((v) => !v.mixedAt);
+	const groups = new Map<string, Vial[]>();
+	for (const v of dry) {
+		const key = `${v.peptideId}|${v.vialMg}`;
+		groups.set(key, [...(groups.get(key) ?? []), v]);
+	}
+	for (const rows of groups.values()) {
+		if (rows.length < 2) continue;
+		// Keep the oldest row so the stack's createdAt stays truthful — it's
+		// what orders the list and what BAC bottles are matched against.
+		const [keep, ...rest] = [...rows].sort((a, b) => a.createdAt - b.createdAt);
+		const total = rows.reduce((sum, v) => sum + (v.qty ?? 1), 0);
+		await db().vials.update(keep.id!, { qty: total });
+		await db().vials.bulkDelete(rest.map((v) => v.id!));
+	}
 }
 
 /**

@@ -28,6 +28,7 @@
 		allBac,
 		allVials,
 		concentrationMgMl,
+		consolidateDryVials,
 		deleteBac,
 		deleteVial,
 		expiresAt,
@@ -91,6 +92,9 @@
 	let bacInput = $state(30);
 
 	async function refreshVials() {
+		// Fold any duplicate dry stacks first — covers rows split by older
+		// builds as well as an edit that made two rows identical.
+		await consolidateDryVials();
 		vialRows = await allVials();
 		bacRows = await allBac();
 	}
@@ -159,8 +163,12 @@
 		await refreshVials();
 	}
 
-	async function removeVial(id: number) {
-		await deleteVial(id);
+	// Deleting a counted stack throws away every vial on it, so make the
+	// user say so out loud. Lowering the count is what the edit sheet is for.
+	async function removeVial(v: VialRow) {
+		const qty = v.qty ?? 1;
+		if (qty > 1 && !confirm(s.vials_delete_stack(String(qty)))) return;
+		await deleteVial(v.id!);
 		await refreshVials();
 	}
 
@@ -805,7 +813,7 @@
 									</button>
 									<button
 										type="button"
-										onclick={() => removeVial(v.id!)}
+										onclick={() => removeVial(v)}
 										class="text-muted hover:text-red-600 p-1"
 										aria-label={s.vials_delete}
 									>
