@@ -174,6 +174,8 @@ interface UIStrings {
 	vials_add_title: string;
 	vials_peptide: string;
 	vials_size: string;
+	vials_qty: string;
+	vials_mix_later: string;
 	vials_mix_now: string;
 	vials_bac: string;
 	vials_save: string;
@@ -505,6 +507,8 @@ const en: UIStrings = {
 	vials_add_title: 'Add vial',
 	vials_peptide: 'Peptide',
 	vials_size: 'Vial size (mg)',
+	vials_qty: 'How many vials',
+	vials_mix_later: 'Added as unmixed powder — mix one at a time from the list.',
 	vials_mix_now: 'Mix now — BAC water (mL), leave empty if still powder',
 	vials_bac: 'BAC water (mL)',
 	vials_save: 'Save vial',
@@ -846,6 +850,8 @@ const is: UIStrings = {
 	vials_add_title: 'Skrá glas',
 	vials_peptide: 'Peptíð',
 	vials_size: 'Stærð glass (mg)',
+	vials_qty: 'Hversu mörg glös',
+	vials_mix_later: 'Skráð sem óblandað duft — blandaðu einu í einu úr listanum.',
 	vials_mix_now: 'Blanda strax — BAC vatn (mL), skildu eftir tómt ef enn duft',
 	vials_bac: 'BAC vatn (mL)',
 	vials_save: 'Vista glas',

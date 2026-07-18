@@ -37,6 +37,10 @@ export interface Vial {
 	peptideId: string;
 	/** Peptide content of the vial, mg. */
 	vialMg: number;
+	/** How many identical vials in this state. Unset = 1 (legacy rows).
+	 *  Only meaningful while unmixed — mixing splits one off into its own
+	 *  row so each mixed vial keeps its own expiry and remaining. */
+	qty?: number;
 	/** Bacteriostatic water added, mL. Unset = still dry powder. */
 	bacMl?: number;
 	/** When it was reconstituted (epoch ms). Unset = still dry powder. */

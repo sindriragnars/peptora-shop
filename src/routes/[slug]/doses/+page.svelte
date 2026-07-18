@@ -28,7 +28,7 @@
 		concentrationMgMl,
 		deleteVial,
 		expiresAt,
-		mixVial,
+		mixOne,
 		type VialRow
 	} from '$lib/vials';
 	import type { DoseLog, Reminder } from '$lib/tracking-db';
@@ -61,6 +61,7 @@
 	let vialSheetOpen = $state(false);
 	let vialPeptideId = $state('');
 	let vialMg = $state(5);
+	let vialQty = $state(1);
 	let vialBac = $state<number | null>(null);
 	/** Per-vial BAC input for the inline "mix" action on a dry vial. */
 	let mixInputs = $state<Record<number, number>>({});
@@ -88,20 +89,29 @@
 
 	function openVialSheet() {
 		pickVialPeptide(allPeptides[0]?.id ?? '');
+		vialQty = 1;
 		vialBac = null;
 		vialSheetOpen = true;
 	}
 
 	async function saveVial() {
 		if (!vialPeptideId || vialMg <= 0) return;
-		await addVial(vialPeptideId, vialMg, vialBac ?? undefined);
+		// Mixing at add-time only makes sense for a single vial; a stack of
+		// several goes in dry and you mix one at a time from the list.
+		await addVial(
+			vialPeptideId,
+			vialMg,
+			vialQty === 1 ? (vialBac ?? undefined) : undefined,
+			vialQty
+		);
 		vialSheetOpen = false;
 		await refreshVials();
 	}
 
-	async function doMix(id: number, ml: number) {
+	// Mixing pulls a single vial out of an unopened stack.
+	async function doMix(v: VialRow, ml: number) {
 		if (!(ml > 0)) return;
-		await mixVial(id, ml);
+		await mixOne(v, ml);
 		await refreshVials();
 	}
 
@@ -595,7 +605,7 @@
 								<div class="min-w-0">
 									<div class="font-medium">{p?.name ?? v.peptideId}</div>
 									<div class="text-muted font-mono text-xs">
-										{v.vialMg} mg
+										{(v.qty ?? 1) > 1 ? `${v.qty} × ` : ''}{v.vialMg} mg
 										{#if conc}
 											· {v.bacMl} mL → {vialFmt(conc)} mg/mL
 										{:else}
@@ -644,7 +654,7 @@
 									<span class="text-muted text-xs">mL</span>
 									<button
 										type="button"
-										onclick={() => doMix(v.id!, mixInputs[v.id!] ?? presetBac(v.peptideId))}
+										onclick={() => doMix(v, mixInputs[v.id!] ?? presetBac(v.peptideId))}
 										class="bg-brand hover:bg-brand-dark ml-auto rounded-full px-4 py-1.5 text-sm font-medium text-white"
 									>
 										{s.vials_mix}
@@ -852,18 +862,34 @@
 				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
 			/>
 
-			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-bac">
-				{s.vials_mix_now}
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-qty">
+				{s.vials_qty}
 			</label>
 			<input
-				id="vial-bac"
+				id="vial-qty"
 				type="number"
-				min="0"
-				step="0.25"
-				placeholder={String(presetBac(vialPeptideId))}
-				bind:value={vialBac}
-				class="border-outline dark:border-outline-dark mb-5 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				min="1"
+				step="1"
+				bind:value={vialQty}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
 			/>
+
+			{#if vialQty === 1}
+				<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-bac">
+					{s.vials_mix_now}
+				</label>
+				<input
+					id="vial-bac"
+					type="number"
+					min="0"
+					step="0.25"
+					placeholder={String(presetBac(vialPeptideId))}
+					bind:value={vialBac}
+					class="border-outline dark:border-outline-dark mb-5 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+			{:else}
+				<p class="text-muted mb-5 text-xs">{s.vials_mix_later}</p>
+			{/if}
 
 			<button
 				type="button"

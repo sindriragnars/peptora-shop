@@ -46,18 +46,43 @@ export async function allVials(): Promise<VialRow[]> {
 	}));
 }
 
-export async function addVial(peptideId: string, vialMg: number, bacMl?: number): Promise<void> {
+export async function addVial(
+	peptideId: string,
+	vialMg: number,
+	bacMl?: number,
+	qty = 1
+): Promise<void> {
 	const now = Date.now();
 	await db().vials.add({
 		peptideId,
 		vialMg,
+		qty: Math.max(1, Math.round(qty)),
 		...(bacMl && bacMl > 0 ? { bacMl, mixedAt: now } : {}),
 		createdAt: now
 	});
 }
 
-export async function mixVial(id: number, bacMl: number): Promise<void> {
-	await db().vials.update(id, { bacMl, mixedAt: Date.now() });
+/**
+ * Mix a single vial. When the row holds several unopened vials, one is split
+ * off into its own row — each mixed vial needs its own expiry and remaining,
+ * so they can't stay grouped.
+ */
+export async function mixOne(v: Vial, bacMl: number): Promise<void> {
+	const now = Date.now();
+	const qty = v.qty ?? 1;
+	if (qty > 1) {
+		await db().vials.update(v.id!, { qty: qty - 1 });
+		await db().vials.add({
+			peptideId: v.peptideId,
+			vialMg: v.vialMg,
+			qty: 1,
+			bacMl,
+			mixedAt: now,
+			createdAt: now
+		});
+		return;
+	}
+	await db().vials.update(v.id!, { bacMl, mixedAt: now });
 }
 
 export async function deleteVial(id: number): Promise<void> {
