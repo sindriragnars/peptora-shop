@@ -1070,11 +1070,13 @@
 					{/each}
 				</div>
 			{/if}
+			<!-- Whole mg only: every vial size in the library is an integer,
+			     and a step base below 1 would make the arrows walk 0.1 / 0.6 / 1.1. -->
 			<input
 				id="vial-mg"
 				type="number"
-				min="0.1"
-				step="0.5"
+				min="1"
+				step="1"
 				bind:value={vialMg}
 				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
 			/>
@@ -1172,8 +1174,8 @@
 			<input
 				id="edit-vial-mg"
 				type="number"
-				min="0.1"
-				step="0.5"
+				min="1"
+				step="1"
 				bind:value={editMg}
 				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
 			/>
