@@ -184,11 +184,16 @@ interface UIStrings {
 	vials_group_unmixed: string;
 	vials_mix: string;
 	vials_delete: string;
+	vials_edit: string;
+	vials_mixed_date: string;
 	vials_expired: string;
 	vials_approx: string;
 	bac_title: string;
 	bac_add: string;
 	bac_delete: string;
+	bac_edit: string;
+	bac_size: string;
+	bac_save: string;
 	bac_left: (left: string, total: string) => string;
 	vials_remaining: (left: string, total: string) => string;
 	vials_use_by: (date: string, days: string) => string;
@@ -373,7 +378,7 @@ const en: UIStrings = {
 	nav_peptides: 'Peptides',
 	nav_stacks: 'Stacks',
 	nav_news: 'News',
-	nav_doses: 'Doses',
+	nav_doses: 'My Stuff',
 	nav_shop: 'Shop',
 	nav_settings: 'Settings',
 
@@ -505,7 +510,7 @@ const en: UIStrings = {
 	calc_copy_link: 'Copy shareable link',
 	calc_copied: 'Link copied',
 
-	doses_title: 'Doses',
+	doses_title: 'My Stuff',
 	doses_tab_reminders: 'Reminders',
 	doses_tab_tracking: 'Tracking',
 	doses_tab_vials: 'My vials',
@@ -523,11 +528,16 @@ const en: UIStrings = {
 	vials_group_unmixed: 'Unmixed — in stock',
 	vials_mix: 'Mix',
 	vials_delete: 'Delete vial',
+	vials_edit: 'Edit vial',
+	vials_mixed_date: 'Mixed on',
 	vials_expired: 'Past its 28-day window',
 	vials_approx: 'Remaining is estimated from the doses you have logged.',
 	bac_title: 'Bacteriostatic water',
 	bac_add: 'Add bottle',
 	bac_delete: 'Remove',
+	bac_edit: 'Edit',
+	bac_size: 'Bottle size (mL)',
+	bac_save: 'Save',
 	bac_left: (left, total) => `${left} mL left of ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg left of ${total} mg`,
 	vials_use_by: (date, days) => `Use by ${date} · ${days} days left`,
@@ -720,7 +730,7 @@ const is: UIStrings = {
 	nav_peptides: 'Peptíð',
 	nav_stacks: 'Stacks',
 	nav_news: 'Fréttir',
-	nav_doses: 'Skammtar',
+	nav_doses: 'Mitt dót',
 	nav_shop: 'Verslun',
 	nav_settings: 'Stillingar',
 
@@ -854,7 +864,7 @@ const is: UIStrings = {
 	calc_copy_link: 'Afrita deilanlegan hlekk',
 	calc_copied: 'Hlekkur afritaður',
 
-	doses_title: 'Skammtar',
+	doses_title: 'Mitt dót',
 	doses_tab_reminders: 'Áminningar',
 	doses_tab_tracking: 'Skráning',
 	doses_tab_vials: 'Mín glös',
@@ -872,11 +882,16 @@ const is: UIStrings = {
 	vials_group_unmixed: 'Óblandað — á lager',
 	vials_mix: 'Blanda',
 	vials_delete: 'Eyða glasi',
+	vials_edit: 'Breyta glasi',
+	vials_mixed_date: 'Blandað þann',
 	vials_expired: 'Komið fram yfir 28 daga',
 	vials_approx: 'Afgangur er áætlaður út frá skráðum skömmtum.',
 	bac_title: 'BAC vatn',
 	bac_add: 'Bæta við flösku',
 	bac_delete: 'Fjarlægja',
+	bac_edit: 'Breyta',
+	bac_size: 'Stærð flösku (mL)',
+	bac_save: 'Vista',
 	bac_left: (left, total) => `${left} mL eftir af ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg eftir af ${total} mg`,
 	vials_use_by: (date, days) => `Nota fyrir ${date} · ${days} dagar eftir`,

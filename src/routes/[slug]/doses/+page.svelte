@@ -32,6 +32,8 @@
 		deleteVial,
 		expiresAt,
 		mixOne,
+		updateBac,
+		updateVial,
 		type BacRow,
 		type VialRow
 	} from '$lib/vials';
@@ -42,19 +44,20 @@
 	const s = $derived(strings[prefs.lang]);
 	const allPeptides = $derived(getAllPeptidesAlphabetical(prefs.lang));
 
-	// Reminders is the default landing tab on /doses so the user
-	// sees what they have scheduled first; tracking is opt-in via
-	// ?tab=tracking. `browser` gate keeps the prerenderer happy.
+	// My Vials is the default landing tab on /doses — the inventory is
+	// what you check most; reminders + tracking are opt-in via ?tab=.
+	// Old ?tab=vials links fall through to the default and keep working.
+	// `browser` gate keeps the prerenderer happy.
 	const tab = $derived<'reminders' | 'tracking' | 'vials'>(
 		browser
-			? ((['tracking', 'vials'] as const).find((t) => t === page.url.searchParams.get('tab')) ??
-					'reminders')
-			: 'reminders'
+			? ((['reminders', 'tracking'] as const).find((t) => t === page.url.searchParams.get('tab')) ??
+					'vials')
+			: 'vials'
 	);
 
 	function switchTab(t: 'reminders' | 'tracking' | 'vials') {
 		const url = new URL(page.url);
-		if (t === 'reminders') url.searchParams.delete('tab');
+		if (t === 'vials') url.searchParams.delete('tab');
 		else url.searchParams.set('tab', t);
 		goto(url, { replaceState: true, noScroll: true });
 	}
@@ -103,6 +106,22 @@
 		await refreshVials();
 	}
 
+	// Inline edit for a bottle's size — a mistyped 3 vs 30 mL matters.
+	let bacEditId = $state<number | null>(null);
+	let bacEditMl = $state(30);
+
+	function startBacEdit(b: BacRow) {
+		bacEditId = b.id!;
+		bacEditMl = b.volumeMl;
+	}
+
+	async function saveBacEdit() {
+		if (bacEditId === null || !(bacEditMl > 0)) return;
+		await updateBac(bacEditId, bacEditMl);
+		bacEditId = null;
+		await refreshVials();
+	}
+
 	const presetBac = (peptideId: string) =>
 		getPeptide(peptideId, prefs.lang)?.calcPreset?.recommendedBacMl ?? 2;
 
@@ -142,6 +161,58 @@
 
 	async function removeVial(id: number) {
 		await deleteVial(id);
+		await refreshVials();
+	}
+
+	// ===== Edit vial — fix a typo'd size, water volume or mix date =====
+	let editVialId = $state<number | null>(null);
+	let editVialMixed = $state(false);
+	let editPeptideId = $state('');
+	let editMg = $state(5);
+	let editQty = $state(1);
+	let editBacMl = $state(1);
+	let editMixedDate = $state('');
+	/** Snapshot of the date the sheet opened with — mixedAt is only
+	 *  rewritten when the user actually changes the date. Writing it
+	 *  unconditionally would snap the timestamp to midnight and could
+	 *  land BEFORE the BAC bottle's createdAt, silently detaching the
+	 *  mix from the bottle that paid for it. */
+	let editMixedDateOriginal = '';
+
+	function dateInputFromMs(ms: number): string {
+		const d = new Date(ms);
+		return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+	}
+
+	function openEditVial(v: VialRow) {
+		editVialId = v.id!;
+		editVialMixed = !!v.mixedAt;
+		editPeptideId = v.peptideId;
+		editMg = v.vialMg;
+		editQty = v.qty ?? 1;
+		editBacMl = v.bacMl ?? presetBac(v.peptideId);
+		editMixedDate = v.mixedAt ? dateInputFromMs(v.mixedAt) : '';
+		editMixedDateOriginal = editMixedDate;
+	}
+
+	async function saveEditVial() {
+		if (editVialId === null || !(editMg > 0)) return;
+		if (editVialMixed && !(editBacMl > 0)) return;
+		await updateVial(editVialId, {
+			peptideId: editPeptideId,
+			vialMg: editMg,
+			...(editVialMixed
+				? {
+						bacMl: editBacMl,
+						// Midnight local: "mixed on the 15th" counts that whole
+						// day's logged doses against this vial.
+						...(editMixedDate && editMixedDate !== editMixedDateOriginal
+							? { mixedAt: new Date(editMixedDate + 'T00:00:00').getTime() }
+							: {})
+					}
+				: { qty: Math.max(1, Math.round(editQty)) })
+		});
+		editVialId = null;
 		await refreshVials();
 	}
 
@@ -230,6 +301,9 @@
 			const url = new URL(page.url);
 			url.searchParams.delete('add');
 			url.searchParams.delete('created');
+			// Both deep links are reminder flows — land on that tab, not
+			// the My Vials default, so the user sees what they came for.
+			url.searchParams.set('tab', 'reminders');
 			goto(url, { replaceState: true, noScroll: true, keepFocus: true });
 		}
 	});
@@ -433,7 +507,7 @@
 </script>
 
 <svelte:head>
-	<title>Doses · Peptora</title>
+	<title>My Stuff · Peptora</title>
 </svelte:head>
 
 <section class="mx-auto max-w-md p-5">
@@ -478,6 +552,18 @@
 		<button
 			type="button"
 			role="tab"
+			aria-selected={tab === 'vials'}
+			onclick={() => switchTab('vials')}
+			class="flex-1 rounded-full py-2 font-medium transition-colors"
+			class:bg-brand={tab === 'vials'}
+			class:text-white={tab === 'vials'}
+			class:text-muted={tab !== 'vials'}
+		>
+			{s.doses_tab_vials}
+		</button>
+		<button
+			type="button"
+			role="tab"
 			aria-selected={tab === 'reminders'}
 			onclick={() => switchTab('reminders')}
 			class="flex-1 rounded-full py-2 font-medium transition-colors"
@@ -498,18 +584,6 @@
 			class:text-muted={tab !== 'tracking'}
 		>
 			{s.doses_tab_tracking}
-		</button>
-		<button
-			type="button"
-			role="tab"
-			aria-selected={tab === 'vials'}
-			onclick={() => switchTab('vials')}
-			class="flex-1 rounded-full py-2 font-medium transition-colors"
-			class:bg-brand={tab === 'vials'}
-			class:text-white={tab === 'vials'}
-			class:text-muted={tab !== 'vials'}
-		>
-			{s.doses_tab_vials}
 		</button>
 	</div>
 
@@ -622,16 +696,53 @@
 						{#each bacRows as b (b.id)}
 							{@const leftMl = b.volumeMl - b.usedMl}
 							<li class="flex items-center justify-between gap-3 text-sm">
-								<span class="font-mono" class:text-red-600={leftMl <= 0}>
-									{s.bac_left(vialFmt(Math.max(0, leftMl)), String(b.volumeMl))}
-								</span>
-								<button
-									type="button"
-									onclick={() => removeBac(b.id!)}
-									class="text-muted hover:text-red-600 text-xs"
-								>
-									{s.bac_delete}
-								</button>
+								{#if bacEditId === b.id}
+									<input
+										type="number"
+										min="1"
+										step="1"
+										bind:value={bacEditMl}
+										class="border-outline dark:border-outline-dark w-24 rounded-full border bg-transparent px-3 py-1.5 text-sm outline-none"
+										aria-label={s.bac_size}
+									/>
+									<span class="text-muted text-xs">mL</span>
+									<div class="ml-auto flex items-center gap-3">
+										<button
+											type="button"
+											onclick={saveBacEdit}
+											class="text-brand text-xs font-medium"
+										>
+											{s.bac_save}
+										</button>
+										<button
+											type="button"
+											onclick={() => (bacEditId = null)}
+											class="text-muted text-xs"
+										>
+											{s.add_reminder_cancel}
+										</button>
+									</div>
+								{:else}
+									<span class="font-mono" class:text-red-600={leftMl <= 0}>
+										{s.bac_left(vialFmt(Math.max(0, leftMl)), String(b.volumeMl))}
+									</span>
+									<div class="flex items-center gap-3">
+										<button
+											type="button"
+											onclick={() => startBacEdit(b)}
+											class="text-muted hover:text-brand text-xs"
+										>
+											{s.bac_edit}
+										</button>
+										<button
+											type="button"
+											onclick={() => removeBac(b.id!)}
+											class="text-muted hover:text-red-600 text-xs"
+										>
+											{s.bac_delete}
+										</button>
+									</div>
+								{/if}
 							</li>
 						{/each}
 					</ul>
@@ -681,17 +792,29 @@
 										{/if}
 									</div>
 								</div>
-								<button
-									type="button"
-									onclick={() => removeVial(v.id!)}
-									class="text-muted hover:text-red-600"
-									aria-label={s.vials_delete}
-								>
-									<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-										<polyline points="3 6 5 6 21 6" />
-										<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-									</svg>
-								</button>
+								<div class="flex items-center gap-1">
+									<button
+										type="button"
+										onclick={() => openEditVial(v)}
+										class="text-muted hover:text-brand p-1"
+										aria-label={s.vials_edit}
+									>
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+											<path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+										</svg>
+									</button>
+									<button
+										type="button"
+										onclick={() => removeVial(v.id!)}
+										class="text-muted hover:text-red-600 p-1"
+										aria-label={s.vials_delete}
+									>
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+											<polyline points="3 6 5 6 21 6" />
+											<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+										</svg>
+									</button>
+								</div>
 							</div>
 
 							{#if conc && until}
@@ -845,7 +968,7 @@
 <!-- Floating + button — adapts to current sub-tab. -->
 <button
 	type="button"
-	onclick={tab === 'tracking' ? openLogSheet : tab === 'vials' ? openVialSheet : openReminderSheet}
+	onclick={() => (tab === 'tracking' ? openLogSheet() : tab === 'vials' ? openVialSheet() : openReminderSheet())}
 	class="bg-brand hover:bg-brand-dark fixed bottom-24 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition-colors"
 	style="margin-bottom: env(safe-area-inset-bottom);"
 	aria-label={tab === 'tracking'
@@ -980,6 +1103,113 @@
 			<button
 				type="button"
 				onclick={saveVial}
+				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white"
+			>
+				{s.vials_save}
+			</button>
+		</div>
+	</div>
+{/if}
+
+<!-- Edit-vial sheet — same fields the add sheet collects, minus mix-now.
+     Mixed vials edit water + mix date instead of quantity. -->
+{#if editVialId !== null}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		aria-label={s.vials_edit}
+		onclick={(e) => {
+			if (e.target === e.currentTarget) editVialId = null;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') editVialId = null;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom));"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">{s.vials_edit}</h2>
+				<button
+					type="button"
+					onclick={() => (editVialId = null)}
+					class="text-muted hover:text-ink dark:hover:text-cream"
+					aria-label={s.add_reminder_cancel}
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-vial-peptide">
+				{s.vials_peptide}
+			</label>
+			<select
+				id="edit-vial-peptide"
+				bind:value={editPeptideId}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			>
+				{#each allPeptides as p (p.id)}
+					<option value={p.id}>{p.name}</option>
+				{/each}
+			</select>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-vial-mg">
+				{s.vials_size}
+			</label>
+			<input
+				id="edit-vial-mg"
+				type="number"
+				min="0.1"
+				step="0.5"
+				bind:value={editMg}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			/>
+
+			{#if editVialMixed}
+				<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-vial-bac">
+					{s.vials_bac}
+				</label>
+				<input
+					id="edit-vial-bac"
+					type="number"
+					min="0.25"
+					step="0.25"
+					bind:value={editBacMl}
+					class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+
+				<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-vial-mixed">
+					{s.vials_mixed_date}
+				</label>
+				<input
+					id="edit-vial-mixed"
+					type="date"
+					bind:value={editMixedDate}
+					max={todayDateInput()}
+					class="border-outline dark:border-outline-dark mb-5 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+			{:else}
+				<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-vial-qty">
+					{s.vials_qty}
+				</label>
+				<input
+					id="edit-vial-qty"
+					type="number"
+					min="1"
+					step="1"
+					bind:value={editQty}
+					class="border-outline dark:border-outline-dark mb-5 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+				/>
+			{/if}
+
+			<button
+				type="button"
+				onclick={saveEditVial}
 				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white"
 			>
 				{s.vials_save}

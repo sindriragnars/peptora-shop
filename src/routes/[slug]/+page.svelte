@@ -158,7 +158,7 @@
 
 		<!-- 4 quick action shortcuts. -->
 		<div class="mb-8 grid grid-cols-4 gap-2">
-			{#each [{ href: `${pathPrefix}/stacks`, label: s.home_quick_stacks, icon: 'stacks' }, { href: `${pathPrefix}/calculator`, label: s.home_quick_calculator, icon: 'calc' }, { href: `${pathPrefix}/doses`, label: s.home_quick_reminders, icon: 'bell' }, { href: `${pathPrefix}/doses?tab=tracking`, label: s.home_quick_tracking, icon: 'chart' }] as shortcut (shortcut.label)}
+			{#each [{ href: `${pathPrefix}/stacks`, label: s.home_quick_stacks, icon: 'stacks' }, { href: `${pathPrefix}/calculator`, label: s.home_quick_calculator, icon: 'calc' }, { href: `${pathPrefix}/doses?tab=reminders`, label: s.home_quick_reminders, icon: 'bell' }, { href: `${pathPrefix}/doses?tab=tracking`, label: s.home_quick_tracking, icon: 'chart' }] as shortcut (shortcut.label)}
 				<a
 					href={shortcut.href}
 					class="border-outline dark:border-outline-dark hover:border-brand flex flex-col items-center justify-center gap-1.5 rounded-2xl border p-3 text-center"

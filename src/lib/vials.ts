@@ -89,6 +89,18 @@ export async function deleteVial(id: number): Promise<void> {
 	await db().vials.delete(id);
 }
 
+/**
+ * Edit a vial in place. Only the user-entered fields are editable —
+ * `usedMg` stays derived from dose logs, so correcting a typo in size or
+ * water never desyncs the remaining figure.
+ */
+export async function updateVial(
+	id: number,
+	changes: Partial<Pick<Vial, 'peptideId' | 'vialMg' | 'qty' | 'bacMl' | 'mixedAt'>>
+): Promise<void> {
+	await db().vials.update(id, changes);
+}
+
 /* ============ Bacteriostatic water ============ */
 
 export interface BacRow extends BacBottle {
@@ -131,4 +143,9 @@ export async function addBac(volumeMl: number): Promise<void> {
 
 export async function deleteBac(id: number): Promise<void> {
 	await db().bac.delete(id);
+}
+
+/** Edit a bottle's size — usage stays derived from the mixes it covered. */
+export async function updateBac(id: number, volumeMl: number): Promise<void> {
+	await db().bac.update(id, { volumeMl });
 }
