@@ -48,10 +48,19 @@ export interface Vial {
 	createdAt: number;
 }
 
+/** A bottle of bacteriostatic water. Depletes as vials are mixed. */
+export interface BacBottle {
+	id?: number;
+	/** Bottle volume, mL. */
+	volumeMl: number;
+	createdAt: number;
+}
+
 class PeptoraDB extends Dexie {
 	dose_logs!: Table<DoseLog, number>;
 	reminders!: Table<Reminder, number>;
 	vials!: Table<Vial, number>;
+	bac!: Table<BacBottle, number>;
 
 	constructor() {
 		super('peptora');
@@ -77,6 +86,11 @@ class PeptoraDB extends Dexie {
 		// `peptideId` for matching dose logs back to the vial they came from.
 		this.version(4).stores({
 			vials: '++id, peptideId, createdAt'
+		});
+		// v5: bacteriostatic water bottles. `createdAt` indexed because usage
+		// is attributed to whichever bottle was current when a vial was mixed.
+		this.version(5).stores({
+			bac: '++id, createdAt'
 		});
 	}
 }

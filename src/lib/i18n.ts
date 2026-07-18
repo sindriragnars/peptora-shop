@@ -180,10 +180,16 @@ interface UIStrings {
 	vials_bac: string;
 	vials_save: string;
 	vials_unmixed: string;
+	vials_group_mixed: string;
+	vials_group_unmixed: string;
 	vials_mix: string;
 	vials_delete: string;
 	vials_expired: string;
 	vials_approx: string;
+	bac_title: string;
+	bac_add: string;
+	bac_delete: string;
+	bac_left: (left: string, total: string) => string;
 	vials_remaining: (left: string, total: string) => string;
 	vials_use_by: (date: string, days: string) => string;
 	doses_created_toast: (n: number) => string;
@@ -513,10 +519,16 @@ const en: UIStrings = {
 	vials_bac: 'BAC water (mL)',
 	vials_save: 'Save vial',
 	vials_unmixed: 'unmixed powder',
+	vials_group_mixed: 'Mixed — in use',
+	vials_group_unmixed: 'Unmixed — in stock',
 	vials_mix: 'Mix',
 	vials_delete: 'Delete vial',
 	vials_expired: 'Past its 28-day window',
 	vials_approx: 'Remaining is estimated from the doses you have logged.',
+	bac_title: 'Bacteriostatic water',
+	bac_add: 'Add bottle',
+	bac_delete: 'Remove',
+	bac_left: (left, total) => `${left} mL left of ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg left of ${total} mg`,
 	vials_use_by: (date, days) => `Use by ${date} · ${days} days left`,
 	doses_created_toast: (n) => `${n} ${n === 1 ? 'reminder' : 'reminders'} created from your stack.`,
@@ -856,10 +868,16 @@ const is: UIStrings = {
 	vials_bac: 'BAC vatn (mL)',
 	vials_save: 'Vista glas',
 	vials_unmixed: 'óblandað duft',
+	vials_group_mixed: 'Blandað — í notkun',
+	vials_group_unmixed: 'Óblandað — á lager',
 	vials_mix: 'Blanda',
 	vials_delete: 'Eyða glasi',
 	vials_expired: 'Komið fram yfir 28 daga',
 	vials_approx: 'Afgangur er áætlaður út frá skráðum skömmtum.',
+	bac_title: 'BAC vatn',
+	bac_add: 'Bæta við flösku',
+	bac_delete: 'Fjarlægja',
+	bac_left: (left, total) => `${left} mL eftir af ${total} mL`,
 	vials_remaining: (left, total) => `${left} mg eftir af ${total} mg`,
 	vials_use_by: (date, days) => `Nota fyrir ${date} · ${days} dagar eftir`,
 	doses_created_toast: (n) =>

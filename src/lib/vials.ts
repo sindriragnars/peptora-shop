@@ -6,7 +6,7 @@
  * picker on every entry) at the cost of being approximate when two vials of
  * the same peptide are open at once.
  */
-import { db, type Vial } from './tracking-db';
+import { db, type BacBottle, type Vial } from './tracking-db';
 import { parseDoseToMg } from './calculator';
 
 /** Reconstituted peptide keeps roughly 28 days refrigerated. */
@@ -87,4 +87,48 @@ export async function mixOne(v: Vial, bacMl: number): Promise<void> {
 
 export async function deleteVial(id: number): Promise<void> {
 	await db().vials.delete(id);
+}
+
+/* ============ Bacteriostatic water ============ */
+
+export interface BacRow extends BacBottle {
+	/** mL drawn from this bottle, summed from the vials mixed while it was current. */
+	usedMl: number;
+}
+
+/**
+ * Bottles newest first, each with the water already drawn from it.
+ *
+ * Usage is derived rather than stored: a mix records the mL it used, so a
+ * bottle owns every mix from when it was added until the next bottle was.
+ * That means deleting a vial correctly gives its water back, and it assumes
+ * you open bottles one at a time — which is how they're actually used.
+ */
+export async function allBac(): Promise<BacRow[]> {
+	const bottles = await db().bac.orderBy('createdAt').reverse().toArray();
+	if (bottles.length === 0) return [];
+	const vials = await db().vials.toArray();
+	const oldestFirst = [...bottles].sort((a, b) => a.createdAt - b.createdAt);
+	return bottles.map((b) => {
+		const next = oldestFirst[oldestFirst.findIndex((x) => x.id === b.id) + 1];
+		const until = next ? next.createdAt : Infinity;
+		return {
+			...b,
+			usedMl: vials.reduce(
+				(sum, v) =>
+					v.bacMl && v.mixedAt && v.mixedAt >= b.createdAt && v.mixedAt < until
+						? sum + v.bacMl
+						: sum,
+				0
+			)
+		};
+	});
+}
+
+export async function addBac(volumeMl: number): Promise<void> {
+	await db().bac.add({ volumeMl, createdAt: Date.now() });
+}
+
+export async function deleteBac(id: number): Promise<void> {
+	await db().bac.delete(id);
 }

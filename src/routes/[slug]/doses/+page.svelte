@@ -23,12 +23,16 @@
 		updateReminder
 	} from '$lib/reminders';
 	import {
+		addBac,
 		addVial,
+		allBac,
 		allVials,
 		concentrationMgMl,
+		deleteBac,
 		deleteVial,
 		expiresAt,
 		mixOne,
+		type BacRow,
 		type VialRow
 	} from '$lib/vials';
 	import type { DoseLog, Reminder } from '$lib/tracking-db';
@@ -74,8 +78,29 @@
 		}
 	});
 
+	// Split the list so mixed and unmixed never blur together — they need
+	// different things from you (one is in use, the other is still stock).
+	const mixedVials = $derived(vialRows.filter((v) => v.mixedAt));
+	const dryVials = $derived(vialRows.filter((v) => !v.mixedAt));
+
+	// Bacteriostatic water stock — depletes as vials are mixed.
+	let bacRows = $state<BacRow[]>([]);
+	let bacInput = $state(30);
+
 	async function refreshVials() {
 		vialRows = await allVials();
+		bacRows = await allBac();
+	}
+
+	async function saveBac() {
+		if (!(bacInput > 0)) return;
+		await addBac(bacInput);
+		await refreshVials();
+	}
+
+	async function removeBac(id: number) {
+		await deleteBac(id);
+		await refreshVials();
 	}
 
 	const presetBac = (peptideId: string) =>
@@ -587,6 +612,50 @@
 	{:else if tab === 'vials'}
 		<!-- Vials sub-tab — what you own and how each one is mixed -->
 		<section class="pb-24">
+			<!-- BAC water stock. Usage is derived from the vials you've mixed. -->
+			<div class="border-outline dark:border-outline-dark mb-4 rounded-2xl border p-4">
+				<div class="text-muted mb-2 text-xs font-medium uppercase tracking-wide">
+					{s.bac_title}
+				</div>
+				{#if bacRows.length > 0}
+					<ul class="mb-3 space-y-1.5">
+						{#each bacRows as b (b.id)}
+							{@const leftMl = b.volumeMl - b.usedMl}
+							<li class="flex items-center justify-between gap-3 text-sm">
+								<span class="font-mono" class:text-red-600={leftMl <= 0}>
+									{s.bac_left(vialFmt(Math.max(0, leftMl)), String(b.volumeMl))}
+								</span>
+								<button
+									type="button"
+									onclick={() => removeBac(b.id!)}
+									class="text-muted hover:text-red-600 text-xs"
+								>
+									{s.bac_delete}
+								</button>
+							</li>
+						{/each}
+					</ul>
+				{/if}
+				<div class="flex items-center gap-2">
+					<input
+						type="number"
+						min="1"
+						step="1"
+						bind:value={bacInput}
+						class="border-outline dark:border-outline-dark w-24 rounded-full border bg-transparent px-3 py-1.5 text-sm outline-none"
+						aria-label={s.bac_add}
+					/>
+					<span class="text-muted text-xs">mL</span>
+					<button
+						type="button"
+						onclick={saveBac}
+						class="border-outline dark:border-outline-dark hover:border-brand ml-auto rounded-full border px-4 py-1.5 text-sm font-medium"
+					>
+						{s.bac_add}
+					</button>
+				</div>
+			</div>
+
 			{#if vialRows.length === 0}
 				<div
 					class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-8 text-center text-sm"
@@ -594,12 +663,11 @@
 					<p>{s.vials_empty}</p>
 				</div>
 			{:else}
-				<ul class="space-y-2">
-					{#each vialRows as v (v.id)}
-						{@const p = getPeptide(v.peptideId, prefs.lang)}
-						{@const conc = concentrationMgMl(v)}
-						{@const until = expiresAt(v)}
-						{@const left = Math.max(0, v.vialMg - v.usedMg)}
+				{#snippet vialCard(v: VialRow)}
+					{@const p = getPeptide(v.peptideId, prefs.lang)}
+					{@const conc = concentrationMgMl(v)}
+					{@const until = expiresAt(v)}
+					{@const left = Math.max(0, v.vialMg - v.usedMg)}
 						<li class="border-outline dark:border-outline-dark rounded-2xl border p-4">
 							<div class="flex items-start justify-between gap-3">
 								<div class="min-w-0">
@@ -662,8 +730,26 @@
 								</div>
 							{/if}
 						</li>
-					{/each}
-				</ul>
+				{/snippet}
+
+				{#if mixedVials.length > 0}
+					<h3 class="text-muted mb-2 text-xs font-medium uppercase tracking-wide">
+						{s.vials_group_mixed}
+					</h3>
+					<ul class="mb-6 space-y-2">
+						{#each mixedVials as v (v.id)}{@render vialCard(v)}{/each}
+					</ul>
+				{/if}
+
+				{#if dryVials.length > 0}
+					<h3 class="text-muted mb-2 text-xs font-medium uppercase tracking-wide">
+						{s.vials_group_unmixed}
+					</h3>
+					<ul class="space-y-2">
+						{#each dryVials as v (v.id)}{@render vialCard(v)}{/each}
+					</ul>
+				{/if}
+
 				<p class="text-muted mt-3 text-xs">{s.vials_approx}</p>
 			{/if}
 		</section>
