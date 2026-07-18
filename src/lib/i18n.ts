@@ -186,6 +186,8 @@ interface UIStrings {
 	vials_delete: string;
 	vials_edit: string;
 	vials_mixed_date: string;
+	vials_unmix: string;
+	vials_unmix_confirm: string;
 	vials_expired: string;
 	vials_approx: string;
 	bac_title: string;
@@ -531,6 +533,9 @@ const en: UIStrings = {
 	vials_delete: 'Delete vial',
 	vials_edit: 'Edit vial',
 	vials_mixed_date: 'Mixed on',
+	vials_unmix: 'Mark as unmixed',
+	vials_unmix_confirm:
+		'Put this vial back to unmixed powder? The BAC water returns to its bottle and the mix date is lost.',
 	vials_expired: 'Past its 28-day window',
 	vials_approx: 'Remaining is estimated from the doses you have logged.',
 	bac_title: 'Bacteriostatic water',
@@ -886,6 +891,9 @@ const is: UIStrings = {
 	vials_delete: 'Eyða glasi',
 	vials_edit: 'Breyta glasi',
 	vials_mixed_date: 'Blandað þann',
+	vials_unmix: 'Merkja sem óblandað',
+	vials_unmix_confirm:
+		'Setja glasið aftur í óblandað duft? BAC vatnið fer aftur á flöskuna og blöndunardagsetningin tapast.',
 	vials_expired: 'Komið fram yfir 28 daga',
 	vials_approx: 'Afgangur er áætlaður út frá skráðum skömmtum.',
 	bac_title: 'BAC vatn',

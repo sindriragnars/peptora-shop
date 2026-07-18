@@ -33,6 +33,7 @@
 		deleteVial,
 		expiresAt,
 		mixOne,
+		unmixVial,
 		updateBac,
 		updateVial,
 		type BacRow,
@@ -220,6 +221,16 @@
 					}
 				: { qty: Math.max(1, Math.round(editQty)) })
 		});
+		editVialId = null;
+		await refreshVials();
+	}
+
+	// Undo a mix. Consolidation then folds the vial back into the dry stack
+	// for that peptide and size, so it rejoins the count it came from.
+	async function doUnmix() {
+		if (editVialId === null) return;
+		if (!confirm(s.vials_unmix_confirm)) return;
+		await unmixVial(editVialId);
 		editVialId = null;
 		await refreshVials();
 	}
@@ -1224,6 +1235,18 @@
 			>
 				{s.vials_save}
 			</button>
+
+			{#if editVialMixed}
+				<!-- Escape hatch for a mix logged by mistake. Kept below the
+				     primary action so it can't be hit on the way to Save. -->
+				<button
+					type="button"
+					onclick={doUnmix}
+					class="border-outline dark:border-outline-dark hover:border-brand text-muted mt-2 w-full rounded-full border py-3 text-sm font-medium"
+				>
+					{s.vials_unmix}
+				</button>
+			{/if}
 		</div>
 	</div>
 {/if}

@@ -130,6 +130,26 @@ export async function mixOne(v: Vial, bacMl: number): Promise<void> {
 	await db().vials.update(v.id!, { bacMl, mixedAt: now });
 }
 
+/**
+ * Send a mixed vial back to dry powder — for a mix logged by mistake.
+ *
+ * The BAC water it drew flows back to its bottle and the 28-day clock
+ * disappears without touching anything else: both are derived from the two
+ * fields being cleared. Written as an explicit dry row rather than an
+ * update, so the mixed-only fields are gone rather than set to undefined.
+ */
+export async function unmixVial(id: number): Promise<void> {
+	const v = await db().vials.get(id);
+	if (!v) return;
+	await db().vials.put({
+		id: v.id,
+		peptideId: v.peptideId,
+		vialMg: v.vialMg,
+		qty: v.qty ?? 1,
+		createdAt: v.createdAt
+	});
+}
+
 export async function deleteVial(id: number): Promise<void> {
 	await db().vials.delete(id);
 }
