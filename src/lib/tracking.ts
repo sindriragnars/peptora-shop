@@ -30,7 +30,7 @@ export async function deleteLog(id: number) {
 /** Correct a logged dose. `note` is left alone — nothing writes one yet. */
 export async function updateLog(
 	id: number,
-	changes: Partial<Pick<DoseLog, 'peptideId' | 'dose' | 'takenAt'>>
+	changes: Partial<Pick<DoseLog, 'peptideId' | 'dose' | 'takenAt' | 'vialId' | 'units' | 'mg'>>
 ) {
 	return db().dose_logs.update(id, changes);
 }

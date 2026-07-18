@@ -33,6 +33,15 @@ export const SYRINGE_OPTIONS: { capacity: SyringeCapacity; ml: number }[] = [
 /** U100 concentration is the only assumption baked in — 100 units = 1 mL. */
 const UNITS_PER_ML = 100;
 
+/** Volume drawn for a given unit count on a U100 syringe. Barrel size is
+ *  irrelevant — 10 units is 0.1 mL on a 0.3, 0.5 or 1 mL syringe alike. */
+export const unitsToMl = (units: number): number => units / UNITS_PER_ML;
+
+/** mg of peptide in a unit draw, given the vial's concentration (mg/mL).
+ *  This is what a logged dose actually removes from a mixed vial. */
+export const unitsToMg = (units: number, concentrationMgMl: number): number =>
+	unitsToMl(units) * concentrationMgMl;
+
 export interface CalcInputs {
 	/** Total peptide content in the vial, in mg. */
 	vialSizeMg: number;

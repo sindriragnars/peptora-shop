@@ -41,6 +41,13 @@
 		type VialRow
 	} from '$lib/vials';
 	import type { DoseLog, Reminder } from '$lib/tracking-db';
+	import {
+		parseDoseToMg,
+		unitsToMg,
+		unitsToMl,
+		SYRINGE_OPTIONS,
+		type SyringeCapacity
+	} from '$lib/calculator';
 	import { prefs } from '$lib/prefs.svelte';
 	import { strings } from '$lib/i18n';
 
@@ -333,96 +340,138 @@
 		return { query: '', selectedId: null as string | null };
 	}
 
-	// ===== Log-dose sheet =====
-	let logSheetOpen = $state(false);
-	let logPicker = $state(freshPicker());
-	let logDoseInput = $state('');
-	// Backdating: lets the user catch up on missed doses. Defaults to
-	// "now" each time the sheet opens; HTML date + time inputs are easy
-	// for users to skim past if they don't need to change them.
 	function todayTimeInput(): string {
 		const d = new Date();
 		return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 	}
+
+	// A dose is a draw from a MIXED vial: the vial fixes the concentration,
+	// the units + syringe give the volume, and mg = units ÷ 100 × mg/mL. You
+	// can't log against dry powder — there's no concentration to draw from.
+	const mixedVialRows = $derived(vialRows.filter((v) => v.mixedAt && concentrationMgMl(v)));
+	const canLogDose = $derived(mixedVialRows.length > 0);
+
+	/** Barrel capacity in units for the current syringe (30 / 50 / 100). */
+	const syringeUnits = $derived(prefs.syringeCapacity as number);
+	const syringeMl = $derived(
+		SYRINGE_OPTIONS.find((o) => o.capacity === prefs.syringeCapacity)?.ml ?? 1
+	);
+
+	/** mg a unit draw removes from a vial, or null if it isn't mixed. */
+	function drawMg(vial: VialRow | null, units: number): number | null {
+		if (!vial) return null;
+		const c = concentrationMgMl(vial);
+		return c == null ? null : unitsToMg(units, c);
+	}
+
+	/** mg → "500 mcg" under 1 mg, "1.25 mg" at or above. */
+	function fmtMg(mg: number): string {
+		return mg < 1
+			? `${Math.round(mg * 1000)} ${s.unit_mcg}`
+			: `${Math.round(mg * 100) / 100} ${s.unit_mg}`;
+	}
+
+	/** How a logged dose reads in the lists: prefer the structured units, fall
+	 *  back to the raw string on legacy free-text logs. */
+	function doseText(log: DoseLog): string {
+		return log.units != null && log.mg != null
+			? `${log.units} ${s.tracking_units} · ${fmtMg(log.mg)}`
+			: log.dose;
+	}
+
+	function pickSyringe(c: SyringeCapacity) {
+		prefs.setSyringeCapacity(c);
+		// Keep units within the newly chosen barrel.
+		if (logUnits > c) logUnits = c;
+		if (editLogUnits > c) editLogUnits = c;
+	}
+
+	/** Whole units, at least 1, never more than the barrel holds. */
+	function clampUnits(n: number): number {
+		return Math.min(syringeUnits, Math.max(1, Math.round(n || 1)));
+	}
+
+	/** Syringe sizes offered in the track flow — 0.3 / 0.5 / 1 mL. */
+	const trackSyringes = SYRINGE_OPTIONS.filter((o) => o.capacity <= 100);
+
+	// ===== Log-dose sheet =====
+	let logSheetOpen = $state(false);
+	let logVialId = $state<number | null>(null);
+	let logUnits = $state(10);
 	let logDateInput = $state(todayDateInput());
 	let logTimeInput = $state(todayTimeInput());
 
-	// A dose is logged against a vial you own, so the picker only offers the
-	// peptides in My Vials — logging something you never registered would
-	// give a remaining figure with nothing to subtract from.
-	const ownedPeptideIds = $derived(new Set(vialRows.map((v) => v.peptideId)));
-	const myPeptides = $derived(allPeptides.filter((p) => ownedPeptideIds.has(p.id)));
-	const canLogDose = $derived(myPeptides.length > 0);
-
-	const logPickerResults = $derived(
-		logPicker.query.trim()
-			? searchPeptides(logPicker.query, prefs.lang).filter((p) => ownedPeptideIds.has(p.id))
-			: myPeptides
-	);
-	const logSelected = $derived(
-		logPicker.selectedId ? getPeptide(logPicker.selectedId, prefs.lang) : undefined
-	);
+	const logVial = $derived(mixedVialRows.find((v) => v.id === logVialId) ?? null);
+	const logDrawMg = $derived(drawMg(logVial, logUnits));
 
 	function openLogSheet() {
 		if (!canLogDose) return;
-		logPicker = freshPicker();
-		logDoseInput = '';
+		logVialId = mixedVialRows[0]?.id ?? null;
+		logUnits = Math.min(10, syringeUnits);
 		logDateInput = todayDateInput();
 		logTimeInput = todayTimeInput();
 		logSheetOpen = true;
 	}
 
-	function pickForLog(id: string) {
-		logPicker = { ...logPicker, selectedId: id };
-		const p = getPeptide(id, prefs.lang);
-		if (p) logDoseInput = p.dosage.standard.amount;
-	}
-
 	async function saveDoseLog() {
-		if (!logPicker.selectedId || !logDoseInput.trim()) return;
-		// Combine the date + time pickers into an epoch ms. logDose()
-		// already accepts an explicit takenAt; if the user hasn't touched
-		// the inputs we still build a fresh timestamp here, but it'll be
-		// within ~1 minute of "now" which is good enough.
+		if (!logVial || !(logUnits > 0) || logDrawMg == null) return;
 		const takenAt = new Date(`${logDateInput}T${logTimeInput}`).getTime();
 		await logDose({
-			peptideId: logPicker.selectedId,
-			dose: logDoseInput.trim(),
+			peptideId: logVial.peptideId,
+			vialId: logVial.id,
+			units: logUnits,
+			mg: logDrawMg,
+			dose: `${logUnits}u · ${fmtMg(logDrawMg)}`,
 			takenAt
 		});
 		logSheetOpen = false;
 		await refreshTracking();
+		// Remaining is summed from these logs, so the vial figures move too.
+		await refreshVials();
 	}
 
 	// ===== Edit a logged dose =====
+	// Units-based, same as logging. A legacy free-text log is upgraded on save:
+	// pre-fill a vial of its peptide and back-compute units from its old mg.
 	let editLogId = $state<number | null>(null);
-	let editLogPeptideId = $state('');
-	let editLogDose = $state('');
+	let editLogVialId = $state<number | null>(null);
+	let editLogUnits = $state(10);
 	let editLogDate = $state('');
 	let editLogTime = $state('');
 
-	// Keep the peptide it was logged against selectable even after that vial
-	// is gone, so fixing a time can't silently rewrite the peptide.
-	const editLogOptions = $derived(
-		editLogPeptideId && !ownedPeptideIds.has(editLogPeptideId)
-			? [...myPeptides, getPeptide(editLogPeptideId, prefs.lang)].flatMap((p) => p ?? [])
-			: myPeptides
-	);
+	const editLogVial = $derived(mixedVialRows.find((v) => v.id === editLogVialId) ?? null);
+	const editLogDrawMg = $derived(drawMg(editLogVial, editLogUnits));
 
 	function openEditLog(log: DoseLog) {
-		if (log.id === undefined) return;
+		if (log.id === undefined || !canLogDose) return;
 		editLogId = log.id;
-		editLogPeptideId = log.peptideId;
-		editLogDose = log.dose;
 		editLogDate = dateInputFromMs(log.takenAt);
 		editLogTime = timeInputFromMs(log.takenAt);
+		// Prefer the vial it was drawn from; else a mixed vial of its peptide;
+		// else the first mixed vial, so the picker is never empty.
+		const sameId = mixedVialRows.find((v) => v.id === log.vialId)?.id;
+		const samePep = mixedVialRows.find((v) => v.peptideId === log.peptideId)?.id;
+		editLogVialId = sameId ?? samePep ?? mixedVialRows[0]?.id ?? null;
+		if (log.units != null) {
+			editLogUnits = Math.min(log.units, syringeUnits);
+		} else {
+			// Legacy log: convert its mg back to units at the chosen vial's strength.
+			const c = editLogVialId
+				? concentrationMgMl(mixedVialRows.find((v) => v.id === editLogVialId)!)
+				: null;
+			const mg = log.mg ?? parseDoseToMg(log.dose);
+			editLogUnits = c && mg ? Math.min(Math.round((mg / c) * 100), syringeUnits) : 10;
+		}
 	}
 
 	async function saveEditLog() {
-		if (editLogId === null || !editLogDose.trim()) return;
+		if (editLogId === null || !editLogVial || !(editLogUnits > 0) || editLogDrawMg == null) return;
 		await updateLog(editLogId, {
-			peptideId: editLogPeptideId,
-			dose: editLogDose.trim(),
+			peptideId: editLogVial.peptideId,
+			vialId: editLogVial.id,
+			units: editLogUnits,
+			mg: editLogDrawMg,
+			dose: `${editLogUnits}u · ${fmtMg(editLogDrawMg)}`,
 			takenAt: new Date(`${editLogDate}T${editLogTime}`).getTime()
 		});
 		editLogId = null;
@@ -439,6 +488,7 @@
 		if (!confirm(s.reminders_delete)) return;
 		await deleteLog(id);
 		await refreshTracking();
+		await refreshVials();
 	}
 
 	// ===== Reminder sheet =====
@@ -578,6 +628,48 @@
 	<title>My Stuff · Peptora</title>
 </svelte:head>
 
+<!-- Syringe picker + units field + live mcg/mL readout. Shared by the log
+     and edit sheets: the syringe caps the units and is remembered; the units
+     drive the readout, which is always mg = units ÷ 100 × vial concentration. -->
+{#snippet syringeUnitControls(units: number, setUnits: (n: number) => void, drawMg: number | null)}
+	<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_syringe}</span>
+	<div class="mb-4 flex gap-1.5">
+		{#each trackSyringes as o (o.capacity)}
+			<button
+				type="button"
+				onclick={() => pickSyringe(o.capacity)}
+				class="flex-1 rounded-full border px-3 py-2 text-xs font-medium transition-colors"
+				class:border-brand={prefs.syringeCapacity === o.capacity}
+				class:bg-brand={prefs.syringeCapacity === o.capacity}
+				class:text-white={prefs.syringeCapacity === o.capacity}
+				class:border-outline={prefs.syringeCapacity !== o.capacity}
+				class:text-muted={prefs.syringeCapacity !== o.capacity}
+			>
+				{o.ml} mL
+			</button>
+		{/each}
+	</div>
+
+	<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="units-input">
+		{s.log_dose_units}
+	</label>
+	<input
+		id="units-input"
+		type="number"
+		min="1"
+		max={syringeUnits}
+		step="1"
+		value={units}
+		oninput={(e) => setUnits(clampUnits(+e.currentTarget.value))}
+		class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+	/>
+	{#if drawMg != null}
+		<p class="text-brand mt-2 font-mono text-sm font-semibold">
+			{s.log_dose_draw(fmtMg(drawMg), vialFmt(unitsToMl(units)))}
+		</p>
+	{/if}
+{/snippet}
+
 <section class="mx-auto max-w-md p-5">
 	<h1 class="mt-2 mb-5 text-3xl font-bold tracking-tight">{s.doses_title}</h1>
 
@@ -711,7 +803,7 @@
 				<div
 					class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-6 text-center text-sm"
 				>
-					<p>{canLogDose ? s.tracking_empty : s.tracking_needs_vials}</p>
+					<p>{canLogDose ? s.tracking_empty : s.log_dose_no_mixed}</p>
 				</div>
 			{:else}
 				<ul class="space-y-2">
@@ -723,7 +815,7 @@
 							<div class="min-w-0 flex-1">
 								<div class="font-semibold">{p?.name ?? log.peptideId}</div>
 								<div class="text-muted mt-0.5 text-xs">
-									{log.dose} · {shortDate(log.takenAt)}
+									{doseText(log)} · {shortDate(log.takenAt)}
 								</div>
 							</div>
 							<div class="flex items-center gap-1">
@@ -1348,85 +1440,59 @@
 				</button>
 			</div>
 
-			{#if !logSelected}
-				<input
-					type="search"
-					bind:value={logPicker.query}
-					placeholder={s.home_search_placeholder}
-					class="border-outline dark:border-outline-dark focus:border-brand mb-3 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
-				/>
-				<ul class="max-h-72 space-y-1 overflow-y-auto">
-					{#each logPickerResults as p (p.id)}
-						<li>
-							<button
-								type="button"
-								onclick={() => pickForLog(p.id)}
-								class="hover:bg-cream-dark/60 dark:hover:bg-ink-soft/60 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors"
-							>
-								<span>
-									<span class="font-medium">{p.name}</span>
-									<span class="text-muted ml-2 text-xs">{p.tagline}</span>
-								</span>
-							</button>
-						</li>
-					{/each}
-				</ul>
-			{:else}
-				<button
-					type="button"
-					onclick={() => (logPicker = freshPicker())}
-					class="text-muted mb-2 inline-flex items-center gap-1 text-xs hover:text-brand"
-				>
-					← {s.add_reminder_pick}
-				</button>
-				<div class="border-outline dark:border-outline-dark mb-3 rounded-2xl border p-3">
-					<div class="font-semibold">{logSelected.name}</div>
-					<div class="text-muted text-xs">{logSelected.tagline}</div>
-				</div>
-				<label class="mb-4 block">
-					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_amount}</span>
+			<!-- Which mixed vial the dose is drawn from — this sets the
+			     concentration the units are measured against. -->
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="log-vial">
+				{s.log_dose_vial}
+			</label>
+			<select
+				id="log-vial"
+				bind:value={logVialId}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			>
+				{#each mixedVialRows as v (v.id)}
+					{@const p = getPeptide(v.peptideId, prefs.lang)}
+					<option value={v.id}>
+						{p?.name ?? v.peptideId} · {vialFmt(concentrationMgMl(v) ?? 0)} mg/mL
+					</option>
+				{/each}
+			</select>
+
+			{@render syringeUnitControls(
+				logUnits,
+				(n) => (logUnits = n),
+				logDrawMg
+			)}
+
+			<!-- Backdate: defaults to now, but lets the user catch up on a
+			     missed dose without lying about when they took it. -->
+			<div class="mt-4 mb-4 grid grid-cols-2 gap-3">
+				<label class="block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_date}</span>
 					<input
-						type="text"
-						bind:value={logDoseInput}
-						placeholder={s.builder_dose_placeholder}
-						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+						type="date"
+						bind:value={logDateInput}
+						max={todayDateInput()}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
 					/>
 				</label>
-				<!-- Backdate option: defaults to now, but lets the user catch
-				     up on missed doses without lying about when they took them.
-				     Two-column grid so date + time stay scannable. -->
-				<div class="mb-4 grid grid-cols-2 gap-3">
-					<label class="block">
-						<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">
-							{s.log_dose_date ?? 'Dagsetning'}
-						</span>
-						<input
-							type="date"
-							bind:value={logDateInput}
-							max={todayDateInput()}
-							class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
-						/>
-					</label>
-					<label class="block">
-						<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">
-							{s.log_dose_time ?? 'Tími'}
-						</span>
-						<input
-							type="time"
-							bind:value={logTimeInput}
-							class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
-						/>
-					</label>
-				</div>
-				<button
-					type="button"
-					onclick={saveDoseLog}
-					disabled={!logDoseInput.trim()}
-					class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
-				>
-					{s.log_dose_save}
-				</button>
-			{/if}
+				<label class="block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_time}</span>
+					<input
+						type="time"
+						bind:value={logTimeInput}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
+					/>
+				</label>
+			</div>
+			<button
+				type="button"
+				onclick={saveDoseLog}
+				disabled={!logVial || !(logUnits > 0)}
+				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
+			>
+				{s.log_dose_save}
+			</button>
 		</div>
 	</div>
 {/if}
@@ -1477,7 +1543,7 @@
 							<div class="min-w-0 flex-1">
 								<div class="font-semibold">{p?.name ?? log.peptideId}</div>
 								<div class="text-muted mt-0.5 text-xs">
-									{log.dose} · {new Date(log.takenAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+									{doseText(log)} · {new Date(log.takenAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
 								</div>
 								{#if log.note}
 									<div class="text-muted mt-1 text-xs italic">{log.note}</div>
@@ -1553,30 +1619,29 @@
 				</button>
 			</div>
 
-			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-log-peptide">
-				{s.log_dose_peptide}
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-log-vial">
+				{s.log_dose_vial}
 			</label>
 			<select
-				id="edit-log-peptide"
-				bind:value={editLogPeptideId}
+				id="edit-log-vial"
+				bind:value={editLogVialId}
 				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
 			>
-				{#each editLogOptions as p (p.id)}
-					<option value={p.id}>{p.name}</option>
+				{#each mixedVialRows as v (v.id)}
+					{@const p = getPeptide(v.peptideId, prefs.lang)}
+					<option value={v.id}>
+						{p?.name ?? v.peptideId} · {vialFmt(concentrationMgMl(v) ?? 0)} mg/mL
+					</option>
 				{/each}
 			</select>
 
-			<label class="mb-4 block">
-				<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_amount}</span>
-				<input
-					type="text"
-					bind:value={editLogDose}
-					placeholder={s.builder_dose_placeholder}
-					class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
-				/>
-			</label>
+			{@render syringeUnitControls(
+				editLogUnits,
+				(n) => (editLogUnits = n),
+				editLogDrawMg
+			)}
 
-			<div class="mb-5 grid grid-cols-2 gap-3">
+			<div class="mt-4 mb-5 grid grid-cols-2 gap-3">
 				<label class="block">
 					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_date}</span>
 					<input
@@ -1599,7 +1664,7 @@
 			<button
 				type="button"
 				onclick={saveEditLog}
-				disabled={!editLogDose.trim()}
+				disabled={!editLogVial || !(editLogUnits > 0)}
 				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
 			>
 				{s.log_dose_save}

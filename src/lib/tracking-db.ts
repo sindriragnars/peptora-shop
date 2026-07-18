@@ -2,6 +2,7 @@
  * IndexedDB schema. Single Dexie database backing all of v0.3+:
  *   - dose_logs: history of doses the user marked as taken
  *   - reminders: scheduled doses (UI lands in v0.3, push fires in v0.4)
+ *   - vials: what the user actually owns, and how each one is mixed
  *
  * Local-only. No sync, no cloud — same trust model as the Android app.
  * Reset by deleting the app's site data in browser settings.
@@ -11,8 +12,15 @@ import Dexie, { type Table } from 'dexie';
 export interface DoseLog {
 	id?: number;
 	peptideId: string;
-	dose: string; // free-text — matches what the user typed/saw on the peptide page
+	dose: string; // display string, e.g. "10 units · 500 mcg" (legacy rows: free text)
 	takenAt: number; // epoch ms
+	/** The mixed vial this dose was drawn from. Unset on legacy free-text logs. */
+	vialId?: number;
+	/** Units drawn on a U100 syringe (100 units = 1 mL). Unset on legacy logs. */
+	units?: number;
+	/** Resolved dose in mg (units ÷ 100 × vial concentration), stored so the
+	 *  vial's remaining is exact rather than re-parsed from `dose`. */
+	mg?: number;
 	note?: string;
 }
 
@@ -25,9 +33,11 @@ export interface Reminder {
 	days: number[];
 	enabled: boolean;
 	createdAt: number;
-	/** Protocol start (epoch ms). Defaults to createdAt on legacy rows. */
+	/** Protocol start (epoch ms). Defaults to createdAt on legacy rows.
+	 *  Reminders don't fire before this date. */
 	startsAt?: number;
-	/** Protocol end (epoch ms). Undefined = open-ended. */
+	/** Protocol end (epoch ms). Undefined = open-ended.
+	 *  Reminders don't fire on or after this date. */
 	endsAt?: number;
 }
 
@@ -77,8 +87,10 @@ class PeptoraDB extends Dexie {
 		this.version(2).stores({
 			reminders: '++id, peptideId, createdAt'
 		});
-		// v3: add startsAt + endsAt for protocol support. New fields are
-		// optional, so prior rows stay readable without a data migration.
+		// v3: add startsAt + endsAt for protocol support. No index needed —
+		// `allReminders()` still orders by createdAt and the UI computes
+		// remaining days locally. Dexie keeps prior rows readable without
+		// migration since the new fields are optional.
 		this.version(3).stores({
 			reminders: '++id, peptideId, createdAt'
 		});

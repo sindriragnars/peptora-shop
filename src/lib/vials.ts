@@ -6,7 +6,7 @@
  * picker on every entry) at the cost of being approximate when two vials of
  * the same peptide are open at once.
  */
-import { db, type BacBottle, type Vial } from './tracking-db';
+import { db, type BacBottle, type DoseLog, type Vial } from './tracking-db';
 import { parseDoseToMg } from './calculator';
 
 /** Reconstituted peptide keeps roughly 28 days refrigerated. */
@@ -16,6 +16,22 @@ const DAY_MS = 86_400_000;
 export interface VialRow extends Vial {
 	/** mg drawn since the vial was mixed, summed from dose logs. */
 	usedMg: number;
+}
+
+/**
+ * mg one dose log removed from a given vial.
+ *
+ * A log that names its vial (`vialId`) counts only against that vial, using
+ * the exact mg stored at log time. A legacy free-text log has neither, so it
+ * falls back to the old heuristic — matched to any mixed vial of the same
+ * peptide by date, with mg parsed from the text. That legacy path stays
+ * approximate when two vials of one peptide overlap; new logs are exact.
+ */
+function drawnFromVial(l: DoseLog, v: VialRow | Vial): number {
+	if (l.vialId != null) return l.vialId === v.id ? (l.mg ?? 0) : 0;
+	return v.mixedAt && l.peptideId === v.peptideId && l.takenAt >= v.mixedAt
+		? (parseDoseToMg(l.dose) ?? 0)
+		: 0;
 }
 
 export const concentrationMgMl = (v: Vial): number | null =>
@@ -32,17 +48,7 @@ export async function allVials(): Promise<VialRow[]> {
 	const logs = await db().dose_logs.toArray();
 	return vials.map((v) => ({
 		...v,
-		// ponytail: `dose` is free text, so unparseable entries count as 0 and
-		// the figure is a best effort. Store mg on DoseLog if it ever matters.
-		usedMg: v.mixedAt
-			? logs.reduce(
-					(sum, l) =>
-						l.peptideId === v.peptideId && l.takenAt >= v.mixedAt!
-							? sum + (parseDoseToMg(l.dose) ?? 0)
-							: sum,
-					0
-				)
-			: 0
+		usedMg: v.mixedAt ? logs.reduce((sum, l) => sum + drawnFromVial(l, v), 0) : 0
 	}));
 }
 

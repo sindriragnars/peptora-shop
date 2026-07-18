@@ -12,6 +12,7 @@
  */
 
 import type { Locale } from './peptides';
+import type { SyringeCapacity } from './calculator';
 
 export type Theme = 'light' | 'dark' | 'system';
 export type Experience = 'beginner' | 'standard' | 'advanced';
@@ -25,6 +26,10 @@ const SAFETY_KEY = 'peptora.safetyWarnings';
 const ONBOARDED_KEY = 'peptora.onboarded';
 const VISIT_COUNT_KEY = 'peptora.visitCount';
 const NEWSLETTER_DISMISSED_KEY = 'peptora.newsletterDismissed';
+const SYRINGE_KEY = 'peptora.syringeCapacity';
+
+/** Track-flow syringe sizes, in U100 units (0.3 / 0.5 / 1 mL). */
+const SYRINGE_CAPACITIES: readonly SyringeCapacity[] = [30, 50, 100];
 
 function readTheme(): Theme {
 	if (typeof window === 'undefined') return 'system';
@@ -76,6 +81,14 @@ function readNewsletterDismissed(): boolean {
 	return window.localStorage.getItem(NEWSLETTER_DISMISSED_KEY) === '1';
 }
 
+function readSyringe(): SyringeCapacity {
+	if (typeof window === 'undefined') return 100;
+	const v = Number(window.localStorage.getItem(SYRINGE_KEY));
+	return (SYRINGE_CAPACITIES as readonly number[]).includes(v)
+		? (v as SyringeCapacity)
+		: 100; // default to the 1 mL syringe
+}
+
 function applyTheme(t: Theme) {
 	if (typeof document === 'undefined') return;
 	const root = document.documentElement;
@@ -94,6 +107,7 @@ class Prefs {
 	onboarded = $state<boolean>(readOnboarded());
 	visitCount = $state<number>(readVisitCount());
 	newsletterDismissed = $state<boolean>(readNewsletterDismissed());
+	syringeCapacity = $state<SyringeCapacity>(readSyringe());
 
 	setTheme(t: Theme) {
 		this.theme = t;
@@ -153,6 +167,15 @@ class Prefs {
 		}
 	}
 
+	/** Remember the syringe picked in the track flow so it's the default
+	 *  next time — the user only owns one or two barrel sizes in practice. */
+	setSyringeCapacity(c: SyringeCapacity) {
+		this.syringeCapacity = c;
+		if (typeof window !== 'undefined') {
+			window.localStorage.setItem(SYRINGE_KEY, String(c));
+		}
+	}
+
 	/**
 	 * Wipe every local Peptora artefact — localStorage keys + the
 	 * IndexedDB database. Used by the "Clear all data" Settings
@@ -170,6 +193,7 @@ class Prefs {
 			ONBOARDED_KEY,
 			VISIT_COUNT_KEY,
 			NEWSLETTER_DISMISSED_KEY,
+			SYRINGE_KEY,
 			'peptora.customStacks',
 			'peptora.lastSync'
 		]) {

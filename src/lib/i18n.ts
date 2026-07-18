@@ -273,6 +273,14 @@ interface UIStrings {
 	log_dose_save: string;
 	log_dose_today: string;
 	log_dose_yesterday: string;
+	log_dose_vial: string;
+	log_dose_syringe: string;
+	log_dose_units: string;
+	log_dose_draw: (mcg: string, ml: string) => string;
+	log_dose_no_mixed: string;
+	tracking_units: string;
+	unit_mcg: string;
+	unit_mg: string;
 
 	// Onboarding
 	onboarding_lang_choose: string;
@@ -615,6 +623,14 @@ const en: UIStrings = {
 	tracking_recent_title: 'Recent doses',
 	log_dose_title: 'Log a dose',
 	log_dose_edit: 'Edit dose',
+	log_dose_vial: 'From which vial',
+	log_dose_syringe: 'Syringe',
+	log_dose_units: 'Units drawn',
+	log_dose_draw: (mcg, ml) => `= ${mcg} · ${ml} mL`,
+	log_dose_no_mixed: 'Mix a vial under My vials first — doses are drawn from a mixed vial.',
+	tracking_units: 'units',
+	unit_mcg: 'mcg',
+	unit_mg: 'mg',
 	log_dose_peptide: 'Peptide',
 	log_dose_amount: 'Amount',
 	log_dose_notes: 'Notes (optional)',
@@ -976,6 +992,14 @@ const is: UIStrings = {
 	tracking_recent_title: 'Nýleg skráning',
 	log_dose_title: 'Skrá skammt',
 	log_dose_edit: 'Breyta skammti',
+	log_dose_vial: 'Úr hvaða glasi',
+	log_dose_syringe: 'Sprauta',
+	log_dose_units: 'Einingar dregnar',
+	log_dose_draw: (mcg, ml) => `= ${mcg} · ${ml} mL`,
+	log_dose_no_mixed: 'Blandaðu fyrst glas undir Mín glös — skammtar eru dregnir úr blönduðu glasi.',
+	tracking_units: 'einingar',
+	unit_mcg: 'mcg',
+	unit_mg: 'mg',
 	log_dose_peptide: 'Peptíð',
 	log_dose_amount: 'Magn',
 	log_dose_notes: 'Athugasemd (valfrjáls)',
