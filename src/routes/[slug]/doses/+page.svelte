@@ -13,6 +13,7 @@
 		logDose,
 		mostTaken,
 		recentDoses,
+		updateLog,
 		type HeatmapCell
 	} from '$lib/tracking';
 	import {
@@ -182,6 +183,11 @@
 	function dateInputFromMs(ms: number): string {
 		const d = new Date(ms);
 		return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+	}
+
+	function timeInputFromMs(ms: number): string {
+		const d = new Date(ms);
+		return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 	}
 
 	function openEditVial(v: VialRow) {
@@ -386,6 +392,46 @@
 		});
 		logSheetOpen = false;
 		await refreshTracking();
+	}
+
+	// ===== Edit a logged dose =====
+	let editLogId = $state<number | null>(null);
+	let editLogPeptideId = $state('');
+	let editLogDose = $state('');
+	let editLogDate = $state('');
+	let editLogTime = $state('');
+
+	// Keep the peptide it was logged against selectable even after that vial
+	// is gone, so fixing a time can't silently rewrite the peptide.
+	const editLogOptions = $derived(
+		editLogPeptideId && !ownedPeptideIds.has(editLogPeptideId)
+			? [...myPeptides, getPeptide(editLogPeptideId, prefs.lang)].flatMap((p) => p ?? [])
+			: myPeptides
+	);
+
+	function openEditLog(log: DoseLog) {
+		if (log.id === undefined) return;
+		editLogId = log.id;
+		editLogPeptideId = log.peptideId;
+		editLogDose = log.dose;
+		editLogDate = dateInputFromMs(log.takenAt);
+		editLogTime = timeInputFromMs(log.takenAt);
+	}
+
+	async function saveEditLog() {
+		if (editLogId === null || !editLogDose.trim()) return;
+		await updateLog(editLogId, {
+			peptideId: editLogPeptideId,
+			dose: editLogDose.trim(),
+			takenAt: new Date(`${editLogDate}T${editLogTime}`).getTime()
+		});
+		editLogId = null;
+		await refreshTracking();
+		// Moving a dose to another day drops it out of the open day sheet,
+		// which is the honest result — refresh so it disappears there too.
+		await refreshDayDetail();
+		// Remaining is summed from these logs, so the vial figures move too.
+		await refreshVials();
 	}
 
 	async function onDeleteLog(id?: number) {
@@ -680,26 +726,38 @@
 									{log.dose} · {shortDate(log.takenAt)}
 								</div>
 							</div>
-							<button
-								type="button"
-								onclick={() => onDeleteLog(log.id)}
-								class="text-muted hover:text-red-600"
-								aria-label={s.reminders_delete}
-							>
-								<svg
-									width="16"
-									height="16"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
+							<div class="flex items-center gap-1">
+								<button
+									type="button"
+									onclick={() => openEditLog(log)}
+									class="text-muted hover:text-brand p-1"
+									aria-label={s.log_dose_edit}
 								>
-									<line x1="18" y1="6" x2="6" y2="18" />
-									<line x1="6" y1="6" x2="18" y2="18" />
-								</svg>
-							</button>
+									<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+									</svg>
+								</button>
+								<button
+									type="button"
+									onclick={() => onDeleteLog(log.id)}
+									class="text-muted hover:text-red-600 p-1"
+									aria-label={s.reminders_delete}
+								>
+									<svg
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="18" y1="6" x2="6" y2="18" />
+										<line x1="6" y1="6" x2="18" y2="18" />
+									</svg>
+								</button>
+							</div>
 						</li>
 					{/each}
 				</ul>
@@ -1427,12 +1485,23 @@
 							</div>
 							<button
 								type="button"
+								onclick={() => openEditLog(log)}
+								class="text-muted hover:text-brand p-1"
+								aria-label={s.log_dose_edit}
+							>
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+								</svg>
+							</button>
+							<button
+								type="button"
 								onclick={async () => {
 									if (log.id === undefined) return;
 									if (!confirm(s.reminders_delete)) return;
 									await deleteLog(log.id);
 									await refreshDayDetail();
 									await refreshTracking();
+									await refreshVials();
 								}}
 								class="text-muted hover:text-red-600 p-1"
 								aria-label={s.reminders_delete}
@@ -1446,6 +1515,95 @@
 					{/each}
 				</ul>
 			{/if}
+		</div>
+	</div>
+{/if}
+
+<!-- Edit-dose sheet. Rendered after the day-detail sheet on purpose: both
+     sit at z-50, so the later one paints on top when you edit from inside it. -->
+{#if editLogId !== null}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		aria-label={s.log_dose_edit}
+		onclick={(e) => {
+			if (e.target === e.currentTarget) editLogId = null;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') editLogId = null;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom));"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">{s.log_dose_edit}</h2>
+				<button
+					type="button"
+					onclick={() => (editLogId = null)}
+					class="text-muted hover:text-ink dark:hover:text-cream"
+					aria-label={s.add_reminder_cancel}
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="edit-log-peptide">
+				{s.log_dose_peptide}
+			</label>
+			<select
+				id="edit-log-peptide"
+				bind:value={editLogPeptideId}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			>
+				{#each editLogOptions as p (p.id)}
+					<option value={p.id}>{p.name}</option>
+				{/each}
+			</select>
+
+			<label class="mb-4 block">
+				<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_amount}</span>
+				<input
+					type="text"
+					bind:value={editLogDose}
+					placeholder={s.builder_dose_placeholder}
+					class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-4 py-3 text-base outline-none"
+				/>
+			</label>
+
+			<div class="mb-5 grid grid-cols-2 gap-3">
+				<label class="block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_date}</span>
+					<input
+						type="date"
+						bind:value={editLogDate}
+						max={todayDateInput()}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
+					/>
+				</label>
+				<label class="block">
+					<span class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide">{s.log_dose_time}</span>
+					<input
+						type="time"
+						bind:value={editLogTime}
+						class="border-outline dark:border-outline-dark focus:border-brand w-full rounded-2xl border bg-transparent px-3 py-2.5 text-sm outline-none"
+					/>
+				</label>
+			</div>
+
+			<button
+				type="button"
+				onclick={saveEditLog}
+				disabled={!editLogDose.trim()}
+				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white transition-colors disabled:opacity-50"
+			>
+				{s.log_dose_save}
+			</button>
 		</div>
 	</div>
 {/if}

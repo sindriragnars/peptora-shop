@@ -266,6 +266,7 @@ interface UIStrings {
 	tracking_heatmap_title: string;
 	tracking_recent_title: string;
 	log_dose_title: string;
+	log_dose_edit: string;
 	log_dose_peptide: string;
 	log_dose_amount: string;
 	log_dose_notes: string;
@@ -613,6 +614,7 @@ const en: UIStrings = {
 	tracking_heatmap_title: 'Last 5 weeks',
 	tracking_recent_title: 'Recent doses',
 	log_dose_title: 'Log a dose',
+	log_dose_edit: 'Edit dose',
 	log_dose_peptide: 'Peptide',
 	log_dose_amount: 'Amount',
 	log_dose_notes: 'Notes (optional)',
@@ -973,6 +975,7 @@ const is: UIStrings = {
 	tracking_heatmap_title: 'Síðustu 5 vikur',
 	tracking_recent_title: 'Nýleg skráning',
 	log_dose_title: 'Skrá skammt',
+	log_dose_edit: 'Breyta skammti',
 	log_dose_peptide: 'Peptíð',
 	log_dose_amount: 'Magn',
 	log_dose_notes: 'Athugasemd (valfrjáls)',

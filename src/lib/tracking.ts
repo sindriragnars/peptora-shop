@@ -27,6 +27,14 @@ export async function deleteLog(id: number) {
 	return db().dose_logs.delete(id);
 }
 
+/** Correct a logged dose. `note` is left alone — nothing writes one yet. */
+export async function updateLog(
+	id: number,
+	changes: Partial<Pick<DoseLog, 'peptideId' | 'dose' | 'takenAt'>>
+) {
+	return db().dose_logs.update(id, changes);
+}
+
 /** All logs, newest first. */
 export async function allLogs(): Promise<DoseLog[]> {
 	return db().dose_logs.orderBy('takenAt').reverse().toArray();
