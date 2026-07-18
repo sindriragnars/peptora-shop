@@ -66,7 +66,6 @@
 
 	// ===== Vials — what the user owns and how each is mixed =====
 	let vialRows = $state<VialRow[]>([]);
-	let vialsLoaded = $state(false);
 	let vialSheetOpen = $state(false);
 	let vialPeptideId = $state('');
 	let vialMg = $state(5);
@@ -74,14 +73,6 @@
 	let vialBac = $state<number | null>(null);
 	/** Per-vial BAC input for the inline "mix" action on a dry vial. */
 	let mixInputs = $state<Record<number, number>>({});
-
-	// Load the inventory the first time the tab is opened.
-	$effect(() => {
-		if (tab === 'vials' && !vialsLoaded && browser) {
-			vialsLoaded = true;
-			refreshVials();
-		}
-	});
 
 	// Split the list so mixed and unmixed never blur together — they need
 	// different things from you (one is in use, the other is still stock).
@@ -291,9 +282,13 @@
 		reminders = await allReminders();
 	}
 
+	// The inventory loads on mount rather than when its tab opens: the dose
+	// picker is built from it, so landing straight on ?tab=tracking has to
+	// know what you own too.
 	$effect(() => {
 		refreshTracking();
 		refreshReminders();
+		refreshVials();
 	});
 
 	// Toast banner shown after "Start this stack" creates a batch of
@@ -346,16 +341,24 @@
 	let logDateInput = $state(todayDateInput());
 	let logTimeInput = $state(todayTimeInput());
 
+	// A dose is logged against a vial you own, so the picker only offers the
+	// peptides in My Vials — logging something you never registered would
+	// give a remaining figure with nothing to subtract from.
+	const ownedPeptideIds = $derived(new Set(vialRows.map((v) => v.peptideId)));
+	const myPeptides = $derived(allPeptides.filter((p) => ownedPeptideIds.has(p.id)));
+	const canLogDose = $derived(myPeptides.length > 0);
+
 	const logPickerResults = $derived(
 		logPicker.query.trim()
-			? searchPeptides(logPicker.query, prefs.lang)
-			: allPeptides
+			? searchPeptides(logPicker.query, prefs.lang).filter((p) => ownedPeptideIds.has(p.id))
+			: myPeptides
 	);
 	const logSelected = $derived(
 		logPicker.selectedId ? getPeptide(logPicker.selectedId, prefs.lang) : undefined
 	);
 
 	function openLogSheet() {
+		if (!canLogDose) return;
 		logPicker = freshPicker();
 		logDoseInput = '';
 		logDateInput = todayDateInput();
@@ -662,7 +665,7 @@
 				<div
 					class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-6 text-center text-sm"
 				>
-					<p>{s.tracking_empty}</p>
+					<p>{canLogDose ? s.tracking_empty : s.tracking_needs_vials}</p>
 				</div>
 			{:else}
 				<ul class="space-y-2">
@@ -984,7 +987,9 @@
 	{/if}
 </section>
 
-<!-- Floating + button — adapts to current sub-tab. -->
+<!-- Floating + button — adapts to current sub-tab. Hidden on tracking
+     until a vial exists, since there would be nothing to log against. -->
+{#if tab !== 'tracking' || canLogDose}
 <button
 	type="button"
 	onclick={() => (tab === 'tracking' ? openLogSheet() : tab === 'vials' ? openVialSheet() : openReminderSheet())}
@@ -1011,6 +1016,7 @@
 		<line x1="5" y1="12" x2="19" y2="12" />
 	</svg>
 </button>
+{/if}
 
 <!-- Add-vial sheet -->
 {#if vialSheetOpen}

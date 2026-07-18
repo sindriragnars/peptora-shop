@@ -258,6 +258,7 @@ interface UIStrings {
 
 	// Tracking
 	tracking_empty: string;
+	tracking_needs_vials: string;
 	tracking_log_dose: string;
 	tracking_stat_streak: string;
 	tracking_stat_month: string;
@@ -604,6 +605,7 @@ const en: UIStrings = {
 	day_short_sat: 'Sa',
 
 	tracking_empty: 'No doses logged yet. Tap “Log dose” to start.',
+	tracking_needs_vials: 'Add a vial under My vials first — doses are logged against what you own.',
 	tracking_log_dose: 'Log dose',
 	tracking_stat_streak: 'Day streak',
 	tracking_stat_month: 'This month',
@@ -963,6 +965,7 @@ const is: UIStrings = {
 	day_short_sat: 'La',
 
 	tracking_empty: 'Engir skammtar skráðir ennþá. Smelltu á „Skrá skammt“.',
+	tracking_needs_vials: 'Skráðu fyrst glas undir Mín glös — skammtar eru skráðir á það sem þú átt.',
 	tracking_log_dose: 'Skrá skammt',
 	tracking_stat_streak: 'Daga í röð',
 	tracking_stat_month: 'Þessi mánuður',
