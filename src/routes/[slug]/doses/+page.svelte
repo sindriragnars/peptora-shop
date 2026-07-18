@@ -22,6 +22,15 @@
 		describeDays,
 		updateReminder
 	} from '$lib/reminders';
+	import {
+		addVial,
+		allVials,
+		concentrationMgMl,
+		deleteVial,
+		expiresAt,
+		mixVial,
+		type VialRow
+	} from '$lib/vials';
 	import type { DoseLog, Reminder } from '$lib/tracking-db';
 	import { prefs } from '$lib/prefs.svelte';
 	import { strings } from '$lib/i18n';
@@ -32,16 +41,82 @@
 	// Reminders is the default landing tab on /doses so the user
 	// sees what they have scheduled first; tracking is opt-in via
 	// ?tab=tracking. `browser` gate keeps the prerenderer happy.
-	const tab = $derived<'reminders' | 'tracking'>(
-		browser && page.url.searchParams.get('tab') === 'tracking' ? 'tracking' : 'reminders'
+	const tab = $derived<'reminders' | 'tracking' | 'vials'>(
+		browser
+			? ((['tracking', 'vials'] as const).find((t) => t === page.url.searchParams.get('tab')) ??
+					'reminders')
+			: 'reminders'
 	);
 
-	function switchTab(t: 'reminders' | 'tracking') {
+	function switchTab(t: 'reminders' | 'tracking' | 'vials') {
 		const url = new URL(page.url);
 		if (t === 'reminders') url.searchParams.delete('tab');
-		else url.searchParams.set('tab', 'tracking');
+		else url.searchParams.set('tab', t);
 		goto(url, { replaceState: true, noScroll: true });
 	}
+
+	// ===== Vials — what the user owns and how each is mixed =====
+	let vialRows = $state<VialRow[]>([]);
+	let vialsLoaded = $state(false);
+	let vialSheetOpen = $state(false);
+	let vialPeptideId = $state('');
+	let vialMg = $state(5);
+	let vialBac = $state<number | null>(null);
+	/** Per-vial BAC input for the inline "mix" action on a dry vial. */
+	let mixInputs = $state<Record<number, number>>({});
+
+	// Load the inventory the first time the tab is opened.
+	$effect(() => {
+		if (tab === 'vials' && !vialsLoaded && browser) {
+			vialsLoaded = true;
+			refreshVials();
+		}
+	});
+
+	async function refreshVials() {
+		vialRows = await allVials();
+	}
+
+	const presetBac = (peptideId: string) =>
+		getPeptide(peptideId, prefs.lang)?.calcPreset?.recommendedBacMl ?? 2;
+
+	// Picking a peptide prefills the vial size it usually ships in.
+	function pickVialPeptide(id: string) {
+		vialPeptideId = id;
+		vialMg = getPeptide(id, prefs.lang)?.calcPreset?.vialOptionsMg[0] ?? 5;
+	}
+
+	function openVialSheet() {
+		pickVialPeptide(allPeptides[0]?.id ?? '');
+		vialBac = null;
+		vialSheetOpen = true;
+	}
+
+	async function saveVial() {
+		if (!vialPeptideId || vialMg <= 0) return;
+		await addVial(vialPeptideId, vialMg, vialBac ?? undefined);
+		vialSheetOpen = false;
+		await refreshVials();
+	}
+
+	async function doMix(id: number, ml: number) {
+		if (!(ml > 0)) return;
+		await mixVial(id, ml);
+		await refreshVials();
+	}
+
+	async function removeVial(id: number) {
+		await deleteVial(id);
+		await refreshVials();
+	}
+
+	const vialFmt = (n: number) => String(Math.round(n * 100) / 100);
+	const vialDaysLeft = (until: number) => Math.ceil((until - Date.now()) / 86_400_000);
+	const vialDate = (ms: number) =>
+		new Date(ms).toLocaleDateString(prefs.lang === 'is' ? 'is-IS' : 'en-GB', {
+			day: 'numeric',
+			month: 'short'
+		});
 
 	// ===== Tracking =====
 	let recent = $state<DoseLog[]>([]);
@@ -389,6 +464,18 @@
 		>
 			{s.doses_tab_tracking}
 		</button>
+		<button
+			type="button"
+			role="tab"
+			aria-selected={tab === 'vials'}
+			onclick={() => switchTab('vials')}
+			class="flex-1 rounded-full py-2 font-medium transition-colors"
+			class:bg-brand={tab === 'vials'}
+			class:text-white={tab === 'vials'}
+			class:text-muted={tab !== 'vials'}
+		>
+			{s.doses_tab_vials}
+		</button>
 	</div>
 
 	{#if tab === 'tracking'}
@@ -487,6 +574,89 @@
 				</ul>
 			{/if}
 		</section>
+	{:else if tab === 'vials'}
+		<!-- Vials sub-tab — what you own and how each one is mixed -->
+		<section class="pb-24">
+			{#if vialRows.length === 0}
+				<div
+					class="border-outline dark:border-outline-dark text-muted rounded-2xl border border-dashed p-8 text-center text-sm"
+				>
+					<p>{s.vials_empty}</p>
+				</div>
+			{:else}
+				<ul class="space-y-2">
+					{#each vialRows as v (v.id)}
+						{@const p = getPeptide(v.peptideId, prefs.lang)}
+						{@const conc = concentrationMgMl(v)}
+						{@const until = expiresAt(v)}
+						{@const left = Math.max(0, v.vialMg - v.usedMg)}
+						<li class="border-outline dark:border-outline-dark rounded-2xl border p-4">
+							<div class="flex items-start justify-between gap-3">
+								<div class="min-w-0">
+									<div class="font-medium">{p?.name ?? v.peptideId}</div>
+									<div class="text-muted font-mono text-xs">
+										{v.vialMg} mg
+										{#if conc}
+											· {v.bacMl} mL → {vialFmt(conc)} mg/mL
+										{:else}
+											· {s.vials_unmixed}
+										{/if}
+									</div>
+								</div>
+								<button
+									type="button"
+									onclick={() => removeVial(v.id!)}
+									class="text-muted hover:text-red-600"
+									aria-label={s.vials_delete}
+								>
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<polyline points="3 6 5 6 21 6" />
+										<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+									</svg>
+								</button>
+							</div>
+
+							{#if conc && until}
+								<div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+									<span class="text-brand font-mono font-semibold">
+										{s.vials_remaining(vialFmt(left), String(v.vialMg))}
+									</span>
+									{#if vialDaysLeft(until) > 0}
+										<span class="text-muted">
+											{s.vials_use_by(vialDate(until), String(vialDaysLeft(until)))}
+										</span>
+									{:else}
+										<span class="text-red-600">{s.vials_expired}</span>
+									{/if}
+								</div>
+							{:else}
+								<!-- Dry powder: mix it here, prefilled with this peptide's usual water. -->
+								<div class="mt-3 flex items-center gap-2">
+									<input
+										type="number"
+										min="0.25"
+										step="0.25"
+										value={mixInputs[v.id!] ?? presetBac(v.peptideId)}
+										oninput={(e) => (mixInputs[v.id!] = Number(e.currentTarget.value))}
+										class="border-outline dark:border-outline-dark w-20 rounded-full border bg-transparent px-3 py-1.5 text-sm outline-none"
+										aria-label={s.vials_bac}
+									/>
+									<span class="text-muted text-xs">mL</span>
+									<button
+										type="button"
+										onclick={() => doMix(v.id!, mixInputs[v.id!] ?? presetBac(v.peptideId))}
+										class="bg-brand hover:bg-brand-dark ml-auto rounded-full px-4 py-1.5 text-sm font-medium text-white"
+									>
+										{s.vials_mix}
+									</button>
+								</div>
+							{/if}
+						</li>
+					{/each}
+				</ul>
+				<p class="text-muted mt-3 text-xs">{s.vials_approx}</p>
+			{/if}
+		</section>
 	{:else}
 		<!-- Reminders sub-tab -->
 		<aside
@@ -579,10 +749,14 @@
 <!-- Floating + button — adapts to current sub-tab. -->
 <button
 	type="button"
-	onclick={tab === 'tracking' ? openLogSheet : openReminderSheet}
+	onclick={tab === 'tracking' ? openLogSheet : tab === 'vials' ? openVialSheet : openReminderSheet}
 	class="bg-brand hover:bg-brand-dark fixed bottom-24 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition-colors"
 	style="margin-bottom: env(safe-area-inset-bottom);"
-	aria-label={tab === 'tracking' ? s.tracking_log_dose : s.reminders_add}
+	aria-label={tab === 'tracking'
+		? s.tracking_log_dose
+		: tab === 'vials'
+			? s.vials_add_title
+			: s.reminders_add}
 >
 	<svg
 		width="24"
@@ -599,6 +773,108 @@
 		<line x1="5" y1="12" x2="19" y2="12" />
 	</svg>
 </button>
+
+<!-- Add-vial sheet -->
+{#if vialSheetOpen}
+	<div
+		class="fixed inset-0 z-50 flex items-end bg-black/50 backdrop-blur-sm sm:items-center sm:justify-center"
+		role="dialog"
+		aria-modal="true"
+		aria-label={s.vials_add_title}
+		onclick={(e) => {
+			if (e.target === e.currentTarget) vialSheetOpen = false;
+		}}
+		onkeydown={(e) => {
+			if (e.key === 'Escape') vialSheetOpen = false;
+		}}
+	>
+		<div
+			class="bg-cream dark:bg-ink w-full max-w-md rounded-t-3xl p-5 shadow-2xl sm:rounded-3xl"
+			style="padding-bottom: max(1.25rem, env(safe-area-inset-bottom));"
+		>
+			<div class="mb-4 flex items-center justify-between">
+				<h2 class="text-xl font-bold tracking-tight">{s.vials_add_title}</h2>
+				<button
+					type="button"
+					onclick={() => (vialSheetOpen = false)}
+					class="text-muted hover:text-ink dark:hover:text-cream"
+					aria-label={s.add_reminder_cancel}
+				>
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18" />
+						<line x1="6" y1="6" x2="18" y2="18" />
+					</svg>
+				</button>
+			</div>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-peptide">
+				{s.vials_peptide}
+			</label>
+			<select
+				id="vial-peptide"
+				value={vialPeptideId}
+				onchange={(e) => pickVialPeptide(e.currentTarget.value)}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			>
+				{#each allPeptides as p (p.id)}
+					<option value={p.id}>{p.name}</option>
+				{/each}
+			</select>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-mg">
+				{s.vials_size}
+			</label>
+			{#if getPeptide(vialPeptideId, prefs.lang)?.calcPreset}
+				{@const opts = getPeptide(vialPeptideId, prefs.lang)!.calcPreset!.vialOptionsMg}
+				<div class="mb-2 flex flex-wrap gap-1.5">
+					{#each opts as o (o)}
+						<button
+							type="button"
+							onclick={() => (vialMg = o)}
+							class="rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+							class:border-brand={vialMg === o}
+							class:bg-brand={vialMg === o}
+							class:text-white={vialMg === o}
+							class:border-outline={vialMg !== o}
+							class:text-muted={vialMg !== o}
+						>
+							{o} mg
+						</button>
+					{/each}
+				</div>
+			{/if}
+			<input
+				id="vial-mg"
+				type="number"
+				min="0.1"
+				step="0.5"
+				bind:value={vialMg}
+				class="border-outline dark:border-outline-dark mb-4 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			/>
+
+			<label class="text-muted mb-1 block text-xs font-medium uppercase tracking-wide" for="vial-bac">
+				{s.vials_mix_now}
+			</label>
+			<input
+				id="vial-bac"
+				type="number"
+				min="0"
+				step="0.25"
+				placeholder={String(presetBac(vialPeptideId))}
+				bind:value={vialBac}
+				class="border-outline dark:border-outline-dark mb-5 w-full rounded-full border bg-transparent px-4 py-3 text-sm outline-none"
+			/>
+
+			<button
+				type="button"
+				onclick={saveVial}
+				class="bg-brand hover:bg-brand-dark w-full rounded-full py-3 text-sm font-medium text-white"
+			>
+				{s.vials_save}
+			</button>
+		</div>
+	</div>
+{/if}
 
 <!-- Log-dose sheet -->
 {#if logSheetOpen}

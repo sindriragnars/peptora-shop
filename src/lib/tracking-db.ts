@@ -31,9 +31,23 @@ export interface Reminder {
 	endsAt?: number;
 }
 
+/** A physical vial the user owns. Unmixed while `bacMl`/`mixedAt` are unset. */
+export interface Vial {
+	id?: number;
+	peptideId: string;
+	/** Peptide content of the vial, mg. */
+	vialMg: number;
+	/** Bacteriostatic water added, mL. Unset = still dry powder. */
+	bacMl?: number;
+	/** When it was reconstituted (epoch ms). Unset = still dry powder. */
+	mixedAt?: number;
+	createdAt: number;
+}
+
 class PeptoraDB extends Dexie {
 	dose_logs!: Table<DoseLog, number>;
 	reminders!: Table<Reminder, number>;
+	vials!: Table<Vial, number>;
 
 	constructor() {
 		super('peptora');
@@ -54,6 +68,11 @@ class PeptoraDB extends Dexie {
 		// optional, so prior rows stay readable without a data migration.
 		this.version(3).stores({
 			reminders: '++id, peptideId, createdAt'
+		});
+		// v4: vial inventory. `createdAt` indexed for the list ordering;
+		// `peptideId` for matching dose logs back to the vial they came from.
+		this.version(4).stores({
+			vials: '++id, peptideId, createdAt'
 		});
 	}
 }

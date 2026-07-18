@@ -169,6 +169,21 @@ interface UIStrings {
 	doses_title: string;
 	doses_tab_reminders: string;
 	doses_tab_tracking: string;
+	doses_tab_vials: string;
+	vials_empty: string;
+	vials_add_title: string;
+	vials_peptide: string;
+	vials_size: string;
+	vials_mix_now: string;
+	vials_bac: string;
+	vials_save: string;
+	vials_unmixed: string;
+	vials_mix: string;
+	vials_delete: string;
+	vials_expired: string;
+	vials_approx: string;
+	vials_remaining: (left: string, total: string) => string;
+	vials_use_by: (date: string, days: string) => string;
 	doses_created_toast: (n: number) => string;
 	doses_dismiss: string;
 	doses_picker_choose_different: string;
@@ -485,6 +500,21 @@ const en: UIStrings = {
 	doses_title: 'Doses',
 	doses_tab_reminders: 'Reminders',
 	doses_tab_tracking: 'Tracking',
+	doses_tab_vials: 'My vials',
+	vials_empty: 'No vials yet. Tap + to add what you own.',
+	vials_add_title: 'Add vial',
+	vials_peptide: 'Peptide',
+	vials_size: 'Vial size (mg)',
+	vials_mix_now: 'Mix now — BAC water (mL), leave empty if still powder',
+	vials_bac: 'BAC water (mL)',
+	vials_save: 'Save vial',
+	vials_unmixed: 'unmixed powder',
+	vials_mix: 'Mix',
+	vials_delete: 'Delete vial',
+	vials_expired: 'Past its 28-day window',
+	vials_approx: 'Remaining is estimated from the doses you have logged.',
+	vials_remaining: (left, total) => `${left} mg left of ${total} mg`,
+	vials_use_by: (date, days) => `Use by ${date} · ${days} days left`,
 	doses_created_toast: (n) => `${n} ${n === 1 ? 'reminder' : 'reminders'} created from your stack.`,
 	doses_dismiss: 'Dismiss',
 	doses_picker_choose_different: '← Choose a different peptide',
@@ -811,6 +841,21 @@ const is: UIStrings = {
 	doses_title: 'Skammtar',
 	doses_tab_reminders: 'Áminningar',
 	doses_tab_tracking: 'Skráning',
+	doses_tab_vials: 'Mín glös',
+	vials_empty: 'Engin glös skráð. Ýttu á + til að skrá það sem þú átt.',
+	vials_add_title: 'Skrá glas',
+	vials_peptide: 'Peptíð',
+	vials_size: 'Stærð glass (mg)',
+	vials_mix_now: 'Blanda strax — BAC vatn (mL), skildu eftir tómt ef enn duft',
+	vials_bac: 'BAC vatn (mL)',
+	vials_save: 'Vista glas',
+	vials_unmixed: 'óblandað duft',
+	vials_mix: 'Blanda',
+	vials_delete: 'Eyða glasi',
+	vials_expired: 'Komið fram yfir 28 daga',
+	vials_approx: 'Afgangur er áætlaður út frá skráðum skömmtum.',
+	vials_remaining: (left, total) => `${left} mg eftir af ${total} mg`,
+	vials_use_by: (date, days) => `Nota fyrir ${date} · ${days} dagar eftir`,
 	doses_created_toast: (n) =>
 		`${n} ${n === 1 ? 'áminning' : 'áminningar'} búnar til úr stack-num þínum.`,
 	doses_dismiss: 'Loka',
