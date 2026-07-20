@@ -360,6 +360,7 @@ interface UIStrings {
 	settings_about_disclaimer: string;
 	settings_about_website: string;
 	settings_about_privacy: string;
+	settings_about_support: string;
 	settings_experience_beginner: string;
 	settings_experience_standard: string;
 	settings_experience_advanced: string;
@@ -728,6 +729,7 @@ const en: UIStrings = {
 		'Peptora is for educational use only. Many peptides discussed are research compounds not FDA-approved. Always consult a qualified healthcare provider before starting, changing, or stopping any protocol.',
 	settings_about_website: 'peptora.app',
 	settings_about_privacy: 'Privacy policy',
+	settings_about_support: 'Help & support',
 	settings_experience_beginner: 'Beginner',
 	settings_experience_standard: 'Standard',
 	settings_experience_advanced: 'Advanced',
@@ -1097,6 +1099,7 @@ const is: UIStrings = {
 		'Peptora er aðeins til fræðslunotkunar. Mörg peptíð eru rannsóknarefni og ekki FDA-samþykkt. Ráðfærðu þig alltaf við hæfan heilbrigðisstarfsmann áður en þú byrjar, breytir eða hættir protocol.',
 	settings_about_website: 'peptora.app',
 	settings_about_privacy: 'Persónuverndarstefna',
+	settings_about_support: 'Aðstoð og leiðbeiningar',
 	settings_experience_beginner: 'Byrjandi',
 	settings_experience_standard: 'Staðall',
 	settings_experience_advanced: 'Lengra kominn',

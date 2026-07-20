@@ -467,6 +467,14 @@
 				>
 					{s.settings_about_privacy}
 				</a>
+				<a
+					href={prefs.lang === 'is' ? 'https://peptora.app/is/support' : 'https://peptora.app/support'}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-brand hover:underline"
+				>
+					{s.settings_about_support}
+				</a>
 			</p>
 		</div>
 	</section>
